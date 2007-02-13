@@ -115,12 +115,12 @@ namespace _2103Project.Entities
             return participantList;
         }
 
-        public int getParticipatSize()
+        public int getParticipantSize()
         {
             return participantSize;
         }
 
-        public void setPartipantSize(int partNum)
+        public void setParticipantSize(int partNum)
         {
             participantSize = partNum;
         }
@@ -209,7 +209,7 @@ namespace _2103Project.Entities
             foreach (EventEntity eve in listOfEvents)
             {
                 if (eve.getEventId() == eventID)
-                    totalParticipateNumber = eve.getParticipatSize();
+                    totalParticipateNumber = eve.getParticipantSize();
             }
             return totalParticipateNumber;
         }
@@ -397,7 +397,7 @@ namespace _2103Project.Entities
             foreach (EventEntity events in listOfEvent)
             {
                 if (events.getEventId() == currentEventID)
-                    events.setPartipantSize(participantSize);
+                    events.setParticipantSize(participantSize);
             }
             db.saveListOfEvents(listOfEvent);
             return true;
