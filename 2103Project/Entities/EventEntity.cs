@@ -30,16 +30,12 @@ namespace _2103Project.Entities
         private int eventScheduleId;
         private int participantSize;
         private List<Participant> participantList;
-        private List<int> facilitatorList;
         private int eventOrganiserId;
+        private List<int> facilitatorList;
         private bool eventUpdatedFlag;
         private bool eventDeletedFlag;
         private bool eventStartingFlag;
         private bool eventFullFlag;
-
-        //Version 2
-        private double totalBudget;
-        private List<int> budgetList;
 
         //Database Access Authetication
         private const string DatabaseToken = "431fW13x";
@@ -47,10 +43,9 @@ namespace _2103Project.Entities
         //Constructors
         public EventEntity()
         {
-
         }
 
-        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, double i_budget, List<int> i_itemList, bool i_eventUpdatedFlag, bool i_eventDeletedFlag, bool i_eventStartingFlag, bool i_eventFullFlag)
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId)
         {
             eventId = i_eventId;
             name = i_name;
@@ -61,12 +56,6 @@ namespace _2103Project.Entities
             participantList = new List<Participant>(i_participantList);
             facilitatorList = new List<int>(i_facilitatorIdList);
             eventOrganiserId = i_eventOrganiserId;
-            totalBudget = i_budget;
-            budgetList = new List<int>(i_itemList);
-            eventUpdatedFlag = i_eventUpdatedFlag;
-            eventDeletedFlag = i_eventDeletedFlag;
-            eventStartingFlag = i_eventStartingFlag;
-            eventFullFlag = i_eventFullFlag;
         }
 
         //Methods
@@ -88,11 +77,6 @@ namespace _2103Project.Entities
         public string getEventName()
         {
             return name;
-        }
-
-        public DateTime getEventEndTime()
-        {
-            return endTime;
         }
 
         public int getEventId()
@@ -151,7 +135,7 @@ namespace _2103Project.Entities
             }
 
             return successAdded;
-        }                                   //Unit Test
+        }
 
         public bool removeParticipantFromEvent(Participant unInterestedParticipant)
         {
@@ -159,7 +143,7 @@ namespace _2103Project.Entities
 
             try
             {
-                for (int i = 0; i < participantList.Count;i++ )
+                for (int i = 0; i < participantList.Count; i++)
                 {
                     if (participantList[i].getUserId().Equals(unInterestedParticipant.getUserId()))
                     {
@@ -187,7 +171,7 @@ namespace _2103Project.Entities
                 return false;
             }
             return true;
-        }                                 //Unit Test
+        }
 
         public bool removeFacilitatorFromEvent(int removingFacilitatorId)
         {
@@ -237,19 +221,6 @@ namespace _2103Project.Entities
                     startTime = eve.getEventDate();
             }
             return startTime;
-        }
-
-        public static DateTime getEndTime(int eventID)
-        {
-            DateTime endTime = DateTime.Now;
-            Database db = Database.CreateDatabase(DatabaseToken);
-            List<EventEntity> listOfEvents = db.getListOfEvents();
-            foreach(EventEntity eve in listOfEvents)
-            {
-                if (eve.getEventId() == eventID)
-                    endTime = eve.getEventEndTime();
-            }
-            return endTime;
         }
 
         public static string getStartVenueFromEventID(int eventID)
@@ -395,7 +366,7 @@ namespace _2103Project.Entities
             return false;
         }
 
-        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, ref double o_budget, ref List<int> o_itemList, ref bool o_eventUpdatedFlag, ref bool o_eventDeletedFlag, ref bool o_eventStartingFlag, ref bool o_eventFullFlag, string purpose)
+        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
             {
@@ -408,12 +379,6 @@ namespace _2103Project.Entities
                 o_participantList = new List<Participant>(participantList);
                 o_facilitatorList = new List<int>(facilitatorList);
                 o_organiserId = eventOrganiserId;
-                o_budget = totalBudget;
-                o_itemList = new List<int>(budgetList);
-                o_eventUpdatedFlag = eventUpdatedFlag;
-                o_eventDeletedFlag = eventDeletedFlag;
-                o_eventStartingFlag = eventStartingFlag;
-                o_eventFullFlag  = eventFullFlag;
 
                 return true;
             }
@@ -453,7 +418,7 @@ namespace _2103Project.Entities
             }
             Queue<Activity> queueActivity = new Queue<Activity>();
             Activity act;
-            for( int i = 0; i < listOfActivity.Count ; i++)
+            for (int i = 0; i < listOfActivity.Count; i++)
             {
                 act = listOfActivity[i];
                 queueActivity.Enqueue(act);
@@ -463,7 +428,7 @@ namespace _2103Project.Entities
             }
             db.saveListOfSchedule(listOfSchedule);
             List<Activity> lisotOfActDB = db.getListOfActivities();
-            foreach(Activity actDB in lisotOfActDB)
+            foreach (Activity actDB in lisotOfActDB)
             {
                 if (queueActivity.Count != 0)
                 {
@@ -496,7 +461,7 @@ namespace _2103Project.Entities
                 return EventInfoStates.organiser;
             }
             return EventInfoStates.unregisteredActiveUser;
-        }           //Unit Test
+        }
 
         public List<int> getListOfFacilitator()
         {
@@ -514,6 +479,189 @@ namespace _2103Project.Entities
                     eve = events;
             }
             return eve.startTime;
+        }
+
+        public int getEventIDFromEventName(string name)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventName() == name)
+                    eve = events;
+            }
+            return eve.getEventId();
+        }
+
+        // Flag for Alerts
+        public void setEventUpdatedFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventUpdatedFlag = true;
+            }
+        }
+        public void clearEventUpdatedFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventUpdatedFlag = false;
+            }
+        }
+        public bool getEventUpdatedFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    eve = events;
+            }
+            return eve.eventUpdatedFlag;
+        }
+        public void setEventDeletedFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventDeletedFlag = true;
+            }
+        }
+        public bool getEventDeletedFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    eve = events;
+            }
+            return eve.eventDeletedFlag;
+        }
+        public void setEventStartFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventStartingFlag = true;
+            }
+        }
+        public void clearEventStartFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventStartingFlag = false;
+            }
+        }
+        public bool getEventStartFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    eve = events;
+            }
+            return eve.eventStartingFlag;
+        }
+        public void setEventFullFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventFullFlag = true;
+            }
+        }
+        public void clearEventFullFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    events.eventFullFlag = false;
+            }
+        }
+        public bool getEventFullFlag(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    eve = events;
+            }
+            return eve.eventFullFlag;
+        }
+
+        // Create Appropriate Alerts
+        public Alert createAlert(int currentEventID, int alertType)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+            Alert alert = new Alert();
+
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.eventId == currentEventID)
+                    eve = events;
+            }
+
+            switch (alertType)
+            {
+                case 1:
+                    Alert alert1 = new Alert(eve.name, "Event has been updated!");
+                    alert = alert1;
+                    break;
+                case 2:
+                    Alert alert2 = new Alert(eve.name, "Event has been deleted!");
+                    alert = alert2;
+                    break;
+                case 3:
+                    Alert alert3 = new Alert(eve.name, "Event is starting in 1 day!");
+                    alert = alert3;
+                    break;
+                case 4:
+                    Alert alert4 = new Alert(eve.name, "Event is fully registered!");
+                    alert = alert4;
+                    break;
+                default:
+                    // Error here
+                    break;
+            }
+            return alert;
         }
     }
 }

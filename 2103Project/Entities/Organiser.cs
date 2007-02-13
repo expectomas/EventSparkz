@@ -230,7 +230,7 @@ namespace _2103Project.Entities
 
             return outputFacilitatorList;
         }
-<<<<<<< HEAD
+
 
         /*private List<Venue> checkVenueCapacity(int participantSize)
         {
@@ -247,7 +247,7 @@ namespace _2103Project.Entities
 
             return venueList;
         }*/
-=======
+
         
         public EventEntity getMostRegisteredEvent()
         {
@@ -266,6 +266,5 @@ namespace _2103Project.Entities
 
             return mostRegisteredEvent;
         }
->>>>>>> 49116ab8f44ea8b239eaa256e7897810fe812a12
     }
 }

@@ -26,60 +26,6 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
         private int currentEventID;
-        static System.Timers.Timer pollingTimer;
-        private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
-        bool connectedToInternet = false;
-
-        //The periodic interval to start polling 
-        const double AmazonWebServicePollInterval = 3000;
-
-        private void checkInternetConnection()
-        {
-            statuslabel1.Hide();
-
-            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                statuslabel1.BackColor = Color.Green;
-                statuslabel1.ForeColor = Color.White;
-
-                statuslabel1.Text = "Connected to Internet";
-
-                statuslabel1.Show();
-
-                connectedToInternet = true;
-            }
-            else
-            {
-                statuslabel1.BackColor = Color.Red;
-                statuslabel1.ForeColor = Color.White;
-
-                statuslabel1.Text = "System not connected to Internet. Unable to fetch Announcements.";
-
-                statuslabel1.Show();
-            }
-        }
-
-        //Timer Event 
-
-        private void pollingTimeReached(object sender, EventArgs e)
-        {
-            pollingTimer.Stop();
-
-            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
-            {
-                //Factory Method
-
-                ConnectionFactory factory = new CloudConnectionFactory();
-
-                Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
-
-                List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();
-
-                populateAdvertisement(listOfAdv);
-            }
-
-            pollingTimer.Start();
-        }
 
         //Initiatisation
 
@@ -89,37 +35,15 @@ namespace _2103Project
 
             currentUser = incomingUser;
 
-            //initialise Timer 
-            pollingTimer = new System.Timers.Timer(AmazonWebServicePollInterval);
-            pollingTimer.Enabled = true;
-            pollingTimer.Elapsed += new ElapsedEventHandler(pollingTimeReached);
-            pollingTimer.AutoReset = true;
-            pollingTimer.Start();
+            
 
             //Initialised Dynamic Controls
-            initAnnouncementList();
             initMainEventList();
             initSideDDL();
             initSideEventBar();
 
-            //Check Internet Connection
-            checkInternetConnection();
-        }
+            displayAlert();
 
-        public void initAnnouncementList()
-        {
-            this.announcementList1.Hide();
-
-            //Clear ListBox Col and Items
-            this.announcementList1.Columns.Clear();
-            this.announcementList1.Items.Clear();
-
-            this.announcementList1.Columns.Insert(0, "No", 50, HorizontalAlignment.Left);
-            this.announcementList1.Columns.Insert(1, "Id", 0, HorizontalAlignment.Left);
-            this.announcementList1.Columns.Insert(2, "Image", 0, HorizontalAlignment.Left);
-            this.announcementList1.Columns.Insert(3, "Description", 300, HorizontalAlignment.Left);
-
-            announcementList1.Show();
         }
 
         public void initMainEventList()
@@ -238,69 +162,6 @@ namespace _2103Project
 
 
             }
-        }
-
-        public void populateAdvertisement(List<Advertisement> listOfAdv)
-        {
-            this.Invoke(new MethodInvoker(delegate
-            {
-                announcementList1.Hide();
-                announcementList1.Items.Clear();
-
-                if (listOfAdv.Count == 0)
-                    listOfAdv = existingAdv;
-
-                //Sort List
-                listOfAdv.Sort(CompareAdId_SortPar);
-
-                //Add Images First
-                ImageList imgList = new ImageList();
-
-                foreach (Advertisement ad in listOfAdv)
-                {
-                    string file = ad.imageDirectory;
-
-                    string relativePath = System.IO.Directory.GetCurrentDirectory() + "\\poster" + file + ".jpg";
-                        
-                        try
-                        {
-                            imgList.Images.Add(Bitmap.FromFile(relativePath));
-                        }
-                        catch (System.IO.FileNotFoundException)
-                        {
-                            //Insert a blank poster if no file found
-                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "\\blankposter.jpg"));
-                        }
-                    }
-
-                int i = 1;
-                foreach (Advertisement ad in listOfAdv)
-                {
-                    ListViewItem newAd = new ListViewItem(i.ToString());
-                    newAd.SubItems.Add(ad.advertisementID.ToString());
-                    newAd.ImageIndex = i;
-                    newAd.SubItems.Add(ad.imageDirectory);
-                    newAd.SubItems.Add(ad.description);
-
-                    announcementList1.Items.Add(newAd);
-
-                    i++;
-                }
-
-                announcementList1.SmallImageList = imgList;
-
-                existingAdv = listOfAdv;
-
-                announcementList1.Show();
-            }));
-        }
-
-        public static int CompareAdId_SortPar(Advertisement a, Advertisement b)
-        {
-            if (a.advertisementID >= b.advertisementID)
-                return 1;
-            else
-                return 0;
         }
 
         //Main Page Dialog Boxes
@@ -653,12 +514,23 @@ namespace _2103Project
             eventInfoPage.Show();
         }
 
-        private void analyticsBtn_Click(object sender, EventArgs e)
+        private void viewAlertsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Analytic AnalyticsPage = new Analytic(currentUser);
-
-            AnalyticsPage.Show();
+            AlertForm alertNew = new AlertForm(currentUser);
+            alertNew.Show();
         }
 
+        public void displayAlert()
+        {
+            ActiveUser au = new ActiveUser(currentUser);
+            int num = au.scoutAlert();
+
+            if (num > 0)   // If there is at least ONE alert
+            {
+                notifyIcon.Icon = SystemIcons.Application;
+                notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
+                notifyIcon.ShowBalloonTip(1500);
+            }
+        }
     }
 }
