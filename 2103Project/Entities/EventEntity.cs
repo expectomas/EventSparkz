@@ -45,7 +45,7 @@ namespace _2103Project.Entities
         {
         }
 
-        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId)
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, bool i_eventUpdatedFlag, bool i_eventDeletedFlag, bool i_eventStartingFlag, bool i_eventFullFlag)
         {
             eventId = i_eventId;
             name = i_name;
@@ -56,6 +56,10 @@ namespace _2103Project.Entities
             participantList = new List<Participant>(i_participantList);
             facilitatorList = new List<int>(i_facilitatorIdList);
             eventOrganiserId = i_eventOrganiserId;
+            eventUpdatedFlag = i_eventUpdatedFlag;
+            eventDeletedFlag = i_eventDeletedFlag;
+            eventStartingFlag = i_eventStartingFlag;
+            eventFullFlag = i_eventFullFlag;
         }
 
         //Methods
