@@ -25,4 +25,16 @@
 <contactHome>53120381</contactHome>
 <contactHP>91322123</contactHP>
 </User>
+<User>
+<userId>2</userId>
+<userName>tiow12</userName>
+<name>TIO WEE LEONG</name>
+<matricNo>A3228372N</matricNo>
+<password>132456</password>
+<email>wcl@hotmail.com</email>
+<age>22</age>
+<loggedIn>false</loggedIn>
+<contactHome>53120381</contactHome>
+<contactHP>91322123</contactHP>
+</User>
 </UserPool>
