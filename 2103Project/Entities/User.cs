@@ -45,10 +45,14 @@ namespace _2103Project.Entities
                 auth = true;
             else
             {
-                //Database Access
-                Database db = new Database();
+                // TESTING PURPOSES
+                ActiveUser au = new ActiveUser();
 
-                List<User> obtainedUserList = db.getListOfUsers();
+                List<EventEntity> ev = au.viewEventListingByDate(5/15/2012);   // Test
+
+
+
+                // END OF TESTING
 
                 foreach(User cu in obtainedUserList)
                 {
