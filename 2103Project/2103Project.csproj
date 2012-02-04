@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F884B74-0B52-4C0B-A78B-2709430678D5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_2103Project</RootNamespace>
+    <AssemblyName>2103Project</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.3.2.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addEditBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addEditBudget.Designer.cs">
+      <DependentUpon>addEditBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin.Designer.cs">
+      <DependentUpon>admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="attendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="attendance.Designer.cs">
+      <DependentUpon>attendance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cancelEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cancelEvent.Designer.cs">
+      <DependentUpon>cancelEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="createEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="createEvent.Designer.cs">
+      <DependentUpon>createEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="eventInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eventInfo.Designer.cs">
+      <DependentUpon>eventInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="eventOrginanizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="eventOrginanizer.Designer.cs">
+      <DependentUpon>eventOrginanizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="facilitator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="facilitator.Designer.cs">
+      <DependentUpon>facilitator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainPage.Designer.cs">
+      <DependentUpon>mainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="signup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="signup.Designer.cs">
+      <DependentUpon>signup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config\Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashImageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashImageForm.Designer.cs">
+      <DependentUpon>SplashImageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="trackBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="trackBudget.Designer.cs">
+      <DependentUpon>trackBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="venuePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="venuePage.Designer.cs">
+      <DependentUpon>venuePage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addEditBudget.resx">
+      <DependentUpon>addEditBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin.resx">
+      <DependentUpon>admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="attendance.resx">
+      <DependentUpon>attendance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cancelEvent.resx">
+      <DependentUpon>cancelEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="createEvent.resx">
+      <DependentUpon>createEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eventInfo.resx">
+      <DependentUpon>eventInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="eventOrginanizer.resx">
+      <DependentUpon>eventOrginanizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="facilitator.resx">
+      <DependentUpon>facilitator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mainPage.resx">
+      <DependentUpon>mainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="signup.resx">
+      <DependentUpon>signup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashImageForm.resx">
+      <DependentUpon>SplashImageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="trackBudget.resx">
+      <DependentUpon>trackBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="venuePage.resx">
+      <DependentUpon>venuePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Action\" />
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
