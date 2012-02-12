@@ -38,7 +38,7 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            TextFileAuth Auth = new TextFileAuth();
+            XMLFileAuth Auth = new XMLFileAuth();
 
             string CaptialUserName = userNameTextBox.Text.ToUpper();
 
