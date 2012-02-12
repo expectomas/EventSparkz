@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<UserPool>
+<User domain="NUSSTU" id="A1234567H">
+    <FirstName>Paul</FirstName>
+    <Password>12345678</Password>
+</User>
+</UserPool>
