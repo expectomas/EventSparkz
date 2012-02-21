@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(signupForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,15 +41,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.matricNoTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.matricNoTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.memberComboBox = new System.Windows.Forms.ComboBox();
-            this.budgetTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -75,6 +75,7 @@
             // 
             this.usernameTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTextBox.Location = new System.Drawing.Point(17, 84);
+            this.usernameTextBox.MaxLength = 20;
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(169, 35);
             this.usernameTextBox.TabIndex = 2;
@@ -120,7 +121,7 @@
             // signupButton
             // 
             this.signupButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signupButton.Location = new System.Drawing.Point(12, 409);
+            this.signupButton.Location = new System.Drawing.Point(12, 338);
             this.signupButton.Name = "signupButton";
             this.signupButton.Size = new System.Drawing.Size(354, 35);
             this.signupButton.TabIndex = 7;
@@ -156,14 +157,14 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Email address:";
             // 
-            // emailTextBox
+            // matricNoTextBox
             // 
-            this.emailTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailTextBox.Location = new System.Drawing.Point(197, 297);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.PasswordChar = '*';
-            this.emailTextBox.Size = new System.Drawing.Size(169, 35);
-            this.emailTextBox.TabIndex = 12;
+            this.matricNoTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.matricNoTextBox.Location = new System.Drawing.Point(197, 155);
+            this.matricNoTextBox.MaxLength = 9;
+            this.matricNoTextBox.Name = "matricNoTextBox";
+            this.matricNoTextBox.Size = new System.Drawing.Size(169, 35);
+            this.matricNoTextBox.TabIndex = 12;
             // 
             // label7
             // 
@@ -179,10 +180,12 @@
             // 
             this.phoneNumberTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneNumberTextBox.Location = new System.Drawing.Point(197, 226);
+            this.phoneNumberTextBox.MaxLength = 8;
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.PasswordChar = '*';
             this.phoneNumberTextBox.Size = new System.Drawing.Size(169, 35);
             this.phoneNumberTextBox.TabIndex = 14;
+            this.phoneNumberTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.phoneNumberTextBox_KeyDown);
+            this.phoneNumberTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.phoneNumberTextBox_KeyPress);
             // 
             // label8
             // 
@@ -194,14 +197,13 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "Matric. No:";
             // 
-            // matricNoTextBox
+            // emailTextBox
             // 
-            this.matricNoTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.matricNoTextBox.Location = new System.Drawing.Point(192, 155);
-            this.matricNoTextBox.Name = "matricNoTextBox";
-            this.matricNoTextBox.PasswordChar = '*';
-            this.matricNoTextBox.Size = new System.Drawing.Size(169, 35);
-            this.matricNoTextBox.TabIndex = 16;
+            this.emailTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailTextBox.Location = new System.Drawing.Point(197, 298);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(169, 35);
+            this.emailTextBox.TabIndex = 16;
             // 
             // label9
             // 
@@ -215,34 +217,21 @@
             // 
             // memberComboBox
             // 
+            this.memberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.memberComboBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.memberComboBox.FormattingEnabled = true;
             this.memberComboBox.Items.AddRange(new object[] {
             "Participant",
-            "Event Organizer"});
+            "Event Organizer",
+            "Facilitator"});
             this.memberComboBox.Location = new System.Drawing.Point(17, 298);
             this.memberComboBox.Name = "memberComboBox";
             this.memberComboBox.Size = new System.Drawing.Size(169, 33);
             this.memberComboBox.TabIndex = 18;
             // 
-            // budgetTextBox
+            // kryptonManager1
             // 
-            this.budgetTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.budgetTextBox.Location = new System.Drawing.Point(105, 368);
-            this.budgetTextBox.Name = "budgetTextBox";
-            this.budgetTextBox.PasswordChar = '*';
-            this.budgetTextBox.Size = new System.Drawing.Size(169, 35);
-            this.budgetTextBox.TabIndex = 20;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(100, 335);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(135, 30);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Budget Limit:";
+            this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.SparkleBlue;
             // 
             // signupForm
             // 
@@ -250,16 +239,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(384, 455);
-            this.Controls.Add(this.budgetTextBox);
-            this.Controls.Add(this.label10);
+            this.ClientSize = new System.Drawing.Size(384, 376);
             this.Controls.Add(this.memberComboBox);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.matricNoTextBox);
+            this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.phoneNumberTextBox);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.emailTextBox);
+            this.Controls.Add(this.matricNoTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.label5);
@@ -276,6 +263,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "signupForm";
             this.Text = "Sign Up";
+            this.Load += new System.EventHandler(this.signupForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,14 +282,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.TextBox matricNoTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox phoneNumberTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox matricNoTextBox;
+        private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox memberComboBox;
-        private System.Windows.Forms.TextBox budgetTextBox;
-        private System.Windows.Forms.Label label10;
+        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager1;
     }
 }
