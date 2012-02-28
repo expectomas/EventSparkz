@@ -14,7 +14,7 @@ namespace _2103Project.Entities
         private DateTime endTime;
         private Schedule eventSchedule;
         private int participantSize;
-
+        private List<Participant> participantList;
 
         //Methods
 

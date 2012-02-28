@@ -15,6 +15,8 @@ namespace _2103Project.Entities
         protected string email;
         protected int age;
         protected bool loggedIn;
+        protected double contactHome;
+        protected double contactHP;
 
         public bool login(){
             bool auth = false;
