@@ -27,5 +27,13 @@ namespace _2103Project.Entities
             return auth;
         }
 
+        public static bool createNewUser()
+        {
+            bool userCreated = false;
+
+
+            return userCreated;
+        }
+
     }
 }
