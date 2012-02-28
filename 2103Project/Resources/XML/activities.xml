@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ActivityPool>
+<Activity>
+<activityId>1</activityId>
+<time>1230</time>
+<description>Hide and Seek</description>
+<venueLocation>
+<Venue>
+<venueId>1</venueId>
+<location>MPSH1</location>
+</Venue>
+</venueLocation>
+<Activity>
+</ActvityPool>

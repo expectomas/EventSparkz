@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<EventPool>
+<EventEntity>
+<eventId>1</eventId>
+<name>HappyTreeFriendsDay</name>
+<startTime></endTime>
+<endTime></endTime>
+<eventScheduleId>1<eventScheduleId>
+<participantSize>20</participantSize>
+<participantList>
+	<User>
+	<userId>1</userId>
+	<userName>tiow11</userName>
+	<name>TIO WEE LEONG</name>
+	<matricNo>A9328372N</matricNo>
+	<password>123456</password>
+	<email>wil@hotmail.com</email>
+	<age>23</age>
+	<contactHome>23120381</contactHome>
+	<contactHP>91732123</contactHP>
+	</User>
+</participantList>
+</EventEntity>
+</EventPool>
