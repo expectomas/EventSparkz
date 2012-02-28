@@ -16,15 +16,13 @@ namespace _2103Project
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            SplashImageForm f = new SplashImageForm();
+            //SplashImageForm f = new SplashImageForm();
 
-            
+            //Application.Run(f);
 
-            Application.Run(f);
+            //System.Threading.Thread.Sleep(2000);
 
-            System.Threading.Thread.Sleep(2000);
-
-            f.Close();
+            //f.Close();
 
             Application.Run(new loginForm());
         }
