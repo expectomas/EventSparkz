@@ -8,6 +8,7 @@ namespace _2103Project.Entities
     class User
     {
         protected int userId;
+        protected string userName;
         protected string name;
         protected string matricNo;
         protected string password;
