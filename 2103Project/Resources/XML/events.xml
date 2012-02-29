@@ -4,9 +4,9 @@
 <EventEntity>
 <eventId>1</eventId>
 <name>HappyTreeFriendsDay</name>
-<startTime></endTime>
-<endTime></endTime>
-<eventScheduleId>1<eventScheduleId>
+<startTime>2002-12-14T08:30:00</startTime>
+<endTime>2002-12-14T18:30:00</endTime>
+<eventScheduleId>1</eventScheduleId>
 <participantSize>20</participantSize>
 <participantList>
 	<User>
@@ -17,6 +17,29 @@
 	<password>123456</password>
 	<email>wil@hotmail.com</email>
 	<age>23</age>
+	<loggedIn>false</loggedIn>
+	<contactHome>23120381</contactHome>
+	<contactHP>91732123</contactHP>
+	</User>
+</participantList>
+</EventEntity>
+<EventEntity>
+<eventId>2</eventId>
+<name>FlowerAppreciationWorkshop</name>
+<startTime>2002-05-30T08:00:00</startTime>
+<endTime>2002-05-30T18:00:00</endTime>
+<eventScheduleId>1</eventScheduleId>
+<participantSize>60</participantSize>
+<participantList>
+	<User>
+	<userId>1</userId>
+	<userName>tiow11</userName>
+	<name>TIO WEE LEONG</name>
+	<matricNo>A9328372N</matricNo>
+	<password>123456</password>
+	<email>wil@hotmail.com</email>
+	<age>23</age>
+	<loggedIn>false</loggedIn>
 	<contactHome>23120381</contactHome>
 	<contactHP>91732123</contactHP>
 	</User>

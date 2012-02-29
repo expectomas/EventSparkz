@@ -5,4 +5,8 @@
 <venueId>1</venueId>
 <location>MPSH1</location>
 </Venue>
+<Venue>
+<venueId>2</venueId>
+<location>MPSH2</location>
+</Venue>
 </VenuePool>
