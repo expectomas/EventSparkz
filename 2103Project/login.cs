@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using _2103Project.Action.Auth;
+using _2103Project.Entities;
 
 namespace _2103Project
 {
@@ -38,13 +38,9 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            XMLFileAuth Auth = new XMLFileAuth();
+            User newUser = new User();
 
-            string CaptialUserName = userNameTextBox.Text.ToUpper();
-
-            Auth.sendUserNamePW(CaptialUserName, passwordTextbox.Text);
-
-            userNameValid = Auth.Authetication();
+            userNameValid  = newUser.login(userNameTextBox.Text, passwordTextbox.Text);
 
             if (userNameValid)
             {
