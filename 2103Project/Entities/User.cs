@@ -38,6 +38,7 @@ namespace _2103Project.Entities
         }
 
         public bool login(string tokenUserName, string tokenPassWord){
+
             bool auth = false;
 
             if (loggedIn == true)
@@ -75,8 +76,5 @@ namespace _2103Project.Entities
 
             return userCreated;
         }
-
-        
-
     }
 }

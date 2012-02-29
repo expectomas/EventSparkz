@@ -12,7 +12,7 @@ namespace _2103Project.Entities
         private string name;
         private DateTime startTime;
         private DateTime endTime;
-        private Schedule eventSchedule;
+        private int eventScheduleId;
         private int participantSize;
         private List<Participant> participantList;
 
@@ -24,5 +24,21 @@ namespace _2103Project.Entities
 
             return timeDuration;
         }
+
+        public EventEntity()
+        {
+        }
+
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList)
+        {
+            eventId = i_eventId;
+            name = i_name;
+            startTime = i_startTime;
+            endTime = i_endTime;
+            eventScheduleId = i_eventScheduleId;
+            participantSize = i_participantSize;
+            participantList = i_participantList;
+        }
+
     }
 }
