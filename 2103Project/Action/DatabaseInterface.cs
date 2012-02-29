@@ -9,23 +9,23 @@ namespace _2103Project.Action
     interface IDatabase
     {
         //Events Database Interaction
-        List<EventEntity> getListOfEvents();
+        List<EventEntity> getListOfEvents();                //Done
         bool saveListOfEvents(List<EventEntity> eventListToSave);
 
         //Schedules Database Interaction
-        List<Schedule> getListOfSchedule();
+        List<Schedule> getListOfSchedule();                 //Done
         bool saveListOfSchedule(List<Schedule> scheduleListToSave);
 
         //Activities Database Interaction
-        List<Activity> getListOfActivities();
+        List<Activity> getListOfActivities();               //Done
         bool saveListOfActivities(List<Activity> activityListToSave);
 
         //Users Database Interaction
-        List<User> getListOfUsers();
+        List<User> getListOfUsers();                        //Done
         bool saveListOfUsers(List<User> userListToSave);
 
         //Venue Database Interaction
-        List<Venue> getListOfVenues();
+        List<Venue> getListOfVenues();                      //Done
         bool saveListOfVenues(List<Venue> venueListToSave);
 
     }

@@ -13,9 +13,75 @@ namespace _2103Project.Action
         public List<EventEntity> getListOfEvents()
         {
             List<EventEntity> listToPop = new List<EventEntity>();
+            List<Participant> participantList = new List<Participant>();
 
-            
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
 
+            using (XmlReader scanner = XmlReader.Create("events.xml", settings))
+            {
+                scanner.MoveToContent();
+
+                scanner.ReadToDescendant("EventEntity");
+
+                do
+                {
+                    scanner.ReadToDescendant("eventId"); 
+
+                    int eventId = scanner.ReadElementContentAsInt();
+
+                    string eventDescription = scanner.ReadElementContentAsString("name", "");
+
+                    DateTime startTime = scanner.ReadElementContentAsDateTime();
+
+                    DateTime endTime = scanner.ReadElementContentAsDateTime();
+
+                    int eventScheduleId = scanner.ReadElementContentAsInt();
+
+                    int participantSize = scanner.ReadElementContentAsInt();
+
+                    scanner.ReadToDescendant("User");
+
+                    do
+                    {
+
+                        scanner.ReadToDescendant("userId");
+
+                        int userId = scanner.ReadElementContentAsInt();
+
+                        string userName = scanner.ReadElementContentAsString("userName", "");
+
+                        string name = scanner.ReadElementContentAsString("name", "");
+
+                        string matricNo = scanner.ReadElementContentAsString("matricNo", "");
+
+                        string pw = scanner.ReadElementContentAsString("password", "");
+
+                        string em = scanner.ReadElementContentAsString("email", "");
+
+                        int age = scanner.ReadElementContentAsInt();
+
+                        bool loggedIn = scanner.ReadElementContentAsBoolean();
+
+                        double HomeNum = scanner.ReadElementContentAsDouble();
+
+                        double HPContact = scanner.ReadElementContentAsDouble();
+
+                        Participant newParticipant = new Participant(userId, userName, name, matricNo, pw, em, age, loggedIn, HomeNum, HPContact);
+
+                        participantList.Add(newParticipant);
+
+                    } while (scanner.ReadToNextSibling("User"));
+
+                    scanner.Skip();
+
+                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList);
+
+                    listToPop.Add(newEvent);
+
+                } while (scanner.ReadToNextSibling("EventEntity"));
+
+            }
             return listToPop;
         }
         public bool saveListOfEvents(List<EventEntity> eventListToSave)
@@ -31,7 +97,79 @@ namespace _2103Project.Action
         public List<Schedule> getListOfSchedule()
         {
             List<Schedule> listToPop = new List<Schedule>();
+            List<string> scheduleItems = new List<string>();
+            List<Activity> scheduleActivities = new List<Activity>();
 
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+
+            using (XmlReader scanner = XmlReader.Create("schedules.xml", settings))
+            {
+                scanner.MoveToContent();
+
+                scanner.ReadToDescendant("Schedule");
+
+                do
+                {
+                    scanner.ReadToDescendant("scheduleId");
+
+                    int scheduleId = scanner.ReadElementContentAsInt();
+
+                    scanner.ReadToDescendant("item");
+
+                    //GetAllItems
+                    do
+                    {
+                
+                        scheduleItems.Add(scanner.ReadElementContentAsString("item",""));
+
+                    } while (scanner.NodeType!=XmlNodeType.EndElement);
+
+                    scanner.Skip();
+
+                    scanner.ReadToDescendant("Activity");
+
+                    do
+                    {
+                        scanner.ReadToDescendant("activityId");
+
+                        int activityId = scanner.ReadElementContentAsInt();
+
+                        DateTime time = scanner.ReadElementContentAsDateTime();
+
+                        string activityDescription = scanner.ReadElementContentAsString("description", "");
+
+                        scanner.ReadToFollowing("venueId");
+
+                        int i_venueId = scanner.ReadElementContentAsInt();
+
+                        string i_location = scanner.ReadElementContentAsString("location", "");
+
+                        Venue newVenue = new Venue(i_venueId, i_location);
+
+                        Activity newActivity = new Activity(activityId, time, activityDescription, newVenue);
+
+                        scheduleActivities.Add(newActivity);
+
+                        //Skip end element till /activity end tag
+                        scanner.Skip();
+                        scanner.Skip();
+
+                    } while (scanner.ReadToNextSibling("Activity"));
+
+                    Schedule newSchedule = new Schedule(scheduleId, scheduleItems, scheduleActivities);
+
+                    listToPop.Add(newSchedule);
+
+                    //Skip /activity end tag
+                    scanner.Skip();
+
+                    //Clear both list
+                    scheduleItems.Clear();
+                    scheduleActivities.Clear();
+
+                }while(scanner.ReadToNextSibling("Schedule"));
+            }
 
             return listToPop;
         }
@@ -49,6 +187,43 @@ namespace _2103Project.Action
         {
             List<Activity> listToPop = new List<Activity>();
 
+             XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+
+            using (XmlReader scanner = XmlReader.Create("activities.xml", settings))
+            {
+                scanner.MoveToContent();
+
+                scanner.ReadToDescendant("Activity");
+
+                do
+                {
+                    scanner.ReadToDescendant("activityId");
+
+                    int activityId = scanner.ReadElementContentAsInt();
+
+                    DateTime time = scanner.ReadElementContentAsDateTime();
+
+                    string activityDescription = scanner.ReadElementContentAsString("description", "");
+
+                    scanner.ReadToFollowing("venueId");
+
+                    int i_venueId = scanner.ReadElementContentAsInt();
+
+                    string i_location = scanner.ReadElementContentAsString("location", "");
+
+                    Venue newVenue = new Venue(i_venueId, i_location);
+
+                    Activity newActivity = new Activity(activityId, time, activityDescription, newVenue);
+
+                    listToPop.Add(newActivity);
+
+                    //Skip end element till /activity end tag
+                    scanner.Skip();
+                    scanner.Skip();
+
+                } while (scanner.ReadToNextSibling("Activity"));
+            }
 
             return listToPop;
         }
@@ -125,6 +300,31 @@ namespace _2103Project.Action
         {
             List<Venue> listToPop = new List<Venue>();
 
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+
+            using (XmlReader scanner = XmlReader.Create("venues.xml", settings))
+            {
+                //Move scanner to content 
+                scanner.MoveToContent();
+
+                scanner.ReadToDescendant("Venue");
+
+                do
+                {
+                    scanner.ReadToDescendant("venueId");
+
+                    int i_venueId = scanner.ReadElementContentAsInt();
+
+                    string i_location = scanner.ReadElementContentAsString("location","");
+
+                    Venue newVenue = new Venue(i_venueId, i_location);
+
+                    listToPop.Add(newVenue);
+
+                } while (scanner.ReadToNextSibling("Venue"));
+
+            }
 
             return listToPop;
         }
