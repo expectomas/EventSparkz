@@ -18,6 +18,21 @@ namespace _2103Project.Entities
 
         //Methods
 
+        public string getEventName()
+        {
+            return name;
+        }
+
+        public int getEventId()
+        {
+            return eventId;
+        }
+
+        public DateTime getEventDate()
+        {
+            return startTime;
+        }
+
         public int getEventDurationByHr()
         {
             int timeDuration = (endTime - startTime).Hours;

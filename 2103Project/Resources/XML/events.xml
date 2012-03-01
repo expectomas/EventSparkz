@@ -4,8 +4,8 @@
 <EventEntity>
 <eventId>1</eventId>
 <name>HappyTreeFriendsDay</name>
-<startTime>2002-12-14T08:30:00</startTime>
-<endTime>2002-12-14T18:30:00</endTime>
+<startTime>2012-05-15T08:00:00</startTime>
+<endTime>2012-05-15T20:00:00</endTime>
 <eventScheduleId>1</eventScheduleId>
 <participantSize>20</participantSize>
 <participantList>
@@ -26,8 +26,8 @@
 <EventEntity>
 <eventId>2</eventId>
 <name>FlowerAppreciationWorkshop</name>
-<startTime>2002-05-30T08:00:00</startTime>
-<endTime>2002-05-30T18:00:00</endTime>
+<startTime>2012-05-15T08:00:00</startTime>
+<endTime>2012-05-15T18:00:00</endTime>
 <eventScheduleId>1</eventScheduleId>
 <participantSize>60</participantSize>
 <participantList>
@@ -45,4 +45,48 @@
 	</User>
 </participantList>
 </EventEntity>
+<EventEntity>
+    <eventId>3</eventId>
+    <name>Hackathon</name>
+    <startTime>2012-02-27T13:30:00</startTime>
+    <endTime>2012-02-29T13:30:00</endTime>
+    <eventScheduleId>1</eventScheduleId>
+    <participantSize>24</participantSize>
+    <participantList>
+      <User>
+        <userId>1</userId>
+        <userName>tiow11</userName>
+        <name>TIO WEE LEONG</name>
+        <matricNo>A9328372N</matricNo>
+        <password>123456</password>
+        <email>wil@hotmail.com</email>
+        <age>23</age>
+        <loggedIn>false</loggedIn>
+        <contactHome>23120381</contactHome>
+        <contactHP>91732123</contactHP>
+      </User>
+    </participantList>
+  </EventEntity>
+<EventEntity>
+    <eventId>4</eventId>
+    <name>OrientationCamp</name>
+    <startTime>2012-08-02T08:00:00</startTime>
+    <endTime>2012-08-04T16:30:00</endTime>
+    <eventScheduleId>1</eventScheduleId>
+    <participantSize>250</participantSize>
+    <participantList>
+      <User>
+        <userId>1</userId>
+        <userName>tiow11</userName>
+        <name>TIO WEE LEONG</name>
+        <matricNo>A9328372N</matricNo>
+        <password>123456</password>
+        <email>wil@hotmail.com</email>
+        <age>23</age>
+        <loggedIn>false</loggedIn>
+        <contactHome>23120381</contactHome>
+        <contactHP>91732123</contactHP>
+      </User>
+    </participantList>
+  </EventEntity>  
 </EventPool>
