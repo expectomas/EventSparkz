@@ -9,6 +9,9 @@ namespace _2103Project.Action
 {
     class Database : IDatabase
     {
+        private string requestString = "databaseRequest";
+
+
         //Events Database Interaction Implementation
         public List<EventEntity> getListOfEvents()
         {
@@ -330,9 +333,56 @@ namespace _2103Project.Action
         }
         public bool saveListOfVenues(List<Venue> venueListToSave)
         {
-            bool savingSuccessFlag = false;
+           bool savingSuccessFlag = false;
+
+           int sizeOfList = venueListToSave.Count;
+
+           XmlWriterSettings writerSettings = new XmlWriterSettings();
+           writerSettings.Indent = true;
+
+           Venue holdingElement;
+           
+           try
+           {
+               using(XmlWriter writer = XmlTextWriter.Create("venues.xml", writerSettings))
+               {
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("VenuePool");
+
+                    for (int i = 0; i < sizeOfList; i++)
+                    {
+                        writer.WriteStartElement("Venue");
+
+                        holdingElement = venueListToSave[i];
+
+                        int venueId = 0;
+                        string venueLo = "";
+
+                        //Passing venueId and venueLo as Referene
+                        holdingElement.requestVenueDetails(ref venueId,ref venueLo,requestString);
+
+                        //Write Element Contents
+                        writer.WriteElementString("venueId",venueId.ToString());
+
+                        writer.WriteElementString("location", venueLo);
+
+                        writer.WriteEndElement();
+                    }
+
+                    writer.WriteEndElement();
+
+                    writer.WriteEndDocument();
+               }
 
 
+           }
+           catch (Exception ex)
+           {
+               savingSuccessFlag = false;
+           }
+
+           savingSuccessFlag = true;
 
            return savingSuccessFlag;
         }
