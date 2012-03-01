@@ -11,6 +11,9 @@ namespace _2103Project.Entities
 
         public List<EventEntity> facilitatingEvents;
 
+        //Database Access Authetication
+        private const string DatabaseToken = "5hfoipe@";
+
         //Methods
 
         public List<Participant> viewParticipantList()

@@ -7,6 +7,9 @@ namespace _2103Project.Entities
 {
     class ActiveUser:User
     {
+        //Database Access Authetication
+        private const string DatabaseToken = "3e#rtfGc";
+
         //Attributes 
         
         //Methods

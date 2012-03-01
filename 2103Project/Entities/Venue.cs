@@ -10,6 +10,9 @@ namespace _2103Project.Entities
         private int venueId;
         private string location;
 
+        //Database Access Authetication
+        private const string DatabaseToken = "nhgdkc#1";
+
         //Constructor
 
         public Venue()

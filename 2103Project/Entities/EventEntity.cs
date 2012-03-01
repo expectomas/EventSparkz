@@ -16,6 +16,9 @@ namespace _2103Project.Entities
         private int participantSize;
         private List<Participant> participantList;
 
+        //Database Access Authetication
+        private const string DatabaseToken = "431fW13x";
+
         //Methods
 
         public string getEventName()

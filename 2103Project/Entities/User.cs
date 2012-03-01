@@ -19,6 +19,10 @@ namespace _2103Project.Entities
         protected double contactHome;
         protected double contactHP;
 
+
+        //Database Access Authetication
+        private const string DatabaseToken = "ewknf%32";
+
         public User(){
         }
 
@@ -45,14 +49,13 @@ namespace _2103Project.Entities
                 auth = true;
             else
             {
-                // TESTING PURPOSES
-                ActiveUser au = new ActiveUser();
+                Database db = Database.CreateDatabase(DatabaseToken);
 
-                List<EventEntity> ev = au.viewEventListingByDate(5/15/2012);   // Test
+                List<User> obtainedUserList = db.getListOfUsers();
 
+                db.saveListOfUsers(obtainedUserList);
 
-
-                // END OF TESTING
+                List<User> testList = db.getListOfUsers();
 
                 foreach(User cu in obtainedUserList)
                 {
@@ -79,6 +82,31 @@ namespace _2103Project.Entities
 
 
             return userCreated;
+        }
+
+        public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
+                    ref string i_email, ref int i_age, ref bool i_loggedIn, ref double i_contactHome, ref double i_contactHP, string purpose)
+        {
+            
+            bool releasedDetails = false;
+
+            if(purpose.Equals("databaseRequest"))
+            {
+                i_userId = userId;
+                i_userName = userName;
+                i_name = name;
+                i_matricNo = matricNo;
+                i_password = password;
+                i_email  = email;
+                i_age = age;
+                i_loggedIn = loggedIn;
+                i_contactHome = contactHome;
+                i_contactHP  = contactHP;
+
+                releasedDetails = true;
+            }
+
+            return releasedDetails;
         }
     }
 }

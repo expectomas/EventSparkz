@@ -9,6 +9,9 @@ namespace _2103Project.Entities
     {
         //Attributes
         public List<EventEntity> viewBookings;
+
+         //Database Access Authetication
+        private const string DatabaseToken = "9032!ds$";
         
         //Methods
         public bool createEvent()

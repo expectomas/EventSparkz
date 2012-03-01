@@ -12,6 +12,9 @@ namespace _2103Project.Entities
         private string description;
         private Venue hostingVenue;
 
+        //Database Access Authetication
+        private const string DatabaseToken = "r$32Hgvc";
+
         public Activity()
         {
 

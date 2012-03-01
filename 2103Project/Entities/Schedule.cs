@@ -12,6 +12,9 @@ namespace _2103Project.Entities
         public List<string> listOfItems;
         public List<Activity> activities;
 
+        //Database Access Authetication
+        private const string DatabaseToken = "642!e345";
+
         public Schedule()
         {
         }

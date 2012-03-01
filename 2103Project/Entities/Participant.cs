@@ -10,6 +10,9 @@ namespace _2103Project.Entities
         //Attributes
         public List<EventEntity> registeredEvents;
 
+         //Database Access Authetication
+        private const string DatabaseToken = "cd#ew1Tf";
+
         //Methods
         public bool registerEvent()
         {
