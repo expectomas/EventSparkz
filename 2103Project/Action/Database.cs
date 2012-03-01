@@ -9,9 +9,68 @@ namespace _2103Project.Action
 {
     class Database : IDatabase
     {
+        //Static Database Instance (Singleton)
+
+        private static Database instance;
+
         //Database Attribute
         private string requestString = "databaseRequest";
+        
+        //Database Access Authetication
+        private const string ActiveUserToken = "3e#rtfGc";
+        private const string ActivityToken = "r$32Hgvc";
+        private const string EventEntityToken = "431fW13x";
+        private const string FacilitatorToken = "5hfoipe@";
+        private const string OrganiserToken = "9032!ds$";
+        private const string ParticipantToken = "cd#ew1Tf";
+        private const string ScheduleToken = "642!e345";
+        private const string UserToken = "ewknf%32";
+        private const string VenueToken = "nhgdkc#1";
 
+        private Database()
+        {
+
+        }
+
+        //Singleton Concept 
+        public static Database CreateDatabase(string tokenRequired)
+        {
+            if (instance == null)
+            {
+                switch (tokenRequired)
+                {
+                    case ActiveUserToken:
+                        instance =  new Database();
+                        break;
+                    case ActivityToken:
+                        instance =  new Database();
+                        break;
+                    case EventEntityToken:
+                        instance = new Database();
+                        break;
+                    case FacilitatorToken:
+                        instance = new Database();
+                        break;
+                    case OrganiserToken:
+                        instance = new Database();
+                        break;
+                    case ParticipantToken:
+                        instance = new Database();
+                        break;
+                    case ScheduleToken:
+                        instance = new Database();
+                        break;
+                    case UserToken:
+                        instance = new Database();
+                        break;
+                    case VenueToken:
+                        instance = new Database();
+                        break;
+                }
+            }
+
+            return instance;
+        }
 
         //Events Database Interaction Implementation
         public List<EventEntity> getListOfEvents()
