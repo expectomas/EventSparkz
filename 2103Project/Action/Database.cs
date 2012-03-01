@@ -9,6 +9,7 @@ namespace _2103Project.Action
 {
     class Database : IDatabase
     {
+        //Database Attribute
         private string requestString = "databaseRequest";
 
 
@@ -293,6 +294,66 @@ namespace _2103Project.Action
         {
             bool savingSuccessFlag = false;
 
+            //ref User attributes
+            int o_userId =0 ;
+            string o_userName ="";
+            string o_name = "";
+            string o_matricNo = "";
+            string o_password = "";
+            string o_email = "";
+            int o_age = 0;
+            bool o_loggedIn = false;
+            double o_contactHome = 0;
+            double o_hPContact = 0;
+
+            int sizeOfList = userListToSave.Count;
+
+            XmlWriterSettings writerSettings = new XmlWriterSettings();
+            writerSettings.Indent = true;
+
+            User holdingElement;
+
+            try
+            {
+                using (XmlWriter writer = XmlTextWriter.Create("users.xml", writerSettings))
+                {
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("UserPool");
+
+                    for (int i = 0; i < sizeOfList; i++)
+                    {
+                        holdingElement = userListToSave[i];
+
+                        holdingElement.requestUserDetail(ref o_userId,ref o_userName,ref o_name,ref o_matricNo,ref o_password,ref o_email
+                                                         ,ref o_age,ref o_loggedIn,ref o_contactHome,ref o_hPContact,requestString);
+
+                        writer.WriteStartElement("User");
+
+                        writer.WriteElementString("userId", o_userId.ToString());
+                        writer.WriteElementString("userName", o_userName);
+                        writer.WriteElementString("name", o_name);
+                        writer.WriteElementString("matricNo", o_matricNo.ToString());
+                        writer.WriteElementString("password", o_password);
+                        writer.WriteElementString("email", o_email);
+                        writer.WriteElementString("age", o_age.ToString());
+                        writer.WriteElementString("loggedIn", o_loggedIn.ToString().ToLower());
+                        writer.WriteElementString("contactHome", o_contactHome.ToString());
+                        writer.WriteElementString("contactHP", o_hPContact.ToString());
+
+                        writer.WriteEndElement();
+
+                    }
+
+                    writer.WriteEndElement();
+                }
+            }
+            catch (Exception ex)
+            {
+                savingSuccessFlag = false;
+            }
+
+            savingSuccessFlag = true;
 
 
             return savingSuccessFlag;
