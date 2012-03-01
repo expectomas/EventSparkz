@@ -22,5 +22,20 @@ namespace _2103Project.Entities
             location = i_location;
         }
 
+        public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
+        {
+            bool releasedDetails = false;
+
+           if(purpose.Equals("databaseRequest"))
+            {
+               realisedId = venueId;
+
+               realisedLocation = location;
+
+               releasedDetails = true;
+            }
+
+           return releasedDetails;
+        }
     }
 }
