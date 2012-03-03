@@ -25,5 +25,32 @@ namespace _2103Project.Entities
             listOfItems = i_listOfItems;
             activities = i_activities;
         }
+
+        // Constructor Copy
+        public Schedule(Schedule oldSchedule)
+        {
+            scheduleId = oldSchedule.scheduleId;
+            listOfItems = oldSchedule.listOfItems;
+            activities = oldSchedule.activities;
+        }
+
+        public bool requestScheduleDetail(ref int referredScheduleId, ref List<string> referredListOfItems, ref List<Activity> referredListOfActivities, string purpose)
+        {
+             bool releasedDetails = false;
+
+             if (purpose.Equals("databaseRequest"))
+             {
+                 referredScheduleId = scheduleId;
+                 referredListOfItems = listOfItems;
+                 referredListOfActivities = activities;
+                 releasedDetails = true;
+             }
+             else
+             {
+                 releasedDetails = false;
+             }
+
+            return releasedDetails;
+        }
     }
 }

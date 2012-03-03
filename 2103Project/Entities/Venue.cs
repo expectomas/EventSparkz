@@ -25,6 +25,14 @@ namespace _2103Project.Entities
             location = i_location;
         }
 
+        //Copy Constructor
+
+        public Venue(Venue oldVenue)
+        {
+            venueId = oldVenue.venueId;
+            location = oldVenue.location;
+        }
+
         public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
         {
             bool releasedDetails = false;

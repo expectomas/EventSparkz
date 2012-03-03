@@ -28,5 +28,18 @@ namespace _2103Project.Entities
             hostingVenue = i_hostingVenue;
         }
 
+        public bool requestActivityDetails(ref int o_activityId,ref DateTime sending_datetime,ref string sending_description,ref Venue sending_hostingVenue, string purpose)
+        {
+            if (purpose.Equals("databaseRequest"))
+            {
+                o_activityId = activityId;
+                sending_datetime = time;
+                sending_description = description;
+                sending_hostingVenue = new Venue(hostingVenue);
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }
