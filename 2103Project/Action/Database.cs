@@ -72,6 +72,274 @@ namespace _2103Project.Action
             return instance;
         }
 
+        // write xml for the first time
+        public void writeFirstToXml(XmlTextWriter textWriter, int userId, string username, string name, string matricNo, string password, string email, int age,bool loggedIn,  double contactHome, double contactHP)
+        {
+            textWriter.WriteStartDocument();
+            textWriter.WriteStartElement("UserPool");
+            textWriter.WriteStartElement("User");
+            textWriter.WriteStartElement("userId");
+            textWriter.WriteString(userId.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("userName");
+            textWriter.WriteString(username);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("name");
+            textWriter.WriteString(name.ToUpper());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("matricNo");
+            textWriter.WriteString(matricNo.ToUpper());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("password");
+            textWriter.WriteString(password);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("email");
+            textWriter.WriteString(email);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("age");
+            textWriter.WriteString(age.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("loggedIn");
+            textWriter.WriteString(loggedIn.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("contactHome");
+            textWriter.WriteString(contactHome.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("contactHP");
+            textWriter.WriteString(contactHP.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteEndElement();
+            textWriter.WriteEndDocument();
+            textWriter.Close();
+        }
+
+        // function to write the current users xml to temp xml and write a new user xml with combination of temp xml with the new registered detail
+        public void writeExistToXml(XmlReader reader, int userId, string username, string name, string matricNo, string password, string email, int age, bool loggedIn, double contactHome, double contactHP)
+        {
+            XmlTextWriter tempWriter = new XmlTextWriter("temp.xml", Encoding.UTF8);
+            tempWriter.WriteStartDocument();
+            tempWriter.WriteStartElement("UserPool");
+            while (reader.Read())
+            {
+                if (reader.IsStartElement())
+                {
+                    switch (reader.Name)
+                    {
+                        case "userId":
+                            tempWriter.WriteStartElement("User");
+                            tempWriter.WriteStartElement("userId");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("userName");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("name");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("matricNo");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("password");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("email");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("age");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("loggedIn");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("contactHome");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+                            tempWriter.WriteStartElement("contactHP");
+                            tempWriter.WriteString(reader.ReadElementContentAsString());
+                            tempWriter.WriteEndElement();
+
+
+                            tempWriter.WriteEndElement();
+                            reader.MoveToElement();
+                            break;
+
+                        default:
+                            break;
+
+                    }
+                }
+            }
+            tempWriter.WriteEndDocument();
+            tempWriter.Close();
+            reader.Close();
+            XmlReader tempreader = XmlReader.Create("temp.xml");
+            writeToNewXml(tempreader, userId, username, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
+        }
+
+        // function to overwrite the old users.xml with new details.
+        private void writeToNewXml(XmlReader tempreader, int userId, string username, string name, string matricNo, string password, string email, int age, bool loggedIn, double contactHome, double contactHP)
+        {
+            XmlTextWriter textWriter = new XmlTextWriter("users.xml", Encoding.UTF8);
+            textWriter.WriteStartDocument();
+            textWriter.WriteStartElement("UserPool");
+            while (tempreader.Read())
+            {
+                if (tempreader.IsStartElement())
+                {
+                    switch (tempreader.Name)
+                    {
+                        case "userId":
+                            textWriter.WriteStartElement("User");
+
+                            textWriter.WriteStartElement("userId");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("userName");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("name");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("matricNo");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("password");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("email");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("age");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("loggedIn");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("contactHome");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteStartElement("contactHP");
+                            textWriter.WriteString(tempreader.ReadElementContentAsString());
+                            textWriter.WriteEndElement();
+
+                            textWriter.WriteEndElement();
+                            tempreader.MoveToElement();
+                            break;
+
+                        default:
+                            break;
+
+                    }
+                }
+            }
+
+            textWriter.WriteStartElement("User");
+            textWriter.WriteStartElement("userId");
+            textWriter.WriteString(userId.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("username");
+            textWriter.WriteString(username);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("name");
+            textWriter.WriteString(name.ToUpper());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("matricNo");
+            textWriter.WriteString(matricNo);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("password");
+            textWriter.WriteString(password);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("email");
+            textWriter.WriteString(email);
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("age");
+            textWriter.WriteString(age.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("loggedIn");
+            textWriter.WriteString(loggedIn.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("contactHome");
+            textWriter.WriteString(contactHome.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteStartElement("contactHP");
+            textWriter.WriteString(contactHP.ToString());
+            textWriter.WriteEndElement();
+            textWriter.WriteEndElement();
+            textWriter.WriteEndDocument();
+            textWriter.Close();
+            tempreader.Close();
+        }
+        // check duplicate username 
+        public bool checkUsernameExist(string username)
+        {
+            string filename = "users.xml";
+            int existflag = 0;
+            XmlReader reader = XmlReader.Create(filename);
+            while (reader.Read())
+            {
+                if (reader.IsStartElement())
+                {
+                    switch (reader.Name)
+                    {
+                        case "userName":
+                            string attribute = reader.ReadElementContentAsString();
+                            if (attribute.Equals(username))
+                                existflag = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+            if (existflag == 1)
+                return true;
+            else
+                return false;
+        }
+        // retrieve the last registered user ID
+        public int getLastID()
+        {
+            int newID = 1;
+            string filename = "users.xml";
+            XmlReader reader = XmlReader.Create(filename);
+            while (reader.Read())
+            {
+                if (reader.IsStartElement())
+                {
+                    switch (reader.Name)
+                    {
+                        case "userId":
+                            string attribute = reader.ReadElementContentAsString();
+                            newID = Convert.ToInt32(attribute);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            reader.Close();
+            return newID;
+        }
+
         //Events Database Interaction Implementation
         public List<EventEntity> getListOfEvents()
         {
