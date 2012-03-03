@@ -12,7 +12,7 @@ using System.IO;
 
 namespace _2103Project
 {
-    public partial class signupForm : ComponentFactory.Krypton.Toolkit.KryptonForm
+    public partial class signupForm : Form
     {
         public signupForm()
         {
