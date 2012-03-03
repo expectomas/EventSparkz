@@ -220,7 +220,12 @@ namespace _2103Project.Action
 
                     } while (scanner.ReadToNextSibling("Activity"));
 
-                    Schedule newSchedule = new Schedule(scheduleId, scheduleItems, scheduleActivities);
+                    //Clone Two new list
+
+                    List<string> clonedItemList = new List<string>(scheduleItems);
+                    List<Activity> clonedActivityList = new List<Activity>(scheduleActivities);
+
+                    Schedule newSchedule = new Schedule(scheduleId, clonedItemList,clonedActivityList);
 
                     listToPop.Add(newSchedule);
 
@@ -240,6 +245,112 @@ namespace _2103Project.Action
         {
             bool savingSuccessFlag = false;
 
+            //Schedule Attributes
+            int o_scheduleId = 0;
+            List<string> o_listOfItems = new List<string>();
+            List<Activity> o_Activities = new List<Activity>();
+
+            //Activity Attributes
+            int o_activityId = 0;
+            DateTime o_time = DateTime.Now;
+            string o_description = "";
+            Venue o_venue = new Venue();
+
+            //Venue Attributes
+            int o_venueId = 0;
+            string o_venueDescription = "";
+
+            int sizeOfList = scheduleListToSave.Count();
+
+            XmlWriterSettings writerSettings = new XmlWriterSettings();
+            writerSettings.Indent = true;
+
+            Schedule holdingElement;
+            int itemsCounter = 0;
+            int activitiesCounter = 0;
+
+            try
+            {
+                using (XmlWriter writer = XmlTextWriter.Create("schedules.xml", writerSettings))
+                {
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("SchedulePool");
+
+                    for (int i = 0; i < sizeOfList; i++)
+                    {
+                        holdingElement = scheduleListToSave[i];
+                        holdingElement.requestScheduleDetail(ref o_scheduleId,ref o_listOfItems,ref o_Activities, requestString);
+
+                        //Schedule Details
+
+                        writer.WriteStartElement("Schedule");
+
+                        writer.WriteElementString("scheduleId",o_scheduleId.ToString());
+
+                        //Process List of Items
+
+                        writer.WriteStartElement("listOfItems");
+                        do
+                        {
+                            writer.WriteElementString("item", o_listOfItems[itemsCounter]);
+                            ++itemsCounter;
+                        } while (itemsCounter<o_listOfItems.Count);
+                        itemsCounter = 0;
+                        writer.WriteEndElement();
+
+                        //Process Activities
+
+                        writer.WriteStartElement("listOfActivities");
+                        do
+                        {
+                            o_Activities[activitiesCounter].requestActivityDetails(ref o_activityId, ref o_time, ref o_description, ref o_venue, requestString);
+
+                            writer.WriteStartElement("Activity");
+
+                            //Activity Details
+                            writer.WriteElementString("activityId", o_activityId.ToString());
+                            writer.WriteElementString("time", o_time.ToString("s"));
+                            writer.WriteElementString("description", o_description);
+
+                            //Contains one Venue class
+
+                            writer.WriteStartElement("hostingVenue");
+
+                            o_venue.requestVenueDetails(ref o_venueId, ref o_venueDescription, requestString);
+
+                            writer.WriteStartElement("Venue");
+                            writer.WriteElementString("venueId", o_venueId.ToString());
+                            writer.WriteElementString("location", o_venueDescription);
+                            writer.WriteEndElement();
+
+                            //EndTag hosting Venue
+                            writer.WriteEndElement();
+
+
+                            //EndTag Activity
+
+                            writer.WriteEndElement();
+
+                            ++activitiesCounter;
+                        } while (activitiesCounter < o_Activities.Count);
+                        activitiesCounter = 0;
+
+                        writer.WriteEndElement();
+
+                        //Write End Tag for Schedule
+
+                        writer.WriteEndElement();
+                    }
+
+                    savingSuccessFlag = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                savingSuccessFlag = false;
+            }
 
 
             return savingSuccessFlag;
@@ -294,7 +405,72 @@ namespace _2103Project.Action
         {
             bool savingSuccessFlag = false;
 
+            //Activity Attributes
+            int o_activityId = 0;
+            DateTime o_time = DateTime.Now;
+            string o_description = "";
+            Venue o_venue = new Venue();
 
+            //Venue Attributes
+            int o_venueId = 0;
+            string o_venueDescription = "";
+
+            int sizeOfList = activityListToSave.Count;
+
+            XmlWriterSettings writerSettings = new XmlWriterSettings();
+            writerSettings.Indent = true;
+
+            Activity holdingElement;
+
+            try
+            {
+                using (XmlWriter writer = XmlTextWriter.Create("activities.xml", writerSettings))
+                {
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("ActivityPool");
+
+                    for (int i = 0; i < sizeOfList; i++)
+                    {
+                        holdingElement = activityListToSave[i];
+
+                        holdingElement.requestActivityDetails(ref o_activityId,ref o_time,ref o_description,ref o_venue, requestString);
+
+                        writer.WriteStartElement("Activity");
+                        
+                        //Activity Details
+                        writer.WriteElementString("activityId", o_activityId.ToString());
+                        writer.WriteElementString("time", o_time.ToString("s"));
+                        writer.WriteElementString("description", o_description);
+
+                        //Contains one Venue class
+
+                        writer.WriteStartElement("hostingVenue");
+
+                        o_venue.requestVenueDetails(ref o_venueId, ref o_venueDescription, requestString);
+
+                        writer.WriteStartElement("Venue");
+                        writer.WriteElementString("venueId", o_venueId.ToString());
+                        writer.WriteElementString("location", o_venueDescription);
+                        writer.WriteEndElement();
+
+                        //EndTag hosting Venue
+                        writer.WriteEndElement();
+
+
+                        //EndTag Activity
+
+                        writer.WriteEndElement();
+                    }
+
+                    savingSuccessFlag = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                savingSuccessFlag = false;
+            }
 
             return savingSuccessFlag;
 
@@ -406,14 +582,14 @@ namespace _2103Project.Action
 
                     writer.WriteEndElement();
                 }
+
+                savingSuccessFlag = true;
+
             }
             catch (Exception ex)
             {
                 savingSuccessFlag = false;
             }
-
-            savingSuccessFlag = true;
-
 
             return savingSuccessFlag;
         }
@@ -494,6 +670,7 @@ namespace _2103Project.Action
 
                     writer.WriteEndDocument();
                }
+               savingSuccessFlag = true;
 
 
            }
@@ -501,9 +678,6 @@ namespace _2103Project.Action
            {
                savingSuccessFlag = false;
            }
-
-           savingSuccessFlag = true;
-
            return savingSuccessFlag;
         }
 

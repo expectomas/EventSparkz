@@ -43,6 +43,44 @@ namespace _2103Project.Entities
             return timeDuration;
         }
 
+        public bool addParticipantToEvent(Participant newParticipant)
+        {
+            bool successAdded = false;
+            try
+            {
+                participantList.Add(newParticipant);
+                successAdded = true;
+            }
+            catch (Exception ex)
+            {
+                successAdded = false;
+            }
+
+            return successAdded;
+        }
+
+        public bool removeParticipantFromEvent(Participant unInterestedParticipant)
+        {
+            bool successRemoved = true;
+
+            try
+            {
+                foreach (Participant alreadyRegistered in this.participantList)
+                {
+                    if (alreadyRegistered.Equals(unInterestedParticipant))
+                    {
+                        participantList.Remove(alreadyRegistered);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                successRemoved = false;
+            }
+
+            return successRemoved;
+        }
+
         public EventEntity()
         {
         }
