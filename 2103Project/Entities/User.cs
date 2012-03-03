@@ -53,10 +53,6 @@ namespace _2103Project.Entities
 
                 List<User> obtainedUserList = db.getListOfUsers();
 
-                db.saveListOfUsers(obtainedUserList);
-
-                List<User> testList = db.getListOfUsers();
-
                 foreach(User cu in obtainedUserList)
                 {
                     if (cu.userName == tokenUserName && tokenPassWord == cu.password)
