@@ -371,42 +371,47 @@ namespace _2103Project.Action
 
                     int participantSize = scanner.ReadElementContentAsInt();
 
-                    scanner.ReadToDescendant("User");
-
-                    do
+                    if (scanner.ReadToDescendant("User"))
                     {
 
-                        scanner.ReadToDescendant("userId");
+                        do
+                        {
 
-                        int userId = scanner.ReadElementContentAsInt();
+                            scanner.ReadToDescendant("userId");
 
-                        string userName = scanner.ReadElementContentAsString("userName", "");
+                            int userId = scanner.ReadElementContentAsInt();
 
-                        string name = scanner.ReadElementContentAsString("name", "");
+                            string userName = scanner.ReadElementContentAsString("userName", "");
 
-                        string matricNo = scanner.ReadElementContentAsString("matricNo", "");
+                            string name = scanner.ReadElementContentAsString("name", "");
 
-                        string pw = scanner.ReadElementContentAsString("password", "");
+                            string matricNo = scanner.ReadElementContentAsString("matricNo", "");
 
-                        string em = scanner.ReadElementContentAsString("email", "");
+                            string pw = scanner.ReadElementContentAsString("password", "");
 
-                        int age = scanner.ReadElementContentAsInt();
+                            string em = scanner.ReadElementContentAsString("email", "");
 
-                        bool loggedIn = scanner.ReadElementContentAsBoolean();
+                            int age = scanner.ReadElementContentAsInt();
 
-                        double HomeNum = scanner.ReadElementContentAsDouble();
+                            bool loggedIn = scanner.ReadElementContentAsBoolean();
 
-                        double HPContact = scanner.ReadElementContentAsDouble();
+                            double HomeNum = scanner.ReadElementContentAsDouble();
 
-                        Participant newParticipant = new Participant(userId, userName, name, matricNo, pw, em, age, loggedIn, HomeNum, HPContact);
+                            double HPContact = scanner.ReadElementContentAsDouble();
 
-                        participantList.Add(newParticipant);
+                            Participant newParticipant = new Participant(userId, userName, name, matricNo, pw, em, age, loggedIn, HomeNum, HPContact);
 
-                    } while (scanner.ReadToNextSibling("User"));
+                            participantList.Add(newParticipant);
+
+                        } while (scanner.ReadToNextSibling("User"));
+
+                    }
 
                     scanner.Skip();
 
                     EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList);
+
+                    participantList.Clear();
 
                     listToPop.Add(newEvent);
 
@@ -419,6 +424,108 @@ namespace _2103Project.Action
         {
             bool savingSuccessFlag = false;
 
+            //Event Attributes
+            int o_eventId=0;
+            string o_name="";
+            DateTime o_startTime=DateTime.Now; 
+            DateTime o_endTime=DateTime.Now; 
+            int o_eventScheduleId=0;
+            int o_participantSize=0;
+            List<Participant> o_participantList = new List<Participant>();
+
+            //Participant Attributes
+             int o_userId =0 ;
+            string o_userName ="";
+            string o_participantName = "";
+            string o_matricNo = "";
+            string o_password = "";
+            string o_email = "";
+            int o_age = 0;
+            bool o_loggedIn = false;
+            double o_contactHome = 0;
+            double o_hPContact = 0;
+
+            int sizeOfList = eventListToSave.Count();
+
+            XmlWriterSettings writerSettings = new XmlWriterSettings();
+            writerSettings.Indent = true;
+
+            EventEntity holdingElement;
+            Participant holdingParticipant;
+            int participantCounter = 0;
+
+            try
+            {
+                using (XmlWriter writer = XmlTextWriter.Create("events.xml", writerSettings))
+                {
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("EventPool");
+
+                    for (int i = 0; i < sizeOfList; i++)
+                    {
+                        holdingElement = eventListToSave[i];
+                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, requestString);
+
+                        writer.WriteStartElement("EventEntity");
+
+                        writer.WriteElementString("eventId", o_eventId.ToString());
+
+                        writer.WriteElementString("name", o_name);
+
+                        writer.WriteElementString("startTime", o_startTime.ToString("s"));
+
+                        writer.WriteElementString("endTime", o_endTime.ToString("s"));
+
+                        writer.WriteElementString("eventScheduleId", o_eventScheduleId.ToString());
+
+                        writer.WriteElementString("participantSize", o_participantSize.ToString());
+
+                        //List of Participants
+                        writer.WriteStartElement("participantList");
+
+                        //Use while loop because there might be no participants
+                        while(participantCounter<o_participantList.Count)
+                        {
+                            holdingParticipant = o_participantList[participantCounter];
+                            holdingParticipant.requestUserDetail(ref o_userId, ref o_userName, ref o_participantName, ref o_matricNo, ref o_password, ref o_email
+                                                        , ref o_age, ref o_loggedIn, ref o_contactHome, ref o_hPContact, requestString);
+
+                            writer.WriteStartElement("User");
+
+                            writer.WriteElementString("userId", o_userId.ToString());
+                            writer.WriteElementString("userName", o_userName);
+                            writer.WriteElementString("name", o_participantName);
+                            writer.WriteElementString("matricNo", o_matricNo.ToString());
+                            writer.WriteElementString("password", o_password);
+                            writer.WriteElementString("email", o_email);
+                            writer.WriteElementString("age", o_age.ToString());
+                            writer.WriteElementString("loggedIn", o_loggedIn.ToString().ToLower());
+                            writer.WriteElementString("contactHome", o_contactHome.ToString());
+                            writer.WriteElementString("contactHP", o_hPContact.ToString());
+
+                            writer.WriteEndElement();
+
+                            ++participantCounter;
+                        }
+
+                        participantCounter = 0;
+
+                        writer.WriteEndElement();
+
+                        //End Tag Event entity
+
+                        writer.WriteEndElement();
+                    }
+
+                }
+
+                savingSuccessFlag = true;
+            }
+            catch (Exception ex)
+            {
+                savingSuccessFlag = false;
+            }
 
 
             return savingSuccessFlag;
@@ -559,18 +666,18 @@ namespace _2103Project.Action
                         //Process List of Items
 
                         writer.WriteStartElement("listOfItems");
-                        do
+                        while(itemsCounter<o_listOfItems.Count)
                         {
                             writer.WriteElementString("item", o_listOfItems[itemsCounter]);
                             ++itemsCounter;
-                        } while (itemsCounter<o_listOfItems.Count);
+                        }
                         itemsCounter = 0;
                         writer.WriteEndElement();
 
                         //Process Activities
 
                         writer.WriteStartElement("listOfActivities");
-                        do
+                        while (activitiesCounter < o_Activities.Count) 
                         {
                             o_Activities[activitiesCounter].requestActivityDetails(ref o_activityId, ref o_time, ref o_description, ref o_venue, requestString);
 
@@ -601,7 +708,7 @@ namespace _2103Project.Action
                             writer.WriteEndElement();
 
                             ++activitiesCounter;
-                        } while (activitiesCounter < o_Activities.Count);
+                        } 
                         activitiesCounter = 0;
 
                         writer.WriteEndElement();

@@ -9,8 +9,12 @@ using System.Xml;
 
 namespace _2103Project.Entities
 {
-    class User
+    public class User
     {
+        //Database Access Authetication
+        private const string DatabaseToken = "ewknf%32";
+
+        //Attributes
         protected int userId;
         protected string userName;
         protected string name;
@@ -22,10 +26,7 @@ namespace _2103Project.Entities
         protected double contactHome;
         protected double contactHP;
 
-
-        //Database Access Authetication
-        private const string DatabaseToken = "ewknf%32";
-
+        //Constructors
         public User(){
         }
 
@@ -113,6 +114,8 @@ namespace _2103Project.Entities
         public bool login(string tokenUserName, string tokenPassWord){
 
             bool auth = false;
+            this.userName = tokenUserName;
+            this.password = tokenPassWord;
 
             if (loggedIn == true)
                 auth = true;
@@ -127,18 +130,42 @@ namespace _2103Project.Entities
                     if (cu.userName == tokenUserName && tokenPassWord == cu.password)
                     {
                         auth = true;
+
+                        //Set user to loggedIn
+                        
+                        cu.loggedIn = true;
+
                         break;
                     }
                 }
+
+                //Save LoginIn Status
+                db.saveListOfUsers(obtainedUserList);
             }
 
             return auth;
         }
 
-        public bool logout(){
-            bool auth = false;
+        public bool logout()
+        {
+                bool loggedOutSuccess = false;
 
-            return auth;
+                Database db = Database.CreateDatabase(DatabaseToken);
+
+                List<User> obtainedUserList = db.getListOfUsers();
+
+                foreach (User cu in obtainedUserList)
+                {
+                    if (cu.userName == this.userName && this.password == cu.password)
+                    {
+                        cu.loggedIn = false;
+                        loggedOutSuccess = true;
+                    }
+                }
+
+                db.saveListOfUsers(obtainedUserList);
+
+                return loggedOutSuccess;
         }
 
         public bool createNewUser()
@@ -175,7 +202,7 @@ namespace _2103Project.Entities
             int newID = db.getLastID();
             return newID;
         }
-
+        
         public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
                     ref string i_email, ref int i_age, ref bool i_loggedIn, ref double i_contactHome, ref double i_contactHP, string purpose)
         {
