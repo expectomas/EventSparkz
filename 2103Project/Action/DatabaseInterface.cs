@@ -10,7 +10,7 @@ namespace _2103Project.Action
     {
         //Events Database Interaction
         List<EventEntity> getListOfEvents();                            //Done
-        bool saveListOfEvents(List<EventEntity> eventListToSave);
+        bool saveListOfEvents(List<EventEntity> eventListToSave);       //Done
 
         //Schedules Database Interaction
         List<Schedule> getListOfSchedule();                             //Done
