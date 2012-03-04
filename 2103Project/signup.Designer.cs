@@ -48,7 +48,6 @@
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.memberComboBox = new System.Windows.Forms.ComboBox();
-            this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -231,7 +230,6 @@
             // 
             // kryptonManager1
             // 
-            this.kryptonManager1.GlobalPaletteMode = ComponentFactory.Krypton.Toolkit.PaletteModeManager.SparkleBlue;
             // 
             // signupForm
             // 
@@ -289,6 +287,5 @@
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox memberComboBox;
-        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager1;
     }
 }

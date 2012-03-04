@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using _2103Project.Action;
+using System.IO;
+using System.Xml;
 
 namespace _2103Project.Entities
 {
@@ -42,7 +45,72 @@ namespace _2103Project.Entities
             contactHP = i_contactHP;
         }
 
-        //Operations
+        public bool checkEmailFormat(string email)
+        {
+            string emailFmt = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
+            Regex emailFormat = new Regex(emailFmt);
+            return emailFormat.IsMatch(email);
+        }
+
+        public bool checkNameFormat(string name)
+        {
+            int nameErrorCount = 0;
+            int nameLength = name.Length;
+            for (int i = 0; i < nameLength; i++)
+            {
+                if (name[i] >= 'a' && name[i] <= 'z')
+                {
+                    // do nothing
+                }
+                else
+                {
+                    if (name[i] == ' ' || name[i] == '/' || name[i] == '.')
+                    {
+                        // do nothing
+                    }
+                    else
+                        nameErrorCount++;
+                }
+            }
+            if (nameErrorCount > 0)
+                return false;
+            return true;
+        }
+
+        public bool checkUserNameFormat(string username)
+        {
+            int uNameLength = username.Length;
+            int userNameErrorCount = 0;
+            for (int i = 0; i < uNameLength; i++)
+            {
+                if (username[i] >= 'a' && username[i] <= 'z')
+                {
+                    // do nothing
+                }
+                else
+                {
+                    if (username[i] < '0' || username[i] > '9')
+                        userNameErrorCount++;
+                }
+            }
+            if (userNameErrorCount > 0)
+                return false;
+            return true;
+        }
+
+        public bool checkMatricNoFormat(string matricNo)
+        {
+            int matricNoCountError = 0;
+            for (int i = 1; i < 8; i++)
+            {
+                if (matricNo[i] < '0' || matricNo[i] > '9')
+                    matricNoCountError++;
+            }
+            if (matricNoCountError > 0)
+                return false;
+            return true;
+        }
+
         public bool login(string tokenUserName, string tokenPassWord){
 
             bool auth = false;
@@ -78,15 +146,9 @@ namespace _2103Project.Entities
             return auth;
         }
 
-        public bool logout(){
-
-            bool loggedOutSuccess = false;
-
-            if (loggedIn != true)
-                return loggedOutSuccess;
-            else
-            {
-                loggedOutSuccess = true ;
+        public bool logout()
+        {
+                bool loggedOutSuccess = false;
 
                 Database db = Database.CreateDatabase(DatabaseToken);
 
@@ -95,13 +157,50 @@ namespace _2103Project.Entities
                 foreach (User cu in obtainedUserList)
                 {
                     if (cu.userName == this.userName && this.password == cu.password)
+                    {
                         cu.loggedIn = false;
+                        loggedOutSuccess = true;
+                    }
                 }
 
                 db.saveListOfUsers(obtainedUserList);
-            }
 
-            return loggedOutSuccess;
+                return loggedOutSuccess;
+        }
+
+        public bool createNewUser()
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            bool userCreated = true;
+            string filename = "users.xml";
+            if (File.Exists(filename))
+            {
+                bool checkUNameExist = db.checkUsernameExist(userName);
+                if (checkUNameExist == false)
+                {
+                    XmlReader reader = XmlReader.Create(filename);
+                    // draw xml here
+                    db.writeExistToXml(reader, userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
+                }
+                else
+                {
+                    userCreated = false;
+                }
+            }
+            else
+            {
+                XmlTextWriter textWriter = new XmlTextWriter(filename, Encoding.UTF8);
+                // draw xml here
+                db.writeFirstToXml(textWriter, userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
+            }
+            return userCreated;
+        }        
+
+        public static int retrievelastID()
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            int newID = db.getLastID();
+            return newID;
         }
         
         public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
