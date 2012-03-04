@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using _2103Project.Entities;
 
 namespace _2103Project
 {
@@ -30,46 +31,12 @@ namespace _2103Project
             }
             else
             {
-                int index = eventComboBox.SelectedIndex;
-                string path = "event.txt";
-                string tempPath = "temp.txt";
+                Organiser org = new Organiser();                
                 DialogResult result;
                 result = MessageBox.Show("Delete this event?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    string strIndex = index.ToString();
-                    StreamReader sr = new StreamReader(path);
-                    using (StreamWriter swtemp = new StreamWriter(tempPath))
-                    {
-                        while (sr.Peek() >= 0)
-                        {
-                            string readLineValue = sr.ReadLine();
-                            if (readLineValue.Equals(strIndex))
-                            {
-                                for (int i = 0; i < 5; i++)
-                                {
-                                    sr.ReadLine();
-                                }
-                            }
-                            else
-                            {
-                                swtemp.WriteLine(readLineValue);
-                            }
-                        }
-                        swtemp.Close();
-                        sr.Close();
-                    }
-                    StreamReader sr2 = new StreamReader(tempPath);
-                    using (StreamWriter sw2 = new StreamWriter(path))
-                    {
-                        while (sr2.Peek() >= 0)
-                        {
-                            string readLineValue = sr2.ReadLine();
-                            sw2.WriteLine(readLineValue);
-                        }
-                        sr2.Close();
-                        sw2.Close();
-                    }
+                    org.cancelEvent(eventComboBox.SelectedItem.ToString());
                     eventComboBox.Items.Remove(eventComboBox.SelectedItem);
                     MessageBox.Show("You have deleted this event", "Delete Event", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -78,20 +45,12 @@ namespace _2103Project
 
         private void cancelEventForm_Load(object sender, EventArgs e)
         {
-            string path = "event.txt";
-            int count = 5;
-            StreamReader sr = new StreamReader(path);
-            while (sr.Peek() >= 0)
+            Queue<string> listOfEvents = new Queue<string>();
+            listOfEvents = Organiser.loadListOfEvent();
+            while (listOfEvents.Count > 0)
             {
-                string r = sr.ReadLine();
-                if (count == 6)
-                {
-                    eventComboBox.Items.Add(r);
-                    count = 0;
-                }
-                count++;
+                eventComboBox.Items.Add(listOfEvents.Dequeue());
             }
-            sr.Close();
         }
     }
 }
