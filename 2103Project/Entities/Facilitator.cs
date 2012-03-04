@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using _2103Project.Action;
 
 namespace _2103Project.Entities
 {
@@ -18,8 +19,12 @@ namespace _2103Project.Entities
 
         public List<Participant> viewParticipantList()
         {
+            //Establish database linkage
+            IDatabase db = Database.CreateDatabase(DatabaseToken);
 
             List<Participant> allParticipants = new List<Participant>();
+
+            
 
             return allParticipants;
         }
