@@ -93,8 +93,24 @@ namespace _2103Project.Entities
             endTime = i_endTime;
             eventScheduleId = i_eventScheduleId;
             participantSize = i_participantSize;
-            participantList = i_participantList;
+            participantList = new List<Participant>(i_participantList);
         }
 
+        public bool requestEventEntitiyDetails(ref int o_eventId,ref string o_name,ref DateTime o_startTime,ref DateTime o_endTime,ref int o_eventScheduleId,ref int o_participantSize,ref List<Participant> o_participantList,string purpose)
+        {
+            if (purpose.Equals("databaseRequest"))
+            {
+                o_eventId = eventId;
+                o_name = name;
+                o_startTime = startTime;
+                o_endTime = endTime;
+                o_eventScheduleId = eventScheduleId;
+                o_participantSize = participantSize;
+                o_participantList = new List<Participant>(participantList);
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

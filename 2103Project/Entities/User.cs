@@ -6,8 +6,12 @@ using _2103Project.Action;
 
 namespace _2103Project.Entities
 {
-    class User
+    public class User
     {
+        //Database Access Authetication
+        private const string DatabaseToken = "ewknf%32";
+
+        //Attributes
         protected int userId;
         protected string userName;
         protected string name;
@@ -19,10 +23,7 @@ namespace _2103Project.Entities
         protected double contactHome;
         protected double contactHP;
 
-
-        //Database Access Authetication
-        private const string DatabaseToken = "ewknf%32";
-
+        //Constructors
         public User(){
         }
 
@@ -41,9 +42,12 @@ namespace _2103Project.Entities
             contactHP = i_contactHP;
         }
 
+        //Operations
         public bool login(string tokenUserName, string tokenPassWord){
 
             bool auth = false;
+            this.userName = tokenUserName;
+            this.password = tokenPassWord;
 
             if (loggedIn == true)
                 auth = true;
@@ -58,28 +62,48 @@ namespace _2103Project.Entities
                     if (cu.userName == tokenUserName && tokenPassWord == cu.password)
                     {
                         auth = true;
+
+                        //Set user to loggedIn
+                        
+                        cu.loggedIn = true;
+
                         break;
                     }
                 }
+
+                //Save LoginIn Status
+                db.saveListOfUsers(obtainedUserList);
             }
 
             return auth;
         }
 
         public bool logout(){
-            bool auth = false;
 
-            return auth;
+            bool loggedOutSuccess = false;
+
+            if (loggedIn != true)
+                return loggedOutSuccess;
+            else
+            {
+                loggedOutSuccess = true ;
+
+                Database db = Database.CreateDatabase(DatabaseToken);
+
+                List<User> obtainedUserList = db.getListOfUsers();
+
+                foreach (User cu in obtainedUserList)
+                {
+                    if (cu.userName == this.userName && this.password == cu.password)
+                        cu.loggedIn = false;
+                }
+
+                db.saveListOfUsers(obtainedUserList);
+            }
+
+            return loggedOutSuccess;
         }
-
-        public static bool createNewUser()
-        {
-            bool userCreated = false;
-
-
-            return userCreated;
-        }
-
+        
         public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
                     ref string i_email, ref int i_age, ref bool i_loggedIn, ref double i_contactHome, ref double i_contactHP, string purpose)
         {
