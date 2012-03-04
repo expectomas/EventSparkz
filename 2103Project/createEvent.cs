@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using _2103Project.Entities;
 
 namespace _2103Project
 {
@@ -19,111 +20,88 @@ namespace _2103Project
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            string path = "event.txt";
-            string tempPath = "temp.txt";
-            string eventId = "-1";
-            int fivecounts = 5;
-            string pathExt = Path.GetExtension(fileDirectoryLabel.Text);
-            if (eventNameTextBox.Text == "" || venueComboBox.SelectedItem == null || budgetLimitTextBox.Text == "")
+            if (eventNameTextBox.Text == "" || sizeTextBox.Text == "")
             {
                 MessageBox.Show("Please enter all your details. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (fileDirectoryLabel.Text.Equals("Import your file here."))
+            else if(startTimePicker.Value >= endTimePicker.Value)
             {
-                MessageBox.Show("Please include your description of your event. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (!pathExt.Equals(".txt"))
-            {
-                MessageBox.Show("Please include your description of your event in .txt format. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Your date booking is not valid.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                var lineCount = File.ReadAllLines(fileDirectoryLabel.Text);
-                if (lineCount.Length != 1)
+                string path = "event.txt";
+                int neweventId = 1;
+                int newscheduleId = 1;
+                if (File.Exists(path))
                 {
-                    MessageBox.Show("Please provide your description of your event in a single line. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    neweventId = Organiser.getLastEventId();
+                    neweventId++;
+                    newscheduleId = Organiser.getLastScheduleId();
+                    newscheduleId++;
+                }                    
+                Organiser org = new Organiser(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), null);
+                
+                bool success = org.createEvent();
+                if (success == true)
+                {
+                    MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    eventNameTextBox.Clear();
+                    sizeTextBox.Clear();
                 }
                 else
                 {
-                    if (!File.Exists(path))
-                    {
-                        FileStream fs = File.Create(path);
-                        fs.Close();
-                    }
-                    if (!File.Exists(tempPath))
-                    {
-                        FileStream fs = File.Create(tempPath);
-                        fs.Close();
-                    }
-
-                    StreamReader sr = new StreamReader(fileDirectoryLabel.Text);
-                    StreamReader sr3 = new StreamReader(path);
-                    using (StreamWriter swtemp = new StreamWriter(tempPath))
-                    {
-                        while (sr3.Peek() >= 0)
-                        {
-                            string r = sr3.ReadLine();
-                            swtemp.WriteLine(r);
-                        }
-                        sr3.Close();
-                        swtemp.Close();
-                    }
-                    StreamReader sr2 = new StreamReader(tempPath);
-                    using (StreamWriter sw = new StreamWriter(path))
-                    {
-                        while (sr2.Peek() >= 0)
-                        {
-                            if (fivecounts == 5)
-                            {
-                                eventId = sr2.ReadLine();
-                                sw.WriteLine(eventId);
-                                fivecounts = 0;
-                            }
-                            else
-                            {
-                                string r = sr2.ReadLine();
-                                sw.WriteLine(r);
-                                fivecounts++;
-                            }
-                        }
-                        sr2.Close();
-                        int eventNumID = int.Parse(eventId);
-                        eventNumID++;
-                        sw.WriteLine(eventNumID.ToString());
-                        sw.WriteLine(eventNameTextBox.Text);
-                        sw.WriteLine(dateTimePicker.Text);
-                        sw.WriteLine(venueComboBox.SelectedItem.ToString());
-                        sw.WriteLine(budgetLimitTextBox.Text);
-                        while (sr.Peek() >= 0)
-                        {
-                            string r = sr.ReadLine();
-                            sw.WriteLine(r);
-                        }
-                        sr.Close();
-                        sw.Close();
-                    }
-                    MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    eventNameTextBox.Clear();
-                    budgetLimitTextBox.Clear();
-                    fileDirectoryLabel.Text = "Import your file here.";
+                    MessageBox.Show("Your event is failed to be created.", "Event Create Fail", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void importFileButton_Click(object sender, EventArgs e)
-        {
-            opentxtFileDialog.ShowDialog();
-        }
-
-        private void opentxtFileDialog_FileOk(object sender, CancelEventArgs e)
-        {
-            fileDirectoryLabel.Text = opentxtFileDialog.FileName;
         }
 
         private void createEventForm_Load(object sender, EventArgs e)
         {
-            dateTimePicker.Value = DateTime.Now;
-            dateTimePicker.MinDate = DateTime.Today;
+            DateTime dateValue = DateTime.Now;
+            dateValue = dateValue.AddDays(3);
+            startTimePicker.Value = dateValue;
+            startTimePicker.MinDate = dateValue;
+            endTimePicker.Value = dateValue;
+            endTimePicker.MinDate = dateValue;
+        }
+
+        private void sizeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {         // Stop the character from being entered into the control since it is non-numerical.
+                e.Handled = true;
+            }
+        }
+
+
+        bool nonNumberEntered;
+
+        private void sizeTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            // Determine whether the keystroke is a number from the top of the keyboard.
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                // Determine whether the keystroke is a number from the keypad.
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    // Determine whether the keystroke is a backspace.
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        // A non-numerical keystroke was pressed.
+                        // Set the flag to true and evaluate in KeyPress event.
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
         }
     }
 }
