@@ -26,13 +26,13 @@ namespace _2103Project.Action
         private const string ScheduleToken = "642!e345";
         private const string UserToken = "ewknf%32";
         private const string VenueToken = "nhgdkc#1";
-
+         
         private Database()
         {
 
         }
 
-        //Singleton Concept 
+        //Singleton Concept : Lazy instantiation using double locking mechanism 
         public static Database CreateDatabase(string tokenRequired)
         {
             if (instance == null)
