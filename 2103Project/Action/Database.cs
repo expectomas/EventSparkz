@@ -263,7 +263,7 @@ namespace _2103Project.Action
             return savingSuccessFlag;
         }
 
-        //Schedules Database Interaction
+        //Schedules Database Interaction Implementation
         public List<Schedule> getListOfSchedule()
         {
             List<Schedule> listToPop = new List<Schedule>();
@@ -463,7 +463,7 @@ namespace _2103Project.Action
             return savingSuccessFlag;
         }
 
-        //Activities Database Interaction
+        //Activities Database Interaction Implementation
         public List<Activity> getListOfActivities()
         {
             List<Activity> listToPop = new List<Activity>();
@@ -583,7 +583,7 @@ namespace _2103Project.Action
 
         }
 
-        //Users Database Interaction
+        //Users Database Interaction Implementation
         public List<User> getListOfUsers()
         {
             List<User> listToPop = new List<User>();
@@ -701,7 +701,7 @@ namespace _2103Project.Action
             return savingSuccessFlag;
         }
 
-        //Venue Database Interaction
+        //Venue Database Interaction Implementation
         public List<Venue> getListOfVenues()
         {
             List<Venue> listToPop = new List<Venue>();
