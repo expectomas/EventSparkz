@@ -32,7 +32,7 @@ namespace _2103Project.Entities
                 }
             }
 
-            return eve;
+            return new EventEntity();
         }   // Done, Not Tested
 
         public List<EventEntity> viewEventListing()
