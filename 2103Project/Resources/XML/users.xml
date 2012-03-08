@@ -1,40 +1,87 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-
 <UserPool>
-<User>
-<userId>1</userId>
-<userName>tiow11</userName>
-<name>TIO WEE LEONG</name>
-<matricNo>A9328372N</matricNo>
-<password>123456</password>
-<email>wil@hotmail.com</email>
-<age>23</age>
-<loggedIn>false</loggedIn>
-<contactHome>23120381</contactHome>
-<contactHP>91732123</contactHP>
-</User>
-<User>
-<userId>2</userId>
-<userName>tiow12</userName>
-<name>TIO WEE LEONG</name>
-<matricNo>A3228372N</matricNo>
-<password>132456</password>
-<email>wcl@hotmail.com</email>
-<age>22</age>
-<loggedIn>false</loggedIn>
-<contactHome>53120381</contactHome>
-<contactHP>91322123</contactHP>
-</User>
-<User>
-<userId>2</userId>
-<userName>tiow12</userName>
-<name>TIO WEE LEONG</name>
-<matricNo>A3228372N</matricNo>
-<password>132456</password>
-<email>wcl@hotmail.com</email>
-<age>22</age>
-<loggedIn>false</loggedIn>
-<contactHome>53120381</contactHome>
-<contactHP>91322123</contactHP>
-</User>
+  <User>
+    <userId>1</userId>
+    <userName>tiow11</userName>
+    <name>TIO WEE LEONG</name>
+    <matricNo>A9328372N</matricNo>
+    <password>123456</password>
+    <email>wil@hotmail.com</email>
+    <age>23</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>23120381</contactHome>
+    <contactHP>91732123</contactHP>
+  </User>
+  <User>
+    <userId>2</userId>
+    <userName>tiow12</userName>
+    <name>TIO WEE LEONG</name>
+    <matricNo>A3228372N</matricNo>
+    <password>132456</password>
+    <email>wcl@hotmail.com</email>
+    <age>22</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>53120381</contactHome>
+    <contactHP>91322123</contactHP>
+  </User>
+  <User>
+    <userId>3</userId>
+    <userName>hellow</userName>
+    <name>tio wee elong</name>
+    <matricNo>A0083838M</matricNo>
+    <password>12345678</password>
+    <email>will@sjk.com</email>
+    <age>17</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>12312312</contactHome>
+    <contactHP>12312312</contactHP>
+  </User>
+  <User>
+    <userId>4</userId>
+    <userName>hellowffd</userName>
+    <name>tio wee elong</name>
+    <matricNo>A0083838M</matricNo>
+    <password>12345678</password>
+    <email>will@sjk.com</email>
+    <age>17</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>12312312</contactHome>
+    <contactHP>12312312</contactHP>
+  </User>
+  <User>
+    <userId>5</userId>
+    <userName>williamtio</userName>
+    <name>Hello William</name>
+    <matricNo>A3123123M</matricNo>
+    <password>12345678</password>
+    <email>fjdf@sjfdk.com</email>
+    <age>17</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>12313123</contactHome>
+    <contactHP>32132132</contactHP>
+  </User>
+  <User>
+    <userId>6</userId>
+    <userName>wisgliamtio</userName>
+    <name>Hello Ed</name>
+    <matricNo>A3123123M</matricNo>
+    <password>12345678</password>
+    <email>fjdf@sjfdk.com</email>
+    <age>17</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>12313123</contactHome>
+    <contactHP>32132132</contactHP>
+  </User>
+  <User>
+    <userId>7</userId>
+    <userName>sjgisgliamtio</userName>
+    <name>OMG</name>
+    <matricNo>A3123123M</matricNo>
+    <password>12345678</password>
+    <email>fjdf@sjfdk.com</email>
+    <age>17</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>12313123</contactHome>
+    <contactHP>32132132</contactHP>
+  </User>
 </UserPool>
