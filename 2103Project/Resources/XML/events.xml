@@ -8,6 +8,7 @@
 <endTime>2012-05-15T20:00:00</endTime>
 <eventScheduleId>1</eventScheduleId>
 <participantSize>20</participantSize>
+<organiserId>1</organiserId>
 <participantList>
 	<User>
 	<userId>1</userId>
@@ -22,6 +23,14 @@
 	<contactHP>91732123</contactHP>
 	</User>
 </participantList>
+<facilitatorList>
+	<User>
+	<userId>2</userId>
+	</User>
+	<User>
+	<userId>1</userId>
+	</User>
+</facilitatorList>
 </EventEntity>
 <EventEntity>
 <eventId>2</eventId>
@@ -30,6 +39,7 @@
 <endTime>2012-05-15T18:00:00</endTime>
 <eventScheduleId>1</eventScheduleId>
 <participantSize>60</participantSize>
+<organiserId>2</organiserId>
 <participantList>
 	<User>
 	<userId>1</userId>
@@ -44,5 +54,13 @@
 	<contactHP>91732123</contactHP>
 	</User>
 </participantList>
+<facilitatorList>
+	<User>
+	<userId>1</userId>
+	</User>
+	<User>
+	<userId>2</userId>
+	</User>
+</facilitatorList>
 </EventEntity>
 </EventPool>
