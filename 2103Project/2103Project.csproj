@@ -46,28 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\Authorization.cs" />
     <Compile Include="Action\Database.cs" />
     <Compile Include="Action\DatabaseInterface.cs" />
-    <Compile Include="Action\XMLFileAuth.cs" />
-    <Compile Include="addEditBudget.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="addEditBudget.Designer.cs">
-      <DependentUpon>addEditBudget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="admin.Designer.cs">
-      <DependentUpon>admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="attendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="attendance.Designer.cs">
-      <DependentUpon>attendance.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entities\ActiveUser.cs" />
     <Compile Include="Entities\Activity.cs" />
     <Compile Include="Entities\EventEntity.cs" />
@@ -75,82 +55,107 @@
     <Compile Include="Entities\Organiser.cs" />
     <Compile Include="Entities\Participant.cs" />
     <Compile Include="Entities\Schedule.cs" />
+    <Compile Include="Entities\Test.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Venue.cs" />
-    <Compile Include="eventInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="eventInfo.Designer.cs">
-      <DependentUpon>eventInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="eventOrginanizer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="eventOrginanizer.Designer.cs">
-      <DependentUpon>eventOrginanizer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="facilitator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="facilitator.Designer.cs">
-      <DependentUpon>facilitator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="mainPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mainPage.Designer.cs">
-      <DependentUpon>mainPage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="login.Designer.cs">
-      <DependentUpon>login.cs</DependentUpon>
-    </Compile>
     <Compile Include="Config\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplashImageForm.cs">
+    <Compile Include="UI FINAL by WL\addEditBudget.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashImageForm.Designer.cs">
-      <DependentUpon>SplashImageForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="trackBudget.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="trackBudget.Designer.cs">
-      <DependentUpon>trackBudget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="venuePage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="venuePage.Designer.cs">
-      <DependentUpon>venuePage.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="addEditBudget.resx">
+    <Compile Include="UI FINAL by WL\addEditBudget.Designer.cs">
       <DependentUpon>addEditBudget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="admin.resx">
-      <DependentUpon>admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="attendance.resx">
+    </Compile>
+    <Compile Include="UI FINAL by WL\attendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\attendance.Designer.cs">
       <DependentUpon>attendance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="eventInfo.resx">
+    </Compile>
+    <Compile Include="UI FINAL by WL\editEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\editEvent.Designer.cs">
+      <DependentUpon>editEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI FINAL by WL\eventInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\eventInfo.Designer.cs">
       <DependentUpon>eventInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="eventOrginanizer.resx">
-      <DependentUpon>eventOrginanizer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="facilitator.resx">
-      <DependentUpon>facilitator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="login.resx">
+    </Compile>
+    <Compile Include="UI FINAL by WL\facilitatorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\facilitatorList.Designer.cs">
+      <DependentUpon>facilitatorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI FINAL by WL\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mainPage.resx">
+    </Compile>
+    <Compile Include="UI FINAL by WL\loginSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\loginSelect.Designer.cs">
+      <DependentUpon>loginSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI FINAL by WL\mainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\mainPage.Designer.cs">
       <DependentUpon>mainPage.cs</DependentUpon>
-    </EmbeddedResource>
+    </Compile>
+    <Compile Include="UI FINAL by WL\scheduler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\scheduler.Designer.cs">
+      <DependentUpon>scheduler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI FINAL by WL\welcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI FINAL by WL\welcome.Designer.cs">
+      <DependentUpon>welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CreateEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CreateEvent.Designer.cs">
+      <DependentUpon>CreateEvent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EventInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EventInfo.Designer.cs">
+      <DependentUpon>EventInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EventSparkz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EventSparkz.Designer.cs">
+      <DependentUpon>EventSparkz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MainPage.Designer.cs">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\_Login.Designer.cs">
+      <DependentUpon>_Login.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -159,15 +164,46 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SplashImageForm.resx">
-      <DependentUpon>SplashImageForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI FINAL by WL\attendance.resx">
+      <DependentUpon>attendance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="trackBudget.resx">
-      <DependentUpon>trackBudget.cs</DependentUpon>
+    <EmbeddedResource Include="UI FINAL by WL\editEvent.resx">
+      <DependentUpon>editEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="venuePage.resx">
-      <DependentUpon>venuePage.cs</DependentUpon>
+    <EmbeddedResource Include="UI FINAL by WL\eventInfo.resx">
+      <DependentUpon>eventInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI FINAL by WL\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI FINAL by WL\loginSelect.resx">
+      <DependentUpon>loginSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI FINAL by WL\mainPage.resx">
+      <DependentUpon>mainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI FINAL by WL\welcome.resx">
+      <DependentUpon>welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CreateEvent.resx">
+      <DependentUpon>CreateEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EventInfo.resx">
+      <DependentUpon>EventInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EventSparkz.resx">
+      <DependentUpon>EventSparkz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainPage.resx">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\_Login.resx">
+      <DependentUpon>_Login.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -183,7 +219,8 @@
   <ItemGroup>
     <Content Include="Resources\File Input\event.txt" />
     <Content Include="Resources\File Input\temp.txt" />
-    <Content Include="Resources\Img\Logo\mainLogo.png" />
+    <None Include="Resources\Img\Logo\loginLogo.png" />
+    <Content Include="Resources\XML\events.xml" />
     <Content Include="Resources\XML\Users.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

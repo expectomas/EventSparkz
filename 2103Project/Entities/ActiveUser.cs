@@ -22,17 +22,24 @@ namespace _2103Project.Entities
         public EventEntity viewEventInfo(int index)
         {
             List<EventEntity> temp = new List<EventEntity>();
-            EventEntity eve = new EventEntity();
+            int selectedEventIndex=-1;
 
             for (int i = 0; i < temp.Count; i++)
             {
                 if (temp[i].getEventId() == index)
                 {
-                    eve = temp[i];
+                    selectedEventIndex = i;
                 }
             }
 
-            return new EventEntity();
+            // If event is not found in database...
+            if (selectedEventIndex < 0) 
+            {
+                throw new System.ApplicationException();
+            }
+            //
+
+            return temp[selectedEventIndex];
         }   // Done, Not Tested
 
         public List<EventEntity> viewEventListing()
@@ -75,6 +82,13 @@ namespace _2103Project.Entities
             }
             //
 
+            // If selected date does not matches any event in database
+            if (eventListing.Count == 0)
+            {
+                throw new System.ApplicationException();
+            }
+            //
+
             // Sort events according to dates in descending order (Bubble Sort)
             for (int i = 0; i < eventListing.Count; i++)
             {
@@ -106,6 +120,13 @@ namespace _2103Project.Entities
 
             word.Trim();    // Remove all leading and trailing white-space characters
             word.ToLower(); // Convert all characters to lowercase characters
+
+            // Check if word is empty
+            if (word == null)
+            {
+                throw new System.ApplicationException("Please type an event name");
+            }
+            //
 
             // Filter by Event Name in search priority: (1)FullMatch (2)WordMatch (3)CharactersMatch
             for(int i=0; i<eventListing.Count; i++)
@@ -139,6 +160,11 @@ namespace _2103Project.Entities
             //
 
             // Raise error for no match search
+            if (eventListing.Count == 0)
+            {
+                throw new System.ApplicationException("No match found");
+            }
+            //
 
             // Sort 'list' according to search priority in ascending order (Bubble Sort)
             for (int i = 0; i < list.Count; i++)

@@ -8,59 +8,63 @@ namespace _2103Project
 {
     class Test
     {
+        public Test() 
+        { 
+        }
+                
         ActiveUser au = new ActiveUser();
-        Facilitator f = new Facilitator();
+        //Facilitator f = new Facilitator();
         Organiser o = new Organiser();
         Participant p = new Participant();
 
-        private void testViewEventListing()
+        public void testViewEventListing()
         {
             au.viewEventListing();
         }
 
         private void testViewEventListingByDate()
         {
-            au.viewEventListingByDate(...);
+            //au.viewEventListingByDate(...);
         }
 
         private void testViewEventListingByEventName()
         {
-            au.viewEventListingByEventName(...);
+           //au.viewEventListingByEventName(...);
         }
 
         private void testViewEventInfo()
         {
-            au.viewEventInfo(...);
+            //au.viewEventInfo(...);
         }
 
         private void testViewParticipantList()
         {
-            f.viewParticipantList();
+            //f.viewParticipantList();
         }
 
         private void testCreateEvent()
         {
-            o.createEvent();
+            //o.createEvent();
         }
 
         private void testCancelEvent()
         {
-            o.cancelEvent();
+            //o.cancelEvent();
         }
 
         private void testUpdateEvent()
         {
-            o.updateEvent();
+            //o.updateEvent();
         }
 
         private void testRegisterEvent()
         {
-            p.registerEvent();
+            //p.registerEvent();
         }
 
         private void testCancelRegisteredEvent()
         {
-            p.cancelRegisteredEvent();
+            //p.cancelRegisteredEvent();
         }
     }
 }
