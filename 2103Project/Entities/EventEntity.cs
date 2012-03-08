@@ -47,7 +47,12 @@ namespace _2103Project.Entities
         {
             return eventId;
         }
-        
+
+        public int getOrganiserID()
+        {
+            return eventOrganiserId;
+        }
+
         public int getScheduleID()
         {
             return eventScheduleId;

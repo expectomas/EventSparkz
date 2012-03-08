@@ -11,13 +11,6 @@ namespace _2103Project.Entities
     {
         //Attributes
         private List<EventEntity> Bookings;
-        private int eventId;
-        private string eventName;
-        private DateTime startTime;
-        private DateTime endTime;
-        private int eventScheduleId;
-        private int participantSize;
-        private List<Participant> participantList;
 
         // Constructor
         public Organiser()
@@ -86,13 +79,19 @@ namespace _2103Project.Entities
             return newScheduleID;
         }
 
-        public bool cancelEvent(string selectedEventName)
+        public bool cancelEvent(string selectedEventName, User selectedOrganiser)
         {
             bool eventCancelled = false;
 
             Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> eventList = db.getListOfEvents();
-            
+            List<EventEntity> newEventList = new List<EventEntity>();
+            foreach (EventEntity events in eventList)
+            {
+                if (!(selectedEventName.Equals(events.getEventName()) && selectedOrganiser.getUserId() == events.getOrganiserID()))
+                    newEventList.Add(events);
+            }
+            db.saveListOfEvents(newEventList);
             return !eventCancelled;
         }
 
