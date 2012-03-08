@@ -78,6 +78,8 @@ namespace _2103Project.Action
             List<EventEntity> listToPop = new List<EventEntity>();
             List<Participant> participantList = new List<Participant>();
 
+            List<int> facilitatorList = new List<int>();
+
             XmlReaderSettings settings = new XmlReaderSettings();
             settings.IgnoreWhitespace = true;
 
@@ -102,6 +104,8 @@ namespace _2103Project.Action
                     int eventScheduleId = scanner.ReadElementContentAsInt();
 
                     int participantSize = scanner.ReadElementContentAsInt();
+
+                    int organiserId = scanner.ReadElementContentAsInt();
 
                     if (scanner.ReadToDescendant("User"))
                     {
@@ -141,7 +145,22 @@ namespace _2103Project.Action
 
                     scanner.Skip();
 
-                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList);
+                    if (scanner.ReadToDescendant("User"))
+                    {
+                        do
+                        {
+                            scanner.ReadToDescendant("userId");
+
+                            int facilitatorId = scanner.ReadElementContentAsInt();
+
+                            facilitatorList.Add(facilitatorId);
+
+                        } while (scanner.ReadToNextSibling("User"));
+                    }
+
+                    scanner.Skip();
+
+                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId);
 
                     participantList.Clear();
 
@@ -163,7 +182,9 @@ namespace _2103Project.Action
             DateTime o_endTime=DateTime.Now; 
             int o_eventScheduleId=0;
             int o_participantSize=0;
+            int o_organiserId = 0;
             List<Participant> o_participantList = new List<Participant>();
+            List<int> o_facilitatorList = new List<int>();
 
             //Participant Attributes
              int o_userId =0 ;
@@ -185,10 +206,11 @@ namespace _2103Project.Action
             EventEntity holdingElement;
             Participant holdingParticipant;
             int participantCounter = 0;
+            int facilitatorCounter = 0;
 
             try
             {
-                using (XmlWriter writer = XmlTextWriter.Create("events.xml", writerSettings))
+                using (XmlWriter writer = XmlTextWriter.Create("sample_events.xml", writerSettings))
                 {
                     writer.WriteStartDocument();
 
@@ -197,7 +219,7 @@ namespace _2103Project.Action
                     for (int i = 0; i < sizeOfList; i++)
                     {
                         holdingElement = eventListToSave[i];
-                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, requestString);
+                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, requestString);
 
                         writer.WriteStartElement("EventEntity");
 
@@ -212,6 +234,8 @@ namespace _2103Project.Action
                         writer.WriteElementString("eventScheduleId", o_eventScheduleId.ToString());
 
                         writer.WriteElementString("participantSize", o_participantSize.ToString());
+
+                        writer.WriteElementString("organiserId", o_organiserId.ToString());
 
                         //List of Participants
                         writer.WriteStartElement("participantList");
@@ -243,6 +267,26 @@ namespace _2103Project.Action
 
                         participantCounter = 0;
 
+                        //End Tag Participant List
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement("facilitatorList");
+
+                        while (facilitatorCounter < o_facilitatorList.Count)
+                        {
+                            writer.WriteStartElement("User");
+
+                            writer.WriteElementString("userId", o_facilitatorList[facilitatorCounter].ToString());
+
+                            writer.WriteEndElement();
+
+                            ++facilitatorCounter;
+                        }
+
+                        facilitatorCounter = 0;
+
+                        //End Tag Faciltator List
+
                         writer.WriteEndElement();
 
                         //End Tag Event entity
@@ -250,6 +294,8 @@ namespace _2103Project.Action
                         writer.WriteEndElement();
                     }
 
+
+                    writer.WriteEndElement();
                 }
 
                 savingSuccessFlag = true;
