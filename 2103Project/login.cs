@@ -21,13 +21,23 @@ namespace _2103Project
         /*Variables */
         bool userNameValid = false;
 
-        public loginForm()
+        /*User Class*/
+        private User currentUser;
+
+        public loginForm(User enteringUser)
         {
             InitializeComponent();
+
+            currentUser = enteringUser;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            //Test
+
+            currentUser.logout();
+
+
             this.Close();
         }
 
