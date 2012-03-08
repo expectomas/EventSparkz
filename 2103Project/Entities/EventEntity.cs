@@ -47,6 +47,11 @@ namespace _2103Project.Entities
         {
             return eventId;
         }
+        
+        public int getScheduleID()
+        {
+            return eventScheduleId;
+        }
 
         public DateTime getEventDate()
         {

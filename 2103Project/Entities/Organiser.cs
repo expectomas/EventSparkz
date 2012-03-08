@@ -72,7 +72,7 @@ namespace _2103Project.Entities
             return newEventID;
         }
 
-        /* William for your necessary action
+
         public static int getNewScheduleId()
         {
             int newScheduleID = 0;
@@ -85,7 +85,6 @@ namespace _2103Project.Entities
             newScheduleID++;
             return newScheduleID;
         }
-        */
 
         public bool cancelEvent(string selectedEventName)
         {
