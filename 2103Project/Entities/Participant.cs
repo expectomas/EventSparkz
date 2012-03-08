@@ -9,7 +9,7 @@ namespace _2103Project.Entities
     class Participant : ActiveUser
     {
         //Attributes
-        public List<EventEntity> registeredEvents;
+        private List<EventEntity> registeredEvents;
 
          //Database Access Authetication
         private const string DatabaseToken = "cd#ew1Tf";
@@ -37,6 +37,26 @@ namespace _2103Project.Entities
         }
 
         //Methods
+
+        private bool loadAllRegisteredEvents()
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+
+            registeredEvents = new List<EventEntity>();
+
+            List<EventEntity> obtainedEventList = db.getListOfEvents();
+
+            for (int i = 0; i < obtainedEventList.Count; i++)
+            {
+                EventEntity currentEvent = obtainedEventList[i];
+
+                if (currentEvent.doesParticipantExist(userId))
+                    registeredEvents.Add(currentEvent);
+            }
+
+            return true;
+        }
+
         public bool registerEvent(EventEntity interestedEvent)
         {
             bool eventRegistered = false;
@@ -85,8 +105,5 @@ namespace _2103Project.Entities
             db.saveListOfEvents(currentEvents);
             return eventCancelled;
         }
-
-       
-
     }
 }

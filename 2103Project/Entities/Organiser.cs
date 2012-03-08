@@ -20,11 +20,36 @@ namespace _2103Project.Entities
         private List<Participant> participantList;
 
         // Constructor
+        public Organiser()
+        {
+        }
 
         //Database Access Authetication
         private const string DatabaseToken = "9032!ds$";
 
         //Methods
+
+        private bool loadOrganisedEvent()
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+
+            List<EventEntity> obtainedEvents = db.getListOfEvents();
+
+            Bookings = new List<EventEntity>();
+
+            EventEntity currentEntity;
+
+            for (int i = 0; i < obtainedEvents.Count; i++)
+            {
+                currentEntity = obtainedEvents[i];
+
+                if (currentEntity.doesOrganiserExist(userId))
+                    Bookings.Add(currentEntity);
+            }
+
+            return true;
+        }
+
         public bool createEvent(EventEntity events)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
