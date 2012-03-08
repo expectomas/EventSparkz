@@ -132,7 +132,7 @@ namespace _2103Project
                                 int getID = 1;
                                 if (File.Exists(filename))
                                 {
-                                    getID = User.getLastUserID();
+                                    getID = User.retrievelastID();
                                 }
                                 User signUp = new User(getID, username, nameTextBox.Text, matricNo, passwordTextBox.Text, emailTextBox.Text, int.Parse(ageComboBox.SelectedItem.ToString()), false, double.Parse(homeTextBox.Text), double.Parse(phoneNumberTextBox.Text));
                                 bool checkUNameExist = signUp.createNewUser();

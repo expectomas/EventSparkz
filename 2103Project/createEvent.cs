@@ -13,6 +13,7 @@ namespace _2103Project
 {
     public partial class createEventForm : Form
     {
+        private User currentUser;
         public createEventForm()
         {
             InitializeComponent();
@@ -39,7 +40,8 @@ namespace _2103Project
                     newscheduleId = Organiser.getNewScheduleId();
                 }    
                 List<Participant> participantList = new List<Participant>();
-                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList);
+                List<Facilitator> facilitatorList = new List<Facilitator>();
+                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value,xxx, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList);
                 Organiser org = new Organiser();
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
