@@ -172,37 +172,38 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             bool userCreated = true;
-            string filename = "users.xml";
-            if (File.Exists(filename))
-            {
-                bool checkUNameExist = db.checkUsernameExist(userName);
-                if (checkUNameExist == false)
+            bool checkUNameExist = true;
+                List<User> listOfUsers = db.getListOfUsers();
+                foreach(User checkUser in listOfUsers)
                 {
-                    XmlReader reader = XmlReader.Create(filename);
-                    // draw xml here
-                    db.writeExistToXml(reader, userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
+                    if (checkUser.userName == userName)
+                        checkUNameExist = false;
+                }
+                if (checkUNameExist == true)
+                {
+                    User test = new User(userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
+                    listOfUsers.Add(test);
+                    db.saveListOfUsers(listOfUsers);
                 }
                 else
                 {
                     userCreated = false;
                 }
-            }
-            else
-            {
-                XmlTextWriter textWriter = new XmlTextWriter(filename, Encoding.UTF8);
-                // draw xml here
-                db.writeFirstToXml(textWriter, userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
-            }
             return userCreated;
-        }        
+        }
 
-        public static int retrievelastID()
+        public static int getLastUserID()
         {
+            int newID = 1;
             Database db = Database.CreateDatabase(DatabaseToken);
-            int newID = db.getLastID();
+            List<User> listOfUsers = db.getListOfUsers();
+            foreach (User checkUser in listOfUsers)
+            {
+                newID = checkUser.userId;
+            }
+            newID++;
             return newID;
         }
-        
         public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
                     ref string i_email, ref int i_age, ref bool i_loggedIn, ref double i_contactHome, ref double i_contactHP, string purpose)
         {

@@ -20,84 +20,44 @@ namespace _2103Project.Entities
         private List<Participant> participantList;
 
         // Constructor
-        public Organiser() { }
 
-        public Organiser(int i_eventId, string i_eventName, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participationSize, List<Participant> I_participantList)
-        {
-            eventId = i_eventId;
-            eventName = i_eventName;
-            startTime = i_startTime;
-            endTime = i_endTime;
-            eventScheduleId = i_eventScheduleId;
-            participantSize = i_participationSize;
-            participantList = I_participantList;
-        }
         //Database Access Authetication
         private const string DatabaseToken = "9032!ds$";
 
         //Methods
-        public bool createEvent()
+        public bool createEvent(EventEntity events)
         {
-            string path = "event.txt";
-            string tempPath = "temp.txt";
-
-            if (!File.Exists(path))
-            {
-                FileStream fs = File.Create(path);
-                fs.Close();
-            }
-            if (!File.Exists(tempPath))
-            {
-                FileStream fs = File.Create(tempPath);
-                fs.Close();
-            }
             Database db = Database.CreateDatabase(DatabaseToken);
-            db.createEvent(eventId, eventName, startTime, endTime, eventScheduleId, participantSize);
+            List<EventEntity> eventList = db.getListOfEvents();
+            eventList.Add(events);
+            db.saveListOfEvents(eventList);
             return true;
         }
 
-        public static int getLastEventId()
+        public static int getNewEventId()
         {
-            int count = 6;
-            string strid = "1";
-            StreamReader sr = new StreamReader("event.txt");
-            while (sr.Peek() >= 0)
+            int newEventID = 0;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> eventList = db.getListOfEvents();
+            foreach (EventEntity eve in eventList)
             {
-                if (count == 6)
-                {
-                    strid = sr.ReadLine();
-                    count = 1;
-                }
-                else
-                {
-                    sr.ReadLine();
-                    count++;
-                }
+                newEventID = eve.getEventId();
             }
-            sr.Close();
-            return int.Parse(strid);
+            newEventID++;
+            return newEventID;
         }
 
-        public static int getLastScheduleId()
+        public static int getNewScheduleId()
         {
-            int count = 2;
-            string strschid = "1";
-            StreamReader sr = new StreamReader("event.txt");
-            while (sr.Peek() >= 0)
+            int newScheduleID = 0;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> eventList = db.getListOfEvents();
+            foreach (EventEntity eve in eventList)
             {
-                if (count == 6)
-                {
-                    strschid = sr.ReadLine();
-                    count = 1;
-                }
-                else
-                {
-                    sr.ReadLine();
-                    count++;
-                }                    
+                newScheduleID = eve.getScheduleID();
             }
-            sr.Close();
-            return int.Parse(strschid);
+            newScheduleID++;
+            return newScheduleID;
         }
 
         public bool cancelEvent(string selectedEventName)
@@ -105,7 +65,8 @@ namespace _2103Project.Entities
             bool eventCancelled = false;
 
             Database db = Database.CreateDatabase(DatabaseToken);
-            db.deleteEvent(selectedEventName);
+            List<EventEntity> eventList = db.getListOfEvents();
+            
             return !eventCancelled;
         }
 
@@ -113,7 +74,11 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             Queue<string> listOfEvents = new Queue<string>();
-            db.loadListOfEvent(listOfEvents);
+            List<EventEntity> eventList = db.getListOfEvents();
+            foreach (EventEntity events in eventList)
+            {
+                listOfEvents.Enqueue(events.getEventName());
+            }
             return listOfEvents;
         }
 
