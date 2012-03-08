@@ -50,18 +50,27 @@ namespace _2103Project
         {
             User newUser = new User();
 
-            userNameValid  = newUser.login(userNameTextBox.Text, passwordTextbox.Text);
-
-            if (userNameValid)
+            if (userNameTextBox.Text == "" && passwordTextbox.Text == "")
             {
-                this.Close();
-
-                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc));
-                t.Start();
+                MessageBox.Show("Please Enter A Username and Password");
             }
+
             else
             {
-                MessageBox.Show("The Username and Password is Incorrect");
+
+                userNameValid = newUser.login(userNameTextBox.Text, passwordTextbox.Text);
+
+                if (userNameValid)
+                {
+                    this.Close();
+
+                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc));
+                    t.Start();
+                }
+                else
+                {
+                    MessageBox.Show("The Username and Password is Incorrect");
+                }
             }
                 
         }
@@ -115,7 +124,9 @@ namespace _2103Project
 
         private void loginForm_Load(object sender, EventArgs e)
         {
-
+            ActiveUser test = new ActiveUser();
+            List<EventEntity> es = new List<EventEntity>();
+            es = test.viewEventListing();
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
