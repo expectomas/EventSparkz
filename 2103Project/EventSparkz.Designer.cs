@@ -55,6 +55,7 @@
             this.signUpButton.TabIndex = 10;
             this.signUpButton.Text = "New User";
             this.signUpButton.UseVisualStyleBackColor = false;
+            this.signUpButton.Click += new System.EventHandler(this.signUpButton_Click);
             // 
             // loginButton
             // 
@@ -67,6 +68,7 @@
             this.loginButton.TabIndex = 9;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = false;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // loginSelectForm
             // 

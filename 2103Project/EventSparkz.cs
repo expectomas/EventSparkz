@@ -15,5 +15,17 @@ namespace _2103Project
         {
             InitializeComponent();
         }
+
+        private void loginButton_Click(object sender, EventArgs e)
+        {
+            loginForm login = new loginForm();
+            login.Show();
+        }
+
+        private void signUpButton_Click(object sender, EventArgs e)
+        {
+            signupForm signup = new signupForm();
+            signup.Show();
+        }
     }
 }
