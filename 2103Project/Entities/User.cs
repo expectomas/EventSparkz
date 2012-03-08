@@ -135,6 +135,19 @@ namespace _2103Project.Entities
                         
                         cu.loggedIn = true;
 
+                        //Set all attributes of this user
+
+                        userId = cu.userId;
+                        userName = cu.userName;
+                        name = cu.name;
+                        matricNo = cu.matricNo;
+                        password = cu.password;
+                        email = cu.email;
+                        age = cu.age;
+                        loggedIn = true;
+                        contactHome = cu.contactHome;
+                        contactHP = cu.contactHP;
+
                         break;
                     }
                 }
@@ -194,7 +207,12 @@ namespace _2103Project.Entities
                 db.writeFirstToXml(textWriter, userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
             }
             return userCreated;
-        }        
+        }
+
+        public int getUserId()
+        {
+            return userId;
+        }
 
         public static int retrievelastID()
         {
