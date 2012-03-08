@@ -10,7 +10,7 @@ namespace _2103Project.Entities
     class Organiser : ActiveUser
     {
         //Attributes
-        public List<EventEntity> viewBookings;
+        private List<EventEntity> Bookings;
         private int eventId;
         private string eventName;
         private DateTime startTime;
