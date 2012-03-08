@@ -16,5 +16,11 @@ namespace _2103Project
         {
             InitializeComponent();
         }
+
+        private void registerEvent_Click(object sender, EventArgs e)
+        {
+            createEventForm createEvent = new createEventForm(currentUser);
+            createEvent.Show();
+        }
     }
 }
