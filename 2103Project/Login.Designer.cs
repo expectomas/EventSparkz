@@ -62,11 +62,11 @@
             this.cancelButton.BackColor = System.Drawing.Color.Gainsboro;
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(158, 352);
+            this.cancelButton.Location = new System.Drawing.Point(141, 352);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 38);
+            this.cancelButton.Size = new System.Drawing.Size(96, 38);
             this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
+            this.cancelButton.Text = "New User?";
             this.cancelButton.UseVisualStyleBackColor = false;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 

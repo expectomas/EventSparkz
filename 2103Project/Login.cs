@@ -32,12 +32,8 @@ namespace _2103Project
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void signUpButton_Click(object sender, EventArgs e)
-        {
-            // Open Registration Page
+            signupForm signup = new signupForm();
+            signup.Show();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
