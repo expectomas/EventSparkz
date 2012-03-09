@@ -15,6 +15,9 @@ namespace _2103Project
         //Current User of this Form
         private User currentUser;
 
+        //Variables
+        bool validUser = false;
+
         public void ThreadProc()
         {
             Application.Run(new mainPage(currentUser));
@@ -39,9 +42,9 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            currentUser = currentUser.login(userNameTextBox.Text, passwordTextbox.Text);
+            validUser = currentUser.login(userNameTextBox.Text, passwordTextbox.Text,ref currentUser);
 
-            if (currentUser!=null)
+            if (validUser)
             {
                 this.Close();
 
