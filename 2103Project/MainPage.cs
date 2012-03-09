@@ -91,6 +91,11 @@ namespace _2103Project
             this.listSideEventView.Columns.Clear();
             this.listSideEventView.Items.Clear();
 
+            //Insert Date and EventId Column
+            this.listSideEventView.Columns.Insert(0, "Id", 0, HorizontalAlignment.Left);
+            this.listSideEventView.Columns.Insert(1, "Date", 80, HorizontalAlignment.Center);
+            this.listSideEventView.Columns.Insert(2, "Event", 200, HorizontalAlignment.Left);
+
             List<EventEntity> sideBarEventListing;
 
             //Get the value of the DDL selected value
@@ -256,7 +261,33 @@ namespace _2103Project
 
         private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            int organiserCancellingEventId=-1;
+
+            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+            organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+            Organiser organiser = new Organiser(currentUser);
+
+            if (organiserCancellingEventId != -1)
+            {
+                if (Organiser_Cancel_SideBar_Dialog())
+                {
+                    organiser.cancelEvent(organiserCancellingEventId);
+                }
+            }
+        }
+
+        private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Participant cancel event 
+            int participantCancellingEventId = -1;
+
+            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+            participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+            Participant participant = new Participant(currentUser);
+
+            if (participantCancellingEventId != -1)
             {
                 searchEventTextBox.Clear();
                 searchEventTextBox.Focus();
