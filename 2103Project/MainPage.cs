@@ -19,5 +19,11 @@ namespace _2103Project
 
             currentUser = incomingUser;
         }
+
+        private void registerEvent_Click(object sender, EventArgs e)
+        {
+            createEventForm createEvent = new createEventForm(currentUser);
+            createEvent.Show();
+        }
     }
 }

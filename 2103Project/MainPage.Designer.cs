@@ -92,6 +92,7 @@
             this.registerEvent.TabIndex = 7;
             this.registerEvent.Text = "Create Event";
             this.registerEvent.UseVisualStyleBackColor = true;
+            this.registerEvent.Click += new System.EventHandler(this.registerEvent_Click);
             // 
             // logoutButton
             // 
