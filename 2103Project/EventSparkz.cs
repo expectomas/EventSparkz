@@ -42,8 +42,6 @@ namespace _2103Project
 
         private void signUpButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-
             Thread t = new Thread(new ThreadStart(SignUpFormThreadProc));
 
             t.Start();
