@@ -38,9 +38,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.sizeTextBox = new System.Windows.Forms.TextBox();
-            this.timeListView = new System.Windows.Forms.ListView();
-            this.descriptionListView = new System.Windows.Forms.ListView();
-            this.venueListView = new System.Windows.Forms.ListView();
             this.timeComboBox = new System.Windows.Forms.ComboBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.venueComboBox = new System.Windows.Forms.ComboBox();
@@ -49,6 +46,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.addScheduleButton = new System.Windows.Forms.Button();
+            this.timeListBox = new System.Windows.Forms.ListBox();
+            this.descriptionListBox = new System.Windows.Forms.ListBox();
+            this.venueListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -146,30 +146,6 @@
             this.sizeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sizeTextBox_KeyDown);
             this.sizeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sizeTextBox_KeyPress);
             // 
-            // timeListView
-            // 
-            this.timeListView.Location = new System.Drawing.Point(311, 89);
-            this.timeListView.Name = "timeListView";
-            this.timeListView.Size = new System.Drawing.Size(100, 176);
-            this.timeListView.TabIndex = 18;
-            this.timeListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // descriptionListView
-            // 
-            this.descriptionListView.Location = new System.Drawing.Point(417, 89);
-            this.descriptionListView.Name = "descriptionListView";
-            this.descriptionListView.Size = new System.Drawing.Size(250, 176);
-            this.descriptionListView.TabIndex = 19;
-            this.descriptionListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // venueListView
-            // 
-            this.venueListView.Location = new System.Drawing.Point(673, 89);
-            this.venueListView.Name = "venueListView";
-            this.venueListView.Size = new System.Drawing.Size(120, 176);
-            this.venueListView.TabIndex = 20;
-            this.venueListView.UseCompatibleStateImageBehavior = false;
-            // 
             // timeComboBox
             // 
             this.timeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -247,6 +223,31 @@
             this.addScheduleButton.TabIndex = 29;
             this.addScheduleButton.Text = "Add Schedule";
             this.addScheduleButton.UseVisualStyleBackColor = true;
+            this.addScheduleButton.Click += new System.EventHandler(this.addScheduleButton_Click);
+            // 
+            // timeListBox
+            // 
+            this.timeListBox.FormattingEnabled = true;
+            this.timeListBox.Location = new System.Drawing.Point(311, 89);
+            this.timeListBox.Name = "timeListBox";
+            this.timeListBox.Size = new System.Drawing.Size(100, 173);
+            this.timeListBox.TabIndex = 30;
+            // 
+            // descriptionListBox
+            // 
+            this.descriptionListBox.FormattingEnabled = true;
+            this.descriptionListBox.Location = new System.Drawing.Point(417, 89);
+            this.descriptionListBox.Name = "descriptionListBox";
+            this.descriptionListBox.Size = new System.Drawing.Size(250, 173);
+            this.descriptionListBox.TabIndex = 31;
+            // 
+            // venueListBox
+            // 
+            this.venueListBox.FormattingEnabled = true;
+            this.venueListBox.Location = new System.Drawing.Point(673, 89);
+            this.venueListBox.Name = "venueListBox";
+            this.venueListBox.Size = new System.Drawing.Size(120, 173);
+            this.venueListBox.TabIndex = 32;
             // 
             // createEventForm
             // 
@@ -255,6 +256,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(812, 325);
+            this.Controls.Add(this.venueListBox);
+            this.Controls.Add(this.descriptionListBox);
+            this.Controls.Add(this.timeListBox);
             this.Controls.Add(this.addScheduleButton);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -263,9 +267,6 @@
             this.Controls.Add(this.venueComboBox);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.timeComboBox);
-            this.Controls.Add(this.venueListView);
-            this.Controls.Add(this.descriptionListView);
-            this.Controls.Add(this.timeListView);
             this.Controls.Add(this.sizeTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.endTimePicker);
@@ -297,9 +298,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox sizeTextBox;
-        private System.Windows.Forms.ListView timeListView;
-        private System.Windows.Forms.ListView descriptionListView;
-        private System.Windows.Forms.ListView venueListView;
         private System.Windows.Forms.ComboBox timeComboBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.ComboBox venueComboBox;
@@ -308,6 +306,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button addScheduleButton;
+        private System.Windows.Forms.ListBox timeListBox;
+        private System.Windows.Forms.ListBox descriptionListBox;
+        private System.Windows.Forms.ListBox venueListBox;
        
     }
 }
