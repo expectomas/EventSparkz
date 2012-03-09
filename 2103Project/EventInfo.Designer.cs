@@ -234,6 +234,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "eventInfoForm";
             this.Text = "Event Info";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.eventInfo_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
