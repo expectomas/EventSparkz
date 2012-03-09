@@ -32,6 +32,8 @@ namespace _2103Project
         private void eventInfo_FormClosed(object sender, FormClosedEventArgs e)
         {
             Exit_Dialog();
+
+            this.Close();
         }
     }
 }

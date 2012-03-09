@@ -13,7 +13,18 @@ namespace _2103Project
 {
     public partial class createEventForm : Form
     {
+
         private User currentUser;
+
+        private void Exit_Dialog()
+        {
+            if (MessageBox.Show("Are you sure?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                currentUser.logout();
+                this.Close();
+            }
+        }
+
         public createEventForm(User incomingUser)
         {
             currentUser = incomingUser;
@@ -97,6 +108,13 @@ namespace _2103Project
             {
                 nonNumberEntered = true;
             }
+        }
+
+        private void createEvent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Exit_Dialog();
+
+            this.Close();
         }
     }
 }
