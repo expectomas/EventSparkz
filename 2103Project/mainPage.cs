@@ -9,11 +9,12 @@ using System.Windows.Forms;
 
 namespace _2103Project
 {
-    public partial class mainPage : Form
+    public partial class MainPage : Form
     {
-        public mainPage()
+        public MainPage()
         {
             InitializeComponent();
         }
+
     }
 }

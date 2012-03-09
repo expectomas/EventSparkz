@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace _2103Project
 {
-    public partial class eventInfoForm : Form
+    public partial class EventInfo : Form
     {
-        public eventInfoForm()
+        public EventInfo()
         {
             InitializeComponent();
         }

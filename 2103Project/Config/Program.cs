@@ -22,9 +22,10 @@ namespace _2103Project
 
             //System.Threading.Thread.Sleep(2000);
 
+
             //f.Close();
 
-            Application.Run(new loginForm());
+            Application.Run(new Login(new Entities.User()));
         }
     }
 }

@@ -10,21 +10,20 @@ using _2103Project.Entities;
 
 namespace _2103Project
 {
-    public partial class loginForm : Form
+    public partial class Login : Form
     {
-
-        public static void ThreadProc()
-        {
-            Application.Run(new mainPage());
-        }
-
         /*Variables */
-        bool userNameValid = false;
+        private bool userNameValid = false;
 
         /*User Class*/
         private User currentUser;
+       
+        public static void ThreadProc()
+        {
+            Application.Run(new MainPage());
+        }
 
-        public loginForm(User enteringUser)
+        public Login(User enteringUser)
         {
             InitializeComponent();
 

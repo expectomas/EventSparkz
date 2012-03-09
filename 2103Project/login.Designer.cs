@@ -1,6 +1,6 @@
 ﻿namespace _2103Project
 {
-    partial class loginForm
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -29,122 +29,80 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
-            this.loginButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
+            this.logoES = new System.Windows.Forms.PictureBox();
             this.userNameLabel = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextbox = new System.Windows.Forms.TextBox();
-            this.signUpButton = new System.Windows.Forms.Button();
-            this.SplashScreen = new System.Windows.Forms.PictureBox();
-            this.AuthProgBar = new System.Windows.Forms.ProgressBar();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.errorProviderUserName = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.SplashScreen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logoES)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUserName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
             this.SuspendLayout();
             // 
-            // loginButton
+            // logoES
             // 
-            this.loginButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.loginButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.loginButton.Location = new System.Drawing.Point(14, 352);
-            this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 38);
-            this.loginButton.TabIndex = 0;
-            this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = false;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.Color.Gainsboro;
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.Location = new System.Drawing.Point(104, 352);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 38);
-            this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            this.logoES.Image = global::_2103Project.Properties.Resources.loginLogo;
+            this.logoES.Location = new System.Drawing.Point(144, 20);
+            this.logoES.Name = "logoES";
+            this.logoES.Size = new System.Drawing.Size(257, 188);
+            this.logoES.TabIndex = 0;
+            this.logoES.TabStop = false;
             // 
             // userNameLabel
             // 
             this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLabel.Location = new System.Drawing.Point(9, 198);
+            this.userNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userNameLabel.Location = new System.Drawing.Point(14, 239);
             this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(111, 30);
-            this.userNameLabel.TabIndex = 2;
-            this.userNameLabel.Text = "Username:";
-            this.userNameLabel.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordLabel.Location = new System.Drawing.Point(9, 268);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(105, 30);
-            this.passwordLabel.TabIndex = 3;
-            this.passwordLabel.Text = "Password:";
-            this.passwordLabel.Click += new System.EventHandler(this.label2_Click);
+            this.userNameLabel.Size = new System.Drawing.Size(128, 25);
+            this.userNameLabel.TabIndex = 1;
+            this.userNameLabel.Text = "UserName:";
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameTextBox.Location = new System.Drawing.Point(14, 231);
+            this.userNameTextBox.Location = new System.Drawing.Point(144, 247);
             this.userNameTextBox.Name = "userNameTextBox";
-            this.userNameTextBox.Size = new System.Drawing.Size(259, 35);
-            this.userNameTextBox.TabIndex = 4;
-            this.userNameTextBox.TextChanged += new System.EventHandler(this.userNameTextBox_TextChanged);
+            this.userNameTextBox.Size = new System.Drawing.Size(257, 20);
+            this.userNameTextBox.TabIndex = 2;
             // 
             // passwordTextbox
             // 
-            this.passwordTextbox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextbox.Location = new System.Drawing.Point(14, 302);
+            this.passwordTextbox.Location = new System.Drawing.Point(144, 311);
             this.passwordTextbox.Name = "passwordTextbox";
-            this.passwordTextbox.PasswordChar = '*';
-            this.passwordTextbox.Size = new System.Drawing.Size(259, 35);
-            this.passwordTextbox.TabIndex = 5;
-            this.passwordTextbox.UseSystemPasswordChar = true;
-            this.passwordTextbox.TextChanged += new System.EventHandler(this.passwordTextbox_TextChanged);
+            this.passwordTextbox.Size = new System.Drawing.Size(257, 20);
+            this.passwordTextbox.TabIndex = 4;
             // 
-            // signUpButton
+            // lblPassword
             // 
-            this.signUpButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.signUpButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signUpButton.Location = new System.Drawing.Point(196, 352);
-            this.signUpButton.Name = "signUpButton";
-            this.signUpButton.Size = new System.Drawing.Size(75, 38);
-            this.signUpButton.TabIndex = 6;
-            this.signUpButton.Text = "Signup";
-            this.signUpButton.UseVisualStyleBackColor = false;
-            this.signUpButton.Click += new System.EventHandler(this.signUpButton_Click);
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(14, 303);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(126, 25);
+            this.lblPassword.TabIndex = 3;
+            this.lblPassword.Text = "PassWord:";
             // 
-            // SplashScreen
+            // btnLogin
             // 
-            this.SplashScreen.Image = ((System.Drawing.Image)(resources.GetObject("SplashScreen.Image")));
-            this.SplashScreen.Location = new System.Drawing.Point(15, 12);
-            this.SplashScreen.Name = "SplashScreen";
-            this.SplashScreen.Size = new System.Drawing.Size(257, 179);
-            this.SplashScreen.TabIndex = 7;
-            this.SplashScreen.TabStop = false;
-            this.SplashScreen.Click += new System.EventHandler(this.SplashScreen_Click);
+            this.btnLogin.Location = new System.Drawing.Point(144, 377);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(85, 35);
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
             // 
-            // AuthProgBar
+            // btnCancel
             // 
-            this.AuthProgBar.Enabled = false;
-            this.AuthProgBar.Location = new System.Drawing.Point(16, 201);
-            this.AuthProgBar.Name = "AuthProgBar";
-            this.AuthProgBar.Size = new System.Drawing.Size(256, 23);
-            this.AuthProgBar.TabIndex = 8;
-            this.AuthProgBar.Visible = false;
-            this.AuthProgBar.Click += new System.EventHandler(this.progressBar1_Click);
+            this.btnCancel.Location = new System.Drawing.Point(316, 377);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(85, 35);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // errorProviderUserName
             // 
@@ -154,29 +112,21 @@
             // 
             this.errorProviderPassword.ContainerControl = this;
             // 
-            // loginForm
+            // Login
             // 
-            this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
-            this.CancelButton = this.cancelButton;
-            this.ClientSize = new System.Drawing.Size(289, 399);
-            this.Controls.Add(this.SplashScreen);
-            this.Controls.Add(this.signUpButton);
+            this.ClientSize = new System.Drawing.Size(534, 439);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.passwordTextbox);
+            this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.userNameTextBox);
-            this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameLabel);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.loginButton);
-            this.Controls.Add(this.AuthProgBar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "loginForm";
-            this.Text = "EventSparkz";
-            this.Load += new System.EventHandler(this.loginForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.SplashScreen)).EndInit();
+            this.Controls.Add(this.logoES);
+            this.Name = "Login";
+            this.Text = "_Login";
+            ((System.ComponentModel.ISupportInitialize)(this.logoES)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUserName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             this.ResumeLayout(false);
@@ -186,17 +136,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.PictureBox logoES;
         private System.Windows.Forms.Label userNameLabel;
-        private System.Windows.Forms.Label passwordLabel;
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.TextBox passwordTextbox;
-        private System.Windows.Forms.Button signUpButton;
-        private System.Windows.Forms.PictureBox SplashScreen;
-        private System.Windows.Forms.ProgressBar AuthProgBar;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.ErrorProvider errorProviderUserName;
         private System.Windows.Forms.ErrorProvider errorProviderPassword;
     }
 }
-

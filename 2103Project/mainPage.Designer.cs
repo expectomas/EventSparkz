@@ -1,6 +1,6 @@
 ﻿namespace _2103Project
 {
-    partial class mainPage
+    partial class MainPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,111 +28,201 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPage));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.lblEventsFor = new System.Windows.Forms.Label();
+            this.lblMyEvents = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnViewEvent = new System.Windows.Forms.Button();
+            this.lbViewEventListing = new System.Windows.Forms.ListBox();
+            this.btnCreateEvent = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.lbMyEvents = new System.Windows.Forms.ListBox();
+            this.ddlRole = new System.Windows.Forms.ComboBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Announcement:";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Futura Md", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(288, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(166, 35);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "EventSparkZ";
             // 
-            // label2
+            // dateTimePicker
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(10, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 30);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Welcome, ....";
+            this.dateTimePicker.Location = new System.Drawing.Point(122, 15);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker.TabIndex = 4;
             // 
-            // listView2
+            // lblEventsFor
             // 
-            this.listView2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView2.Location = new System.Drawing.Point(212, 83);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(187, 141);
-            this.listView2.TabIndex = 3;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.lblEventsFor.AutoSize = true;
+            this.lblEventsFor.Font = new System.Drawing.Font("Futura Md", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEventsFor.Location = new System.Drawing.Point(6, 10);
+            this.lblEventsFor.Name = "lblEventsFor";
+            this.lblEventsFor.Size = new System.Drawing.Size(105, 25);
+            this.lblEventsFor.TabIndex = 4;
+            this.lblEventsFor.Text = "Events For";
             // 
-            // label3
+            // lblMyEvents
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(209, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Reminder:";
+            this.lblMyEvents.AutoSize = true;
+            this.lblMyEvents.BackColor = System.Drawing.Color.Transparent;
+            this.lblMyEvents.Font = new System.Drawing.Font("Futura Md", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMyEvents.Location = new System.Drawing.Point(6, 10);
+            this.lblMyEvents.Name = "lblMyEvents";
+            this.lblMyEvents.Size = new System.Drawing.Size(103, 25);
+            this.lblMyEvents.TabIndex = 4;
+            this.lblMyEvents.Text = "My Events";
             // 
-            // button2
+            // btnLogout
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(212, 266);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(187, 30);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Register Event";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLogout.BackColor = System.Drawing.Color.Red;
+            this.btnLogout.Location = new System.Drawing.Point(647, 9);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "LogOut";
+            this.btnLogout.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // groupBox1
             // 
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(325, 8);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 30);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Logout";
-            this.button3.UseVisualStyleBackColor = true;
+            this.groupBox1.Controls.Add(this.dateTimePicker);
+            this.groupBox1.Controls.Add(this.lblEventsFor);
+            this.groupBox1.Location = new System.Drawing.Point(154, 41);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 40);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
             // 
-            // listView1
+            // groupBox2
             // 
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.Location = new System.Drawing.Point(15, 83);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(191, 213);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.groupBox2.Controls.Add(this.lblMyEvents);
+            this.groupBox2.Location = new System.Drawing.Point(488, 41);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(147, 38);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
             // 
-            // button1
+            // groupBox3
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(212, 230);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(187, 30);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Get Event Info";
-            this.button1.UseVisualStyleBackColor = true;
+            this.groupBox3.Controls.Add(this.btnViewEvent);
+            this.groupBox3.Controls.Add(this.lbViewEventListing);
+            this.groupBox3.Controls.Add(this.btnCreateEvent);
+            this.groupBox3.Controls.Add(this.tbSearch);
+            this.groupBox3.Location = new System.Drawing.Point(3, 80);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(479, 353);
+            this.groupBox3.TabIndex = 8;
+            this.groupBox3.TabStop = false;
             // 
-            // mainForm
+            // btnViewEvent
+            // 
+            this.btnViewEvent.Location = new System.Drawing.Point(321, 312);
+            this.btnViewEvent.Name = "btnViewEvent";
+            this.btnViewEvent.Size = new System.Drawing.Size(85, 35);
+            this.btnViewEvent.TabIndex = 12;
+            this.btnViewEvent.Text = "View Event";
+            this.btnViewEvent.UseVisualStyleBackColor = true;
+            // 
+            // lbViewEventListing
+            // 
+            this.lbViewEventListing.BackColor = System.Drawing.Color.White;
+            this.lbViewEventListing.FormattingEnabled = true;
+            this.lbViewEventListing.Location = new System.Drawing.Point(8, 37);
+            this.lbViewEventListing.Name = "lbViewEventListing";
+            this.lbViewEventListing.Size = new System.Drawing.Size(465, 264);
+            this.lbViewEventListing.TabIndex = 9;
+            // 
+            // btnCreateEvent
+            // 
+            this.btnCreateEvent.Location = new System.Drawing.Point(81, 312);
+            this.btnCreateEvent.Name = "btnCreateEvent";
+            this.btnCreateEvent.Size = new System.Drawing.Size(85, 35);
+            this.btnCreateEvent.TabIndex = 11;
+            this.btnCreateEvent.Text = "Create Event";
+            this.btnCreateEvent.UseVisualStyleBackColor = true;
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.BackColor = System.Drawing.Color.White;
+            this.tbSearch.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.tbSearch.Location = new System.Drawing.Point(9, 14);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(464, 20);
+            this.tbSearch.TabIndex = 10;
+            this.tbSearch.Text = "Enter an Event\'s Name...";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnDelete);
+            this.groupBox4.Controls.Add(this.lbMyEvents);
+            this.groupBox4.Controls.Add(this.ddlRole);
+            this.groupBox4.Location = new System.Drawing.Point(483, 79);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(239, 354);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(79, 313);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(85, 35);
+            this.btnDelete.TabIndex = 12;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // lbMyEvents
+            // 
+            this.lbMyEvents.BackColor = System.Drawing.Color.White;
+            this.lbMyEvents.FormattingEnabled = true;
+            this.lbMyEvents.Location = new System.Drawing.Point(6, 38);
+            this.lbMyEvents.Name = "lbMyEvents";
+            this.lbMyEvents.Size = new System.Drawing.Size(228, 264);
+            this.lbMyEvents.TabIndex = 11;
+            // 
+            // ddlRole
+            // 
+            this.ddlRole.FormattingEnabled = true;
+            this.ddlRole.Location = new System.Drawing.Point(6, 15);
+            this.ddlRole.Name = "ddlRole";
+            this.ddlRole.Size = new System.Drawing.Size(228, 21);
+            this.ddlRole.TabIndex = 10;
+            // 
+            // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(412, 306);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "mainForm";
-            this.Text = "Main Page";
+            this.ClientSize = new System.Drawing.Size(734, 439);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnLogout);
+            this.Controls.Add(this.lblTitle);
+            this.Name = "MainPage";
+            this.Text = "MainPage";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,14 +230,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label lblEventsFor;
+        private System.Windows.Forms.Label lblMyEvents;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnViewEvent;
+        private System.Windows.Forms.ListBox lbViewEventListing;
+        private System.Windows.Forms.Button btnCreateEvent;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.ListBox lbMyEvents;
+        private System.Windows.Forms.ComboBox ddlRole;
+
 
     }
 }
