@@ -23,7 +23,7 @@ namespace _2103Project
         /*Variables */
         bool userNameValid = false;
 
-        public loginForm(User incomingUser)
+        public loginForm()
         {
             InitializeComponent();
         }
