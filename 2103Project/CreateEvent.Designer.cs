@@ -151,6 +151,39 @@
             this.timeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.timeComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeComboBox.FormattingEnabled = true;
+            this.timeComboBox.Items.AddRange(new object[] {
+            "8.00a.m.",
+            "8.30a.m.",
+            "9.00a.m.",
+            "9.30a.m.",
+            "10.00a.m.",
+            "10.30a.m.",
+            "11.00a.m.",
+            "11.30a.m.",
+            "12.00p.m.",
+            "12.30p.m.",
+            "1.00p.m.",
+            "1.30p.m.",
+            "2.00p.m.",
+            "2.30p.m.",
+            "3.00p.m.",
+            "3.30p.m.",
+            "4.00p.m.",
+            "4.30p.m.",
+            "5.00p.m.",
+            "5.30p.m.",
+            "6.00p.m.",
+            "6.30p.m.",
+            "7.00p.m.",
+            "7.30p.m.",
+            "8.00p.m.",
+            "8.30p.m.",
+            "9.00p.m.",
+            "9.30p.m.",
+            "10.00p.m.",
+            "10.30p.m.",
+            "11.00p.m.",
+            "11.30p.m."});
             this.timeComboBox.Location = new System.Drawing.Point(311, 54);
             this.timeComboBox.Name = "timeComboBox";
             this.timeComboBox.Size = new System.Drawing.Size(100, 29);
@@ -169,6 +202,13 @@
             this.venueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.venueComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.venueComboBox.FormattingEnabled = true;
+            this.venueComboBox.Items.AddRange(new object[] {
+            "MPSH1",
+            "MPSH2",
+            "MPSH3",
+            "MPSH4",
+            "MPSH5",
+            "MPSH6"});
             this.venueComboBox.Location = new System.Drawing.Point(672, 54);
             this.venueComboBox.Name = "venueComboBox";
             this.venueComboBox.Size = new System.Drawing.Size(121, 29);
@@ -228,16 +268,18 @@
             // timeListBox
             // 
             this.timeListBox.FormattingEnabled = true;
-            this.timeListBox.Location = new System.Drawing.Point(311, 89);
+            this.timeListBox.Location = new System.Drawing.Point(311, 90);
             this.timeListBox.Name = "timeListBox";
+            this.timeListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.timeListBox.Size = new System.Drawing.Size(100, 173);
             this.timeListBox.TabIndex = 30;
             // 
             // descriptionListBox
             // 
             this.descriptionListBox.FormattingEnabled = true;
-            this.descriptionListBox.Location = new System.Drawing.Point(417, 89);
+            this.descriptionListBox.Location = new System.Drawing.Point(417, 90);
             this.descriptionListBox.Name = "descriptionListBox";
+            this.descriptionListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.descriptionListBox.Size = new System.Drawing.Size(250, 173);
             this.descriptionListBox.TabIndex = 31;
             // 
@@ -246,6 +288,7 @@
             this.venueListBox.FormattingEnabled = true;
             this.venueListBox.Location = new System.Drawing.Point(673, 89);
             this.venueListBox.Name = "venueListBox";
+            this.venueListBox.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.venueListBox.Size = new System.Drawing.Size(120, 173);
             this.venueListBox.TabIndex = 32;
             // 
