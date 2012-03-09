@@ -111,7 +111,7 @@ namespace _2103Project.Entities
             return true;
         }
 
-        public User login(string tokenUserName, string tokenPassWord){
+        public bool login(string tokenUserName, string tokenPassWord,ref User returningUser){
 
             bool auth = false;
             this.userName = tokenUserName;
@@ -158,9 +158,15 @@ namespace _2103Project.Entities
 
 
             if (auth)
-                return this;
+            {
+                returningUser = this;
+                return true;
+            }
             else
-                return null;
+            {
+                returningUser = null;
+                return false;
+            }
         }
 
         public bool logout()
