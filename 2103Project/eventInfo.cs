@@ -10,9 +10,11 @@ using _2103Project.Entities;
 
 namespace _2103Project
 {
-    private User currentUser;
+    
     public partial class eventInfoForm : Form
     {
+
+        private User currentUser;
         public eventInfoForm()
         {
             InitializeComponent();
