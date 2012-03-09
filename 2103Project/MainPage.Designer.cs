@@ -103,6 +103,7 @@
             this.logoutButton.TabIndex = 8;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // listView1
             // 
@@ -197,6 +198,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainPage";
             this.Text = "Main Page";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainPage_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
