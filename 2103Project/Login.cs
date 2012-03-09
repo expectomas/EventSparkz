@@ -18,9 +18,9 @@ namespace _2103Project
         //Variables
         bool validUser = false;
 
-        public void ThreadProc()
+        public void WelcomeScreenThreadProc()
         {
-            Application.Run(new mainPage(currentUser));
+            Application.Run(new welcomeForm(currentUser));
         }
 
         public loginForm(User incomingUser)
@@ -48,7 +48,7 @@ namespace _2103Project
             {
                 this.Close();
 
-                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc));
+                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(WelcomeScreenThreadProc));
                 t.Start();
             }
             else

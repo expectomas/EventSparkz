@@ -21,7 +21,7 @@ namespace _2103Project
             if (MessageBox.Show("Are you sure?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 currentUser.logout();
-                this.Close();
+                Application.Exit();
             }
         }
 

@@ -18,6 +18,7 @@ namespace _2103Project
         {
             Application.Run(new loginForm(new User()));
         }
+
         public void SignUpFormThreadProc()
         {
             Application.Run(new signupForm());

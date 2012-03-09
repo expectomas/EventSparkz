@@ -18,7 +18,7 @@ namespace _2103Project
             if (MessageBox.Show("Are you sure?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 currentUser.logout();
-                this.Close();
+                Application.Exit();
             }
         }
 
@@ -40,15 +40,11 @@ namespace _2103Project
         private void mainPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             Exit_Dialog();
-
-            this.Close();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
             Exit_Dialog();
-
-            this.Close();
         }
     }
 }

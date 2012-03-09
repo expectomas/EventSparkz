@@ -85,6 +85,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "welcomeForm";
             this.Text = "Welcome";
+            this.Load += new System.EventHandler(this.welcomeForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.SplashScreen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

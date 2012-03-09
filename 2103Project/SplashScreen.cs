@@ -6,15 +6,33 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 using _2103Project.Entities;
+
 namespace _2103Project
 {
     public partial class welcomeForm : Form
     {
         private User currentUser;
-        public welcomeForm()
+
+        public void MainPageThreadProc()
+        {
+            Application.Run(new mainPage(currentUser));
+        }
+
+        public welcomeForm(User incomingUser)
         {
             InitializeComponent();
+
+            currentUser = incomingUser;
+        }
+
+        private void welcomeForm_Shown(object sender, EventArgs e)
+        {
+            this.Close();
+
+            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(MainPageThreadProc));
+            t.Start();
         }
     }
 }
