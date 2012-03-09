@@ -25,7 +25,7 @@ namespace _2103Project
 
             //f.Close();
 
-            Application.Run(new Login(new Entities.User()));
+            Application.Run(new loginForm(new Entities.User()));
         }
     }
 }
