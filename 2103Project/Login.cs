@@ -38,7 +38,9 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            validUser = currentUser.login(userNameTextBox.Text, passwordTextbox.Text,ref currentUser);
+
+            //testing
+            validUser = currentUser.login("tiow11", "123456", ref currentUser);
 
             if (validUser)
             {

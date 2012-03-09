@@ -210,7 +210,7 @@ namespace _2103Project.Action
 
             try
             {
-                using (XmlWriter writer = XmlTextWriter.Create("sample_events.xml", writerSettings))
+                using (XmlWriter writer = XmlTextWriter.Create("events.xml", writerSettings))
                 {
                     writer.WriteStartDocument();
 
