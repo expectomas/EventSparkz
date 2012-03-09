@@ -12,9 +12,12 @@ namespace _2103Project
     public partial class mainPage : Form
     {
         private User currentUser;
-        public mainPage()
+
+        public mainPage( User incomingUser)
         {
             InitializeComponent();
+
+            currentUser = incomingUser;
         }
     }
 }

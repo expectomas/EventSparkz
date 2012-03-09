@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using _2103Project.Entities;
 
 namespace _2103Project
 {
@@ -18,7 +19,7 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            loginForm login = new loginForm();
+            loginForm login = new loginForm(new User());
             login.Show();
         }
 

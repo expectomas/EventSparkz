@@ -15,17 +15,16 @@ namespace _2103Project
         //Current User of this Form
         private User currentUser;
 
-        public static void ThreadProc()
+        public void ThreadProc()
         {
-            Application.Run(new mainPage());
+            Application.Run(new mainPage(currentUser));
         }
 
-        /*Variables */
-        bool userNameValid = false;
-
-        public loginForm()
+        public loginForm(User incomingUser)
         {
             InitializeComponent();
+
+            currentUser = incomingUser;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -40,11 +39,9 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            User newUser = new User();
+            currentUser = currentUser.login(userNameTextBox.Text, passwordTextbox.Text);
 
-            userNameValid  = newUser.login(userNameTextBox.Text, passwordTextbox.Text);
-
-            if (userNameValid)
+            if (currentUser!=null)
             {
                 this.Close();
 
@@ -65,22 +62,6 @@ namespace _2103Project
 
         private void userNameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (userNameTextBox.TextLength > 7)
-            {
-                if (!(userNameTextBox.Text.ToString().Contains("nusstu\\") || userNameTextBox.Text.ToString().Contains("NUSSTU\\")
-                    || userNameTextBox.Text.ToString().Contains("nusstf\\") || userNameTextBox.Text.ToString().Contains("NUSSTF\\")))
-                {
-                    errorProviderUserName.SetError(userNameLabel, "Indicate domain, eg. NUSSTU\\A1234567W");
-                    userNameValid = false;
-                }
-                else
-                    errorProviderUserName.Clear();
-            }
-            else
-            {
-                userNameValid = false;
-                errorProviderUserName.Clear();
-            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -95,9 +76,9 @@ namespace _2103Project
 
         private void passwordTextbox_TextChanged(object sender, EventArgs e)
         {
-            if (passwordTextbox.TextLength < 8)
+            if (passwordTextbox.TextLength < 6)
             {
-                errorProviderPassword.SetError(this, "Please Enter a Password of length more than 8 characters");
+                errorProviderPassword.SetError(this, "Please Enter a Password of length more than 6 characters");
             }
             else
             {
