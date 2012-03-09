@@ -50,23 +50,11 @@
     <Compile Include="Action\Database.cs" />
     <Compile Include="Action\DatabaseInterface.cs" />
     <Compile Include="Action\XMLFileAuth.cs" />
-    <Compile Include="addEditBudget.cs">
+    <Compile Include="createEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="addEditBudget.Designer.cs">
-      <DependentUpon>addEditBudget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="admin.Designer.cs">
-      <DependentUpon>admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="attendance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="attendance.Designer.cs">
-      <DependentUpon>attendance.cs</DependentUpon>
+    <Compile Include="createEvent.Designer.cs">
+      <DependentUpon>createEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\ActiveUser.cs" />
     <Compile Include="Entities\Activity.cs" />
@@ -83,23 +71,11 @@
     <Compile Include="eventInfo.Designer.cs">
       <DependentUpon>eventInfo.cs</DependentUpon>
     </Compile>
-    <Compile Include="eventOrginanizer.cs">
+    <Compile Include="EventSparkz.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="eventOrginanizer.Designer.cs">
-      <DependentUpon>eventOrginanizer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="facilitator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="facilitator.Designer.cs">
-      <DependentUpon>facilitator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="mainPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mainPage.Designer.cs">
-      <DependentUpon>mainPage.cs</DependentUpon>
+    <Compile Include="EventSparkz.Designer.cs">
+      <DependentUpon>EventSparkz.cs</DependentUpon>
     </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
@@ -107,43 +83,28 @@
     <Compile Include="login.Designer.cs">
       <DependentUpon>login.cs</DependentUpon>
     </Compile>
+    <Compile Include="mainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mainPage.Designer.cs">
+      <DependentUpon>mainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Config\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SplashImageForm.cs">
+    <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashImageForm.Designer.cs">
-      <DependentUpon>SplashImageForm.cs</DependentUpon>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="trackBudget.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="trackBudget.Designer.cs">
-      <DependentUpon>trackBudget.cs</DependentUpon>
-    </Compile>
-    <Compile Include="venuePage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="venuePage.Designer.cs">
-      <DependentUpon>venuePage.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="addEditBudget.resx">
-      <DependentUpon>addEditBudget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="admin.resx">
-      <DependentUpon>admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="attendance.resx">
-      <DependentUpon>attendance.cs</DependentUpon>
+    <EmbeddedResource Include="createEvent.resx">
+      <DependentUpon>createEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="eventInfo.resx">
       <DependentUpon>eventInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="eventOrginanizer.resx">
-      <DependentUpon>eventOrginanizer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="facilitator.resx">
-      <DependentUpon>facilitator.cs</DependentUpon>
+    <EmbeddedResource Include="EventSparkz.resx">
+      <DependentUpon>EventSparkz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
@@ -160,14 +121,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SplashImageForm.resx">
-      <DependentUpon>SplashImageForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="trackBudget.resx">
-      <DependentUpon>trackBudget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="venuePage.resx">
-      <DependentUpon>venuePage.cs</DependentUpon>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
