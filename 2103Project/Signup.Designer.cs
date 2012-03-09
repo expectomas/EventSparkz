@@ -228,6 +228,7 @@
             // 
             this.homeTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homeTextBox.Location = new System.Drawing.Point(197, 297);
+            this.homeTextBox.MaxLength = 8;
             this.homeTextBox.Name = "homeTextBox";
             this.homeTextBox.Size = new System.Drawing.Size(169, 35);
             this.homeTextBox.TabIndex = 24;
@@ -249,6 +250,7 @@
             this.signupButton.TabIndex = 26;
             this.signupButton.Text = "Confirm Signup";
             this.signupButton.UseVisualStyleBackColor = true;
+            this.signupButton.Click += new System.EventHandler(this.signupButton_Click_1);
             // 
             // signupForm
             // 
