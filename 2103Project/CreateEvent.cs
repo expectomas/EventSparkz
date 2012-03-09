@@ -52,6 +52,7 @@ namespace _2103Project
                 Organiser org = new Organiser();
                 Activity newAct; Venue ven;
                 DateTime time;
+                List<Activity> listOfActivity = new List<Activity>();
                 for (int i = 0; i < timeListBox.Items.Count; i++)
                 {
                     time = returnTime(timeListBox.Items[i].ToString(), startTimePicker.Value);
@@ -59,8 +60,10 @@ namespace _2103Project
                     ven = new Venue(newVenueID, venueListBox.Items[i].ToString());
                     int newActivityID = org.getNewActivityId();
                     newAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString() ,ven);
+                    listOfActivity.Add(newAct);
                     org.addNewActivity(newAct);
                 }
+                Schedule newSchedule = 
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();
