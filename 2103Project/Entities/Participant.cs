@@ -98,7 +98,7 @@ namespace _2103Project.Entities
             return eventRegistered;
         }
 
-        public bool cancelEventRegistration(EventEntity unInterestedEvent)
+        public bool cancelEventRegistration(int unInterestedEventId)
         {
             bool eventCancelled = false;
 
@@ -109,7 +109,7 @@ namespace _2103Project.Entities
 
             foreach (EventEntity accessEvent in currentEvents)
             {
-                if (accessEvent.Equals(unInterestedEvent))
+                if (accessEvent.getEventId().Equals(unInterestedEventId))
                 {
                     accessEvent.removeParticipantFromEvent(this);
                     eventCancelled = true;
@@ -119,6 +119,7 @@ namespace _2103Project.Entities
             //Save all events back into database
 
             db.saveListOfEvents(currentEvents);
+
             return eventCancelled;
         }
 
