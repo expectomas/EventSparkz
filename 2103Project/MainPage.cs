@@ -258,17 +258,17 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 ListViewItem listItem = this.listMainEventView.SelectedItems[0];
                 currentEventID = int.Parse(listItem.SubItems[1].Text);
-               eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+                eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
                 eventInfoPage.Show();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("Please select your event. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("Please select your event. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void eventCatComboBox_SelectedIndexChanged(object sender, EventArgs e)

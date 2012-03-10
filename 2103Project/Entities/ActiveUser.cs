@@ -134,11 +134,11 @@ namespace _2103Project.Entities
             List<EventEntity> list = new List<EventEntity>();
             int[] flag = new int[eventListing.Count];   // To trace priority of search result
 
-            word.Trim();    // Remove all leading and trailing white-space characters
-            word.ToLower(); // Convert all characters to lowercase characters
+            word = word.Trim();    // Remove all leading and trailing white-space characters
+            word = word.ToLower(); // Convert all characters to lowercase characters
 
             // Check if word is empty
-            if (word == null)
+            if (word == null || word == "")
             {
                 throw new System.ApplicationException("Please type an event name");
             }
@@ -148,12 +148,20 @@ namespace _2103Project.Entities
             for(int i=0; i<eventListing.Count; i++)
             {
                 temp = eventListing[i].getEventName().ToLower();
+                           
+                // Check if search text > event's name
+                if (word.Length > temp.Length)
+                {
+                    break;  
+                }
+                //
 
                 // Compare if eventnames match with 'word'
                 if (temp == word)
                 {
                     list.Add(eventListing[i]);
                     flag[i] = 1;
+                    break;
                 }
                 //
 
@@ -162,16 +170,18 @@ namespace _2103Project.Entities
                 {
                     list.Add(eventListing[i]);
                     flag[i] = 2;
+                    break;
                 }
                 //
 
                 // Compare 'word' with eventnames' first word.Length-1 characters
-                if(temp.Substring(0,word.Length-1) == word)
+                if(temp.Substring(0,word.Length) == word)
                 {
                     list.Add(eventListing[i]);
                     flag[i] = 3;
+                    break;
                 }
-                //
+                //%
             }
             //
 

@@ -110,5 +110,69 @@ namespace _2103Project.Entities
         {
             return new List<EventEntity>(facilitatingEvents);
         }
+
+        public bool joinEvent(int eventId)
+        {
+            bool succeededJoiningEvent = false;
+
+            Database db = Database.CreateDatabase(DatabaseToken);
+
+            List<EventEntity> obtainedAllEvents = db.getListOfEvents();
+
+
+            //One for updating the event list and inserting that event into the facilitatingEvent
+            for (int i = 0; i < obtainedAllEvents.Count; i++)
+            {
+                EventEntity checkingEvent = obtainedAllEvents[i];
+
+                if (checkingEvent.getEventId() == eventId)
+                {
+                    obtainedAllEvents[i].addFacilitatorToEvent(userId);
+                    facilitatingEvents.Add(checkingEvent);
+                    succeededJoiningEvent = true;
+                }
+            }
+
+            db.saveListOfEvents(obtainedAllEvents);
+
+            return succeededJoiningEvent;
+        }
+
+        public bool cancelJoinEvent(int eventId)
+        {
+            bool succeededLeavingEvent = false;
+
+            Database db = Database.CreateDatabase(DatabaseToken);
+
+            List<EventEntity> obtainedAllEvents = db.getListOfEvents();
+
+            //One for updating the event list and inserting that event into the facilitatingEvent
+            for (int i = 0; i < obtainedAllEvents.Count; i++)
+            {
+                EventEntity checkingEvent = obtainedAllEvents[i];
+
+                if (checkingEvent.getEventId() == eventId)
+                {
+                    obtainedAllEvents[i].removeFacilitatorFromEvent(userId);
+                    succeededLeavingEvent = true;
+                }
+            }
+
+            db.saveListOfEvents(obtainedAllEvents);
+
+            //Update facilitator's list
+            for (int i = 0; i < facilitatingEvents.Count; i++)
+            {
+                EventEntity removingEvent = facilitatingEvents[i];
+
+                if (removingEvent.getEventId() == eventId)
+                {
+                    facilitatingEvents.RemoveAt(i);
+                }
+            }
+
+
+            return succeededLeavingEvent;
+        }
     }
 }
