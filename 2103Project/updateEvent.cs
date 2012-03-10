@@ -74,7 +74,6 @@ namespace _2103Project
                 {
                     MessageBox.Show("Please edit your schedule properly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
             }
         }
 
