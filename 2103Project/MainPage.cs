@@ -16,16 +16,30 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
         private int currentEventID;
+        //Initiatisation
+
         public mainPage(User incomingUser)
         {
             InitializeComponent();
 
             currentUser = incomingUser;
+
+            //Initialised Dynamic Controls
+            initSideDDL();
         }
         
         public static void ThreadProc()
         {
             Application.Run(new loginForm(null));
+        }
+
+        public void populateRegisteredEvent()
+        {
+            if (currentUser != null)
+            {
+                
+
+            }
         }
 
         private void Exit_Dialog()
@@ -43,10 +57,30 @@ namespace _2103Project
         public void initEventList()
         {
             this.listView1.Hide();
-            this.listView1.Columns.Insert(0, "No.",50 , HorizontalAlignment.Left);
+
+            //Clear ListBox Column and Items
+            this.listView1.Columns.Clear();
+            this.listView1.Items.Clear();
+
+
+            this.listView1.Columns.Insert(0, "Id",50 , HorizontalAlignment.Left);
             this.listView1.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
             this.listView1.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
             this.listView1.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
+        }
+
+        public void initSideDDL()
+        {
+            eventCatComboBox.Hide();
+            eventCatComboBox.Items.Clear();
+
+            eventCatComboBox.Items.Insert(0,"Registered Event");
+            eventCatComboBox.Items.Insert(1,"Created Event");
+            eventCatComboBox.Items.Insert(2, "Facilitator List");
+            eventCatComboBox.SelectedIndex = 0;
+
+            eventCatComboBox.Show();
+
         }
 
         public void displayEventList()
@@ -117,6 +151,7 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser);
             ListViewItem listItem = listView1.SelectedItems[0];
             currentEventID = int.Parse(listItem.SubItems[0].Text);
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);

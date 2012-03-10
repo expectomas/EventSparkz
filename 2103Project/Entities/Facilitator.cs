@@ -29,6 +29,8 @@ namespace _2103Project.Entities
             loggedIn = copyingUser.getLoggedIn();
             contactHome = copyingUser.getContactHome();
             contactHP = copyingUser.getContactHP();
+
+            loadAllJoinedEvents();
         }
         
         public Facilitator(int i_userId, string i_userName, string i_name, string i_matricNo, string i_password,
@@ -48,7 +50,7 @@ namespace _2103Project.Entities
 
         //Methods
 
-        private bool loadAllRegisteredEvents()
+        private bool loadAllJoinedEvents()
         {
             Database db = Database.CreateDatabase(DatabaseToken);
 
@@ -102,6 +104,11 @@ namespace _2103Project.Entities
             }
 
             return allParticipant;
+        }
+
+        public List<EventEntity> getFacilitatedEvents()
+        {
+            return new List<EventEntity>(facilitatingEvents);
         }
     }
 }

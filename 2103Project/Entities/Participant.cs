@@ -33,6 +33,8 @@ namespace _2103Project.Entities
             loggedIn = copyingUser.getLoggedIn();
             contactHome = copyingUser.getContactHome();
             contactHP = copyingUser.getContactHP();
+
+            loadAllRegisteredEvents();
         }
 
         public Participant(int i_userId, string i_userName, string i_name, string i_matricNo, string i_password,
@@ -118,6 +120,11 @@ namespace _2103Project.Entities
 
             db.saveListOfEvents(currentEvents);
             return eventCancelled;
+        }
+
+        public List<EventEntity> getRegisteredEvents()
+        {
+            return new List<EventEntity>(registeredEvents);
         }
     }
 }
