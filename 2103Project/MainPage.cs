@@ -172,6 +172,11 @@ namespace _2103Project
             return MessageBox.Show("Are you sure you would like to cancel the event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
+        private bool Facilitator_Leave_SideBar_Dialog()
+        {
+            return MessageBox.Show("Are you sure you would like to opt out of the event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
         //Actions
 
         public void displayMainEventList()
@@ -351,7 +356,21 @@ namespace _2103Project
 
         private void leaveBtn_KeyDown(object sender, KeyEventArgs e)
         {
+            //Facilitator leave event 
+            int facilitatorCancellingEventId = -1;
 
+            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+            facilitatorCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+            Facilitator facilitator = new Facilitator(currentUser);
+
+            if (facilitatorCancellingEventId > 0)
+            {
+                if (Facilitator_Leave_SideBar_Dialog())
+                {
+                    facilitator.cancelJoinEvent(facilitatorCancellingEventId);
+                }
+            }
         }
 
     }
