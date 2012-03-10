@@ -293,6 +293,21 @@ namespace _2103Project.Entities
             return name;
         }
 
+        public static int getIDfromName(string userName)
+        {
+            int userID=-1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<User> listOfUsers = db.getListOfUsers();
+            foreach (User checkUser in listOfUsers)
+            {
+                if (userName == checkUser.getName())
+                {
+                    userID = checkUser.getUserId();
+                }
+            }
+            return userID;
+        }
+
         public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
                     ref string i_email, ref int i_age, ref bool i_loggedIn, ref double i_contactHome, ref double i_contactHP, string purpose)
         {

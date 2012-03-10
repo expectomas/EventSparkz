@@ -49,6 +49,7 @@
             this.timeListBox = new System.Windows.Forms.ListBox();
             this.descriptionListBox = new System.Windows.Forms.ListBox();
             this.venueListBox = new System.Windows.Forms.ListBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // label1
@@ -292,13 +293,21 @@
             this.venueListBox.Size = new System.Drawing.Size(120, 173);
             this.venueListBox.TabIndex = 32;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(304, 9);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(496, 312);
+            this.groupBox1.TabIndex = 33;
+            this.groupBox1.TabStop = false;
+            // 
             // createEventForm
             // 
             this.AcceptButton = this.createButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(812, 325);
+            this.ClientSize = new System.Drawing.Size(814, 326);
             this.Controls.Add(this.venueListBox);
             this.Controls.Add(this.descriptionListBox);
             this.Controls.Add(this.timeListBox);
@@ -319,6 +328,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.eventNameTextBox);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "createEventForm";
@@ -352,6 +362,7 @@
         private System.Windows.Forms.ListBox timeListBox;
         private System.Windows.Forms.ListBox descriptionListBox;
         private System.Windows.Forms.ListBox venueListBox;
+        private System.Windows.Forms.GroupBox groupBox1;
        
     }
 }

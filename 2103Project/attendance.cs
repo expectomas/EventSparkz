@@ -14,6 +14,7 @@ namespace _2103Project
     {
         private int currentEventID;
         private User currentUser;
+
         public attendanceForm(User currentUser, int incomingEventID)
         {
             this.currentUser = currentUser;
@@ -23,11 +24,11 @@ namespace _2103Project
 
         private void attendanceForm_Load(object sender, EventArgs e)
         {
-            List<Participant> listofPaticipant = new List<Participant>();
+            List<Participant> listofParticipant = new List<Participant>();
             EventEntity newEve = Facilitator.getEventEntity(currentEventID);
             Facilitator fac = new Facilitator(currentUser);
-            listofPaticipant = fac.viewParticipantList(newEve);
-            foreach (Participant partUser in listofPaticipant)
+            listofParticipant = fac.viewParticipantList(newEve);
+            foreach (Participant partUser in listofParticipant)
             {
                 participantListBox.Items.Add(partUser.getName());
             }

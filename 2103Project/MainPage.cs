@@ -224,31 +224,39 @@ namespace _2103Project
 
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
-            this.listMainEventView.Items.Clear();
-            int i;
+            searchEventTextBox.Text = searchEventTextBox.Text.Trim();
 
-            ActiveUser userRole = new ActiveUser(currentUser);
-
-            //List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
-            
-            //Testing 
-            Database db = Database.CreateDatabase("cd#ew1Tf");
-            List<EventEntity> testing = db.getListOfEvents();
-
-            for (i = 0; i < testing.Count; i++)
+            if (searchEventTextBox.Text == "")
             {
-                EventEntity outputEvent = testing[i];
-
-                ListViewItem newEvent = new ListViewItem((i + 1).ToString());
-                newEvent.SubItems.Add(outputEvent.getEventId().ToString());
-                newEvent.SubItems.Add(outputEvent.getEventName());
-                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
-                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
-
-                listMainEventView.Items.Add(newEvent);
+                MessageBox.Show("Please type in an event name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            displayMainEventList();
+            else
+            {
+                this.listMainEventView.Items.Clear();
+                int i;
+
+                ActiveUser userRole = new ActiveUser(currentUser);
+
+                List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
+
+                Database db = Database.CreateDatabase("cd#ew1Tf");
+
+                for (i = 0; i < outputEventListing.Count; i++)
+                {
+                    EventEntity outputEvent = outputEventListing[i];
+
+                    ListViewItem newEvent = new ListViewItem((i + 1).ToString());
+                    newEvent.SubItems.Add(outputEvent.getEventId().ToString());
+                    newEvent.SubItems.Add(outputEvent.getEventName());
+                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
+                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
+
+                    listMainEventView.Items.Add(newEvent);
+                }
+
+                displayMainEventList();
+            }
         }
 
         private void organiserEditButton_Click(object sender, EventArgs e)
@@ -342,11 +350,16 @@ namespace _2103Project
 
         private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && searchEventTextBox.Text == "Search Your Event Here") ;
+            if (e.Button == MouseButtons.Left && searchEventTextBox.Text == "Search Your Event Here")
             {
                 searchEventTextBox.Clear();
                 searchEventTextBox.Focus();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
 

@@ -56,7 +56,7 @@ namespace _2103Project.Entities
             //
 
             return temp[selectedEventIndex];
-        }   // Done, Not Tested
+        } 
 
         public List<EventEntity> viewEventListing()
         {
@@ -82,7 +82,7 @@ namespace _2103Project.Entities
             //
 
             return eventListing;
-        }   // Done, Not Tested
+        }   
 
         public List<EventEntity> viewEventListingByDate(DateTime selectedDateTime)
         {
@@ -125,7 +125,7 @@ namespace _2103Project.Entities
             //
 
             return eventListing;
-        }   // Done, Not Tested
+        }   
 
         public List<EventEntity> viewEventListingByEventName(string word)
         {
@@ -140,6 +140,7 @@ namespace _2103Project.Entities
             // Filter by Event Name in search priority: (1)FullMatch (2)WordMatch (3)CharactersMatch
             for (int i = 0; i < eventListing.Count; i++)
             {
+                bool found = false; // If an event in eventListing matches the search field, 'found' is set
                 temp = eventListing[i].getEventName().ToLower();
 
                 // Check if search text > event's name
@@ -150,16 +151,16 @@ namespace _2103Project.Entities
                 //
 
                 // Compare if eventnames match with 'word'
-                if (temp == word)
+                if (temp == word && found == false)
                 {
                     list.Add(eventListing[i]);
                     flag[i] = 1;
-                    break;
+                    found = true;
                 }
                 //
 
                 // Compare words in eventnames separated by white-spaces with 'word'
-                if (temp.Contains(" ")) // If event name has words separated by white-spaces
+                if (temp.Contains(" ") && found == false) // If event name has words separated by white-spaces
                 {
                     string[] result = temp.Split(separator, StringSplitOptions.RemoveEmptyEntries); // Compare if each word in the event name equals to 'word'
 
@@ -169,19 +170,19 @@ namespace _2103Project.Entities
                         {
                             list.Add(eventListing[i]);
                             flag[i] = 2;
+                            found = true;
                             break;
                         }
                     }
-                    break;
                 }
                 //
 
                 // Compare 'word' with eventnames' first word.Length-1 characters
-                if (temp.Substring(0, word.Length) == word)
+                if (temp.Substring(0, word.Length) == word && found == false)
                 {
                     list.Add(eventListing[i]);
                     flag[i] = 3;
-                    break;
+                    found = true;
                 }
                 //%
             }
@@ -217,6 +218,6 @@ namespace _2103Project.Entities
             //
 
             return list;
-        }   // Done, Not Tested
+        }   
     }
 }
