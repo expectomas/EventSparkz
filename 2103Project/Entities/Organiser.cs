@@ -10,7 +10,7 @@ namespace _2103Project.Entities
     class Organiser : ActiveUser
     {
         //Attributes
-        private List<EventEntity> Bookings;
+        private List<EventEntity> createdEvents;
 
         // Constructor
         public Organiser()
@@ -45,7 +45,7 @@ namespace _2103Project.Entities
 
             List<EventEntity> obtainedEvents = db.getListOfEvents();
 
-            Bookings = new List<EventEntity>();
+            createdEvents = new List<EventEntity>();
 
             EventEntity currentEntity;
 
@@ -54,7 +54,7 @@ namespace _2103Project.Entities
                 currentEntity = obtainedEvents[i];
 
                 if (currentEntity.doesOrganiserExist(userId))
-                    Bookings.Add(currentEntity);
+                    createdEvents.Add(currentEntity);
             }
 
             return true;
@@ -64,8 +64,14 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> eventList = db.getListOfEvents();
+
+            //Add event into the database
             eventList.Add(events);
             db.saveListOfEvents(eventList);
+
+            //Add event into Organiser's own list
+            createdEvents.Add(events);
+
             return true;
         }
 
@@ -141,6 +147,7 @@ namespace _2103Project.Entities
         {
             bool eventCancelled = false;
 
+            //Update Database
             Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> eventList = db.getListOfEvents();
             List<EventEntity> newEventList = new List<EventEntity>();
@@ -152,6 +159,17 @@ namespace _2103Project.Entities
             }
 
             db.saveListOfEvents(newEventList);
+
+
+            //Update Orgniser's own list
+            for(int i =0;i<createdEvents.Count;i++)
+            {
+                EventEntity deregisteringEvent = createdEvents[i];
+
+                if (deregisteringEvent.getEventId() == selectedEventId)
+                    createdEvents.RemoveAt(i);
+            }
+
             return !eventCancelled;
         }
 
@@ -165,7 +183,7 @@ namespace _2103Project.Entities
 
         public List<EventEntity> getOrganisedEvents()
         {
-            return new List<EventEntity>(Bookings);
+            return new List<EventEntity>(createdEvents);
         }
 
     }
