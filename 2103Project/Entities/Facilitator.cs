@@ -146,7 +146,6 @@ namespace _2103Project.Entities
 
             List<EventEntity> obtainedAllEvents = db.getListOfEvents();
 
-
             //One for updating the event list and inserting that event into the facilitatingEvent
             for (int i = 0; i < obtainedAllEvents.Count; i++)
             {
@@ -154,13 +153,24 @@ namespace _2103Project.Entities
 
                 if (checkingEvent.getEventId() == eventId)
                 {
-                    obtainedAllEvents[i].addFacilitatorToEvent(userId);
-                    facilitatingEvents.Add(checkingEvent);
+                    obtainedAllEvents[i].removeFacilitatorFromEvent(userId);
                     succeededLeavingEvent = true;
                 }
             }
 
             db.saveListOfEvents(obtainedAllEvents);
+
+            //Update facilitator's list
+            for (int i = 0; i < facilitatingEvents.Count; i++)
+            {
+                EventEntity removingEvent = facilitatingEvents[i];
+
+                if (removingEvent.getEventId() == eventId)
+                {
+                    facilitatingEvents.RemoveAt(i);
+                }
+            }
+
 
             return succeededLeavingEvent;
         }
