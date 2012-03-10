@@ -147,7 +147,7 @@
             // 
             // cancelEditButton
             // 
-            this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.cancelEditButton.Location = new System.Drawing.Point(590, 450);
             this.cancelEditButton.Name = "cancelEditButton";
             this.cancelEditButton.Size = new System.Drawing.Size(90, 30);

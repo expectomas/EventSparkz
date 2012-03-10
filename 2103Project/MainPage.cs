@@ -95,7 +95,7 @@ namespace _2103Project
             //Insert Date and EventId Column
             this.listSideEventView.Columns.Insert(0, "Id", 0, HorizontalAlignment.Left);
             this.listSideEventView.Columns.Insert(1, "Date", 80, HorizontalAlignment.Center);
-            this.listSideEventView.Columns.Insert(2, "Event", 100, HorizontalAlignment.Left);
+            this.listSideEventView.Columns.Insert(2, "Event", 200, HorizontalAlignment.Left);
 
             List<EventEntity> sideBarEventListing;
 
@@ -312,8 +312,13 @@ namespace _2103Project
 
             Organiser organiser = new Organiser(currentUser);
 
-            if(organiserCancellingEventId!=-1)
-                organiser.cancelEvent(organiserCancellingEventId);
+            if (organiserCancellingEventId != -1)
+            {
+                if (Organiser_Cancel_SideBar_Dialog())
+                {
+                    organiser.cancelEvent(organiserCancellingEventId);
+                }
+            }
         }
 
         private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
