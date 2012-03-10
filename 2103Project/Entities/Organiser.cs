@@ -137,18 +137,20 @@ namespace _2103Project.Entities
             return newScheduleID;
         }
 
-        public bool cancelEvent(string selectedEventName, User selectedOrganiser)
+        public bool cancelEvent(int selectedEventId)
         {
             bool eventCancelled = false;
 
             Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> eventList = db.getListOfEvents();
             List<EventEntity> newEventList = new List<EventEntity>();
+
             foreach (EventEntity events in eventList)
             {
-                if (!(selectedEventName.Equals(events.getEventName()) && selectedOrganiser.getUserId() == events.getOrganiserID()))
+                if (!(selectedEventId.Equals(events.getEventId()) && userId == events.getOrganiserID()))
                     newEventList.Add(events);
             }
+
             db.saveListOfEvents(newEventList);
             return !eventCancelled;
         }
