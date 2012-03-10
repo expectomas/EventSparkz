@@ -69,6 +69,22 @@ namespace _2103Project.Entities
             return true;
         }
 
+        public static EventEntity getEventEntity(int eventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+
+            List<EventEntity> listOfEventEntity = new List<EventEntity>();
+            EventEntity returnEve = new EventEntity();
+            foreach (EventEntity eve in listOfEventEntity)
+            {
+                if (eventID == eve.getEventId())
+                {
+                    returnEve = eve;
+                }
+            }
+            return returnEve;
+        }
+
         public List<Participant> viewParticipantList(EventEntity thisEvent)
         {
             int i = 0;

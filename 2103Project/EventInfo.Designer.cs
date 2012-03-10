@@ -276,6 +276,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "eventInfoForm";
             this.Text = "Event Info";
+            this.Load += new System.EventHandler(this.eventInfoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

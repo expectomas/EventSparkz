@@ -15,7 +15,7 @@ namespace _2103Project
     {
         private User currentUser;
         private bool LogoutPressed = false;
-
+        private int currentEventID;
         //Initiatisation
 
         public mainPage(User incomingUser)
@@ -212,9 +212,14 @@ namespace _2103Project
 
         }
 
+       
+
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser);
+            ListViewItem listItem = listView1.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[0].Text);
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
     }

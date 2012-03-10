@@ -14,16 +14,28 @@ namespace _2103Project
     public partial class eventInfoForm : Form
     {
         private User currentUser;
-
-        public eventInfoForm(User incomingUser)
+        private int currentEventID;
+        public eventInfoForm(User incomingUser, int incomingEventID)
         {
             currentUser = incomingUser;
+            currentEventID = incomingEventID;
             InitializeComponent();
         }
 
         private void viewParticipantButton_Click(object sender, EventArgs e)
         {
+
+            attendanceForm att = new attendanceForm(currentUser, currentEventID);
+            att.Show();
+        }
+
+        private void eventInfoForm_Load(object sender, EventArgs e)
+        {
+            EventEntity newEve = Facilitator.getEventEntity(currentEventID);
+            titleLabel.Text = newEve.getEventName();
             
+            int organiserID = newEve.getOrganiserID();
+             
         }
     }
 }
