@@ -23,6 +23,9 @@ namespace _2103Project
             InitializeComponent();
 
             currentUser = incomingUser;
+
+            //Initialised Dynamic Controls
+            initSideDDL();
         }
         
         public static void ThreadProc()
@@ -64,6 +67,20 @@ namespace _2103Project
             this.listView1.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
             this.listView1.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
             this.listView1.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
+        }
+
+        public void initSideDDL()
+        {
+            eventCatComboBox.Hide();
+            eventCatComboBox.Items.Clear();
+
+            eventCatComboBox.Items.Insert(0,"Registered Event");
+            eventCatComboBox.Items.Insert(1,"Created Event");
+            eventCatComboBox.Items.Insert(2, "Facilitator List");
+            eventCatComboBox.SelectedIndex = 0;
+
+            eventCatComboBox.Show();
+
         }
 
         public void displayEventList()

@@ -135,10 +135,6 @@
             this.eventCatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.eventCatComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eventCatComboBox.FormattingEnabled = true;
-            this.eventCatComboBox.Items.AddRange(new object[] {
-            "Registered Event",
-            "Created Event",
-            "Facilitator List"});
             this.eventCatComboBox.Location = new System.Drawing.Point(536, 92);
             this.eventCatComboBox.Name = "eventCatComboBox";
             this.eventCatComboBox.Size = new System.Drawing.Size(186, 29);
