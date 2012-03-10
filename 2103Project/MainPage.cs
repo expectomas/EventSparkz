@@ -180,8 +180,7 @@ namespace _2103Project
 
         private void AdviseUserToMakeASelection()
         {
-            MessageBox.Show("Please select one Event. Thank You");
-
+            MessageBox.Show("Please select an event.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         //Actions
