@@ -51,6 +51,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.viewFacilitatorListBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,7 +234,7 @@
             // viewParticipantListBtn
             // 
             this.viewParticipantListBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.viewParticipantListBtn.Location = new System.Drawing.Point(90, 40);
+            this.viewParticipantListBtn.Location = new System.Drawing.Point(91, 40);
             this.viewParticipantListBtn.Name = "viewParticipantListBtn";
             this.viewParticipantListBtn.Size = new System.Drawing.Size(120, 30);
             this.viewParticipantListBtn.TabIndex = 31;
@@ -273,6 +274,14 @@
             this.returnBtn.UseVisualStyleBackColor = true;
             this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(10, 131);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(472, 172);
+            this.groupBox1.TabIndex = 35;
+            this.groupBox1.TabStop = false;
+            // 
             // eventInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -297,6 +306,7 @@
             this.Controls.Add(this.labela);
             this.Controls.Add(this.labelc);
             this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "eventInfoForm";
@@ -332,6 +342,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button viewFacilitatorListBtn;
         private System.Windows.Forms.Button returnBtn;
+        private System.Windows.Forms.GroupBox groupBox1;
 
     }
 }

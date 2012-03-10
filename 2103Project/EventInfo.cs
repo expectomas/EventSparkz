@@ -153,6 +153,5 @@ namespace _2103Project
             attendanceForm att = new attendanceForm(currentUser, currentEventID, attendanceForm.attendanceListState.participantList);
             att.Show();
         }
-
     }
 }
