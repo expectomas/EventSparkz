@@ -151,9 +151,8 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
-            eventInfoForm eventInfoPage = new eventInfoForm(currentUser);
             ListViewItem listItem = listView1.SelectedItems[0];
-            currentEventID = int.Parse(listItem.SubItems[0].Text);
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }

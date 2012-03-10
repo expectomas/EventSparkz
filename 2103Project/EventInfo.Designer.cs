@@ -37,7 +37,6 @@
             this.dateLabel = new System.Windows.Forms.Label();
             this.venueLabel = new System.Windows.Forms.Label();
             this.organiserLabel = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnFacilitate = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.noOfParticipantLabel = new System.Windows.Forms.Label();
@@ -131,20 +130,10 @@
             this.organiserLabel.TabIndex = 12;
             this.organiserLabel.Text = "label3";
             // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(324, 305);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(117, 37);
-            this.btnBack.TabIndex = 22;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
             // btnFacilitate
             // 
             this.btnFacilitate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacilitate.Location = new System.Drawing.Point(171, 305);
+            this.btnFacilitate.Location = new System.Drawing.Point(183, 305);
             this.btnFacilitate.Name = "btnFacilitate";
             this.btnFacilitate.Size = new System.Drawing.Size(123, 37);
             this.btnFacilitate.TabIndex = 21;
@@ -154,7 +143,7 @@
             // btnRegister
             // 
             this.btnRegister.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.Location = new System.Drawing.Point(31, 305);
+            this.btnRegister.Location = new System.Drawing.Point(19, 305);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(108, 37);
             this.btnRegister.TabIndex = 20;
@@ -238,9 +227,9 @@
             // viewParticipantButton
             // 
             this.viewParticipantButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewParticipantButton.Location = new System.Drawing.Point(315, 91);
+            this.viewParticipantButton.Location = new System.Drawing.Point(343, 307);
             this.viewParticipantButton.Name = "viewParticipantButton";
-            this.viewParticipantButton.Size = new System.Drawing.Size(142, 45);
+            this.viewParticipantButton.Size = new System.Drawing.Size(130, 37);
             this.viewParticipantButton.TabIndex = 31;
             this.viewParticipantButton.Text = "View Participant";
             this.viewParticipantButton.UseVisualStyleBackColor = true;
@@ -261,7 +250,6 @@
             this.Controls.Add(this.timeListBox);
             this.Controls.Add(this.noOfParticipantLabel);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnFacilitate);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.organiserLabel);
@@ -292,7 +280,6 @@
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label venueLabel;
         private System.Windows.Forms.Label organiserLabel;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnFacilitate;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label noOfParticipantLabel;

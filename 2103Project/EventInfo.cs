@@ -32,10 +32,10 @@ namespace _2103Project
         private void eventInfoForm_Load(object sender, EventArgs e)
         {
             EventEntity newEve = Facilitator.getEventEntity(currentEventID);
-            titleLabel.Text = newEve.getEventName();
-            
+            string titleName = newEve.getEventName();
+            titleLabel.Text = titleName;
             int organiserID = newEve.getOrganiserID();
-             
+            organiserLabel.Text = User.getNamefromID(organiserID);
         }
     }
 }
