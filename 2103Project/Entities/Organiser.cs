@@ -52,6 +52,38 @@ namespace _2103Project.Entities
             return true;
         }
 
+        public int getCheckVenueId(string location)
+        {
+            int venueID = 1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Venue> listOfVenue = db.getListOfVenues();
+            foreach (Venue ven in listOfVenue)
+            {
+                if (location == ven.getlocation())
+                    venueID = ven.getVenueId();
+            }
+            return venueID;
+        }
+
+        public int getNewActivityId()
+        {
+            int newActivityId = 1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Activity> listOfActivity = db.getListOfActivities();
+            foreach (Activity act in listOfActivity)
+                newActivityId = act.getActivityId();
+            newActivityId++;
+            return newActivityId;
+        }
+        public bool addNewActivity(Activity newAct)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Activity> activityList = db.getListOfActivities();
+            activityList.Add(newAct);
+            db.saveListOfActivities(activityList);
+            return true;
+        }
+
         public static int getNewEventId()
         {
             int newEventID = 0;

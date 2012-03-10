@@ -33,6 +33,15 @@ namespace _2103Project.Entities
             location = oldVenue.location;
         }
 
+        public int getVenueId()
+        {
+            return venueId;
+        }
+
+        public string getlocation()
+        {
+            return location;
+        }
         public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
         {
             bool releasedDetails = false;

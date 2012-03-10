@@ -40,9 +40,6 @@ namespace _2103Project
         {
             validUser = currentUser.login(userNameTextBox.Text, passwordTextbox.Text,ref currentUser);
 
-            //TODO: Removed Testing"
-            validUser = currentUser.login("tiow11", "123456", ref currentUser);
-
             if (validUser)
             {
                 this.Close();

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using _2103Project.Action;
 
 namespace _2103Project.Entities
 {
@@ -28,6 +29,11 @@ namespace _2103Project.Entities
             hostingVenue = i_hostingVenue;
         }
 
+        public int getActivityId()
+        {
+            return activityId;
+        }
+
         public bool requestActivityDetails(ref int o_activityId,ref DateTime sending_datetime,ref string sending_description,ref Venue sending_hostingVenue, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
@@ -41,5 +47,7 @@ namespace _2103Project.Entities
             else
                 return false;
         }
+
+        
     }
 }
