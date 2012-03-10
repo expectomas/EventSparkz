@@ -12,16 +12,14 @@ namespace _2103Project
 {
     public partial class attendanceForm : Form
     {
-        private User currentUser;
-        public attendanceForm(User incomingUser)
+
+        public attendanceForm()
         {
             InitializeComponent();
-            currentUser = incomingUser;
         }
 
         private void attendanceForm_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

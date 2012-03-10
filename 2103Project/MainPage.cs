@@ -72,10 +72,18 @@ namespace _2103Project
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
             ActiveUser userRole = new ActiveUser(currentUser);
+
             List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
 
             initEventList();
         }
+
+        private void organiserEditButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
