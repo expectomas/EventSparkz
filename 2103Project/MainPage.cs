@@ -174,8 +174,30 @@ namespace _2103Project
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-           
+            initSideDDL();
         }
+
+        public void initEventList()
+        {
+            this.listMainEventView.Hide();
+
+            //Clear ListBox Column and Items
+            this.listMainEventView.Columns.Clear();
+            this.listMainEventView.Items.Clear();
+
+
+            this.listMainEventView.Columns.Insert(0, "Id",50 , HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
+            this.listMainEventView.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
+        }
+
+        public void displayEventList()
+        {
+            this.listMainEventView.Show();
+        }
+
+        //Event Handler
 
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
@@ -213,10 +235,11 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
-            ListViewItem listItem = this.listMainEventView.SelectedItems[1];
-            currentEventID = int.Parse(listItem.SubItems[0].Text);
+            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
     }
 }
+
