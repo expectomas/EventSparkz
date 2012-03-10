@@ -211,6 +211,10 @@ namespace _2103Project
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            if(e.KeyCode == Keys.Enter)
+            {
+                searchEvent();
+            }
         }
 
         public void initEventList()
@@ -235,37 +239,7 @@ namespace _2103Project
 
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
-            searchEventTextBox.Text = searchEventTextBox.Text.Trim();
-
-            if (searchEventTextBox.Text == "")
-            {
-                MessageBox.Show("Please type in an event name", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            else
-            {
-                this.listMainEventView.Items.Clear();
-                int i;
-
-                ActiveUser userRole = new ActiveUser(currentUser);
-
-                List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
-
-                for (i = 0; i < outputEventListing.Count; i++)
-                {
-                    EventEntity outputEvent = outputEventListing[i];
-
-                    ListViewItem newEvent = new ListViewItem((i + 1).ToString());
-                    newEvent.SubItems.Add(outputEvent.getEventId().ToString());
-                    newEvent.SubItems.Add(outputEvent.getEventName());
-                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
-                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
-
-                    listMainEventView.Items.Add(newEvent);
-                }
-
-                displayMainEventList();
-            }
+            searchEvent();
         }
 
         private void organiserEditButton_Click(object sender, EventArgs e)
@@ -445,6 +419,41 @@ namespace _2103Project
             catch (ArgumentOutOfRangeException arg_ex)
             {
                 AdviseUserToMakeASelection();
+            }
+        }
+
+        private void searchEvent()
+        {
+            searchEventTextBox.Text = searchEventTextBox.Text.Trim();
+
+            if (searchEventTextBox.Text == "" || searchEventTextBox.Text == "Search Your Event Here")
+            {
+                // Do nothing
+            }
+
+            else
+            {
+                this.listMainEventView.Items.Clear();
+                int i;
+
+                ActiveUser userRole = new ActiveUser(currentUser);
+
+                List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
+
+                for (i = 0; i < outputEventListing.Count; i++)
+                {
+                    EventEntity outputEvent = outputEventListing[i];
+
+                    ListViewItem newEvent = new ListViewItem((i + 1).ToString());
+                    newEvent.SubItems.Add(outputEvent.getEventId().ToString());
+                    newEvent.SubItems.Add(outputEvent.getEventName());
+                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
+                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
+
+                    listMainEventView.Items.Add(newEvent);
+                }
+
+                displayMainEventList();
             }
         }
     }
