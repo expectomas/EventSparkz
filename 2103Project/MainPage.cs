@@ -13,24 +13,15 @@ namespace _2103Project
     {
         private User currentUser;
 
-        private void Exit_Dialog(int state)
+        private bool LogoutPressed = false;
+
+        private void Exit_Dialog()
         {
             if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 currentUser.logout();
-                if (state == 1)
-                {
-                    this.Hide();
-                    loginForm login = new loginForm(null);
-                    closeState = 1;
-                    this.Hide();
-                    login.Show();
-                }
-                else
-                {
-                    closeState = 1;
-                    this.Close();
-                }
+                LogoutPressed=true;
+                Application.Exit();
             }
         }
 
@@ -51,12 +42,15 @@ namespace _2103Project
 
         private void mainPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-                Exit_Dialog(0);
+            if (!LogoutPressed)
+            {
+                Exit_Dialog();
+            }
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            Exit_Dialog(1);
+            Exit_Dialog();
         }
     }
 }
