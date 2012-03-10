@@ -73,7 +73,7 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
 
-            List<EventEntity> listOfEventEntity = new List<EventEntity>();
+            List<EventEntity> listOfEventEntity = db.getListOfEvents();
             EventEntity returnEve = new EventEntity();
             foreach (EventEntity eve in listOfEventEntity)
             {

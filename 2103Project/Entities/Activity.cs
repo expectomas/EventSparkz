@@ -34,6 +34,23 @@ namespace _2103Project.Entities
             return activityId;
         }
 
+        public Venue getVenue()
+        {
+            return hostingVenue;
+        }
+
+        public static Venue getVenueFromActivityID(int incomingActivityID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Activity> listOfActDb = db.getListOfActivities();
+            Venue newVen = new Venue();
+            foreach (Activity act in listOfActDb)
+            {
+                if (act.getActivityId() == incomingActivityID)
+                    newVen = act.getVenue();
+            }
+            return newVen;
+        }
         public bool requestActivityDetails(ref int o_activityId,ref DateTime sending_datetime,ref string sending_description,ref Venue sending_hostingVenue, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
