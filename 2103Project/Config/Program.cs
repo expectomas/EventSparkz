@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using _2103Project.Action;
+using _2103Project.Entities;
 
 namespace _2103Project
 {
@@ -23,7 +25,7 @@ namespace _2103Project
             //System.Threading.Thread.Sleep(2000);
 
 
-            //f.Close();
+            //f.Close()
 
             Application.Run(new loginSelectForm());
         }
