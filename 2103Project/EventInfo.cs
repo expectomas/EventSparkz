@@ -13,27 +13,12 @@ namespace _2103Project
     
     public partial class eventInfoForm : Form
     {
-        private void Exit_Dialog()
-        {
-            if (MessageBox.Show("Are you sure?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                currentUser.logout();
-                this.Close();
-            }
-        }
-
         private User currentUser;
 
-        public eventInfoForm()
+        public eventInfoForm(User incomingUser)
         {
+            currentUser = incomingUser;
             InitializeComponent();
-        }
-
-        private void eventInfo_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Exit_Dialog();
-
-            this.Close();
         }
     }
 }

@@ -48,6 +48,7 @@
             this.Time = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.viewParticipantButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -234,12 +235,22 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "Venue:";
             // 
+            // viewParticipantButton
+            // 
+            this.viewParticipantButton.Location = new System.Drawing.Point(308, 104);
+            this.viewParticipantButton.Name = "viewParticipantButton";
+            this.viewParticipantButton.Size = new System.Drawing.Size(142, 23);
+            this.viewParticipantButton.TabIndex = 31;
+            this.viewParticipantButton.Text = "View Participant";
+            this.viewParticipantButton.UseVisualStyleBackColor = true;
+            // 
             // eventInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(496, 351);
+            this.Controls.Add(this.viewParticipantButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Time);
@@ -263,7 +274,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "eventInfoForm";
             this.Text = "Event Info";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.eventInfo_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,6 +300,7 @@
         private System.Windows.Forms.Label Time;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button viewParticipantButton;
 
     }
 }
