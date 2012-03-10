@@ -154,6 +154,7 @@
             this.cancelEditButton.TabIndex = 11;
             this.cancelEditButton.Text = "Cancel";
             this.cancelEditButton.UseVisualStyleBackColor = true;
+            this.cancelEditButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cancelEditButton_MouseDown);
             // 
             // searchEventDateTimePicker
             // 

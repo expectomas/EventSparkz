@@ -16,6 +16,7 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
         private int currentEventID;
+
         //Initiatisation
 
         public mainPage(User incomingUser)
@@ -147,6 +148,8 @@ namespace _2103Project
             }
         }
 
+        //Main Page Dialog Boxes
+
         private void Exit_Dialog()
         {
             if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -158,6 +161,18 @@ namespace _2103Project
                 t.Start();
             }
         }
+
+        private bool Participant_Cancel_SideBar_Dialog()
+        {
+            return MessageBox.Show("Are you sure you would like to opt out of the event?", "Opt Out Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        private bool Organiser_Cancel_SideBar_Dialog()
+        {
+            return MessageBox.Show("Are you sure you would like to cancel the event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        //Actions
 
         public void displayMainEventList()
         {
@@ -292,6 +307,25 @@ namespace _2103Project
 
             if(organiserCancellingEventId!=-1)
                 organiser.cancelEvent(organiserCancellingEventId);
+        }
+
+        private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Participant cancel event 
+            int participantCancellingEventId = -1;
+
+            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+            participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+            Participant participant = new Participant(currentUser);
+
+            if (participantCancellingEventId != -1)
+            {
+                if (Participant_Cancel_SideBar_Dialog())
+                {
+                    participant.cancelEventRegistration(participantCancellingEventId);
+                }
+            }   
         }
 
     }
