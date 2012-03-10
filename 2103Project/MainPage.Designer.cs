@@ -69,9 +69,9 @@
             // listView2
             // 
             this.listView2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView2.Location = new System.Drawing.Point(286, 127);
+            this.listView2.Location = new System.Drawing.Point(536, 127);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(187, 177);
+            this.listView2.Size = new System.Drawing.Size(187, 318);
             this.listView2.TabIndex = 3;
             this.listView2.UseCompatibleStateImageBehavior = false;
             // 
@@ -79,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe WP", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(281, 63);
+            this.label3.Location = new System.Drawing.Point(531, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 26);
             this.label3.TabIndex = 4;
@@ -88,9 +88,9 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerEvent.Location = new System.Drawing.Point(17, 310);
+            this.registerEvent.Location = new System.Drawing.Point(17, 451);
             this.registerEvent.Name = "registerEvent";
-            this.registerEvent.Size = new System.Drawing.Size(123, 30);
+            this.registerEvent.Size = new System.Drawing.Size(112, 30);
             this.registerEvent.TabIndex = 7;
             this.registerEvent.Text = "Create Event";
             this.registerEvent.UseVisualStyleBackColor = true;
@@ -110,18 +110,21 @@
             // listView1
             // 
             this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(17, 127);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(262, 177);
+            this.listView1.Size = new System.Drawing.Size(484, 318);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // getEventInfoButton
             // 
             this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getEventInfoButton.Location = new System.Drawing.Point(146, 310);
+            this.getEventInfoButton.Location = new System.Drawing.Point(135, 451);
             this.getEventInfoButton.Name = "getEventInfoButton";
-            this.getEventInfoButton.Size = new System.Drawing.Size(133, 30);
+            this.getEventInfoButton.Size = new System.Drawing.Size(126, 30);
             this.getEventInfoButton.TabIndex = 6;
             this.getEventInfoButton.Text = "Get Event Info";
             this.getEventInfoButton.UseVisualStyleBackColor = true;
@@ -136,7 +139,7 @@
             "Registered Event",
             "Created Event",
             "Facilitator List"});
-            this.eventCatComboBox.Location = new System.Drawing.Point(286, 92);
+            this.eventCatComboBox.Location = new System.Drawing.Point(536, 92);
             this.eventCatComboBox.Name = "eventCatComboBox";
             this.eventCatComboBox.Size = new System.Drawing.Size(186, 29);
             this.eventCatComboBox.TabIndex = 10;
@@ -144,7 +147,7 @@
             // cancelEditButton
             // 
             this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelEditButton.Location = new System.Drawing.Point(310, 310);
+            this.cancelEditButton.Location = new System.Drawing.Point(560, 451);
             this.cancelEditButton.Name = "cancelEditButton";
             this.cancelEditButton.Size = new System.Drawing.Size(133, 30);
             this.cancelEditButton.TabIndex = 11;
@@ -163,7 +166,7 @@
             this.searchEventTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchEventTextBox.Location = new System.Drawing.Point(17, 92);
             this.searchEventTextBox.Name = "searchEventTextBox";
-            this.searchEventTextBox.Size = new System.Drawing.Size(208, 29);
+            this.searchEventTextBox.Size = new System.Drawing.Size(361, 29);
             this.searchEventTextBox.TabIndex = 13;
             this.searchEventTextBox.Text = "Search Your Event Here";
             this.searchEventTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchEventTextBox_KeyDown);
@@ -171,9 +174,9 @@
             // searchEventButton
             // 
             this.searchEventButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEventButton.Location = new System.Drawing.Point(231, 92);
+            this.searchEventButton.Location = new System.Drawing.Point(404, 90);
             this.searchEventButton.Name = "searchEventButton";
-            this.searchEventButton.Size = new System.Drawing.Size(48, 30);
+            this.searchEventButton.Size = new System.Drawing.Size(97, 30);
             this.searchEventButton.TabIndex = 14;
             this.searchEventButton.Text = "Find";
             this.searchEventButton.UseVisualStyleBackColor = true;
@@ -182,7 +185,7 @@
             // organiserEditButton
             // 
             this.organiserEditButton.Enabled = false;
-            this.organiserEditButton.Location = new System.Drawing.Point(287, 310);
+            this.organiserEditButton.Location = new System.Drawing.Point(537, 451);
             this.organiserEditButton.Name = "organiserEditButton";
             this.organiserEditButton.Size = new System.Drawing.Size(73, 30);
             this.organiserEditButton.TabIndex = 15;
@@ -194,7 +197,7 @@
             // organiserCancel
             // 
             this.organiserCancel.Enabled = false;
-            this.organiserCancel.Location = new System.Drawing.Point(399, 310);
+            this.organiserCancel.Location = new System.Drawing.Point(649, 451);
             this.organiserCancel.Name = "organiserCancel";
             this.organiserCancel.Size = new System.Drawing.Size(73, 30);
             this.organiserCancel.TabIndex = 16;
@@ -207,7 +210,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(484, 349);
+            this.ClientSize = new System.Drawing.Size(769, 523);
             this.Controls.Add(this.organiserCancel);
             this.Controls.Add(this.organiserEditButton);
             this.Controls.Add(this.searchEventButton);

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using _2103Project.Entities;
+using _2103Project.Action;
+
 namespace _2103Project
 {
     public partial class mainPage : Form
@@ -40,9 +42,16 @@ namespace _2103Project
 
         public void initEventList()
         {
-            this.listView1.Columns.Insert(0, "No.",10 , HorizontalAlignment.Left);
-            this.listView1.Columns.Insert(1, "Event", 20 , HorizontalAlignment.Left);
-            this.listView1.Columns.Insert(2, "Description", 40, HorizontalAlignment.Center);
+            this.listView1.Hide();
+            this.listView1.Columns.Insert(0, "No.",50 , HorizontalAlignment.Left);
+            this.listView1.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
+            this.listView1.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
+            this.listView1.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
+        }
+
+        public void displayEventList()
+        {
+            this.listView1.Show();
         }
 
         //Event Handler
@@ -71,11 +80,32 @@ namespace _2103Project
 
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
+            int i;
+
             ActiveUser userRole = new ActiveUser(currentUser);
 
-            List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
+            //List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
 
             initEventList();
+            
+            //Testing 
+            Database db = Database.CreateDatabase("cd#ew1Tf");
+            List<EventEntity> testing = db.getListOfEvents();
+
+            for (i = 0; i < testing.Count; i++)
+            {
+                EventEntity outputEvent = testing[i];
+
+                ListViewItem newEvent = new ListViewItem(i.ToString());
+                newEvent.SubItems.Add(outputEvent.getEventName());
+                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/mm/yy"));
+                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
+
+                listView1.Items.Add(newEvent);
+            }
+
+
+            displayEventList();
         }
 
         private void organiserEditButton_Click(object sender, EventArgs e)
