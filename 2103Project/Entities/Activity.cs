@@ -34,6 +34,16 @@ namespace _2103Project.Entities
             return activityId;
         }
 
+        public DateTime getDate()
+        {
+            return time;
+        }
+
+        public string getDescription()
+        {
+            return description;
+        }
+
         public Venue getVenue()
         {
             return hostingVenue;

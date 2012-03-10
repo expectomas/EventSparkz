@@ -37,7 +37,17 @@ namespace _2103Project
             noOfParticipantLabel.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
             DateTime dateValue = EventEntity.getStartTime(currentEventID);
             dateLabel.Text = String.Format("{0:f}", dateValue);
-            venueLabel.Text = EventEntity.getVenueFromEventID(currentEventID);
+            venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
+            Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
+            Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
+            Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
+            DateTime dateTimeValue = DateTime.Now;
+            while (!(listOfDateTime.Count == 0))
+            {
+                timeListBox.Items.Add(String.Format("{0:t}", listOfDateTime.Dequeue()));
+                descriptionListBox.Items.Add(listofDescription.Dequeue());
+                venueListBox.Items.Add(listOfVenue.Dequeue());
+            }
         }
     }
 }
