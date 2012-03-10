@@ -303,9 +303,11 @@ namespace _2103Project
 
         private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
         {
-          
-            searchEventTextBox.Clear();
-            searchEventTextBox.Focus();
+            if (e.Button == MouseButtons.Left && searchEventButton.Text == "Search Your Event Here")
+            {
+                searchEventTextBox.Clear();
+                searchEventTextBox.Focus();
+            }
         }
 
         private void organiserCancel_Click(object sender, EventArgs e)
@@ -328,6 +330,9 @@ namespace _2103Project
                     }
                 }
             }
+
+            //refresh the sidebar
+            initSideEventBar();
         }
 
         private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
@@ -350,6 +355,9 @@ namespace _2103Project
                     }
                 }
             }
+
+            //refresh the sidebar
+            initSideEventBar();
         }
 
         private void leaveBtn_Click(object sender, EventArgs e)
@@ -373,6 +381,9 @@ namespace _2103Project
 
                 }
             }
+
+            //refresh the sidebar
+            initSideEventBar();
         }
     }
 }
