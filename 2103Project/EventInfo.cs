@@ -31,10 +31,13 @@ namespace _2103Project
         private void eventInfoForm_Load(object sender, EventArgs e)
         {
             EventEntity newEve = Facilitator.getEventEntity(currentEventID);
-            string titleName = newEve.getEventName();
-            titleLabel.Text = titleName;
+            titleLabel.Text = newEve.getEventName();
             int organiserID = newEve.getOrganiserID();
             organiserLabel.Text = User.getNamefromID(organiserID);
+            noOfParticipantLabel.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
+            DateTime dateValue = EventEntity.getStartTime(currentEventID);
+            dateLabel.Text = String.Format("{0:f}", dateValue);
+            venueLabel.Text = EventEntity.getVenueFromEventID(currentEventID);
         }
     }
 }

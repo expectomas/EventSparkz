@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using _2103Project.Action;
 
 namespace _2103Project.Entities
 {
@@ -38,6 +39,25 @@ namespace _2103Project.Entities
         {
             return scheduleId;
         }
+
+        public List<Activity> getlistOfActivity()
+        {
+            return activities;
+        }
+
+        public static List<Activity> retrieveListOfActivityfromScheduleID(int scheduleId)
+        {
+            List<Activity> listOfAct = new List<Activity>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Schedule> listOfActivity = db.getListOfSchedule();
+            foreach (Schedule sch in listOfActivity)
+            {
+                if (scheduleId == sch.getScheduleID())
+                   listOfAct = sch.getlistOfActivity();
+            }
+            return listOfAct;
+        }
+
         public bool requestScheduleDetail(ref int referredScheduleId, ref List<string> referredListOfItems, ref List<Activity> referredListOfActivities, string purpose)
         {
              bool releasedDetails = false;

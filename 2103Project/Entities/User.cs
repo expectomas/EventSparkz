@@ -287,11 +287,12 @@ namespace _2103Project.Entities
             {
                 if (userID == checkUser.getUserId())
                 {
-                    name = checkUser.getUserName();
+                    name = checkUser.getName();
                 }
             }
             return name;
         }
+
         public bool requestUserDetail(ref int i_userId, ref string i_userName, ref string i_name, ref string i_matricNo, ref string i_password,
                     ref string i_email, ref int i_age, ref bool i_loggedIn, ref double i_contactHome, ref double i_contactHP, string purpose)
         {

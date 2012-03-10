@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using _2103Project.Action;
 
 namespace _2103Project.Entities
 {
@@ -79,6 +80,11 @@ namespace _2103Project.Entities
             return participantList;
         }
 
+        public int getParticipatSize()
+        {
+            return participantSize;
+        }
+
         public bool addParticipantToEvent(Participant newParticipant)
         {
             bool successAdded = false;
@@ -152,6 +158,57 @@ namespace _2103Project.Entities
             }
 
             return successRemoved;
+        }
+
+        public static int getParticipantNumber(int eventID)
+        {
+            int totalParticipateNumber = 0;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    totalParticipateNumber = eve.getParticipatSize();
+            }
+            return totalParticipateNumber;
+        }
+
+        public static DateTime getStartTime(int eventID)
+        {
+            DateTime startTime = DateTime.Now;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    startTime = eve.getEventDate();
+            }
+            return startTime;
+        }
+
+        public static string getVenueFromEventID(int eventID)
+        {
+            Venue startVenue;
+            int scheduleId = 1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    scheduleId = eve.getScheduleID();
+            }
+            List<Activity> listOfActivity = Schedule.retrieveListOfActivityfromScheduleID(scheduleId);
+            int state = 0, activityId = 1;
+            foreach (Activity act in listOfActivity)
+            {
+                if (state == 0)
+                {
+                    activityId = act.getActivityId();
+                    state = 1;
+                }
+            }
+            startVenue = Activity.getVenueFromActivityID(activityId);
+            return startVenue.getlocation();
         }
 
         public bool doesParticipantExist(int i_userId)
