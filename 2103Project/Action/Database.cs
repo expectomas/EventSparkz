@@ -334,12 +334,12 @@ namespace _2103Project.Action
                     scanner.ReadToDescendant("item");
 
                     //GetAllItems
-                    do
+                    while (scanner.Name!="listOfItems")
                     {
                 
                         scheduleItems.Add(scanner.ReadElementContentAsString("item",""));
 
-                    } while (scanner.NodeType!=XmlNodeType.EndElement);
+                    } 
 
                     scanner.Skip();
 
