@@ -63,7 +63,9 @@ namespace _2103Project
                     listOfActivity.Add(newAct);
                     org.addNewActivity(newAct);
                 }
-                Schedule newSchedule = 
+                List<string> listOfItems = new List<string>();
+                Schedule newSchedule = new Schedule(newscheduleId ,listOfItems, listOfActivity);
+                org.addSchedule(newSchedule);
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();
