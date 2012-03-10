@@ -24,7 +24,6 @@ namespace _2103Project
 
         private void viewParticipantButton_Click(object sender, EventArgs e)
         {
-
             attendanceForm att = new attendanceForm(currentUser, currentEventID);
             att.Show();
         }
