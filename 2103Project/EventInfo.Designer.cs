@@ -57,80 +57,80 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Segoe WP Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.Location = new System.Drawing.Point(15, 9);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(94, 21);
+            this.titleLabel.Size = new System.Drawing.Size(109, 24);
             this.titleLabel.TabIndex = 5;
             this.titleLabel.Text = "Event Title";
             // 
             // labelc
             // 
             this.labelc.AutoSize = true;
-            this.labelc.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelc.Location = new System.Drawing.Point(33, 82);
+            this.labelc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelc.Location = new System.Drawing.Point(33, 84);
             this.labelc.Name = "labelc";
-            this.labelc.Size = new System.Drawing.Size(106, 21);
+            this.labelc.Size = new System.Drawing.Size(92, 16);
             this.labelc.TabIndex = 6;
             this.labelc.Text = "Organized By:";
             // 
             // labela
             // 
             this.labela.AutoSize = true;
-            this.labela.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labela.Location = new System.Drawing.Point(33, 38);
+            this.labela.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labela.Location = new System.Drawing.Point(33, 40);
             this.labela.Name = "labela";
-            this.labela.Size = new System.Drawing.Size(45, 21);
+            this.labela.Size = new System.Drawing.Size(40, 16);
             this.labela.TabIndex = 7;
             this.labela.Text = "Date:";
             // 
             // labelb
             // 
             this.labelb.AutoSize = true;
-            this.labelb.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelb.Location = new System.Drawing.Point(33, 60);
+            this.labelb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelb.Location = new System.Drawing.Point(33, 62);
             this.labelb.Name = "labelb";
-            this.labelb.Size = new System.Drawing.Size(56, 21);
+            this.labelb.Size = new System.Drawing.Size(50, 16);
             this.labelb.TabIndex = 8;
             this.labelb.Text = "Venue:";
             // 
             // scheduleLabel
             // 
             this.scheduleLabel.AutoSize = true;
-            this.scheduleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scheduleLabel.Location = new System.Drawing.Point(191, 131);
+            this.scheduleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scheduleLabel.Location = new System.Drawing.Point(201, 131);
             this.scheduleLabel.Name = "scheduleLabel";
-            this.scheduleLabel.Size = new System.Drawing.Size(73, 21);
+            this.scheduleLabel.Size = new System.Drawing.Size(80, 21);
             this.scheduleLabel.TabIndex = 9;
             this.scheduleLabel.Text = "Schedule";
             // 
             // dateLabel
             // 
             this.dateLabel.AutoSize = true;
-            this.dateLabel.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateLabel.Location = new System.Drawing.Point(202, 38);
+            this.dateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Location = new System.Drawing.Point(202, 40);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(49, 21);
+            this.dateLabel.Size = new System.Drawing.Size(45, 16);
             this.dateLabel.TabIndex = 10;
             this.dateLabel.Text = "label1";
             // 
             // venueLabel
             // 
             this.venueLabel.AutoSize = true;
-            this.venueLabel.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.venueLabel.Location = new System.Drawing.Point(202, 60);
+            this.venueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.venueLabel.Location = new System.Drawing.Point(202, 62);
             this.venueLabel.Name = "venueLabel";
-            this.venueLabel.Size = new System.Drawing.Size(52, 21);
+            this.venueLabel.Size = new System.Drawing.Size(45, 16);
             this.venueLabel.TabIndex = 11;
             this.venueLabel.Text = "label2";
             // 
             // organiserLabel
             // 
             this.organiserLabel.AutoSize = true;
-            this.organiserLabel.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.organiserLabel.Location = new System.Drawing.Point(202, 82);
+            this.organiserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.organiserLabel.Location = new System.Drawing.Point(202, 84);
             this.organiserLabel.Name = "organiserLabel";
-            this.organiserLabel.Size = new System.Drawing.Size(52, 21);
+            this.organiserLabel.Size = new System.Drawing.Size(45, 16);
             this.organiserLabel.TabIndex = 12;
             this.organiserLabel.Text = "label3";
             // 
@@ -159,20 +159,20 @@
             // noOfParticipantLabel
             // 
             this.noOfParticipantLabel.AutoSize = true;
-            this.noOfParticipantLabel.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noOfParticipantLabel.Location = new System.Drawing.Point(202, 103);
+            this.noOfParticipantLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noOfParticipantLabel.Location = new System.Drawing.Point(202, 105);
             this.noOfParticipantLabel.Name = "noOfParticipantLabel";
-            this.noOfParticipantLabel.Size = new System.Drawing.Size(52, 21);
+            this.noOfParticipantLabel.Size = new System.Drawing.Size(45, 16);
             this.noOfParticipantLabel.TabIndex = 24;
             this.noOfParticipantLabel.Text = "label4";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(33, 103);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(33, 105);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 21);
+            this.label5.Size = new System.Drawing.Size(112, 16);
             this.label5.TabIndex = 23;
             this.label5.Text = "No. of Participant:";
             // 
@@ -203,30 +203,30 @@
             // Time
             // 
             this.Time.AutoSize = true;
-            this.Time.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Time.Location = new System.Drawing.Point(15, 152);
             this.Time.Name = "Time";
-            this.Time.Size = new System.Drawing.Size(47, 21);
+            this.Time.Size = new System.Drawing.Size(47, 20);
             this.Time.TabIndex = 28;
             this.Time.Text = "Time:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(141, 152);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 21);
+            this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 29;
             this.label1.Text = "Description";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(349, 152);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 21);
+            this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 30;
             this.label2.Text = "Venue:";
             // 
@@ -264,11 +264,12 @@
             // 
             // returnBtn
             // 
-            this.returnBtn.Location = new System.Drawing.Point(393, 6);
+            this.returnBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.returnBtn.Location = new System.Drawing.Point(404, 5);
             this.returnBtn.Name = "returnBtn";
             this.returnBtn.Size = new System.Drawing.Size(80, 30);
             this.returnBtn.TabIndex = 34;
-            this.returnBtn.Text = "Return";
+            this.returnBtn.Text = "Back";
             this.returnBtn.UseVisualStyleBackColor = true;
             this.returnBtn.Click += new System.EventHandler(this.returnBtn_Click);
             // 
