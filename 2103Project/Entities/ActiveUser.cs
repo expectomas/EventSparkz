@@ -38,7 +38,7 @@ namespace _2103Project.Entities
         public EventEntity viewEventInfo(int index)
         {
             List<EventEntity> temp = new List<EventEntity>();
-            int selectedEventIndex=-1;
+            int selectedEventIndex = -1;
 
             for (int i = 0; i < temp.Count; i++)
             {
@@ -49,7 +49,7 @@ namespace _2103Project.Entities
             }
 
             // If event is not found in database...
-            if (selectedEventIndex < 0) 
+            if (selectedEventIndex < 0)
             {
                 throw new System.ApplicationException();
             }
@@ -132,27 +132,20 @@ namespace _2103Project.Entities
             string temp;
             List<EventEntity> eventListing = db.getListOfEvents();
             List<EventEntity> list = new List<EventEntity>();
-            int[] flag = new int[eventListing.Count];   // To trace priority of search result
+            int[] flag = new int[eventListing.Count + 1];   // To trace priority of search result
+            string[] separator = new string[] { " " };  // For string.split
 
-            word = word.Trim();    // Remove all leading and trailing white-space characters
             word = word.ToLower(); // Convert all characters to lowercase characters
 
-            // Check if word is empty
-            if (word == null || word == "")
-            {
-                throw new System.ApplicationException("Please type an event name");
-            }
-            //
-
             // Filter by Event Name in search priority: (1)FullMatch (2)WordMatch (3)CharactersMatch
-            for(int i=0; i<eventListing.Count; i++)
+            for (int i = 0; i < eventListing.Count; i++)
             {
                 temp = eventListing[i].getEventName().ToLower();
-                           
+
                 // Check if search text > event's name
                 if (word.Length > temp.Length)
                 {
-                    break;  
+                    break;
                 }
                 //
 
@@ -166,16 +159,25 @@ namespace _2103Project.Entities
                 //
 
                 // Compare words in eventnames separated by white-spaces with 'word'
-                if(temp.Contains(" ") && temp.Contains(word))
+                if (temp.Contains(" ")) // If event name has words separated by white-spaces
                 {
-                    list.Add(eventListing[i]);
-                    flag[i] = 2;
+                    string[] result = temp.Split(separator, StringSplitOptions.RemoveEmptyEntries); // Compare if each word in the event name equals to 'word'
+
+                    foreach (string s in result)
+                    {
+                        if (s == word)
+                        {
+                            list.Add(eventListing[i]);
+                            flag[i] = 2;
+                            break;
+                        }
+                    }
                     break;
                 }
                 //
 
                 // Compare 'word' with eventnames' first word.Length-1 characters
-                if(temp.Substring(0,word.Length) == word)
+                if (temp.Substring(0, word.Length) == word)
                 {
                     list.Add(eventListing[i]);
                     flag[i] = 3;
@@ -199,7 +201,7 @@ namespace _2103Project.Entities
 
                 for (int j = 1; j < list.Count - i; j++)
                 {
-                    if (flag[j-1] > flag[j])
+                    if (flag[j - 1] > flag[j])
                     {
                         int tem = flag[j - 1];
                         flag[j - 1] = flag[j];
@@ -214,7 +216,7 @@ namespace _2103Project.Entities
             }
             //
 
-         return list;
+            return list;
         }   // Done, Not Tested
     }
 }
