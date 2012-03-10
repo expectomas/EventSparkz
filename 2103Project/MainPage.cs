@@ -12,33 +12,30 @@ namespace _2103Project
     public partial class mainPage : Form
     {
         private User currentUser;
+        private bool LogoutPressed = false;
 
-        int closeState = 0;
+        public mainPage(User incomingUser)
+        {
+            InitializeComponent();
 
-        private void Exit_Dialog(int state)
+            currentUser = incomingUser;
+        }
+
+        private void Exit_Dialog()
         {
             if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 currentUser.logout();
-                if (state == 1)
-                {
-                    this.Hide();
-                    loginForm login = new loginForm(null);
-                    closeState = 1;
-                    this.Hide();
-                    login.Show();
-                }
-                else
-                {
-                    closeState = 1;
-                    this.Close();
-                }
+                LogoutPressed = true;
+                Application.Exit();
             }
         }
 
-        public mainPage( User incomingUser)
+        public void initEventList()
         {
-            InitializeComponent();
+            this.listView1.Columns.Insert(0, "No.",10 , HorizontalAlignment.Left);
+            this.listView1.Columns.Insert(1, "Event", 20 , HorizontalAlignment.Left);
+            this.listView1.Columns.Insert(2, "Description", 40, HorizontalAlignment.Center);
         }
 
         //Event Handler
@@ -51,13 +48,13 @@ namespace _2103Project
 
         private void mainPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(closeState == 0)
-                Exit_Dialog(0);
+            if(!LogoutPressed)
+                Exit_Dialog();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            Exit_Dialog(1);
+            Exit_Dialog();
         }
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -65,8 +62,6 @@ namespace _2103Project
             ActiveUser userRole = (Participant)(Object) currentUser;
 
             List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
-
-
         }
     }
 }
