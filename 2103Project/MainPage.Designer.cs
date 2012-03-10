@@ -44,6 +44,7 @@
             this.searchEventButton = new System.Windows.Forms.Button();
             this.organiserEditButton = new System.Windows.Forms.Button();
             this.organiserCancel = new System.Windows.Forms.Button();
+            this.leaveBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -69,12 +70,14 @@
             // listSideEventView
             // 
             this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listSideEventView.FullRowSelect = true;
+            this.listSideEventView.GridLines = true;
             this.listSideEventView.Location = new System.Drawing.Point(536, 127);
             this.listSideEventView.Name = "listSideEventView";
-            this.listSideEventView.Size = new System.Drawing.Size(187, 318);
+            this.listSideEventView.Size = new System.Drawing.Size(221, 318);
             this.listSideEventView.TabIndex = 3;
             this.listSideEventView.UseCompatibleStateImageBehavior = false;
-            this.listSideEventView.View = System.Windows.Forms.View.List;
+            this.listSideEventView.View = System.Windows.Forms.View.Details;
             // 
             // label3
             // 
@@ -89,9 +92,9 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerEvent.Location = new System.Drawing.Point(17, 451);
+            this.registerEvent.Location = new System.Drawing.Point(17, 450);
             this.registerEvent.Name = "registerEvent";
-            this.registerEvent.Size = new System.Drawing.Size(112, 30);
+            this.registerEvent.Size = new System.Drawing.Size(110, 30);
             this.registerEvent.TabIndex = 7;
             this.registerEvent.Text = "Create Event";
             this.registerEvent.UseVisualStyleBackColor = true;
@@ -123,9 +126,9 @@
             // getEventInfoButton
             // 
             this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getEventInfoButton.Location = new System.Drawing.Point(135, 451);
+            this.getEventInfoButton.Location = new System.Drawing.Point(135, 450);
             this.getEventInfoButton.Name = "getEventInfoButton";
-            this.getEventInfoButton.Size = new System.Drawing.Size(126, 30);
+            this.getEventInfoButton.Size = new System.Drawing.Size(130, 30);
             this.getEventInfoButton.TabIndex = 6;
             this.getEventInfoButton.Text = "Get Event Info";
             this.getEventInfoButton.UseVisualStyleBackColor = true;
@@ -138,15 +141,16 @@
             this.eventCatComboBox.FormattingEnabled = true;
             this.eventCatComboBox.Location = new System.Drawing.Point(536, 92);
             this.eventCatComboBox.Name = "eventCatComboBox";
-            this.eventCatComboBox.Size = new System.Drawing.Size(186, 29);
+            this.eventCatComboBox.Size = new System.Drawing.Size(221, 29);
             this.eventCatComboBox.TabIndex = 10;
+            this.eventCatComboBox.SelectedIndexChanged += new System.EventHandler(this.eventCatComboBox_SelectedIndexChanged);
             // 
             // cancelEditButton
             // 
             this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelEditButton.Location = new System.Drawing.Point(560, 451);
+            this.cancelEditButton.Location = new System.Drawing.Point(590, 450);
             this.cancelEditButton.Name = "cancelEditButton";
-            this.cancelEditButton.Size = new System.Drawing.Size(133, 30);
+            this.cancelEditButton.Size = new System.Drawing.Size(90, 30);
             this.cancelEditButton.TabIndex = 11;
             this.cancelEditButton.Text = "Cancel";
             this.cancelEditButton.UseVisualStyleBackColor = true;
@@ -181,10 +185,9 @@
             // 
             // organiserEditButton
             // 
-            this.organiserEditButton.Enabled = false;
-            this.organiserEditButton.Location = new System.Drawing.Point(537, 451);
+            this.organiserEditButton.Location = new System.Drawing.Point(535, 450);
             this.organiserEditButton.Name = "organiserEditButton";
-            this.organiserEditButton.Size = new System.Drawing.Size(73, 30);
+            this.organiserEditButton.Size = new System.Drawing.Size(88, 30);
             this.organiserEditButton.TabIndex = 15;
             this.organiserEditButton.Text = "Edit";
             this.organiserEditButton.UseVisualStyleBackColor = true;
@@ -193,21 +196,31 @@
             // 
             // organiserCancel
             // 
-            this.organiserCancel.Enabled = false;
-            this.organiserCancel.Location = new System.Drawing.Point(649, 451);
+            this.organiserCancel.Location = new System.Drawing.Point(664, 450);
             this.organiserCancel.Name = "organiserCancel";
-            this.organiserCancel.Size = new System.Drawing.Size(73, 30);
+            this.organiserCancel.Size = new System.Drawing.Size(88, 30);
             this.organiserCancel.TabIndex = 16;
             this.organiserCancel.Text = "Cancel";
             this.organiserCancel.UseVisualStyleBackColor = true;
             this.organiserCancel.Visible = false;
+            this.organiserCancel.Click += new System.EventHandler(this.organiserCancel_Click);
+            // 
+            // leaveBtn
+            // 
+            this.leaveBtn.Location = new System.Drawing.Point(590, 450);
+            this.leaveBtn.Name = "leaveBtn";
+            this.leaveBtn.Size = new System.Drawing.Size(90, 30);
+            this.leaveBtn.TabIndex = 17;
+            this.leaveBtn.Text = "Leave";
+            this.leaveBtn.UseVisualStyleBackColor = true;
             // 
             // mainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(769, 523);
+            this.ClientSize = new System.Drawing.Size(769, 490);
+            this.Controls.Add(this.leaveBtn);
             this.Controls.Add(this.organiserCancel);
             this.Controls.Add(this.organiserEditButton);
             this.Controls.Add(this.searchEventButton);
@@ -251,6 +264,7 @@
         private System.Windows.Forms.Button searchEventButton;
         private System.Windows.Forms.Button organiserEditButton;
         private System.Windows.Forms.Button organiserCancel;
+        private System.Windows.Forms.Button leaveBtn;
 
     }
 }
