@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPage));
             this.titleLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.listSideEventView = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.registerEvent = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listMainEventView = new System.Windows.Forms.ListView();
             this.getEventInfoButton = new System.Windows.Forms.Button();
             this.eventCatComboBox = new System.Windows.Forms.ComboBox();
             this.cancelEditButton = new System.Windows.Forms.Button();
@@ -66,14 +66,15 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Welcome to ~EventSparkZ~";
             // 
-            // listView2
+            // listSideEventView
             // 
-            this.listView2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView2.Location = new System.Drawing.Point(536, 127);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(187, 318);
-            this.listView2.TabIndex = 3;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listSideEventView.Location = new System.Drawing.Point(536, 127);
+            this.listSideEventView.Name = "listSideEventView";
+            this.listSideEventView.Size = new System.Drawing.Size(187, 318);
+            this.listSideEventView.TabIndex = 3;
+            this.listSideEventView.UseCompatibleStateImageBehavior = false;
+            this.listSideEventView.View = System.Windows.Forms.View.List;
             // 
             // label3
             // 
@@ -107,17 +108,17 @@
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
-            // listView1
+            // listMainEventView
             // 
-            this.listView1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(17, 127);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(484, 318);
-            this.listView1.TabIndex = 9;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.listMainEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listMainEventView.FullRowSelect = true;
+            this.listMainEventView.GridLines = true;
+            this.listMainEventView.Location = new System.Drawing.Point(17, 127);
+            this.listMainEventView.Name = "listMainEventView";
+            this.listMainEventView.Size = new System.Drawing.Size(484, 318);
+            this.listMainEventView.TabIndex = 9;
+            this.listMainEventView.UseCompatibleStateImageBehavior = false;
+            this.listMainEventView.View = System.Windows.Forms.View.Details;
             // 
             // getEventInfoButton
             // 
@@ -214,12 +215,12 @@
             this.Controls.Add(this.searchEventDateTimePicker);
             this.Controls.Add(this.cancelEditButton);
             this.Controls.Add(this.eventCatComboBox);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.listMainEventView);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.registerEvent);
             this.Controls.Add(this.getEventInfoButton);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.listSideEventView);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.titleLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -237,11 +238,11 @@
 
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView listSideEventView;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button registerEvent;
         private System.Windows.Forms.Button logoutButton;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listMainEventView;
         private System.Windows.Forms.Button getEventInfoButton;
         private System.Windows.Forms.ComboBox eventCatComboBox;
         private System.Windows.Forms.Button cancelEditButton;
