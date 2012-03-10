@@ -148,7 +148,7 @@
             // registerEventBtn
             // 
             this.registerEventBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.registerEventBtn.Location = new System.Drawing.Point(91, 4);
+            this.registerEventBtn.Location = new System.Drawing.Point(90, 4);
             this.registerEventBtn.Name = "registerEventBtn";
             this.registerEventBtn.Size = new System.Drawing.Size(120, 30);
             this.registerEventBtn.TabIndex = 20;
@@ -233,7 +233,7 @@
             // viewParticipantListBtn
             // 
             this.viewParticipantListBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.viewParticipantListBtn.Location = new System.Drawing.Point(91, 40);
+            this.viewParticipantListBtn.Location = new System.Drawing.Point(90, 40);
             this.viewParticipantListBtn.Name = "viewParticipantListBtn";
             this.viewParticipantListBtn.Size = new System.Drawing.Size(120, 30);
             this.viewParticipantListBtn.TabIndex = 31;
