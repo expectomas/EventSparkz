@@ -69,7 +69,7 @@
             // listView2
             // 
             this.listView2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView2.Location = new System.Drawing.Point(285, 127);
+            this.listView2.Location = new System.Drawing.Point(286, 127);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(187, 177);
             this.listView2.TabIndex = 3;
@@ -125,6 +125,7 @@
             this.getEventInfoButton.TabIndex = 6;
             this.getEventInfoButton.Text = "Get Event Info";
             this.getEventInfoButton.UseVisualStyleBackColor = true;
+            this.getEventInfoButton.Click += new System.EventHandler(this.getEventInfoButton_Click);
             // 
             // eventCatComboBox
             // 
@@ -206,7 +207,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(484, 342);
+            this.ClientSize = new System.Drawing.Size(484, 349);
             this.Controls.Add(this.organiserCancel);
             this.Controls.Add(this.organiserEditButton);
             this.Controls.Add(this.searchEventButton);

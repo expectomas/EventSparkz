@@ -10,20 +10,18 @@ using _2103Project.Entities;
 
 namespace _2103Project
 {
-    
-    public partial class eventInfoForm : Form
+    public partial class attendanceForm : Form
     {
         private User currentUser;
-
-        public eventInfoForm(User incomingUser)
+        public attendanceForm(User incomingUser)
         {
-            currentUser = incomingUser;
             InitializeComponent();
+            currentUser = incomingUser;
         }
 
-        private void viewParticipantButton_Click(object sender, EventArgs e)
+        private void attendanceForm_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }
