@@ -174,6 +174,7 @@
             this.searchEventButton.TabIndex = 14;
             this.searchEventButton.Text = "Find";
             this.searchEventButton.UseVisualStyleBackColor = true;
+            this.searchEventButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.searchEventButton_Clicked);
             // 
             // mainPage
             // 

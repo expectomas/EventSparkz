@@ -59,9 +59,15 @@ namespace _2103Project
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            ActiveUser userRole = (Participant)(Object) currentUser;
+           
+        }
 
+        private void searchEventButton_Clicked(object sender, MouseEventArgs e)
+        {
+            ActiveUser userRole = new ActiveUser(currentUser);
             List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
+
+            initEventList();
         }
     }
 }
