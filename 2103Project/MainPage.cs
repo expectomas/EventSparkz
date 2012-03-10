@@ -340,6 +340,16 @@ namespace _2103Project
             }   
         }
 
+        private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && searchEventTextBox.Text == "Search Your Event Here") ;
+            {
+                searchEventTextBox.Clear();
+                searchEventTextBox.Focus();
+            }
+        }
+
+
     }
 }
 
