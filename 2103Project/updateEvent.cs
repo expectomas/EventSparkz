@@ -98,6 +98,7 @@ namespace _2103Project
             EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
 
             MessageBox.Show("Save successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
         private DateTime returnTime(string time, DateTime startTime)

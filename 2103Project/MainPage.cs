@@ -435,18 +435,33 @@ namespace _2103Project
         {
             searchEventTextBox.Text = searchEventTextBox.Text.Trim();
 
+            ActiveUser userRole = new ActiveUser(currentUser);
+
+            this.listMainEventView.Items.Clear();
+            int i;
+
             if (searchEventTextBox.Text == "" || searchEventTextBox.Text == "Search Your Event Here")
             {
-                // Do nothing
+                List<EventEntity> outputEventListing = userRole.viewEventListing();
+
+                for (i = 0; i < outputEventListing.Count; i++)
+                {
+                    EventEntity outputEvent = outputEventListing[i];
+
+                    ListViewItem newEvent = new ListViewItem((i + 1).ToString());
+                    newEvent.SubItems.Add(outputEvent.getEventId().ToString());
+                    newEvent.SubItems.Add(outputEvent.getEventName());
+                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
+                    newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
+
+                    listMainEventView.Items.Add(newEvent);
+                }
+
+                displayMainEventList();
             }
 
             else
             {
-                this.listMainEventView.Items.Clear();
-                int i;
-
-                ActiveUser userRole = new ActiveUser(currentUser);
-
                 List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
 
                 for (i = 0; i < outputEventListing.Count; i++)
@@ -464,11 +479,6 @@ namespace _2103Project
 
                 displayMainEventList();
             }
-        }
-
-        private void searchEventButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
