@@ -73,7 +73,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 79);
+            this.label2.Location = new System.Drawing.Point(14, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 21);
             this.label2.TabIndex = 2;
@@ -86,7 +86,7 @@
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(280, 37);
             this.createButton.TabIndex = 8;
-            this.createButton.Text = "Create an Event";
+            this.createButton.Text = "Done";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Click += new System.EventHandler(this.createButton_Click);
             // 
@@ -95,7 +95,7 @@
             this.startTimePicker.CustomFormat = "dd/MMM/yyyy hh:mm:00 tt";
             this.startTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startTimePicker.Location = new System.Drawing.Point(18, 103);
+            this.startTimePicker.Location = new System.Drawing.Point(19, 96);
             this.startTimePicker.MinDate = new System.DateTime(2012, 2, 12, 21, 26, 45, 0);
             this.startTimePicker.Name = "startTimePicker";
             this.startTimePicker.ShowUpDown = true;
@@ -108,7 +108,7 @@
             this.endTimePicker.CustomFormat = "dd/MMM/yyyy hh:mm:00 tt";
             this.endTimePicker.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endTimePicker.Location = new System.Drawing.Point(16, 171);
+            this.endTimePicker.Location = new System.Drawing.Point(17, 164);
             this.endTimePicker.MinDate = new System.DateTime(2012, 2, 12, 21, 26, 45, 0);
             this.endTimePicker.Name = "endTimePicker";
             this.endTimePicker.ShowUpDown = true;
@@ -120,7 +120,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(14, 147);
+            this.label6.Location = new System.Drawing.Point(15, 140);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 21);
             this.label6.TabIndex = 14;
@@ -130,7 +130,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 212);
+            this.label3.Location = new System.Drawing.Point(14, 209);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 21);
             this.label3.TabIndex = 16;
@@ -139,7 +139,7 @@
             // sizeTextBox
             // 
             this.sizeTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sizeTextBox.Location = new System.Drawing.Point(18, 236);
+            this.sizeTextBox.Location = new System.Drawing.Point(18, 233);
             this.sizeTextBox.Name = "sizeTextBox";
             this.sizeTextBox.Size = new System.Drawing.Size(279, 29);
             this.sizeTextBox.TabIndex = 17;
