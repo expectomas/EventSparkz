@@ -14,7 +14,7 @@ namespace _2103Project
                 
         ActiveUser au = new ActiveUser();
         //Facilitator f = new Facilitator();
-        Organiser o = new Organiser();
+        
         Participant p = new Participant();
 
         public void testViewEventListing()

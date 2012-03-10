@@ -13,9 +13,6 @@ namespace _2103Project.Entities
         private List<EventEntity> createdEvents;
 
         // Constructor
-        public Organiser()
-        {
-        }
 
         public Organiser(User copyingUser)
         {
