@@ -176,88 +176,28 @@ namespace _2103Project
         {
             initSideDDL();
         }
-        
-        public static void ThreadProc()
-        {
-            Application.Run(new loginForm(null));
-        }
-
-        public void populateRegisteredEvent()
-        {
-            if (currentUser != null)
-            {
-                
-
-            }
-        }
-
-        private void Exit_Dialog()
-        {
-            if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                currentUser.logout();
-                LogoutPressed = true;
-                this.Close();
-                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(ThreadProc));
-                t.Start();
-            }
-        }
 
         public void initEventList()
         {
-            this.listView1.Hide();
+            this.listMainEventView.Hide();
 
             //Clear ListBox Column and Items
-            this.listView1.Columns.Clear();
-            this.listView1.Items.Clear();
+            this.listMainEventView.Columns.Clear();
+            this.listMainEventView.Items.Clear();
 
 
-            this.listView1.Columns.Insert(0, "Id",50 , HorizontalAlignment.Left);
-            this.listView1.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
-            this.listView1.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
-            this.listView1.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
-        }
-
-        public void initSideDDL()
-        {
-            eventCatComboBox.Hide();
-            eventCatComboBox.Items.Clear();
-
-            eventCatComboBox.Items.Insert(0,"Registered Event");
-            eventCatComboBox.Items.Insert(1,"Created Event");
-            eventCatComboBox.Items.Insert(2, "Facilitator List");
-            eventCatComboBox.SelectedIndex = 0;
-
-            eventCatComboBox.Show();
-
+            this.listMainEventView.Columns.Insert(0, "Id",50 , HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
+            this.listMainEventView.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
         }
 
         public void displayEventList()
         {
-            this.listView1.Show();
+            this.listMainEventView.Show();
         }
 
         //Event Handler
-
-        private void registerEvent_Click(object sender, EventArgs e)
-        {
-            createEventForm createEvent = new createEventForm(currentUser);
-            createEvent.Show();
-        }
-
-        private void mainPage_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if(!LogoutPressed)
-                Exit_Dialog();
-        }
-
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            Exit_Dialog();
-        }
-
-           
-        }
 
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
@@ -298,8 +238,8 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
-            ListViewItem listItem = this.listMainEventView.SelectedItems[1];
-            currentEventID = int.Parse(listItem.SubItems[0].Text);
+            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
