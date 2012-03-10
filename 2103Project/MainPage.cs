@@ -39,7 +39,7 @@ namespace _2103Project
             this.listMainEventView.Items.Clear();
 
             this.listMainEventView.Columns.Insert(0, "No", 50, HorizontalAlignment.Left);
-            this.listMainEventView.Columns.Insert(1, "Id", 50, HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(1, "Id", 0, HorizontalAlignment.Left);
             this.listMainEventView.Columns.Insert(2, "Event", 220, HorizontalAlignment.Left);
             this.listMainEventView.Columns.Insert(3, "Date", 80, HorizontalAlignment.Center);
             this.listMainEventView.Columns.Insert(4, "Time", 80, HorizontalAlignment.Center);
@@ -121,7 +121,13 @@ namespace _2103Project
 
             for (int i = 0; i < sideBarEventListing.Count; i++)
             {
-                listSideEventView.Items.Add(sideBarEventListing[i].getEventName());
+                EventEntity outputEvent = sideBarEventListing[i];
+
+                ListViewItem newEvent = new ListViewItem(outputEvent.getEventId().ToString());
+                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
+                newEvent.SubItems.Add(outputEvent.getEventName());
+
+                listSideEventView.Items.Add(newEvent);
             }
 
             this.listSideEventView.Show();
@@ -141,6 +147,13 @@ namespace _2103Project
             }
         }
 
+        public void displayMainEventList()
+        {
+            this.listMainEventView.Show();
+        }
+
+        //Main Page Dialog
+
         private void Exit_Dialog()
         {
             if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -153,10 +166,16 @@ namespace _2103Project
             }
         }
 
-        public void displayMainEventList()
+        private bool Participant_Cancel_Dialog()
         {
-            this.listMainEventView.Show();
+            return MessageBox.Show("Do you want to opt out from this event?", "Opt Out Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
+
+        private bool Organiser_Cancel_Dialog()
+        {
+            return MessageBox.Show("Do you want to cancel this event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
 
         //Event Handler
 
@@ -261,36 +280,46 @@ namespace _2103Project
 
         private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
         {
-            int organiserCancellingEventId=-1;
+          
+            searchEventTextBox.Clear();
+            searchEventTextBox.Focus();
+        }
+
+        private void organiserCancel_Click(object sender, EventArgs e)
+        {
+            //Organiser cancel event
+            int organiserCancellingEventId=0;
 
             ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
             organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
 
             Organiser organiser = new Organiser(currentUser);
 
-            if (organiserCancellingEventId != -1)
+            if (organiserCancellingEventId >0)
             {
-                if (Organiser_Cancel_SideBar_Dialog())
+                if (Organiser_Cancel_Dialog())
                 {
                     organiser.cancelEvent(organiserCancellingEventId);
                 }
             }
         }
 
-        private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
+        private void cancelEditButton_MouseDown_1(object sender, MouseEventArgs e)
         {
             //Participant cancel event 
-            int participantCancellingEventId = -1;
+            int participantCancellingEventId = 0;
 
             ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
             participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
 
             Participant participant = new Participant(currentUser);
 
-            if (participantCancellingEventId != -1)
+            if (participantCancellingEventId > 0)
             {
-                searchEventTextBox.Clear();
-                searchEventTextBox.Focus();
+                if (Participant_Cancel_Dialog())
+                {
+                    participant.cancelEventRegistration(participantCancellingEventId);
+                }
             }
         }
     }

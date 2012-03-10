@@ -69,12 +69,14 @@
             // listSideEventView
             // 
             this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listSideEventView.FullRowSelect = true;
+            this.listSideEventView.GridLines = true;
             this.listSideEventView.Location = new System.Drawing.Point(536, 127);
             this.listSideEventView.Name = "listSideEventView";
             this.listSideEventView.Size = new System.Drawing.Size(221, 318);
             this.listSideEventView.TabIndex = 3;
             this.listSideEventView.UseCompatibleStateImageBehavior = false;
-            this.listSideEventView.View = System.Windows.Forms.View.List;
+            this.listSideEventView.View = System.Windows.Forms.View.Details;
             // 
             // label3
             // 
@@ -151,6 +153,7 @@
             this.cancelEditButton.TabIndex = 11;
             this.cancelEditButton.Text = "Cancel";
             this.cancelEditButton.UseVisualStyleBackColor = true;
+            this.cancelEditButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cancelEditButton_MouseDown_1);
             // 
             // searchEventDateTimePicker
             // 
@@ -203,6 +206,7 @@
             this.organiserCancel.Text = "Cancel";
             this.organiserCancel.UseVisualStyleBackColor = true;
             this.organiserCancel.Visible = false;
+            this.organiserCancel.Click += new System.EventHandler(this.organiserCancel_Click);
             // 
             // mainPage
             // 
