@@ -28,11 +28,9 @@ namespace _2103Project
         public mainPage( User incomingUser)
         {
             InitializeComponent();
-
-            currentUser = incomingUser;
-
-            //Load the Exit Event
         }
+
+        //Event Handler
 
         private void registerEvent_Click(object sender, EventArgs e)
         {
@@ -51,6 +49,15 @@ namespace _2103Project
         private void logoutButton_Click(object sender, EventArgs e)
         {
             Exit_Dialog();
+        }
+
+        private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            ActiveUser userRole = (Participant)(Object) currentUser;
+
+            List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
+
+
         }
     }
 }
