@@ -70,12 +70,14 @@
             // listSideEventView
             // 
             this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listSideEventView.FullRowSelect = true;
+            this.listSideEventView.GridLines = true;
             this.listSideEventView.Location = new System.Drawing.Point(536, 127);
             this.listSideEventView.Name = "listSideEventView";
             this.listSideEventView.Size = new System.Drawing.Size(221, 318);
             this.listSideEventView.TabIndex = 3;
             this.listSideEventView.UseCompatibleStateImageBehavior = false;
-            this.listSideEventView.View = System.Windows.Forms.View.List;
+            this.listSideEventView.View = System.Windows.Forms.View.Details;
             // 
             // label3
             // 
@@ -90,9 +92,9 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerEvent.Location = new System.Drawing.Point(17, 451);
+            this.registerEvent.Location = new System.Drawing.Point(17, 450);
             this.registerEvent.Name = "registerEvent";
-            this.registerEvent.Size = new System.Drawing.Size(112, 30);
+            this.registerEvent.Size = new System.Drawing.Size(110, 30);
             this.registerEvent.TabIndex = 7;
             this.registerEvent.Text = "Create Event";
             this.registerEvent.UseVisualStyleBackColor = true;
@@ -124,9 +126,9 @@
             // getEventInfoButton
             // 
             this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getEventInfoButton.Location = new System.Drawing.Point(135, 451);
+            this.getEventInfoButton.Location = new System.Drawing.Point(135, 450);
             this.getEventInfoButton.Name = "getEventInfoButton";
-            this.getEventInfoButton.Size = new System.Drawing.Size(126, 30);
+            this.getEventInfoButton.Size = new System.Drawing.Size(130, 30);
             this.getEventInfoButton.TabIndex = 6;
             this.getEventInfoButton.Text = "Get Event Info";
             this.getEventInfoButton.UseVisualStyleBackColor = true;
@@ -201,6 +203,7 @@
             this.organiserCancel.Text = "Cancel";
             this.organiserCancel.UseVisualStyleBackColor = true;
             this.organiserCancel.Visible = false;
+            this.organiserCancel.Click += new System.EventHandler(this.organiserCancel_Click);
             // 
             // leaveBtn
             // 
