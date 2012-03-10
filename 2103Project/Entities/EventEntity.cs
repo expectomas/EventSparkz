@@ -22,6 +22,10 @@ namespace _2103Project.Entities
         private const string DatabaseToken = "431fW13x";
 
         //Constructors
+        public EventEntity()
+        {
+
+        }
 
         public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId)
         {

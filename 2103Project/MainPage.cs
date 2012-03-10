@@ -13,7 +13,7 @@ namespace _2103Project
     {
         private User currentUser;
         private bool LogoutPressed = false;
-
+        private int currentEventID;
         public mainPage(User incomingUser)
         {
             InitializeComponent();
@@ -87,7 +87,7 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
-            eventInfoForm eventInfoPage = new eventInfoForm(currentUser);
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
     }

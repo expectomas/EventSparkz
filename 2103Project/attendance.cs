@@ -12,14 +12,25 @@ namespace _2103Project
 {
     public partial class attendanceForm : Form
     {
-
-        public attendanceForm()
+        private int currentEventID;
+        private User currentUser;
+        public attendanceForm(User currentUser, int incomingEventID)
         {
+            this.currentUser = currentUser;
+            currentEventID = incomingEventID;
             InitializeComponent();
         }
 
         private void attendanceForm_Load(object sender, EventArgs e)
         {
+            List<Participant> listofPaticipant = new List<Participant>();
+            EventEntity newEve = Facilitator.getEventEntity(currentEventID);
+            Facilitator fac = new Facilitator(currentUser);
+            listofPaticipant = fac.viewParticipantList(newEve);
+            foreach (Participant partUser in listofPaticipant)
+            {
+                participantListBox.Items.Add(partUser.getName());
+            }
         }
     }
 }
