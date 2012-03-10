@@ -174,7 +174,6 @@ namespace _2103Project
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            initSideDDL();
         }
 
         public void initEventList()
@@ -240,6 +239,20 @@ namespace _2103Project
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
+
+        private void eventCatComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            initSideEventBar();
+
+            //If Created Events is selected
+            if (eventCatComboBox.SelectedIndex == 1)
+            {
+                //Hide the cancel button
+                //Display 
+
+            }
+        }
+
     }
 }
 

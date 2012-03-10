@@ -71,7 +71,7 @@
             this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listSideEventView.Location = new System.Drawing.Point(536, 127);
             this.listSideEventView.Name = "listSideEventView";
-            this.listSideEventView.Size = new System.Drawing.Size(187, 318);
+            this.listSideEventView.Size = new System.Drawing.Size(221, 318);
             this.listSideEventView.TabIndex = 3;
             this.listSideEventView.UseCompatibleStateImageBehavior = false;
             this.listSideEventView.View = System.Windows.Forms.View.List;
@@ -138,15 +138,16 @@
             this.eventCatComboBox.FormattingEnabled = true;
             this.eventCatComboBox.Location = new System.Drawing.Point(536, 92);
             this.eventCatComboBox.Name = "eventCatComboBox";
-            this.eventCatComboBox.Size = new System.Drawing.Size(186, 29);
+            this.eventCatComboBox.Size = new System.Drawing.Size(221, 29);
             this.eventCatComboBox.TabIndex = 10;
+            this.eventCatComboBox.SelectedIndexChanged += new System.EventHandler(this.eventCatComboBox_SelectedIndexChanged);
             // 
             // cancelEditButton
             // 
             this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelEditButton.Location = new System.Drawing.Point(560, 451);
             this.cancelEditButton.Name = "cancelEditButton";
-            this.cancelEditButton.Size = new System.Drawing.Size(133, 30);
+            this.cancelEditButton.Size = new System.Drawing.Size(168, 30);
             this.cancelEditButton.TabIndex = 11;
             this.cancelEditButton.Text = "Cancel";
             this.cancelEditButton.UseVisualStyleBackColor = true;
@@ -184,7 +185,7 @@
             this.organiserEditButton.Enabled = false;
             this.organiserEditButton.Location = new System.Drawing.Point(537, 451);
             this.organiserEditButton.Name = "organiserEditButton";
-            this.organiserEditButton.Size = new System.Drawing.Size(73, 30);
+            this.organiserEditButton.Size = new System.Drawing.Size(108, 30);
             this.organiserEditButton.TabIndex = 15;
             this.organiserEditButton.Text = "Edit";
             this.organiserEditButton.UseVisualStyleBackColor = true;
@@ -196,7 +197,7 @@
             this.organiserCancel.Enabled = false;
             this.organiserCancel.Location = new System.Drawing.Point(649, 451);
             this.organiserCancel.Name = "organiserCancel";
-            this.organiserCancel.Size = new System.Drawing.Size(73, 30);
+            this.organiserCancel.Size = new System.Drawing.Size(108, 30);
             this.organiserCancel.TabIndex = 16;
             this.organiserCancel.Text = "Cancel";
             this.organiserCancel.UseVisualStyleBackColor = true;
@@ -207,7 +208,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(769, 523);
+            this.ClientSize = new System.Drawing.Size(769, 490);
             this.Controls.Add(this.organiserCancel);
             this.Controls.Add(this.organiserEditButton);
             this.Controls.Add(this.searchEventButton);
