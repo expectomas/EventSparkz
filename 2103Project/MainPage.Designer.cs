@@ -42,6 +42,8 @@
             this.searchEventDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.searchEventTextBox = new System.Windows.Forms.TextBox();
             this.searchEventButton = new System.Windows.Forms.Button();
+            this.organiserEditButton = new System.Windows.Forms.Button();
+            this.organiserCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -176,12 +178,37 @@
             this.searchEventButton.UseVisualStyleBackColor = true;
             this.searchEventButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.searchEventButton_Clicked);
             // 
+            // organiserEditButton
+            // 
+            this.organiserEditButton.Enabled = false;
+            this.organiserEditButton.Location = new System.Drawing.Point(287, 310);
+            this.organiserEditButton.Name = "organiserEditButton";
+            this.organiserEditButton.Size = new System.Drawing.Size(73, 30);
+            this.organiserEditButton.TabIndex = 15;
+            this.organiserEditButton.Text = "Edit";
+            this.organiserEditButton.UseVisualStyleBackColor = true;
+            this.organiserEditButton.Visible = false;
+            this.organiserEditButton.Click += new System.EventHandler(this.organiserEditButton_Click);
+            // 
+            // organiserCancel
+            // 
+            this.organiserCancel.Enabled = false;
+            this.organiserCancel.Location = new System.Drawing.Point(399, 310);
+            this.organiserCancel.Name = "organiserCancel";
+            this.organiserCancel.Size = new System.Drawing.Size(73, 30);
+            this.organiserCancel.TabIndex = 16;
+            this.organiserCancel.Text = "Cancel";
+            this.organiserCancel.UseVisualStyleBackColor = true;
+            this.organiserCancel.Visible = false;
+            // 
             // mainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(484, 342);
+            this.Controls.Add(this.organiserCancel);
+            this.Controls.Add(this.organiserEditButton);
             this.Controls.Add(this.searchEventButton);
             this.Controls.Add(this.searchEventTextBox);
             this.Controls.Add(this.searchEventDateTimePicker);
@@ -221,6 +248,8 @@
         private System.Windows.Forms.DateTimePicker searchEventDateTimePicker;
         private System.Windows.Forms.TextBox searchEventTextBox;
         private System.Windows.Forms.Button searchEventButton;
+        private System.Windows.Forms.Button organiserEditButton;
+        private System.Windows.Forms.Button organiserCancel;
 
     }
 }
