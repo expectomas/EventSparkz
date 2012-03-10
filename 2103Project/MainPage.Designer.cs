@@ -216,7 +216,7 @@
             this.leaveBtn.Text = "Leave";
             this.leaveBtn.UseVisualStyleBackColor = true;
             this.leaveBtn.Visible = false;
-            this.leaveBtn.Click += new System.EventHandler(this.leaveBtn_Click);
+            this.leaveBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.leaveBtn_KeyDown);
             // 
             // mainPage
             // 

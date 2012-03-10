@@ -349,6 +349,10 @@ namespace _2103Project
             }
         }
 
+        private void leaveBtn_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
 
     }
 }
