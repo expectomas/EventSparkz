@@ -32,6 +32,7 @@ namespace _2103Project.Entities
             loggedIn = copyingUser.getLoggedIn();
             contactHome = copyingUser.getContactHome();
             contactHP = copyingUser.getContactHP();
+
         }
 
         public EventEntity viewEventInfo(int index)

@@ -29,6 +29,8 @@ namespace _2103Project.Entities
             loggedIn = copyingUser.getLoggedIn();
             contactHome = copyingUser.getContactHome();
             contactHP = copyingUser.getContactHP();
+
+            loadOrganisedEvent();
         }
 
 
@@ -121,6 +123,7 @@ namespace _2103Project.Entities
             db.saveListOfSchedule(listOfSchedule);
             return true;
         }
+
         public static int getNewScheduleId()
         {
             int newScheduleID = 0;
@@ -156,6 +159,11 @@ namespace _2103Project.Entities
 
 
             return eventUpdated;
+        }
+
+        public List<EventEntity> getOrganisedEvents()
+        {
+            return new List<EventEntity>(Bookings);
         }
 
     }
