@@ -113,8 +113,6 @@ namespace _2103Project
         private void createEvent_FormClosed(object sender, FormClosedEventArgs e)
         {
             Exit_Dialog();
-
-            this.Close();
         }
 
         private void addScheduleButton_Click(object sender, EventArgs e)

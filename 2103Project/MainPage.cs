@@ -13,8 +13,6 @@ namespace _2103Project
     {
         private User currentUser;
 
-        int closeState = 0;
-
         private void Exit_Dialog(int state)
         {
             if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -53,7 +51,6 @@ namespace _2103Project
 
         private void mainPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(closeState == 0)
                 Exit_Dialog(0);
         }
 
