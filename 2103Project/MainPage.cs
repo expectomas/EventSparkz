@@ -225,8 +225,6 @@ namespace _2103Project
             this.listMainEventView.Show();
         }
 
-        //Event Handler
-
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
             this.listMainEventView.Items.Clear();
