@@ -70,6 +70,11 @@ namespace _2103Project.Entities
             return timeDuration;
         }
 
+        public List<Participant> getParticipantList()
+        {
+            return participantList;
+        }
+
         public bool addParticipantToEvent(Participant newParticipant)
         {
             bool successAdded = false;

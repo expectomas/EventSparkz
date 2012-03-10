@@ -10,7 +10,7 @@ namespace _2103Project.Entities
     {
         //Attributes
 
-        private List<EventEntity> FacilitatingEvents;
+        private List<EventEntity> facilitatingEvents;
 
         //Database Access Authetication
         private const string DatabaseToken = "5hfoipe@";
@@ -52,7 +52,7 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
 
-            FacilitatingEvents = new List<EventEntity>();
+            facilitatingEvents = new List<EventEntity>();
 
             List<EventEntity> obtainedEventList = db.getListOfEvents();
 
@@ -61,22 +61,31 @@ namespace _2103Project.Entities
                 EventEntity currentEvent = obtainedEventList[i];
 
                 if (currentEvent.doesFacilitatorExist(userId))
-                    FacilitatingEvents.Add(currentEvent);
+                    facilitatingEvents.Add(currentEvent);
             }
 
             return true;
         }
 
-        public List<Participant> viewParticipantList()
+        public List<Participant> viewParticipantList(EventEntity thisEvent)
         {
+            int i = 0;
+
+            List<Participant> allParticipant = new List<Participant>();
+
             //Establish database linkage
             IDatabase db = Database.CreateDatabase(DatabaseToken);
 
-            List<Participant> allParticipants = new List<Participant>();
+            List<EventEntity> searchList = facilitatingEvents;
+            while (searchList.Count > i)
+            {
+                EventEntity abstractedEvent = searchList[i];
 
-            
+                if (abstractedEvent.Equals(thisEvent))
+                    allParticipant = abstractedEvent.getParticipantList();
+            }
 
-            return allParticipants;
+            return allParticipant;
         }
     }
 }

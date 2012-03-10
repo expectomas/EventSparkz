@@ -20,5 +20,11 @@ namespace _2103Project
             currentUser = incomingUser;
             InitializeComponent();
         }
+
+        private void viewParticipantButton_Click(object sender, EventArgs e)
+        {
+            attendanceForm attForm = new attendanceForm(currentUser);
+            attForm.Show();
+        }
     }
 }

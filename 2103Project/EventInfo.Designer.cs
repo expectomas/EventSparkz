@@ -237,12 +237,14 @@
             // 
             // viewParticipantButton
             // 
-            this.viewParticipantButton.Location = new System.Drawing.Point(308, 104);
+            this.viewParticipantButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewParticipantButton.Location = new System.Drawing.Point(315, 91);
             this.viewParticipantButton.Name = "viewParticipantButton";
-            this.viewParticipantButton.Size = new System.Drawing.Size(142, 23);
+            this.viewParticipantButton.Size = new System.Drawing.Size(142, 45);
             this.viewParticipantButton.TabIndex = 31;
             this.viewParticipantButton.Text = "View Participant";
             this.viewParticipantButton.UseVisualStyleBackColor = true;
+            this.viewParticipantButton.Click += new System.EventHandler(this.viewParticipantButton_Click);
             // 
             // eventInfoForm
             // 
