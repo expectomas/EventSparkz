@@ -37,16 +37,17 @@
             this.dateLabel = new System.Windows.Forms.Label();
             this.venueLabel = new System.Windows.Forms.Label();
             this.organiserLabel = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Venue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnFacilitate = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.noOfParticipantLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.timeListBox = new System.Windows.Forms.ListBox();
+            this.descriptionListBox = new System.Windows.Forms.ListBox();
+            this.venueListBox = new System.Windows.Forms.ListBox();
+            this.Time = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -93,7 +94,7 @@
             // 
             this.scheduleLabel.AutoSize = true;
             this.scheduleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scheduleLabel.Location = new System.Drawing.Point(191, 126);
+            this.scheduleLabel.Location = new System.Drawing.Point(191, 131);
             this.scheduleLabel.Name = "scheduleLabel";
             this.scheduleLabel.Size = new System.Drawing.Size(73, 21);
             this.scheduleLabel.TabIndex = 9;
@@ -129,41 +130,10 @@
             this.organiserLabel.TabIndex = 12;
             this.organiserLabel.Text = "label3";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Time,
-            this.Description,
-            this.Venue});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 150);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(470, 150);
-            this.dataGridView1.TabIndex = 13;
-            // 
-            // Time
-            // 
-            this.Time.HeaderText = "Time";
-            this.Time.Name = "Time";
-            this.Time.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 225;
-            // 
-            // Venue
-            // 
-            this.Venue.HeaderText = "Venue";
-            this.Venue.Name = "Venue";
-            this.Venue.ReadOnly = true;
-            // 
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(321, 305);
+            this.btnBack.Location = new System.Drawing.Point(324, 305);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(117, 37);
             this.btnBack.TabIndex = 22;
@@ -173,7 +143,7 @@
             // btnFacilitate
             // 
             this.btnFacilitate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacilitate.Location = new System.Drawing.Point(165, 305);
+            this.btnFacilitate.Location = new System.Drawing.Point(171, 305);
             this.btnFacilitate.Name = "btnFacilitate";
             this.btnFacilitate.Size = new System.Drawing.Size(123, 37);
             this.btnFacilitate.TabIndex = 21;
@@ -210,18 +180,77 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "No. of Participant:";
             // 
+            // timeListBox
+            // 
+            this.timeListBox.FormattingEnabled = true;
+            this.timeListBox.Location = new System.Drawing.Point(19, 176);
+            this.timeListBox.Name = "timeListBox";
+            this.timeListBox.Size = new System.Drawing.Size(120, 121);
+            this.timeListBox.TabIndex = 25;
+            // 
+            // descriptionListBox
+            // 
+            this.descriptionListBox.FormattingEnabled = true;
+            this.descriptionListBox.Location = new System.Drawing.Point(145, 176);
+            this.descriptionListBox.Name = "descriptionListBox";
+            this.descriptionListBox.Size = new System.Drawing.Size(202, 121);
+            this.descriptionListBox.TabIndex = 26;
+            // 
+            // venueListBox
+            // 
+            this.venueListBox.FormattingEnabled = true;
+            this.venueListBox.Location = new System.Drawing.Point(353, 176);
+            this.venueListBox.Name = "venueListBox";
+            this.venueListBox.Size = new System.Drawing.Size(120, 121);
+            this.venueListBox.TabIndex = 27;
+            // 
+            // Time
+            // 
+            this.Time.AutoSize = true;
+            this.Time.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Time.Location = new System.Drawing.Point(15, 152);
+            this.Time.Name = "Time";
+            this.Time.Size = new System.Drawing.Size(47, 21);
+            this.Time.TabIndex = 28;
+            this.Time.Text = "Time:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(141, 152);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 21);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Description";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(349, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 21);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Venue:";
+            // 
             // eventInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(496, 351);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Time);
+            this.Controls.Add(this.venueListBox);
+            this.Controls.Add(this.descriptionListBox);
+            this.Controls.Add(this.timeListBox);
             this.Controls.Add(this.noOfParticipantLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnFacilitate);
             this.Controls.Add(this.btnRegister);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.organiserLabel);
             this.Controls.Add(this.venueLabel);
             this.Controls.Add(this.dateLabel);
@@ -235,7 +264,6 @@
             this.Name = "eventInfoForm";
             this.Text = "Event Info";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.eventInfo_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,15 +279,17 @@
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label venueLabel;
         private System.Windows.Forms.Label organiserLabel;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Venue;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnFacilitate;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label noOfParticipantLabel;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ListBox timeListBox;
+        private System.Windows.Forms.ListBox descriptionListBox;
+        private System.Windows.Forms.ListBox venueListBox;
+        private System.Windows.Forms.Label Time;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
 
     }
 }
