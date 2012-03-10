@@ -93,7 +93,6 @@ namespace _2103Project.Entities
             //Establish database linkage
             IDatabase db = Database.CreateDatabase(DatabaseToken);
 
-
             List<EventEntity> allEvents = db.getListOfEvents();
 
             EventEntity abstractedEvent = new EventEntity() ;
