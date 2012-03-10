@@ -207,8 +207,6 @@ namespace _2103Project
             this.listMainEventView.Show();
         }
 
-        //Event Handler
-
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
             this.listMainEventView.Items.Clear();
@@ -285,7 +283,15 @@ namespace _2103Project
 
         private void organiserCancel_Click(object sender, EventArgs e)
         {
+            int organiserCancellingEventId=-1;
 
+            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+            organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+            Organiser organiser = new Organiser(currentUser);
+
+            if(organiserCancellingEventId!=-1)
+                organiser.cancelEvent(organiserCancellingEventId);
         }
 
     }
