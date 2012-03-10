@@ -21,6 +21,20 @@ namespace _2103Project.Entities
 
         }
 
+        public Participant(User copyingUser)
+        {
+            userId = copyingUser.getUserId();
+            userName = copyingUser.getUserName();
+            name = copyingUser.getName();
+            matricNo = copyingUser.getMatricNo();
+            password = copyingUser.getPW();
+            email = copyingUser.getEmail();
+            age = copyingUser.getAge();
+            loggedIn = copyingUser.getLoggedIn();
+            contactHome = copyingUser.getContactHome();
+            contactHP = copyingUser.getContactHP();
+        }
+
         public Participant(int i_userId, string i_userName, string i_name, string i_matricNo, string i_password,
                     string i_email, int i_age, bool i_loggedIn, double i_contactHome, double i_contactHP)
         {

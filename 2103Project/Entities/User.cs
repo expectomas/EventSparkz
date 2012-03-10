@@ -220,6 +220,51 @@ namespace _2103Project.Entities
             return userId;
         }
 
+        public string getUserName()
+        {
+            return userName;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+
+        public string getMatricNo()
+        {
+            return matricNo;
+        }
+
+        public string getPW()
+        {
+            return password;
+        }
+
+        public string getEmail()
+        {
+            return email;
+        }
+
+        public int getAge()
+        {
+            return age;
+        }
+
+        public bool getLoggedIn()
+        {
+            return Convert.ToBoolean(loggedIn);
+        }
+
+        public double getContactHome()
+        {
+            return contactHome;
+        }
+
+        public double getContactHP()
+        {
+            return contactHP;
+        }
+
         public static int retrievelastID()
         {
             int newID = 1;

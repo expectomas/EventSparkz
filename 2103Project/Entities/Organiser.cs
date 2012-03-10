@@ -17,6 +17,21 @@ namespace _2103Project.Entities
         {
         }
 
+        public Organiser(User copyingUser)
+        {
+            userId = copyingUser.getUserId();
+            userName = copyingUser.getUserName();
+            name = copyingUser.getName();
+            matricNo = copyingUser.getMatricNo();
+            password = copyingUser.getPW();
+            email = copyingUser.getEmail();
+            age = copyingUser.getAge();
+            loggedIn = copyingUser.getLoggedIn();
+            contactHome = copyingUser.getContactHome();
+            contactHP = copyingUser.getContactHP();
+        }
+
+
         //Database Access Authetication
         private const string DatabaseToken = "9032!ds$";
 
@@ -75,6 +90,7 @@ namespace _2103Project.Entities
             newActivityId++;
             return newActivityId;
         }
+
         public bool addNewActivity(Activity newAct)
         {
             Database db = Database.CreateDatabase(DatabaseToken);

@@ -17,6 +17,21 @@ namespace _2103Project.Entities
 
         public ActiveUser()
         {
+
+        }
+
+        public ActiveUser(User copyingUser)
+        {
+            userId = copyingUser.getUserId();
+            userName = copyingUser.getUserName();
+            name = copyingUser.getName();
+            matricNo = copyingUser.getMatricNo();
+            password = copyingUser.getPW();
+            email = copyingUser.getEmail();
+            age = copyingUser.getAge();
+            loggedIn = copyingUser.getLoggedIn();
+            contactHome = copyingUser.getContactHome();
+            contactHP = copyingUser.getContactHP();
         }
 
         public EventEntity viewEventInfo(int index)
