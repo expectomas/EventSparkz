@@ -269,12 +269,33 @@ namespace _2103Project
         {
             initSideEventBar();
 
-            //If Created Events is selected
-            if (eventCatComboBox.SelectedIndex == 1)
+            //Selecting Different Scenario
+            switch (eventCatComboBox.SelectedIndex)
             {
-                //Hide the cancel button
-                //Display 
-
+                case 0:
+                    //participant
+                    organiserCancel.Hide();
+                    organiserEditButton.Hide();
+                    cancelEditButton.Show();
+                    leaveBtn.Hide();
+                    break;
+                case 1:
+                    //organiser
+                    organiserCancel.Show();
+                    organiserEditButton.Show();
+                    cancelEditButton.Hide();
+                    leaveBtn.Hide();
+                    
+                    break;
+                case 2:
+                    //faciltator
+                    organiserCancel.Hide();
+                    organiserEditButton.Hide();
+                    cancelEditButton.Hide();
+                    leaveBtn.Show();
+                    break;
+                default:
+                    break;
             }
         }
 
