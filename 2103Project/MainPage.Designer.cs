@@ -154,7 +154,7 @@
             this.cancelEditButton.TabIndex = 11;
             this.cancelEditButton.Text = "Cancel";
             this.cancelEditButton.UseVisualStyleBackColor = true;
-            this.cancelEditButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cancelEditButton_MouseDown_1);
+            this.cancelEditButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.cancelEditButton_MouseDown);
             // 
             // searchEventDateTimePicker
             // 
@@ -216,6 +216,7 @@
             this.leaveBtn.Text = "Leave";
             this.leaveBtn.UseVisualStyleBackColor = true;
             this.leaveBtn.Visible = false;
+            this.leaveBtn.Click += new System.EventHandler(this.leaveBtn_Click);
             // 
             // mainPage
             // 

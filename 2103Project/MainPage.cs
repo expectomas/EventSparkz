@@ -176,6 +176,10 @@ namespace _2103Project
             return MessageBox.Show("Do you want to cancel this event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
+        private bool Facilitator_Cancel_Dialog()
+        {
+            return MessageBox.Show("Do you want to opt out of this event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
 
         //Event Handler
 
@@ -311,35 +315,64 @@ namespace _2103Project
             //Organiser cancel event
             int organiserCancellingEventId=0;
 
-            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
-            organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
-
-            Organiser organiser = new Organiser(currentUser);
-
-            if (organiserCancellingEventId >0)
+            if (this.listSideEventView.SelectedItems.Count != 0)
             {
-                if (Organiser_Cancel_Dialog())
+                ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+                organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+                Organiser organiser = new Organiser(currentUser);
+
+                if (organiserCancellingEventId > 0)
                 {
-                    organiser.cancelEvent(organiserCancellingEventId);
+                    if (Organiser_Cancel_Dialog())
+                    {
+                        organiser.cancelEvent(organiserCancellingEventId);
+                    }
                 }
             }
         }
 
-        private void cancelEditButton_MouseDown_1(object sender, MouseEventArgs e)
+        private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
         {
             //Participant cancel event 
             int participantCancellingEventId = 0;
 
-            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
-            participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
-
-            Participant participant = new Participant(currentUser);
-
-            if (participantCancellingEventId > 0)
+            if (this.listSideEventView.SelectedItems.Count != 0)
             {
-                if (Participant_Cancel_Dialog())
+                ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+                participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+                Participant participant = new Participant(currentUser);
+
+                if (participantCancellingEventId > 0)
                 {
-                    participant.cancelEventRegistration(participantCancellingEventId);
+                    if (Participant_Cancel_Dialog())
+                    {
+                        participant.cancelEventRegistration(participantCancellingEventId);
+                    }
+                }
+            }
+        }
+
+        private void leaveBtn_Click(object sender, EventArgs e)
+        {
+            int facilitatorCancellingEventId = 0;
+
+            if (this.listSideEventView.SelectedItems.Count != 0)
+            {
+                ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+                facilitatorCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+                Facilitator facilitor = new Facilitator(currentUser);
+
+                if (facilitatorCancellingEventId > 0)
+                {
+                    if (Facilitator_Cancel_Dialog())
+                    {
+                        //TODO: Insert facilitor not joining events here
+
+                    }
+
                 }
             }
         }
