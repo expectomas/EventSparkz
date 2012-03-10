@@ -163,6 +163,7 @@
             this.searchEventDateTimePicker.Name = "searchEventDateTimePicker";
             this.searchEventDateTimePicker.Size = new System.Drawing.Size(208, 22);
             this.searchEventDateTimePicker.TabIndex = 12;
+            this.searchEventDateTimePicker.ValueChanged += new System.EventHandler(this.searchEventDateTimePicker_ValueChanged);
             // 
             // searchEventTextBox
             // 

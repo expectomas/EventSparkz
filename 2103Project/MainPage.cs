@@ -245,8 +245,6 @@ namespace _2103Project
 
                 List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
 
-                Database db = Database.CreateDatabase("cd#ew1Tf");
-
                 for (i = 0; i < outputEventListing.Count; i++)
                 {
                     EventEntity outputEvent = outputEventListing[i];
@@ -362,13 +360,6 @@ namespace _2103Project
             }
         }
 
-<<<<<<< HEAD
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-=======
         private void leaveBtn_KeyDown(object sender, KeyEventArgs e)
         {
             //Facilitator leave event 
@@ -387,8 +378,34 @@ namespace _2103Project
                 }
             }
         }
->>>>>>> 598b1b07e86fe98dda0e9fdc149c850c2358ef63
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchEventDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            this.listMainEventView.Items.Clear();
+
+            ActiveUser au = new ActiveUser(currentUser);
+
+            List<EventEntity> mainEventListing = au.viewEventListingByDate(searchEventDateTimePicker.Value);
+
+            for (int i = 0; i < mainEventListing.Count; i++)
+            {
+                EventEntity outputEvent = mainEventListing[i];
+
+                ListViewItem newEvent = new ListViewItem((i + 1).ToString());
+                newEvent.SubItems.Add(outputEvent.getEventId().ToString());
+                newEvent.SubItems.Add(outputEvent.getEventName());
+                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
+                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("t"));
+
+                listMainEventView.Items.Add(newEvent);
+            }
+            displayEventList();
+        }
     }
 }
 

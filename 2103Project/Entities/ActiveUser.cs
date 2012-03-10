@@ -87,44 +87,38 @@ namespace _2103Project.Entities
         public List<EventEntity> viewEventListingByDate(DateTime selectedDateTime)
         {
             List<EventEntity> eventListing = db.getListOfEvents();
+            List<EventEntity> temp = new List<EventEntity>();
 
             // Filter events not on selected date
             for (int i = 0; i < eventListing.Count; i++)
             {
-                if (eventListing[i].getEventDate() != selectedDateTime)
+                if (eventListing[i].getEventDate().Date == selectedDateTime.Date)
                 {
-                    eventListing.RemoveAt(i);
+                    temp.Add(eventListing[i]);
                 }
-            }
-            //
-
-            // If selected date does not matches any event in database
-            if (eventListing.Count == 0)
-            {
-                throw new System.ApplicationException();
             }
             //
 
             // Sort events according to dates in descending order (Bubble Sort)
-            for (int i = 0; i < eventListing.Count; i++)
+            for (int i = 0; i < temp.Count; i++)
             {
                 bool is_Sorted = true;
 
-                for (int j = 1; j < eventListing.Count - i; j++)
+                for (int j = 1; j < temp.Count - i; j++)
                 {
-                    if (eventListing[j - 1].getEventDate() < eventListing[j].getEventDate())
+                    if (temp[j - 1].getEventDate() < temp[j].getEventDate())
                     {
-                        EventEntity temp = eventListing[j - 1];
-                        eventListing[j - 1] = eventListing[j];
-                        eventListing[j] = temp;
+                        EventEntity tempo = temp[j - 1];
+                        temp[j - 1] = temp[j];
+                        temp[j] = tempo;
                         is_Sorted = false;
                     }
                 }
-                if (is_Sorted) i = eventListing.Count;
+                if (is_Sorted) i = temp.Count;
             }
             //
 
-            return eventListing;
+            return temp;
         }   
 
         public List<EventEntity> viewEventListingByEventName(string word)
