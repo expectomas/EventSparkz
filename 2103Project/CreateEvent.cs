@@ -49,7 +49,7 @@ namespace _2103Project
                 List<Participant> participantList = new List<Participant>();
                 List<int> facilitatorList = new List<int>();
                 EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId());
-                Organiser org = new Organiser();
+                Organiser org = new Organiser(currentUser);
                 Activity newAct; Venue ven;
                 DateTime time;
                 List<Activity> listOfActivity = new List<Activity>();
