@@ -38,8 +38,8 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            validUser = currentUser.login(userNameTextBox.Text.ToString(),passwordTextbox.Text.ToString(), ref currentUser);
-
+            validUser = currentUser.login(userNameTextBox.Text.ToString().ToLower(), passwordTextbox.Text.ToString(), ref currentUser);
+            
             if (validUser)
             {
                 this.Close();
@@ -51,7 +51,6 @@ namespace _2103Project
             {
                 MessageBox.Show("The Username and Password is Incorrect");
             }
-                
         }
 
         private void SplashScreen_Click(object sender, EventArgs e)
