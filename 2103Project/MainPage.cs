@@ -54,7 +54,7 @@ namespace _2103Project
             {
                 EventEntity outputEvent = mainEventListing[i];
 
-                ListViewItem newEvent = new ListViewItem(i.ToString());
+                ListViewItem newEvent = new ListViewItem((i+1).ToString());
                 newEvent.SubItems.Add(outputEvent.getEventId().ToString());
                 newEvent.SubItems.Add(outputEvent.getEventName());
                 newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
@@ -194,7 +194,7 @@ namespace _2103Project
             {
                 EventEntity outputEvent = testing[i];
 
-                ListViewItem newEvent = new ListViewItem(i.ToString());
+                ListViewItem newEvent = new ListViewItem((i + 1).ToString());
                 newEvent.SubItems.Add(outputEvent.getEventId().ToString());
                 newEvent.SubItems.Add(outputEvent.getEventName());
                 newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
