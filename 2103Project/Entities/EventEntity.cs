@@ -186,7 +186,7 @@ namespace _2103Project.Entities
             return startTime;
         }
 
-        public static string getVenueFromEventID(int eventID)
+        public static string getStartVenueFromEventID(int eventID)
         {
             Venue startVenue;
             int scheduleId = 1;
@@ -209,6 +209,89 @@ namespace _2103Project.Entities
             }
             startVenue = Activity.getVenueFromActivityID(activityId);
             return startVenue.getlocation();
+        }
+
+        public static Queue<string> getListOfVenueFromEventID(int eventID)
+        {
+            int scheduleId = 1;
+            Queue<string> queueStrVenue = new Queue<string>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    scheduleId = eve.getScheduleID();
+            }
+            List<Activity> listOfActivity = Schedule.retrieveListOfActivityfromScheduleID(scheduleId);
+            Queue<int> listOfActivityID = new Queue<int>();
+            foreach (Activity act in listOfActivity)
+            {
+                    listOfActivityID.Enqueue(act.getActivityId());
+            }
+            List<Activity> listOfActDb = db.getListOfActivities();
+            Queue<Venue> listOfVenue = new Queue<Venue>();
+            foreach (Activity act in listOfActDb)
+            {
+                if (listOfActivityID.Count != 0)
+                {
+                    if (act.getActivityId() == listOfActivityID.Peek())
+                    {
+                        listOfVenue.Enqueue(act.getVenue());
+                        listOfActivityID.Dequeue();
+                    }
+                }
+            }
+            List<Venue> listOfVenueDb = db.getListOfVenues();
+            while (listOfVenue.Count != 0)
+            {
+                for (int i = 0; i < listOfVenueDb.Count; i++)
+                {
+                    if(listOfVenue.Peek().getVenueId() == listOfVenueDb[i].getVenueId())
+                    {
+                        queueStrVenue.Enqueue(listOfVenue.Dequeue().getlocation());
+                        break;    
+                    }
+                }
+            }
+            return queueStrVenue;
+        }
+
+        public static Queue<string> getListOfDescriptionFromEventID(int eventID)
+        {
+            int scheduleId = 1;
+            Queue<string> listOfDesc = new Queue<string>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    scheduleId = eve.getScheduleID();
+            }
+            List<Activity> listOfActivity = Schedule.retrieveListOfActivityfromScheduleID(scheduleId);
+            foreach (Activity act in listOfActivity)
+            {
+                listOfDesc.Enqueue(act.getDescription());
+            }
+            return listOfDesc;
+        }
+
+        public static Queue<DateTime> getListOfTimeFromEventID(int eventID)
+        {
+            int scheduleId = 1;
+            Queue<DateTime> listOfDate = new Queue<DateTime>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    scheduleId = eve.getScheduleID();
+            }
+            List<Activity> listOfActivity = Schedule.retrieveListOfActivityfromScheduleID(scheduleId);
+            foreach (Activity act in listOfActivity)
+            {
+                listOfDate.Enqueue(act.getDate());
+            }
+            return listOfDate;
         }
 
         public bool doesParticipantExist(int i_userId)
