@@ -16,6 +16,8 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
 
+        //Initiatisation
+
         public mainPage(User incomingUser)
         {
             InitializeComponent();
@@ -26,6 +28,15 @@ namespace _2103Project
         public static void ThreadProc()
         {
             Application.Run(new loginForm(null));
+        }
+
+        public void populateRegisteredEvent()
+        {
+            if (currentUser != null)
+            {
+                
+
+            }
         }
 
         private void Exit_Dialog()
@@ -43,7 +54,13 @@ namespace _2103Project
         public void initEventList()
         {
             this.listView1.Hide();
-            this.listView1.Columns.Insert(0, "No.",50 , HorizontalAlignment.Left);
+
+            //Clear ListBox Column and Items
+            this.listView1.Columns.Clear();
+            this.listView1.Items.Clear();
+
+
+            this.listView1.Columns.Insert(0, "Id",50 , HorizontalAlignment.Left);
             this.listView1.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
             this.listView1.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
             this.listView1.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
@@ -112,8 +129,6 @@ namespace _2103Project
         {
 
         }
-
-       
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
