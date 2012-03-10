@@ -34,6 +34,10 @@ namespace _2103Project.Entities
             activities = oldSchedule.activities;
         }
 
+        public int getScheduleID()
+        {
+            return scheduleId;
+        }
         public bool requestScheduleDetail(ref int referredScheduleId, ref List<string> referredListOfItems, ref List<Activity> referredListOfActivities, string purpose)
         {
              bool releasedDetails = false;

@@ -113,7 +113,14 @@ namespace _2103Project.Entities
             return newEventID;
         }
 
-
+        public bool addSchedule(Schedule newSchedule)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Schedule> listOfSchedule = db.getListOfSchedule();
+            listOfSchedule.Add(newSchedule);
+            db.saveListOfSchedule(listOfSchedule);
+            return true;
+        }
         public static int getNewScheduleId()
         {
             int newScheduleID = 0;
@@ -141,18 +148,6 @@ namespace _2103Project.Entities
             }
             db.saveListOfEvents(newEventList);
             return !eventCancelled;
-        }
-
-        public static Queue<string> loadListOfEvent()
-        {
-            Database db = Database.CreateDatabase(DatabaseToken);
-            Queue<string> listOfEvents = new Queue<string>();
-            List<EventEntity> eventList = db.getListOfEvents();
-            foreach (EventEntity events in eventList)
-            {
-                listOfEvents.Enqueue(events.getEventName());
-            }
-            return listOfEvents;
         }
 
         public bool updateEvent()
