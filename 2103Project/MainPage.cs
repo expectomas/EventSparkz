@@ -16,7 +16,6 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
         private int currentEventID;
-
         //Initiatisation
 
         public mainPage(User incomingUser)
@@ -40,7 +39,7 @@ namespace _2103Project
             this.listMainEventView.Items.Clear();
 
             this.listMainEventView.Columns.Insert(0, "No", 50, HorizontalAlignment.Left);
-            this.listMainEventView.Columns.Insert(1, "Id", 0, HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(1, "Id", 50, HorizontalAlignment.Left);
             this.listMainEventView.Columns.Insert(2, "Event", 220, HorizontalAlignment.Left);
             this.listMainEventView.Columns.Insert(3, "Date", 80, HorizontalAlignment.Center);
             this.listMainEventView.Columns.Insert(4, "Time", 80, HorizontalAlignment.Center);
@@ -122,13 +121,7 @@ namespace _2103Project
 
             for (int i = 0; i < sideBarEventListing.Count; i++)
             {
-                EventEntity outputEvent = sideBarEventListing[i];
-
-                ListViewItem newEvent = new ListViewItem(outputEvent.getEventId().ToString());
-                newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
-                newEvent.SubItems.Add(outputEvent.getEventName());
-
-                listSideEventView.Items.Add(newEvent);
+                listSideEventView.Items.Add(sideBarEventListing[i].getEventName());
             }
 
             this.listSideEventView.Show();
@@ -148,8 +141,6 @@ namespace _2103Project
             }
         }
 
-        //Main Page Dialog Boxes
-
         private void Exit_Dialog()
         {
             if (MessageBox.Show("Do you want to logout?", "Exit Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -161,18 +152,6 @@ namespace _2103Project
                 t.Start();
             }
         }
-
-        private bool Participant_Cancel_SideBar_Dialog()
-        {
-            return MessageBox.Show("Are you sure you would like to opt out of the event?", "Opt Out Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-        }
-
-        private bool Organiser_Cancel_SideBar_Dialog()
-        {
-            return MessageBox.Show("Are you sure you would like to cancel the event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
-        }
-
-        //Actions
 
         public void displayMainEventList()
         {
@@ -200,6 +179,7 @@ namespace _2103Project
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+
         }
 
         public void initEventList()
@@ -222,6 +202,8 @@ namespace _2103Project
             this.listMainEventView.Show();
         }
 
+        //Event Handler
+
         private void searchEventButton_Clicked(object sender, MouseEventArgs e)
         {
             this.listMainEventView.Items.Clear();
@@ -229,15 +211,15 @@ namespace _2103Project
 
             ActiveUser userRole = new ActiveUser(currentUser);
 
-            //List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
+            List<EventEntity> outputEventListing = userRole.viewEventListingByEventName(searchEventTextBox.Text);
             
             //Testing 
             Database db = Database.CreateDatabase("cd#ew1Tf");
-            List<EventEntity> testing = db.getListOfEvents();
+            //List<EventEntity> testing = db.getListOfEvents();
 
-            for (i = 0; i < testing.Count; i++)
+            for (i = 0; i < outputEventListing.Count; i++)
             {
-                EventEntity outputEvent = testing[i];
+                EventEntity outputEvent = outputEventListing[i];
 
                 ListViewItem newEvent = new ListViewItem((i + 1).ToString());
                 newEvent.SubItems.Add(outputEvent.getEventId().ToString());
@@ -258,52 +240,26 @@ namespace _2103Project
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
         {
-//            try
- //           {
-                ListViewItem listItem = this.listMainEventView.SelectedItems[0];
-                currentEventID = int.Parse(listItem.SubItems[1].Text);
-               eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
-                eventInfoPage.Show();
-   //         }
-    //        catch
-     //       {
-     //           MessageBox.Show("Please select your event. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-     //       }
+            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+            eventInfoPage.Show();
         }
 
         private void eventCatComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             initSideEventBar();
 
-            switch (eventCatComboBox.SelectedIndex)
+            //If Created Events is selected
+            if (eventCatComboBox.SelectedIndex == 1)
             {
-                case 0:
-                    //Participant buttons
-                    cancelEditButton.Show();
-                    organiserEditButton.Hide();
-                    organiserCancel.Hide();
-                    leaveBtn.Hide();
-                    break;
-                case 1:
-                    //Organiser buttons
-                    cancelEditButton.Hide();
-                    organiserCancel.Show();
-                    organiserEditButton.Show();
-                    leaveBtn.Hide();
-                    break;
-                case 2:
-                    //Facilitator buttons 
-                    cancelEditButton.Hide();
-                    organiserCancel.Hide();
-                    organiserEditButton.Hide();
-                    leaveBtn.Show();
-                    break;
-                default:
-                    break;
+                //Hide the cancel button
+                //Display 
+
             }
         }
 
-        private void organiserCancel_Click(object sender, EventArgs e)
+        private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
         {
             int organiserCancellingEventId=-1;
 
@@ -333,13 +289,10 @@ namespace _2103Project
 
             if (participantCancellingEventId != -1)
             {
-                if (Participant_Cancel_SideBar_Dialog())
-                {
-                    participant.cancelEventRegistration(participantCancellingEventId);
-                }
-            }   
+                searchEventTextBox.Clear();
+                searchEventTextBox.Focus();
+            }
         }
-
     }
 }
 
