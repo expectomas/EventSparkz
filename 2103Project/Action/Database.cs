@@ -163,6 +163,7 @@ namespace _2103Project.Action
                     EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId);
 
                     participantList.Clear();
+                    facilitatorList.Clear();
 
                     listToPop.Add(newEvent);
 
