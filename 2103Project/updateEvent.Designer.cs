@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(updateForm));
             this.venueTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.editItemButton = new System.Windows.Forms.Button();
@@ -368,6 +369,7 @@
             this.Controls.Add(this.labela);
             this.Controls.Add(this.labelc);
             this.Controls.Add(this.titleLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "updateForm";
             this.Text = "Update Event";
             this.Load += new System.EventHandler(this.updateForm_Load);
