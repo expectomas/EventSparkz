@@ -128,14 +128,16 @@ namespace _2103Project.Entities
         public bool removeParticipantFromEvent(Participant unInterestedParticipant)
         {
             bool successRemoved = true;
+            int i = 0;
 
             try
             {
                 foreach (Participant alreadyRegistered in this.participantList)
                 {
-                    if (alreadyRegistered.Equals(unInterestedParticipant))
+                    if (alreadyRegistered.getUserId().Equals(unInterestedParticipant.getUserId()))
                     {
-                        participantList.Remove(alreadyRegistered);
+                        participantList.RemoveAt(i);
+                        ++i;
                     }
                 }
             }

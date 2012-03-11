@@ -114,10 +114,6 @@ namespace _2103Project.Entities
                 {
                     currentEvents[i].removeParticipantFromEvent(this);
 
-                    //Remove from existing list as well
-
-                    registeredEvents.Remove(currentEvents[i]);
-
                     eventCancelled = true;
                 }
             }
@@ -126,7 +122,14 @@ namespace _2103Project.Entities
 
             db.saveListOfEvents(currentEvents);
 
-            
+            for (int i = 0; i < registeredEvents.Count; i++)
+            {
+                //Remove from existing list as well
+                if (unInterestedEventId.Equals(registeredEvents[i]))
+                {
+                    registeredEvents.RemoveAt(i);
+                }
+            }
 
             return eventCancelled;
         }
