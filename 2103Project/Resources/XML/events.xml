@@ -11,15 +11,15 @@
     <participantList>
 	  <User>
 		<userId>6</userId>
-		<userName>wisgliamtio</userName>
-		<name>Hello Ed</name>
-		<matricNo>A3123123M</matricNo>
-		<password>12345678</password>
-		<email>fjdf@sjfdk.com</email>
+		<userName>zhihao</userName>
+		<name>Lim Zhi Hao</name>
+		<matricNo>A0067252H</matricNo>
+		<password>123456</password>
+		<email>zhihao@nus.edu.sg</email>
 		<age>17</age>
 		<loggedIn>false</loggedIn>
-		<contactHome>12313123</contactHome>
-		<contactHP>32132132</contactHP>
+		<contactHome>63231231</contactHome>
+		<contactHP>98213123</contactHP>
 	  </User>
     </participantList>
     <facilitatorList>
@@ -40,10 +40,10 @@
     <participantSize>60</participantSize>
     <organiserId>2</organiserId>
     <participantList>
-		<User>
+	  <User>
 		<userId>3</userId>
-		<userName>hellow</userName>
-		<name>tio wee elong</name>
+		<userName>desmond</userName>
+		<name>Desmond Wee</name>
 		<matricNo>A0083838M</matricNo>
 		<password>12345678</password>
 		<email>will@sjk.com</email>
@@ -54,8 +54,8 @@
 	  </User>
 	  <User>
 		<userId>4</userId>
-		<userName>hellowffd</userName>
-		<name>tio wee elong</name>
+		<userName>malcolm</userName>
+		<name>Malcolm Thng</name>
 		<matricNo>A0083838M</matricNo>
 		<password>12345678</password>
 		<email>will@sjk.com</email>
