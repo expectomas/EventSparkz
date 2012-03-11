@@ -9,6 +9,13 @@ using System.Windows.Forms;
 using System.Threading;
 using _2103Project.Entities;
 
+/*
+ * Authors for this section
+ * 
+ *   Lim Zhi Hao A0067252H
+ *   Tan Siong Wee, Edmund  A0076627W
+*/
+
 namespace _2103Project
 {
     public partial class welcomeForm : Form
