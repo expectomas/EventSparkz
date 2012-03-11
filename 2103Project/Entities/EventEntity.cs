@@ -446,5 +446,10 @@ namespace _2103Project.Entities
             }
             return EventInfoStates.unregisteredActiveUser;
         }
+
+        public List<int> getListOfFacilitator()
+        {
+            return facilitatorList;
+        }
     }
 }

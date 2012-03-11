@@ -183,5 +183,23 @@ namespace _2103Project.Entities
             return new List<EventEntity>(createdEvents);
         }
 
+        public List<Facilitator> viewListOfFacilitator(EventEntity thisEvent)
+        {
+            List<Facilitator> outputFacilitatorList = new List<Facilitator>();
+
+            List<int> listOfFacilitatorId = thisEvent.getListOfFacilitator();
+
+            Database db = Database.CreateDatabase(DatabaseToken);
+
+            List<User> listOfUsers = db.getListOfUsers();
+
+            for (int i = 0; i < listOfUsers.Count; i++)
+            {
+                if(listOfFacilitatorId.Contains(listOfUsers[i].getUserId()))
+                    outputFacilitatorList.Add(new Facilitator(listOfUsers[i]));
+            }
+
+            return outputFacilitatorList;
+        }
     }
 }
