@@ -81,8 +81,21 @@
     <endTime>2012-03-15T04:36:30</endTime>
     <eventScheduleId>2</eventScheduleId>
     <participantSize>43</participantSize>
-    <organiserId>1</organiserId>
-    <participantList />
+    <organiserId>2</organiserId>
+    <participantList>
+	  <User>
+		<userId>1</userId>
+		<userName>tiow11</userName>
+		<name>TIO WEE LEONG</name>
+		<matricNo>A9328372N</matricNo>
+		<password>123456</password>
+		<email>wil@hotmail.com</email>
+		<age>23</age>
+		<loggedIn>false</loggedIn>
+		<contactHome>23120381</contactHome>
+		<contactHP>91732123</contactHP>
+	</User>
+	</participantList>
     <facilitatorList />
   </EventEntity>
 </EventPool>
