@@ -177,6 +177,12 @@ namespace _2103Project
             return MessageBox.Show("Are you sure you would like to opt out of the event?", "Cancel Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
+        private void AdviseUserToMakeASelection()
+        {
+            MessageBox.Show("Please select one Event. Thank You");
+
+        }
+
         //Actions
 
         public void displayMainEventList()
@@ -273,7 +279,7 @@ namespace _2103Project
             }
             catch
             {
-                MessageBox.Show("Please select your event. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AdviseUserToMakeASelection();
             }
         }
 
@@ -328,17 +334,25 @@ namespace _2103Project
         {
             int organiserCancellingEventId=-1;
 
-            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
-            organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
-
-            Organiser organiser = new Organiser(currentUser);
-
-            if (organiserCancellingEventId != -1)
+            try
             {
-                if (Organiser_Cancel_SideBar_Dialog())
+
+                ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+                organiserCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+                Organiser organiser = new Organiser(currentUser);
+
+                if (organiserCancellingEventId != -1)
                 {
-                    organiser.cancelEvent(organiserCancellingEventId);
+                    if (Organiser_Cancel_SideBar_Dialog())
+                    {
+                        organiser.cancelEvent(organiserCancellingEventId);
+                    }
                 }
+            }
+            catch (ArgumentOutOfRangeException arg_ex)
+            {
+                AdviseUserToMakeASelection();
             }
         }
 
@@ -347,18 +361,26 @@ namespace _2103Project
             //Participant cancel event 
             int participantCancellingEventId = -1;
 
-            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
-            participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
-
-            Participant participant = new Participant(currentUser);
-
-            if (participantCancellingEventId != -1)
+            try
             {
-                if (Participant_Cancel_SideBar_Dialog())
+
+                ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+                participantCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+                Participant participant = new Participant(currentUser);
+
+                if (participantCancellingEventId != -1)
                 {
-                    participant.cancelEventRegistration(participantCancellingEventId);
+                    if (Participant_Cancel_SideBar_Dialog())
+                    {
+                        participant.cancelEventRegistration(participantCancellingEventId);
+                    }
                 }
-            }   
+            }
+            catch (ArgumentOutOfRangeException null_ex)
+            {
+                AdviseUserToMakeASelection();
+            }
         }
 
         private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
@@ -403,17 +425,26 @@ namespace _2103Project
             //Facilitator leave event 
             int facilitatorCancellingEventId = -1;
 
-            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
-            facilitatorCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
-
-            Facilitator facilitator = new Facilitator(currentUser);
-
-            if (facilitatorCancellingEventId > 0)
+            try
             {
-                if (Facilitator_Leave_SideBar_Dialog())
+
+
+                ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+                facilitatorCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+                Facilitator facilitator = new Facilitator(currentUser);
+
+                if (facilitatorCancellingEventId > 0)
                 {
-                    facilitator.cancelJoinEvent(facilitatorCancellingEventId);
+                    if (Facilitator_Leave_SideBar_Dialog())
+                    {
+                        facilitator.cancelJoinEvent(facilitatorCancellingEventId);
+                    }
                 }
+            }
+            catch (ArgumentOutOfRangeException arg_ex)
+            {
+                AdviseUserToMakeASelection();
             }
         }
     }
