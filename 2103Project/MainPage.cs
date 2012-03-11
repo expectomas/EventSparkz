@@ -9,6 +9,15 @@ using System.Windows.Forms;
 using _2103Project.Entities;
 using _2103Project.Action;
 
+/*
+ * Authors for this section
+ * 
+ *   Tio Wee Leong A0073702M
+ *   Tan Siong Wee, Edmund  A0076627W
+ *   Lim Zhi Hao A0067252H
+ *   
+ */
+
 namespace _2103Project
 {
     public partial class mainPage : Form
