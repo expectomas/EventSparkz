@@ -11,6 +11,14 @@ using System.Text.RegularExpressions;
 using System.IO;
 using _2103Project.Entities;
 
+/*
+ * Authors for this section
+ * 
+ *   Tio Wee Leong A0073702M
+ *   Tan Siong Wee, Edmund  A0076627W
+*/
+
+
 namespace _2103Project
 {
     public partial class signupForm : Form
