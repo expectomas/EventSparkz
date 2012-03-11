@@ -9,6 +9,14 @@ using System.Windows.Forms;
 using System.Threading;
 using _2103Project.Entities;
 
+/*
+ * Authors for this section
+ * 
+*    Tan Siong Wee, Edmund  A0076627W
+ *   Tio Wee Leong A0073702M
+ * 
+ */
+
 namespace _2103Project
 {
     public partial class loginSelectForm : Form
