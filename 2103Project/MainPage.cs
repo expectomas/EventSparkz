@@ -136,7 +136,8 @@ namespace _2103Project
 
         public static void ThreadProc()
         {
-            Application.Run(new loginForm(null));
+            User newUser = new User();
+            Application.Run(new loginForm(newUser));
         }
 
         public void populateRegisteredEvent()
