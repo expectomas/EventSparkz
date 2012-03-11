@@ -51,6 +51,9 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.addItemButton = new System.Windows.Forms.Button();
             this.deleteItem = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // venueTextBox
@@ -65,7 +68,7 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(362, 358);
+            this.saveButton.Location = new System.Drawing.Point(362, 374);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(108, 37);
             this.saveButton.TabIndex = 80;
@@ -76,7 +79,7 @@
             // editItemButton
             // 
             this.editItemButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editItemButton.Location = new System.Drawing.Point(128, 358);
+            this.editItemButton.Location = new System.Drawing.Point(128, 374);
             this.editItemButton.Name = "editItemButton";
             this.editItemButton.Size = new System.Drawing.Size(90, 37);
             this.editItemButton.TabIndex = 79;
@@ -96,7 +99,7 @@
             "MPSH4",
             "MPSH5",
             "MPSH6"});
-            this.venComboBox.Location = new System.Drawing.Point(350, 323);
+            this.venComboBox.Location = new System.Drawing.Point(345, 173);
             this.venComboBox.Name = "venComboBox";
             this.venComboBox.Size = new System.Drawing.Size(120, 29);
             this.venComboBox.TabIndex = 78;
@@ -104,7 +107,7 @@
             // descriptionTextBox
             // 
             this.descriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descriptionTextBox.Location = new System.Drawing.Point(142, 323);
+            this.descriptionTextBox.Location = new System.Drawing.Point(137, 173);
             this.descriptionTextBox.Name = "descriptionTextBox";
             this.descriptionTextBox.Size = new System.Drawing.Size(202, 29);
             this.descriptionTextBox.TabIndex = 77;
@@ -147,7 +150,7 @@
             "10:30 PM",
             "11:00 PM",
             "11:30 PM"});
-            this.timeComboBox.Location = new System.Drawing.Point(16, 323);
+            this.timeComboBox.Location = new System.Drawing.Point(11, 173);
             this.timeComboBox.Name = "timeComboBox";
             this.timeComboBox.Size = new System.Drawing.Size(120, 29);
             this.timeComboBox.TabIndex = 76;
@@ -184,7 +187,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(346, 172);
+            this.label2.Location = new System.Drawing.Point(344, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 72;
@@ -194,7 +197,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(138, 172);
+            this.label1.Location = new System.Drawing.Point(136, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 21);
             this.label1.TabIndex = 71;
@@ -204,7 +207,7 @@
             // 
             this.Time.AutoSize = true;
             this.Time.Font = new System.Drawing.Font("Segoe WP", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Location = new System.Drawing.Point(12, 172);
+            this.Time.Location = new System.Drawing.Point(7, 22);
             this.Time.Name = "Time";
             this.Time.Size = new System.Drawing.Size(47, 21);
             this.Time.TabIndex = 70;
@@ -213,7 +216,7 @@
             // venueListBox
             // 
             this.venueListBox.FormattingEnabled = true;
-            this.venueListBox.Location = new System.Drawing.Point(350, 196);
+            this.venueListBox.Location = new System.Drawing.Point(348, 46);
             this.venueListBox.Name = "venueListBox";
             this.venueListBox.Size = new System.Drawing.Size(120, 121);
             this.venueListBox.TabIndex = 69;
@@ -221,7 +224,7 @@
             // descriptionListBox
             // 
             this.descriptionListBox.FormattingEnabled = true;
-            this.descriptionListBox.Location = new System.Drawing.Point(142, 196);
+            this.descriptionListBox.Location = new System.Drawing.Point(140, 46);
             this.descriptionListBox.Name = "descriptionListBox";
             this.descriptionListBox.Size = new System.Drawing.Size(202, 121);
             this.descriptionListBox.TabIndex = 68;
@@ -229,7 +232,7 @@
             // timeListBox
             // 
             this.timeListBox.FormattingEnabled = true;
-            this.timeListBox.Location = new System.Drawing.Point(16, 196);
+            this.timeListBox.Location = new System.Drawing.Point(11, 46);
             this.timeListBox.Name = "timeListBox";
             this.timeListBox.Size = new System.Drawing.Size(120, 121);
             this.timeListBox.TabIndex = 67;
@@ -248,7 +251,7 @@
             // 
             this.scheduleLabel.AutoSize = true;
             this.scheduleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scheduleLabel.Location = new System.Drawing.Point(194, 151);
+            this.scheduleLabel.Location = new System.Drawing.Point(192, -26);
             this.scheduleLabel.Name = "scheduleLabel";
             this.scheduleLabel.Size = new System.Drawing.Size(73, 21);
             this.scheduleLabel.TabIndex = 65;
@@ -297,7 +300,7 @@
             // addItemButton
             // 
             this.addItemButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addItemButton.Location = new System.Drawing.Point(16, 358);
+            this.addItemButton.Location = new System.Drawing.Point(16, 374);
             this.addItemButton.Name = "addItemButton";
             this.addItemButton.Size = new System.Drawing.Size(90, 37);
             this.addItemButton.TabIndex = 82;
@@ -308,7 +311,7 @@
             // deleteItem
             // 
             this.deleteItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteItem.Location = new System.Drawing.Point(244, 358);
+            this.deleteItem.Location = new System.Drawing.Point(244, 374);
             this.deleteItem.Name = "deleteItem";
             this.deleteItem.Size = new System.Drawing.Size(100, 37);
             this.deleteItem.TabIndex = 83;
@@ -316,38 +319,60 @@
             this.deleteItem.UseVisualStyleBackColor = true;
             this.deleteItem.Click += new System.EventHandler(this.deleteItem_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.descriptionListBox);
+            this.groupBox1.Controls.Add(this.scheduleLabel);
+            this.groupBox1.Controls.Add(this.timeListBox);
+            this.groupBox1.Controls.Add(this.venueListBox);
+            this.groupBox1.Controls.Add(this.Time);
+            this.groupBox1.Controls.Add(this.venComboBox);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.descriptionTextBox);
+            this.groupBox1.Controls.Add(this.timeComboBox);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Location = new System.Drawing.Point(5, 150);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(472, 218);
+            this.groupBox1.TabIndex = 84;
+            this.groupBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(192, -3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 21);
+            this.label3.TabIndex = 73;
+            this.label3.Text = "Schedule";
+            // 
             // updateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(489, 435);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.deleteItem);
             this.Controls.Add(this.addItemButton);
             this.Controls.Add(this.venueTextBox);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.editItemButton);
-            this.Controls.Add(this.venComboBox);
-            this.Controls.Add(this.descriptionTextBox);
-            this.Controls.Add(this.timeComboBox);
             this.Controls.Add(this.participantTextbox);
             this.Controls.Add(this.organiserTextBox);
             this.Controls.Add(this.dateTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Time);
-            this.Controls.Add(this.venueListBox);
-            this.Controls.Add(this.descriptionListBox);
-            this.Controls.Add(this.timeListBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.scheduleLabel);
             this.Controls.Add(this.labelb);
             this.Controls.Add(this.labela);
             this.Controls.Add(this.labelc);
             this.Controls.Add(this.titleLabel);
             this.Name = "updateForm";
-            this.Text = "updateForm";
+            this.Text = "Update Event";
             this.Load += new System.EventHandler(this.updateForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,5 +403,7 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button addItemButton;
         private System.Windows.Forms.Button deleteItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
