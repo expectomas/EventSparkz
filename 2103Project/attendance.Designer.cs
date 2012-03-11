@@ -38,11 +38,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 19);
+            this.label1.Location = new System.Drawing.Point(90, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 25);
+            this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Attendance List Label";
+            this.label1.Text = "Label";
             // 
             // attendanceListView
             // 
