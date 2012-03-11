@@ -370,25 +370,6 @@ namespace _2103Project
             }
         }
 
-        private void leaveBtn_KeyDown(object sender, KeyEventArgs e)
-        {
-            //Facilitator leave event 
-            int facilitatorCancellingEventId = -1;
-
-            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
-            facilitatorCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
-
-            Facilitator facilitator = new Facilitator(currentUser);
-
-            if (facilitatorCancellingEventId > 0)
-            {
-                if (Facilitator_Leave_SideBar_Dialog())
-                {
-                    facilitator.cancelJoinEvent(facilitatorCancellingEventId);
-                }
-            }
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -415,6 +396,25 @@ namespace _2103Project
                 listMainEventView.Items.Add(newEvent);
             }
             displayEventList();
+        }
+
+        private void leaveBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            //Facilitator leave event 
+            int facilitatorCancellingEventId = -1;
+
+            ListViewItem sideListItem = this.listSideEventView.SelectedItems[0];
+            facilitatorCancellingEventId = int.Parse(sideListItem.SubItems[0].Text);
+
+            Facilitator facilitator = new Facilitator(currentUser);
+
+            if (facilitatorCancellingEventId > 0)
+            {
+                if (Facilitator_Leave_SideBar_Dialog())
+                {
+                    facilitator.cancelJoinEvent(facilitatorCancellingEventId);
+                }
+            }
         }
     }
 }

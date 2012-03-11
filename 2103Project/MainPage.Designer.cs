@@ -50,20 +50,20 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Futura Md", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.Location = new System.Drawing.Point(14, 42);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(65, 18);
+            this.titleLabel.Size = new System.Drawing.Size(68, 16);
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "Event For:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Futura Md", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(11, 3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 35);
+            this.label2.Size = new System.Drawing.Size(183, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "EventSparkZ";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -83,10 +83,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Futura Md", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(531, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 25);
+            this.label3.Size = new System.Drawing.Size(93, 24);
             this.label3.TabIndex = 4;
             this.label3.Text = "My Event:";
             // 
@@ -219,7 +219,7 @@
             this.leaveBtn.Text = "Leave";
             this.leaveBtn.UseVisualStyleBackColor = true;
             this.leaveBtn.Visible = false;
-            this.leaveBtn.KeyDown += new System.Windows.Forms.KeyEventHandler(this.leaveBtn_KeyDown);
+            this.leaveBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.leaveBtn_MouseClick);
             // 
             // mainPage
             // 
