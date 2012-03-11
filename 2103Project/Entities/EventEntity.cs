@@ -8,6 +8,12 @@ namespace _2103Project.Entities
 {
     class EventEntity
     {
+        public enum EventInfoStates
+        {
+            registeredParticipant, unregisteredActiveUser,
+            facilitator, organiser
+        };
+
         //Attributes
         private int eventId;
         private string name;
@@ -42,6 +48,20 @@ namespace _2103Project.Entities
         }
 
         //Methods
+
+        public static EventEntity getEventFromEventId(int eventId)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+
+            for (int i = 0; i < listOfEvents.Count; i++)
+            {
+                if (listOfEvents[i].getEventId() == eventId)
+                    return listOfEvents[i];
+            }
+
+            return null;
+        }
 
         public string getEventName()
         {
@@ -408,6 +428,23 @@ namespace _2103Project.Entities
             db.saveListOfActivities(lisotOfActDB);
 
             return true;
+        }
+
+        public EventInfoStates determineUserState(int i_userId)
+        {
+            if (doesParticipantExist(i_userId))
+            {
+                return EventInfoStates.registeredParticipant;
+            }
+            else if (doesFacilitatorExist(i_userId))
+            {
+                return EventInfoStates.facilitator;
+            }
+            else if (doesOrganiserExist(i_userId))
+            {
+                return EventInfoStates.organiser;
+            }
+            return EventInfoStates.unregisteredActiveUser;
         }
     }
 }
