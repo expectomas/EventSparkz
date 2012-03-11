@@ -5,6 +5,15 @@ using System.Text;
 using System.IO;
 using _2103Project.Action;
 
+/*
+ * Authors for this section
+ * 
+ *   Tio Wee Leong A0073702M
+ *   Lim Zhi Hao A0067252H
+ *  
+ */
+
+
 namespace _2103Project.Entities
 {
     class Organiser : ActiveUser
