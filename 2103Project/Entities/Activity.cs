@@ -49,6 +49,20 @@ namespace _2103Project.Entities
             return hostingVenue;
         }
 
+        public void  setVenue(Venue incomingVenue)
+        {
+            hostingVenue = incomingVenue;
+        }
+
+        public void setDateTime(DateTime dtValue)
+        {
+            time = dtValue;
+        }
+
+        public void setDescription(string desc)
+        {
+            description = desc;
+        }
         public static Venue getVenueFromActivityID(int incomingActivityID)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
@@ -61,6 +75,7 @@ namespace _2103Project.Entities
             }
             return newVen;
         }
+
         public bool requestActivityDetails(ref int o_activityId,ref DateTime sending_datetime,ref string sending_description,ref Venue sending_hostingVenue, string purpose)
         {
             if (purpose.Equals("databaseRequest"))

@@ -230,7 +230,7 @@ namespace _2103Project.Entities
             Queue<int> listOfActivityID = new Queue<int>();
             foreach (Activity act in listOfActivity)
             {
-                    listOfActivityID.Enqueue(act.getActivityId());
+                listOfActivityID.Enqueue(act.getActivityId());
             }
             List<Activity> listOfActDb = db.getListOfActivities();
             Queue<Venue> listOfVenue = new Queue<Venue>();
@@ -250,10 +250,10 @@ namespace _2103Project.Entities
             {
                 for (int i = 0; i < listOfVenueDb.Count; i++)
                 {
-                    if(listOfVenue.Peek().getVenueId() == listOfVenueDb[i].getVenueId())
+                    if (listOfVenue.Peek().getVenueId() == listOfVenueDb[i].getVenueId())
                     {
                         queueStrVenue.Enqueue(listOfVenue.Dequeue().getlocation());
-                        break;    
+                        break;
                     }
                 }
             }
@@ -306,19 +306,19 @@ namespace _2103Project.Entities
                 {
                     return true;
                 }
-         
+
             }
             return false;
         }
 
         public bool doesOrganiserExist(int i_userId)
         {
-               if (eventOrganiserId == i_userId)
-                {
-                    return true;
-                }
-               else
-                   return false;
+            if (eventOrganiserId == i_userId)
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         public bool doesFacilitatorExist(int i_userId)
@@ -333,7 +333,7 @@ namespace _2103Project.Entities
             return false;
         }
 
-        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList,ref int o_organiserId, string purpose)
+        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
             {
@@ -357,12 +357,56 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
-            foreach(EventEntity events in listOfEvent)
+            foreach (EventEntity events in listOfEvent)
             {
                 if (events.getEventId() == currentEventID)
                     events.setPartipantSize(participantSize);
             }
             db.saveListOfEvents(listOfEvent);
+            return true;
+        }
+
+        public static bool setSchedule(int currentEventID, List<DateTime> listOfDateTime, List<string> listOfdescription, List<Venue> listOfVenue)
+        {
+            int scheduleId = 1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (currentEventID == events.getEventId())
+                    scheduleId = events.getScheduleID();
+            }
+            List<Schedule> listOfSchedule = db.getListOfSchedule();
+            List<Activity> listOfActivity = new List<Activity>();
+            foreach (Schedule sch in listOfSchedule)
+            {
+                if (scheduleId == sch.getScheduleID())
+                    listOfActivity = sch.getlistOfActivity();
+            }
+            Queue<Activity> queueActivity = new Queue<Activity>();
+            Activity act;
+            for( int i = 0; i < listOfActivity.Count ; i++)
+            {
+                act = listOfActivity[i];
+                queueActivity.Enqueue(act);
+                act.setDateTime(listOfDateTime[i]);
+                act.setDescription(listOfdescription[i]);
+                act.setVenue(listOfVenue[i]);
+            }
+            db.saveListOfSchedule(listOfSchedule);
+            List<Activity> lisotOfActDB = db.getListOfActivities();
+            foreach(Activity actDB in lisotOfActDB)
+            {
+                if(actDB.getActivityId() == queueActivity.Peek().getActivityId())
+                {
+                    actDB.setDateTime(queueActivity.Peek().getDate());
+                    actDB.setDescription(queueActivity.Peek().getDescription());
+                    actDB.setVenue(queueActivity.Peek().getVenue());
+                    queueActivity.Dequeue();
+                }
+            }
+            db.saveListOfActivities(lisotOfActDB);
+
             return true;
         }
     }
