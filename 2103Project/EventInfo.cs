@@ -15,6 +15,49 @@ namespace _2103Project
     {
         private User currentUser;
         private int currentEventID;
+        EventEntity.EventInfoStates state;
+
+
+        private EventEntity.EventInfoStates determineState(int eventId)
+        {
+            EventEntity thisEvent = EventEntity.getEventFromEventId(eventId);
+
+            return thisEvent.determineUserState(currentUser.getUserId());
+        }
+
+        private void displayAppropriateBtn(EventEntity.EventInfoStates fixedState)
+        {
+            switch (fixedState)
+            {
+                case EventEntity.EventInfoStates.unregisteredActiveUser:
+                    registerEventBtn.Show();
+                    facilitateEventBtn.Show();
+                    viewParticipantListBtn.Hide();
+                    viewFacilitatorListBtn.Hide();
+                    break;
+                case EventEntity.EventInfoStates.registeredParticipant:
+                    registerEventBtn.Hide();
+                    facilitateEventBtn.Hide();
+                    viewParticipantListBtn.Hide();
+                    viewFacilitatorListBtn.Hide();
+                    break;
+                case EventEntity.EventInfoStates.facilitator:
+                    registerEventBtn.Hide();
+                    facilitateEventBtn.Hide();
+                    viewParticipantListBtn.Show();
+                    viewFacilitatorListBtn.Hide();
+                    break;
+                case EventEntity.EventInfoStates.organiser:
+                    registerEventBtn.Hide();
+                    facilitateEventBtn.Hide();
+                    viewParticipantListBtn.Show();
+                    viewFacilitatorListBtn.Show();
+                    break;
+            }
+
+            returnBtn.Show();
+        }
+
         public eventInfoForm(User incomingUser, int incomingEventID)
         {
             currentUser = incomingUser;
@@ -48,6 +91,11 @@ namespace _2103Project
                 descriptionListBox.Items.Add(listofDescription.Dequeue());
                 venueListBox.Items.Add(listOfVenue.Dequeue());
             }
+
+
+            //display the appropriate btn based on the states
+            state = determineState(currentEventID);
+            displayAppropriateBtn(state);
         }
 
         private void returnBtn_Click(object sender, EventArgs e)
