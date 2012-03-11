@@ -38,19 +38,25 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            validUser = currentUser.login(userNameTextBox.Text.ToString(),passwordTextbox.Text.ToString(), ref currentUser);
-
-            if (validUser)
-            {
-                this.Close();
-
-                System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(WelcomeScreenThreadProc));
-                t.Start();
-            }
+            if (userNameTextBox.Text == "" || passwordTextbox.Text == "")
+                MessageBox.Show("Please login your username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                MessageBox.Show("The Username and Password is Incorrect");
+                validUser = currentUser.login(userNameTextBox.Text.ToString().ToLower(), passwordTextbox.Text.ToString(), ref currentUser);
+
+                if (validUser)
+                {
+                    this.Close();
+
+                    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(WelcomeScreenThreadProc));
+                    t.Start();
+                }
+                else
+                {
+                    MessageBox.Show("The username or password is incorrect. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+            
                 
         }
 
