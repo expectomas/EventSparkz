@@ -4,6 +4,13 @@ using System.Linq;
 using System.Text;
 using _2103Project.Action;
 
+/*
+ * Authors for this section
+ * 
+ *   Tan Siong Wee, Edmund A0076627W
+ *   
+ */
+
 namespace _2103Project.Entities
 {
     class ActiveUser : User
