@@ -143,6 +143,7 @@
             this.facilitateEventBtn.TabIndex = 21;
             this.facilitateEventBtn.Text = "Facilitate";
             this.facilitateEventBtn.UseVisualStyleBackColor = true;
+            this.facilitateEventBtn.Click += new System.EventHandler(this.facilitateEventBtn_Click);
             // 
             // registerEventBtn
             // 
@@ -153,6 +154,7 @@
             this.registerEventBtn.TabIndex = 20;
             this.registerEventBtn.Text = "Register";
             this.registerEventBtn.UseVisualStyleBackColor = true;
+            this.registerEventBtn.Click += new System.EventHandler(this.registerEventBtn_Click);
             // 
             // noOfParticipantLabel
             // 
@@ -258,6 +260,7 @@
             this.viewFacilitatorListBtn.TabIndex = 33;
             this.viewFacilitatorListBtn.Text = "View Facilitator List";
             this.viewFacilitatorListBtn.UseVisualStyleBackColor = true;
+            this.viewFacilitatorListBtn.Click += new System.EventHandler(this.viewFacilitatorListBtn_Click);
             // 
             // returnBtn
             // 

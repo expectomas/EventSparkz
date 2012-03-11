@@ -17,7 +17,6 @@ namespace _2103Project
         private int currentEventID;
         EventEntity.EventInfoStates state;
 
-
         private EventEntity.EventInfoStates determineState(int eventId)
         {
             EventEntity thisEvent = EventEntity.getEventFromEventId(eventId);
@@ -65,12 +64,6 @@ namespace _2103Project
             InitializeComponent();
         }
 
-        private void viewParticipantButton_Click(object sender, EventArgs e)
-        {
-            attendanceForm att = new attendanceForm(currentUser, currentEventID);
-            att.Show();
-        }
-
         private void eventInfoForm_Load(object sender, EventArgs e)
         {
             EventEntity newEve = Facilitator.getEventEntity(currentEventID);
@@ -98,10 +91,69 @@ namespace _2103Project
             displayAppropriateBtn(state);
         }
 
+        //Dialogs
+
+        private bool Participant_Register_Dialog(string eventName)
+        {
+            return MessageBox.Show("Confirm registering for " + eventName + " ?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        private bool Facilitator_Signup_Dialog(string eventName)
+        {
+            return MessageBox.Show("Confirm facilitating for " + eventName + " ?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+        }
+
+        //Event Handler
+
         private void returnBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void registerEventBtn_Click(object sender, EventArgs e)
+        {
+            Participant registeringParticipant = new Participant(currentUser);
+
+            EventEntity registeringEvent = EventEntity.getEventFromEventId(currentEventID);
+
+            if(Participant_Register_Dialog(registeringEvent.getEventName()))
+            {
+                registeringParticipant.registerEvent(registeringEvent);
+            }
+
+            //Highlight change in state
+            state = determineState(currentEventID);
+            displayAppropriateBtn(state);
+        }
+
+        private void facilitateEventBtn_Click(object sender, EventArgs e)
+        {
+            Facilitator potentialFacilitator = new Facilitator(currentUser);
+
+            EventEntity facilitatingEvent = EventEntity.getEventFromEventId(currentEventID);
+
+            if (Facilitator_Signup_Dialog(facilitatingEvent.getEventName()))
+            {
+                potentialFacilitator.joinEvent(currentEventID);
+            }
+
+            //Highlight change in state
+            state = determineState(currentEventID);
+            displayAppropriateBtn(state);
+        }
+
+        private void viewFacilitatorListBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void viewParticipantButton_Click(object sender, EventArgs e)
+        {
+            attendanceForm att = new attendanceForm(currentUser, currentEventID);
+            att.Show();
+        }
+
 
 
     }
