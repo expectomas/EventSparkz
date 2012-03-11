@@ -92,10 +92,10 @@
             // 
             // registerEvent
             // 
-            this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerEvent.Location = new System.Drawing.Point(82, 451);
+            this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.registerEvent.Location = new System.Drawing.Point(82, 450);
             this.registerEvent.Name = "registerEvent";
-            this.registerEvent.Size = new System.Drawing.Size(112, 30);
+            this.registerEvent.Size = new System.Drawing.Size(120, 30);
             this.registerEvent.TabIndex = 7;
             this.registerEvent.Text = "Create Event";
             this.registerEvent.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutButton.Location = new System.Drawing.Point(682, 9);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(75, 30);
+            this.logoutButton.Size = new System.Drawing.Size(80, 30);
             this.logoutButton.TabIndex = 8;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -126,10 +126,10 @@
             // 
             // getEventInfoButton
             // 
-            this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getEventInfoButton.Location = new System.Drawing.Point(312, 451);
+            this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getEventInfoButton.Location = new System.Drawing.Point(310, 450);
             this.getEventInfoButton.Name = "getEventInfoButton";
-            this.getEventInfoButton.Size = new System.Drawing.Size(126, 30);
+            this.getEventInfoButton.Size = new System.Drawing.Size(120, 30);
             this.getEventInfoButton.TabIndex = 6;
             this.getEventInfoButton.Text = "Get Event Info";
             this.getEventInfoButton.UseVisualStyleBackColor = true;
@@ -190,9 +190,9 @@
             // 
             // organiserEditButton
             // 
-            this.organiserEditButton.Location = new System.Drawing.Point(535, 451);
+            this.organiserEditButton.Location = new System.Drawing.Point(535, 450);
             this.organiserEditButton.Name = "organiserEditButton";
-            this.organiserEditButton.Size = new System.Drawing.Size(89, 30);
+            this.organiserEditButton.Size = new System.Drawing.Size(90, 30);
             this.organiserEditButton.TabIndex = 15;
             this.organiserEditButton.Text = "Edit";
             this.organiserEditButton.UseVisualStyleBackColor = true;
@@ -201,9 +201,9 @@
             // 
             // organiserCancel
             // 
-            this.organiserCancel.Location = new System.Drawing.Point(668, 451);
+            this.organiserCancel.Location = new System.Drawing.Point(668, 450);
             this.organiserCancel.Name = "organiserCancel";
-            this.organiserCancel.Size = new System.Drawing.Size(89, 30);
+            this.organiserCancel.Size = new System.Drawing.Size(90, 30);
             this.organiserCancel.TabIndex = 16;
             this.organiserCancel.Text = "Cancel";
             this.organiserCancel.UseVisualStyleBackColor = true;
@@ -212,9 +212,9 @@
             // 
             // leaveBtn
             // 
-            this.leaveBtn.Location = new System.Drawing.Point(593, 451);
+            this.leaveBtn.Location = new System.Drawing.Point(593, 450);
             this.leaveBtn.Name = "leaveBtn";
-            this.leaveBtn.Size = new System.Drawing.Size(91, 30);
+            this.leaveBtn.Size = new System.Drawing.Size(90, 30);
             this.leaveBtn.TabIndex = 17;
             this.leaveBtn.Text = "Leave";
             this.leaveBtn.UseVisualStyleBackColor = true;
