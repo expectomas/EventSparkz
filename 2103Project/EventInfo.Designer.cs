@@ -52,6 +52,7 @@
             this.viewFacilitatorListBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -244,6 +245,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.statusLabel);
             this.panel1.Controls.Add(this.viewFacilitatorListBtn);
             this.panel1.Controls.Add(this.viewParticipantListBtn);
             this.panel1.Controls.Add(this.facilitateEventBtn);
@@ -282,6 +284,17 @@
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Enabled = false;
+            this.statusLabel.Location = new System.Drawing.Point(123, 24);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(35, 13);
+            this.statusLabel.TabIndex = 34;
+            this.statusLabel.Text = "label3";
+            this.statusLabel.Visible = false;
+            // 
             // eventInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +326,7 @@
             this.Text = "Event Info";
             this.Load += new System.EventHandler(this.eventInfoForm_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,6 +357,7 @@
         private System.Windows.Forms.Button viewFacilitatorListBtn;
         private System.Windows.Forms.Button returnBtn;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label statusLabel;
 
     }
 }

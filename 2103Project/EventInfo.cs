@@ -39,6 +39,7 @@ namespace _2103Project
                     facilitateEventBtn.Hide();
                     viewParticipantListBtn.Hide();
                     viewFacilitatorListBtn.Hide();
+                    displayStatusLabel("You have already registered for this event");
                     break;
                 case EventEntity.EventInfoStates.facilitator:
                     registerEventBtn.Hide();
@@ -89,6 +90,15 @@ namespace _2103Project
             //display the appropriate btn based on the states
             state = determineState(currentEventID);
             displayAppropriateBtn(state);
+        }
+
+        private void displayStatusLabel(string displayString)
+        {
+            statusLabel.Hide();
+
+            statusLabel.Text = displayString;
+
+            statusLabel.Show();
         }
 
         //Dialogs
