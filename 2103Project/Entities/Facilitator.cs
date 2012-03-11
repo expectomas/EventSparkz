@@ -87,23 +87,27 @@ namespace _2103Project.Entities
 
         public List<Participant> viewParticipantList(EventEntity thisEvent)
         {
-            int i = 0;
 
             List<Participant> allParticipant = new List<Participant>();
 
             //Establish database linkage
             IDatabase db = Database.CreateDatabase(DatabaseToken);
 
-            List<EventEntity> searchList = facilitatingEvents;
-            while (searchList.Count > i)
-            {
-                EventEntity abstractedEvent = searchList[i];
 
-                if (abstractedEvent.Equals(thisEvent))
-                    allParticipant = abstractedEvent.getParticipantList();
+            List<EventEntity> allEvents = db.getListOfEvents();
+
+            EventEntity abstractedEvent = new EventEntity() ;
+
+            for(int i =0 ; i<allEvents.Count;i++)
+            {
+                if (thisEvent.getEventId().Equals(allEvents[i].getEventId()))
+                {
+                    abstractedEvent = allEvents[i];
+                    break;
+                }
             }
 
-            return allParticipant;
+            return abstractedEvent.getParticipantList();
         }
 
         public List<EventEntity> getFacilitatedEvents()
