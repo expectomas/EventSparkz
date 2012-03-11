@@ -329,6 +329,9 @@ namespace _2103Project
             {
                 AdviseUserToMakeASelection();
             }
+
+            //Refresh the Side Bar
+            initSideEventBar();
         }
 
         private void cancelEditButton_MouseDown(object sender, MouseEventArgs e)
@@ -356,6 +359,9 @@ namespace _2103Project
             {
                 AdviseUserToMakeASelection();
             }
+
+            //Refresh the Side Bar
+            initSideEventBar();
         }
 
         private void searchEventTextBox_Clicked(object sender, MouseEventArgs e)
@@ -421,6 +427,8 @@ namespace _2103Project
             {
                 AdviseUserToMakeASelection();
             }
+            //Refresh the Side Bar
+            initSideEventBar();
         }
 
         private void searchEvent()
