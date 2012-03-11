@@ -30,26 +30,39 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(attendanceForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.participantListBox = new System.Windows.Forms.ListBox();
+            this.attendanceListView = new System.Windows.Forms.ListView();
+            this.closeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Futura Md", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(93, 4);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(50, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 28);
+            this.label1.Size = new System.Drawing.Size(241, 25);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Participant List";
+            this.label1.Text = "Attendance List Label";
             // 
-            // participantListBox
+            // attendanceListView
             // 
-            this.participantListBox.FormattingEnabled = true;
-            this.participantListBox.Location = new System.Drawing.Point(13, 38);
-            this.participantListBox.Name = "participantListBox";
-            this.participantListBox.Size = new System.Drawing.Size(323, 368);
-            this.participantListBox.TabIndex = 10;
+            this.attendanceListView.GridLines = true;
+            this.attendanceListView.Location = new System.Drawing.Point(12, 47);
+            this.attendanceListView.Name = "attendanceListView";
+            this.attendanceListView.Size = new System.Drawing.Size(326, 334);
+            this.attendanceListView.TabIndex = 10;
+            this.attendanceListView.UseCompatibleStateImageBehavior = false;
+            this.attendanceListView.View = System.Windows.Forms.View.Details;
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Location = new System.Drawing.Point(132, 387);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(75, 23);
+            this.closeBtn.TabIndex = 11;
+            this.closeBtn.Text = "Close";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // attendanceForm
             // 
@@ -57,7 +70,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(350, 417);
-            this.Controls.Add(this.participantListBox);
+            this.Controls.Add(this.closeBtn);
+            this.Controls.Add(this.attendanceListView);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -73,6 +87,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox participantListBox;
+        private System.Windows.Forms.ListView attendanceListView;
+        private System.Windows.Forms.Button closeBtn;
     }
 }
