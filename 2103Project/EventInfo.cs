@@ -95,12 +95,12 @@ namespace _2103Project
 
         private bool Participant_Register_Dialog(string eventName)
         {
-            return MessageBox.Show("Confirm registering for " + eventName + " ?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            return MessageBox.Show("Confirm registration for " + eventName + " ?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
         private bool Facilitator_Signup_Dialog(string eventName)
         {
-            return MessageBox.Show("Confirm facilitating for " + eventName + " ?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            return MessageBox.Show("Confirm as facilitator for " + eventName + " ?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
         }
 
         //Event Handler
@@ -155,6 +155,5 @@ namespace _2103Project
             attendanceForm att = new attendanceForm(currentUser, currentEventID, attendanceForm.attendanceListState.participantList);
             att.Show();
         }
-
     }
 }
