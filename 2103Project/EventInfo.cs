@@ -144,13 +144,13 @@ namespace _2103Project
 
         private void viewFacilitatorListBtn_Click(object sender, EventArgs e)
         {
-
+            attendanceForm att = new attendanceForm(currentUser, currentEventID, attendanceForm.attendanceListState.facilitatorList);
+            att.Show();
         }
-
 
         private void viewParticipantButton_Click(object sender, EventArgs e)
         {
-            attendanceForm att = new attendanceForm(currentUser, currentEventID);
+            attendanceForm att = new attendanceForm(currentUser, currentEventID, attendanceForm.attendanceListState.participantList);
             att.Show();
         }
 
