@@ -85,6 +85,10 @@ namespace _2103Project.Entities
             return participantSize;
         }
 
+        public void setPartipantSize(int partNum)
+        {
+            participantSize = partNum;
+        }
         public bool addParticipantToEvent(Participant newParticipant)
         {
             bool successAdded = false;
@@ -347,6 +351,19 @@ namespace _2103Project.Entities
             }
             else
                 return false;
+        }
+
+        public static bool setParticipantNumFromEventID(int currentEventID, int participantSize)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            foreach(EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                    events.setPartipantSize(participantSize);
+            }
+            db.saveListOfEvents(listOfEvent);
+            return true;
         }
     }
 }

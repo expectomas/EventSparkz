@@ -264,7 +264,17 @@ namespace _2103Project
 
         private void organiserEditButton_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                ListViewItem listItem = this.listSideEventView.SelectedItems[0];
+                currentEventID = int.Parse(listItem.SubItems[0].Text);
+                updateForm updateNew = new updateForm(currentUser, currentEventID);
+                updateNew.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Please select your event. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void getEventInfoButton_Click(object sender, EventArgs e)
