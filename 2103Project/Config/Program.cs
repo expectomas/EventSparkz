@@ -5,6 +5,14 @@ using System.Windows.Forms;
 using _2103Project.Action;
 using _2103Project.Entities;
 
+/*
+ * Authors for this section
+ * 
+ *   Lim Zhi Hao A0067252H
+ *   Tio Wee Leong A0073702M
+ * 
+ */
+
 namespace _2103Project
 {
     static class Program
@@ -17,15 +25,6 @@ namespace _2103Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            //SplashImageForm f = new SplashImageForm();
-
-            //Application.Run(f);
-
-            //System.Threading.Thread.Sleep(2000);
-
-
-            //f.Close()
 
             Application.Run(new loginSelectForm());
         }
