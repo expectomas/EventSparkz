@@ -8,6 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using _2103Project.Entities;
 
+/*
+ * Authors for this section
+ * 
+ *   Lim Zhi Hao A0067252H
+ *   Tio Wee Leong A0073702M
+ * 
+ */
+
+
 namespace _2103Project
 {
     public partial class attendanceForm : Form
