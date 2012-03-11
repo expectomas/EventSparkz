@@ -50,5 +50,11 @@ namespace _2103Project
             }
         }
 
+        private void returnBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }
