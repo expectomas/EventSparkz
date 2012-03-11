@@ -82,12 +82,13 @@ namespace _2103Project.Entities
 
             List<EventEntity> currentEvents = db.getListOfEvents();
 
-            foreach (EventEntity accessEvent in currentEvents)
+            for(int i=0;i<currentEvents.Count;i++)
             {
-                if (accessEvent.Equals(interestedEvent))
+                if(interestedEvent.getEventId().Equals(currentEvents[i].getEventId()))
                 {
-                    accessEvent.addParticipantToEvent(this);
-                    eventRegistered = true;
+                        currentEvents[i].addParticipantToEvent(this);
+                        registeredEvents.Add(interestedEvent);
+                        eventRegistered = true;
                 }
             }
 
@@ -107,11 +108,16 @@ namespace _2103Project.Entities
 
             List<EventEntity> currentEvents = db.getListOfEvents();
 
-            foreach (EventEntity accessEvent in currentEvents)
+            for (int i = 0; i < currentEvents.Count; i++)
             {
-                if (accessEvent.getEventId().Equals(unInterestedEventId))
+                if (currentEvents[i].getEventId().Equals(unInterestedEventId))
                 {
-                    accessEvent.removeParticipantFromEvent(this);
+                    currentEvents[i].removeParticipantFromEvent(this);
+
+                    //Remove from existing list as well
+
+                    registeredEvents.Remove(currentEvents[i]);
+
                     eventCancelled = true;
                 }
             }
@@ -119,6 +125,8 @@ namespace _2103Project.Entities
             //Save all events back into database
 
             db.saveListOfEvents(currentEvents);
+
+            
 
             return eventCancelled;
         }
