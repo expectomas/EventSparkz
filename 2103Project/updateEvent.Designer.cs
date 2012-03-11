@@ -159,6 +159,8 @@
             this.participantTextbox.Name = "participantTextbox";
             this.participantTextbox.Size = new System.Drawing.Size(279, 25);
             this.participantTextbox.TabIndex = 75;
+            this.participantTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.participantTextbox_KeyDown);
+            this.participantTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.participantTextbox_KeyPress);
             // 
             // organiserTextBox
             // 

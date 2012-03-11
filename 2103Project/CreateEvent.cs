@@ -70,6 +70,7 @@ namespace _2103Project
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();
                 sizeTextBox.Clear();
+                this.Close();
             }
         }
 

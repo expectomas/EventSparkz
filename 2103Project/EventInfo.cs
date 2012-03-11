@@ -119,11 +119,13 @@ namespace _2103Project
             if(Participant_Register_Dialog(registeringEvent.getEventName()))
             {
                 registeringParticipant.registerEvent(registeringEvent);
+                MessageBox.Show("You have successfully registered this event. Thank you.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             //Highlight change in state
             state = determineState(currentEventID);
             displayAppropriateBtn(state);
+            this.Close();
         }
 
         private void facilitateEventBtn_Click(object sender, EventArgs e)

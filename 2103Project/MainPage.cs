@@ -465,6 +465,11 @@ namespace _2103Project
                 displayMainEventList();
             }
         }
+
+        private void searchEventButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
