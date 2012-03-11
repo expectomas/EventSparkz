@@ -58,7 +58,6 @@ namespace _2103Project
 
         private void signupForm_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Warning: Please ensure that your particular is accurate to prevent from any inconvenient caused. Thank you.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void homeTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -101,15 +100,15 @@ namespace _2103Project
             Regex emailFormat = new Regex(emailFmt);
             if (usernameTextBox.Text == "" || passwordTextBox.Text == "" || cfmPasswordTextBox.Text == "" || ageComboBox.SelectedItem == null || nameTextBox.Text == "" || matricNoTextBox.Text == "" || phoneNumberTextBox.Text == "" || emailTextBox.Text == "")
             {
-                MessageBox.Show("Please complete all your details. Thank you.", "Detail Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please complete all your details. Thank You.", "Detail Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!passwordTextBox.Text.Equals(cfmPasswordTextBox.Text))
             {
-                MessageBox.Show("Your password is cannot be verified. Make sure that your passwords are correct.", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Your Passwords do not match. Please Try Again.", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!emailFormat.IsMatch(emailTextBox.Text))
             {
-                MessageBox.Show("You email address is not in a correct format.", "Email address error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("You Email Address is not in a correct format.", "Email address error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -143,23 +142,23 @@ namespace _2103Project
 
                 if (username.Length < 6)
                 {
-                    MessageBox.Show("Your Username must at least 6 characters.", "Username Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Your Username must have at least 6 characters.", "Username Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (nameErrorCount > 0)
                 {
-                    MessageBox.Show("Invalid name.", "Name Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid Name.", "Name Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (pwdLength.Length < 6)
                 {
-                    MessageBox.Show("Your Password must at least 6 characters.", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Your Password must have at least 6 characters.", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (PhoneNo.Length < 8)
                 {
-                    MessageBox.Show("Your Contact Number is not in a correct format. Please Try again later.", "Phone No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Your Contact Number is not in a correct format. Please Try Again.", "Phone No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else if (matricNo.Length < 9)
                 {
-                    MessageBox.Show("Your Matriculation Number is not in a correct format. Please Try again later.", "Matric No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Your Matriculation Number is not in a correct format. Please Try Again.", "Matric No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -178,11 +177,11 @@ namespace _2103Project
                     }
                     if (userNameErrorCount > 0)
                     {
-                        MessageBox.Show("Your username should only have alphanumeric character. Please Try again.", "Username Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Your Username should only have alphanumeric characters. Please Try Again.", "Username Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else if ((matricNo[0] != 'A' && matricNo[0] != 'U') || (matricNo[8] < 'A' || matricNo[8] > 'Z'))
                     {
-                        MessageBox.Show("Your Matriculation Number is not in a correct format. Please Try again.", "Matric No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Your Matriculation Number is not in a correct format. Please Try Again.", "Matric No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -194,11 +193,10 @@ namespace _2103Project
                         }
                         if (matricNoCountError > 0)
                         {
-                            MessageBox.Show("Your Matriculation Number is not in a correct format. Please Try again.", "Matric No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Your Matriculation Number is not in a correct format. Please Try Again.", "Matric No Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
-                            MessageBox.Show("Warning: All USERNAME will be converted to lower case.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             DialogResult result = MessageBox.Show("Confirm signup?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if (result == DialogResult.Yes)
                             {
@@ -212,11 +210,12 @@ namespace _2103Project
                                 bool checkUNameExist = signUp.createNewUser();
                                 if (checkUNameExist == true)
                                 {
-                                    MessageBox.Show("You have successfully create your username. Thank you", "Create success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("You have successfully created an account. Thank You!", "Create success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    this.Close();
                                 }
                                 else
                                 {
-                                    MessageBox.Show("The username is already existed. Please choose another username. Thank you.", "Username existed.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Username already exists. Please choose another Username. Thank You.", "Username existed.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                         }

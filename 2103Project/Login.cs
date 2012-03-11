@@ -57,7 +57,6 @@ namespace _2103Project
                 }
             }
             
-                
         }
 
         private void SplashScreen_Click(object sender, EventArgs e)
