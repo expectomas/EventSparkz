@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using _2103Project.Action;
 
+/*
+ * Authors for this section
+ * 
+ *   Lim Zhi Hao A0067252H
+ *   Tio Wee Leong A0073702M
+ * 
+ */
+
 namespace _2103Project.Entities
 {
     class Participant : ActiveUser
