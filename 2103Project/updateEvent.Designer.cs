@@ -65,9 +65,9 @@
             // saveButton
             // 
             this.saveButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(365, 358);
+            this.saveButton.Location = new System.Drawing.Point(362, 358);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(105, 37);
+            this.saveButton.Size = new System.Drawing.Size(108, 37);
             this.saveButton.TabIndex = 80;
             this.saveButton.Text = "Save Change";
             this.saveButton.UseVisualStyleBackColor = true;
