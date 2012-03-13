@@ -268,7 +268,7 @@
             // 
             // viewFacilitatorListBtn
             // 
-            this.viewFacilitatorListBtn.Location = new System.Drawing.Point(209, 40);
+            this.viewFacilitatorListBtn.Location = new System.Drawing.Point(239, 40);
             this.viewFacilitatorListBtn.Name = "viewFacilitatorListBtn";
             this.viewFacilitatorListBtn.Size = new System.Drawing.Size(120, 30);
             this.viewFacilitatorListBtn.TabIndex = 33;
