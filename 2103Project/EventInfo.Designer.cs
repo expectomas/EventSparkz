@@ -49,10 +49,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.viewParticipantListBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.viewFacilitatorListBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,9 +255,20 @@
             this.panel1.Size = new System.Drawing.Size(454, 80);
             this.panel1.TabIndex = 32;
             // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Enabled = false;
+            this.statusLabel.Location = new System.Drawing.Point(123, 24);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(35, 13);
+            this.statusLabel.TabIndex = 34;
+            this.statusLabel.Text = "label3";
+            this.statusLabel.Visible = false;
+            // 
             // viewFacilitatorListBtn
             // 
-            this.viewFacilitatorListBtn.Location = new System.Drawing.Point(239, 40);
+            this.viewFacilitatorListBtn.Location = new System.Drawing.Point(209, 40);
             this.viewFacilitatorListBtn.Name = "viewFacilitatorListBtn";
             this.viewFacilitatorListBtn.Size = new System.Drawing.Size(120, 30);
             this.viewFacilitatorListBtn.TabIndex = 33;
@@ -283,17 +294,6 @@
             this.groupBox1.Size = new System.Drawing.Size(472, 172);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Enabled = false;
-            this.statusLabel.Location = new System.Drawing.Point(123, 24);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(35, 13);
-            this.statusLabel.TabIndex = 34;
-            this.statusLabel.Text = "label3";
-            this.statusLabel.Visible = false;
             // 
             // eventInfoForm
             // 
