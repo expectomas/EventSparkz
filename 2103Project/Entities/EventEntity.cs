@@ -461,5 +461,18 @@ namespace _2103Project.Entities
         {
             return facilitatorList;
         }
+
+        public DateTime getStartTimeFromEventID(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                    eve = events;
+            }
+            return eve.startTime;
+        }
     }
 }

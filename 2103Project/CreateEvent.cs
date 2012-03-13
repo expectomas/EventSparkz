@@ -45,6 +45,10 @@ namespace _2103Project
             {
                 MessageBox.Show("Please add your schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (int.Parse(sizeTextBox.Text) < 1)
+            {
+                MessageBox.Show("You cannot create an event with 0 participant size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 string path = "events.xml";
@@ -54,7 +58,7 @@ namespace _2103Project
                 {
                     neweventId = Organiser.getNewEventId();
                     newscheduleId = Organiser.getNewScheduleId();
-                }    
+                }
                 List<Participant> participantList = new List<Participant>();
                 List<int> facilitatorList = new List<int>();
                 EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId());
@@ -68,12 +72,12 @@ namespace _2103Project
                     int newVenueID = org.getCheckVenueId(venueListBox.Items[i].ToString());
                     ven = new Venue(newVenueID, venueListBox.Items[i].ToString());
                     int newActivityID = org.getNewActivityId();
-                    newAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString() ,ven);
+                    newAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString(), ven);
                     listOfActivity.Add(newAct);
                     org.addNewActivity(newAct);
                 }
                 List<string> listOfItems = new List<string>();
-                Schedule newSchedule = new Schedule(newscheduleId ,listOfItems, listOfActivity);
+                Schedule newSchedule = new Schedule(newscheduleId, listOfItems, listOfActivity);
                 org.addSchedule(newSchedule);
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
