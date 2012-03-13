@@ -34,19 +34,22 @@ namespace _2103Project
 
         private void displayAppropriateBtn(EventEntity.EventInfoStates fixedState)
         {
+            /*All Participants and Organisers can view the facilitator info */
+
             switch (fixedState)
             {
                 case EventEntity.EventInfoStates.unregisteredActiveUser:
                     registerEventBtn.Show();
                     facilitateEventBtn.Show();
                     viewParticipantListBtn.Hide();
-                    viewFacilitatorListBtn.Hide();
+                    viewFacilitatorListBtn.Show();
                     break;
                 case EventEntity.EventInfoStates.registeredParticipant:
                     registerEventBtn.Hide();
                     facilitateEventBtn.Hide();
                     viewParticipantListBtn.Hide();
-                    viewFacilitatorListBtn.Hide();
+                    viewFacilitatorListBtn.Show();
+                    viewFacilitatorListBtn.Location = new Point(160, 50);
                     displayStatusLabel("You have already registered for this event");
                     break;
                 case EventEntity.EventInfoStates.facilitator:

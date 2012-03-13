@@ -54,6 +54,18 @@ namespace _2103Project.Entities
             contactHP = i_contactHP;
         }
 
+        private int findTheNextUnusedUserId(List<User> searchUserList)
+        {
+            int lastUserId = 0;
+
+            for (int i = 0; i < searchUserList.Count; i++)
+            {
+                lastUserId = searchUserList[i].getUserId();
+            }
+
+            return lastUserId + 1;
+        }
+
         public bool checkEmailFormat(string email)
         {
             string emailFmt = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
@@ -204,16 +216,18 @@ namespace _2103Project.Entities
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             bool userCreated = true;
-            bool checkUNameExist = true;
+            bool checkUNameExist = false;
                 List<User> listOfUsers = db.getListOfUsers();
+
                 foreach(User checkUser in listOfUsers)
                 {
                     if (checkUser.userName == userName)
-                        checkUNameExist = false;
+                        checkUNameExist = true;
                 }
-                if (checkUNameExist == true)
+
+                if (checkUNameExist == false)
                 {
-                    User test = new User(userId, userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
+                    User test = new User(findTheNextUnusedUserId(listOfUsers), userName, name, matricNo, password, email, age, loggedIn, contactHome, contactHP);
                     listOfUsers.Add(test);
                     db.saveListOfUsers(listOfUsers);
                 }

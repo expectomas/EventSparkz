@@ -44,7 +44,9 @@ namespace _2103Project
             this.attendanceListView.Items.Clear();
 
             this.attendanceListView.Columns.Insert(0,"No.",30);
-            this.attendanceListView.Columns.Insert(1,"Name",180);
+            this.attendanceListView.Columns.Insert(1,"Name",150);
+            this.attendanceListView.Columns.Insert(2, "Email", 130);
+            this.attendanceListView.Columns.Insert(3, "HP", 100);
 
             this.attendanceListView.Show();
         }
@@ -110,6 +112,9 @@ namespace _2103Project
                 {
                     ListViewItem newFacilitator = new ListViewItem((i + 1).ToString());
                     newFacilitator.SubItems.Add(listOfFacilitator[i].getName());
+                    newFacilitator.SubItems.Add(listOfFacilitator[i].getEmail());
+                    newFacilitator.SubItems.Add(listOfFacilitator[i].getContactHP().ToString());
+
                     attendanceListView.Items.Add(newFacilitator);
                 }
             }
