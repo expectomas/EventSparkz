@@ -93,7 +93,10 @@ namespace _2103Project
             {
                 MessageBox.Show("You are not allowed to decrease the participant size", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            else if (timeListBox.Items.Count != descriptionListBox.Items.Count || timeListBox.Items.Count != venueListBox.Items.Count)
+            {
+                MessageBox.Show("At least one activity is missing in the schedule!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 EventEntity.setParticipantNumFromEventID(currentEventID, numParticipant);

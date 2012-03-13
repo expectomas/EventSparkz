@@ -209,6 +209,7 @@
             // 
             this.matricNoTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matricNoTextBox.Location = new System.Drawing.Point(197, 155);
+            this.matricNoTextBox.MaxLength = 9;
             this.matricNoTextBox.Name = "matricNoTextBox";
             this.matricNoTextBox.Size = new System.Drawing.Size(169, 35);
             this.matricNoTextBox.TabIndex = 22;
@@ -217,6 +218,7 @@
             // 
             this.phoneNumberTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneNumberTextBox.Location = new System.Drawing.Point(197, 226);
+            this.phoneNumberTextBox.MaxLength = 8;
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
             this.phoneNumberTextBox.Size = new System.Drawing.Size(169, 35);
             this.phoneNumberTextBox.TabIndex = 23;
@@ -306,9 +308,9 @@
         private System.Windows.Forms.ComboBox ageComboBox;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox matricNoTextBox;
-        private System.Windows.Forms.TextBox phoneNumberTextBox;
         private System.Windows.Forms.TextBox homeTextBox;
         private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Button signupButton;
+        private System.Windows.Forms.TextBox phoneNumberTextBox;
     }
 }
