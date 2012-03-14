@@ -46,8 +46,18 @@ namespace _2103Project
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (userNameTextBox.Text == "" || passwordTextbox.Text == "")
-                MessageBox.Show("Please login your username and password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (userNameTextBox.Text == "" && passwordTextbox.Text == "")
+            {
+                MessageBox.Show("Please enter your login details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (userNameTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (passwordTextbox.Text == "")
+            {
+                MessageBox.Show("Please enter your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 validUser = currentUser.login(userNameTextBox.Text.ToString().ToLower(), passwordTextbox.Text.ToString(), ref currentUser);

@@ -136,16 +136,15 @@ namespace _2103Project.Entities
         public bool removeParticipantFromEvent(Participant unInterestedParticipant)
         {
             bool successRemoved = true;
-            int i = 0;
 
             try
             {
-                foreach (Participant alreadyRegistered in this.participantList)
+                for (int i = 0; i < participantList.Count;i++ )
                 {
-                    if (alreadyRegistered.getUserId().Equals(unInterestedParticipant.getUserId()))
+                    if (participantList[i].getUserId().Equals(unInterestedParticipant.getUserId()))
                     {
                         participantList.RemoveAt(i);
-                        ++i;
+                        i++;
                     }
                 }
             }
@@ -463,6 +462,19 @@ namespace _2103Project.Entities
         public List<int> getListOfFacilitator()
         {
             return facilitatorList;
+        }
+
+        public DateTime getStartTimeFromEventID(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                    eve = events;
+            }
+            return eve.startTime;
         }
     }
 }

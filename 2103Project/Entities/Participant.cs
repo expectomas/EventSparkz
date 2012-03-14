@@ -133,7 +133,7 @@ namespace _2103Project.Entities
             for (int i = 0; i < registeredEvents.Count; i++)
             {
                 //Remove from existing list as well
-                if (unInterestedEventId.Equals(registeredEvents[i]))
+                if (unInterestedEventId.Equals(registeredEvents[i].getEventId()))
                 {
                     registeredEvents.RemoveAt(i);
                 }

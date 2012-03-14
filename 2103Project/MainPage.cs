@@ -253,16 +253,27 @@ namespace _2103Project
 
         private void organiserEditButton_Click(object sender, EventArgs e)
         {
-            try
+            TimeSpan difference = new TimeSpan(3, 0, 0, 0);
+            EventEntity eve = new EventEntity();
+            ListViewItem listItem = this.listSideEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[0].Text);
+
+            if ((eve.getStartTimeFromEventID(currentEventID).Subtract(System.DateTime.Now)) <= difference)
             {
-                ListViewItem listItem = this.listSideEventView.SelectedItems[0];
-                currentEventID = int.Parse(listItem.SubItems[0].Text);
-                updateForm updateNew = new updateForm(currentUser, currentEventID);
-                updateNew.Show();
+                MessageBox.Show("You cannot edit an event that starts 3 days from now.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch
+
+            else
             {
-                AdviseUserToMakeASelection();
+                try
+                {
+                    updateForm updateNew = new updateForm(currentUser, currentEventID);
+                    updateNew.Show();
+                }
+                catch
+                {
+                    AdviseUserToMakeASelection();
+                }
             }
         }
 

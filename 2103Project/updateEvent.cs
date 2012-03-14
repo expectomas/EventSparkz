@@ -87,25 +87,38 @@ namespace _2103Project
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            EventEntity.setParticipantNumFromEventID(currentEventID, int.Parse(participantTextbox.Text));
-            //set schedule
-            List<DateTime> listOfDateTime = new List<DateTime>();
-            List<string> listOfdescription = new List<string>();
-            List<Venue> listOfVenue = new List<Venue>();
-            Venue newVen;
-            for(int i = 0; i < timeListBox.Items.Count; i++)
+            int numParticipant = int.Parse(participantTextbox.Text);
+            
+            if (numParticipant < EventEntity.getParticipantNumber(currentEventID))  // Prohibit decrease in participant size
             {
-                DateTime dtValue = Convert.ToDateTime(dateTextBox.Text);
-                string timeTest = timeListBox.Items[i].ToString();
-                listOfDateTime.Add(returnTime(timeListBox.Items[i].ToString(), dtValue));
-                listOfdescription.Add(descriptionListBox.Items[i].ToString());
-                newVen = new Venue(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString()), venueListBox.Items[i].ToString());
-                listOfVenue.Add(newVen);
+                MessageBox.Show("You are not allowed to decrease the participant size", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
+            else if (timeListBox.Items.Count != descriptionListBox.Items.Count || timeListBox.Items.Count != venueListBox.Items.Count)
+            {
+                MessageBox.Show("At least one activity is missing in the schedule!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                EventEntity.setParticipantNumFromEventID(currentEventID, numParticipant);
+                //set schedule
+                List<DateTime> listOfDateTime = new List<DateTime>();
+                List<string> listOfdescription = new List<string>();
+                List<Venue> listOfVenue = new List<Venue>();
+                Venue newVen;
+                for (int i = 0; i < timeListBox.Items.Count; i++)
+                {
+                    DateTime dtValue = Convert.ToDateTime(dateTextBox.Text);
+                    string timeTest = timeListBox.Items[i].ToString();
+                    listOfDateTime.Add(returnTime(timeListBox.Items[i].ToString(), dtValue));
+                    listOfdescription.Add(descriptionListBox.Items[i].ToString());
+                    newVen = new Venue(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString()), venueListBox.Items[i].ToString());
+                    listOfVenue.Add(newVen);
+                }
+                EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
 
-            MessageBox.Show("Save successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+                MessageBox.Show("Save successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
 
         private DateTime returnTime(string time, DateTime startTime)

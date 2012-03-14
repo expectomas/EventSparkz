@@ -38,7 +38,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(90, 19);
+            this.label1.Location = new System.Drawing.Point(208, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 25);
             this.label1.TabIndex = 9;
@@ -49,14 +49,14 @@
             this.attendanceListView.GridLines = true;
             this.attendanceListView.Location = new System.Drawing.Point(12, 47);
             this.attendanceListView.Name = "attendanceListView";
-            this.attendanceListView.Size = new System.Drawing.Size(326, 334);
+            this.attendanceListView.Size = new System.Drawing.Size(473, 334);
             this.attendanceListView.TabIndex = 10;
             this.attendanceListView.UseCompatibleStateImageBehavior = false;
             this.attendanceListView.View = System.Windows.Forms.View.Details;
             // 
             // closeBtn
             // 
-            this.closeBtn.Location = new System.Drawing.Point(132, 387);
+            this.closeBtn.Location = new System.Drawing.Point(213, 387);
             this.closeBtn.Name = "closeBtn";
             this.closeBtn.Size = new System.Drawing.Size(75, 23);
             this.closeBtn.TabIndex = 11;
@@ -69,7 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(350, 417);
+            this.ClientSize = new System.Drawing.Size(499, 417);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.attendanceListView);
             this.Controls.Add(this.label1);

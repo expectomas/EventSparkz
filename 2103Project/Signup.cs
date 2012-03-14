@@ -106,9 +106,41 @@ namespace _2103Project
         {
             string emailFmt = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
             Regex emailFormat = new Regex(emailFmt);
-            if (usernameTextBox.Text == "" || passwordTextBox.Text == "" || cfmPasswordTextBox.Text == "" || ageComboBox.SelectedItem == null || nameTextBox.Text == "" || matricNoTextBox.Text == "" || phoneNumberTextBox.Text == "" || emailTextBox.Text == "")
+            if (usernameTextBox.Text == "" && passwordTextBox.Text == "" && cfmPasswordTextBox.Text == "" && ageComboBox.SelectedItem == null && nameTextBox.Text == "" && matricNoTextBox.Text == "" && phoneNumberTextBox.Text == "" && emailTextBox.Text == "" && homeTextBox.Text == "")
             {
                 MessageBox.Show("Please complete all your details. Thank You.", "Detail Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (usernameTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (passwordTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (cfmPasswordTextBox.Text == "")
+            {
+                MessageBox.Show("Please confirm your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (ageComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select your age.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (matricNoTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your matric no.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (phoneNumberTextBox.Text == "" || homeTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter a contact number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (emailTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (nameTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!passwordTextBox.Text.Equals(cfmPasswordTextBox.Text))
             {
