@@ -427,12 +427,15 @@ namespace _2103Project.Entities
             List<Activity> lisotOfActDB = db.getListOfActivities();
             foreach(Activity actDB in lisotOfActDB)
             {
-                if(actDB.getActivityId() == queueActivity.Peek().getActivityId())
+                if (queueActivity.Count != 0)
                 {
-                    actDB.setDateTime(queueActivity.Peek().getDate());
-                    actDB.setDescription(queueActivity.Peek().getDescription());
-                    actDB.setVenue(queueActivity.Peek().getVenue());
-                    queueActivity.Dequeue();
+                    if (actDB.getActivityId() == queueActivity.Peek().getActivityId())
+                    {
+                        actDB.setDateTime(queueActivity.Peek().getDate());
+                        actDB.setDescription(queueActivity.Peek().getDescription());
+                        actDB.setVenue(queueActivity.Peek().getVenue());
+                        queueActivity.Dequeue();
+                    }
                 }
             }
             db.saveListOfActivities(lisotOfActDB);
