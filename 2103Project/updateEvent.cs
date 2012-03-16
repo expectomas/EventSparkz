@@ -54,7 +54,7 @@ namespace _2103Project
 
         private void editItemButton_Click(object sender, EventArgs e)
         {
-            if (timeListBox.SelectedItem == null && timeComboBox.SelectedItem == null && descriptionListBox.SelectedItem == null && venueListBox.SelectedItem == null && venComboBox.SelectedItem == null && descriptionTextBox.Text == "" )
+            if (timeListBox.SelectedItem == null || timeComboBox.SelectedItem == null || descriptionListBox.SelectedItem == null || venueListBox.SelectedItem == null || venComboBox.SelectedItem == null || descriptionTextBox.Text == "" )
             {
                 MessageBox.Show("Please select one of the items from the schedule to change schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

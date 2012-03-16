@@ -29,6 +29,15 @@ namespace _2103Project
         {
             currentUser = incomingUser;
             InitializeComponent();
+            initMainEventList();
+        }
+
+        public void initMainEventList()
+        {
+            //Clear ListBox Column and Items
+            scheduleEventView.Columns.Insert(0, "Time", 80, HorizontalAlignment.Left);
+            scheduleEventView.Columns.Insert(1, "Description", 220, HorizontalAlignment.Left);
+            scheduleEventView.Columns.Insert(2, "Venue", 80, HorizontalAlignment.Left);
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -53,10 +62,6 @@ namespace _2103Project
             {
                 MessageBox.Show("The event cannot have the same start and end time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (timeListBox.Items.Count == 0 || descriptionListBox.Items.Count == 0 || venueListBox.Items.Count == 0)
-            {
-                MessageBox.Show("Please add your schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else if (int.Parse(sizeTextBox.Text) < 1)
             {
                 MessageBox.Show("You cannot create an event with 0 participant size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -78,13 +83,13 @@ namespace _2103Project
                 Activity newAct; Venue ven;
                 DateTime time;
                 List<Activity> listOfActivity = new List<Activity>();
-                for (int i = 0; i < timeListBox.Items.Count; i++)
+                for (int i = 0; i < scheduleEventView.Items.Count; i++)
                 {
-                    time = returnTime(timeListBox.Items[i].ToString(), startTimePicker.Value);
-                    int newVenueID = org.getCheckVenueId(venueListBox.Items[i].ToString());
-                    ven = new Venue(newVenueID, venueListBox.Items[i].ToString());
+                    time = returnTime(scheduleEventView.Items[i].SubItems[0].ToString(), startTimePicker.Value);
+                    int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].ToString());
+                    ven = new Venue(newVenueID,scheduleEventView.Items[i].SubItems[2].ToString());
                     int newActivityID = org.getNewActivityId();
-                    newAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString(), ven);
+                    newAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].ToString(), ven);
                     listOfActivity.Add(newAct);
                     org.addNewActivity(newAct);
                 }
@@ -198,9 +203,10 @@ namespace _2103Project
         {
             if (!(timeComboBox.SelectedItem == null || descriptionTextBox.Text == "" || venueComboBox.SelectedItem == null))
             {
-                timeListBox.Items.Add(timeComboBox.SelectedItem.ToString());
-                descriptionListBox.Items.Add(descriptionTextBox.Text);
-                venueListBox.Items.Add(venueComboBox.SelectedItem.ToString());
+                ListViewItem newevent = new ListViewItem(timeComboBox.SelectedItem.ToString());
+                newevent.SubItems.Add(descriptionTextBox.Text);
+                newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
+                scheduleEventView.Items.Add(newevent);
             }
             else
             {

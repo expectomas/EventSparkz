@@ -74,6 +74,19 @@ namespace _2103Project
             currentUser = incomingUser;
             currentEventID = incomingEventID;
             InitializeComponent();
+            initMainEventList();
+        }
+
+        public void initMainEventList()
+        {
+
+            //Clear ListBox Column and Items
+            scheduleEventView.Columns.Clear();
+            scheduleEventView.Items.Clear();
+
+            scheduleEventView.Columns.Insert(0, "Time", 80, HorizontalAlignment.Left);
+            scheduleEventView.Columns.Insert(1, "Description", 220, HorizontalAlignment.Left);
+            scheduleEventView.Columns.Insert(2, "Venue", 80, HorizontalAlignment.Left);
         }
 
         private void eventInfoForm_Load(object sender, EventArgs e)
@@ -92,9 +105,10 @@ namespace _2103Project
             DateTime dateTimeValue = DateTime.Now;
             while (!(listOfDateTime.Count == 0))
             {
-                timeListBox.Items.Add(String.Format("{0:t}", listOfDateTime.Dequeue()));
-                descriptionListBox.Items.Add(listofDescription.Dequeue());
-                venueListBox.Items.Add(listOfVenue.Dequeue());
+                ListViewItem newevent = new ListViewItem(String.Format("{0:t}", listOfDateTime.Dequeue()));
+                newevent.SubItems.Add(listofDescription.Dequeue());
+                newevent.SubItems.Add(listOfVenue.Dequeue());
+                scheduleEventView.Items.Add(newevent);
             }
 
 

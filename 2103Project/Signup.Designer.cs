@@ -233,6 +233,8 @@
             this.homeTextBox.Name = "homeTextBox";
             this.homeTextBox.Size = new System.Drawing.Size(169, 35);
             this.homeTextBox.TabIndex = 24;
+            this.homeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.homeTextBox_KeyDown_1);
+            this.homeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.homeTextBox_KeyPress_1);
             // 
             // emailTextBox
             // 
