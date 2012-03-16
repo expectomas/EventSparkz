@@ -30,6 +30,7 @@ namespace _2103Project
             currentUser = incomingUser;
             InitializeComponent();
             initMainEventList();
+            initBudgetList();
         }
 
         public void initMainEventList()
@@ -38,6 +39,13 @@ namespace _2103Project
             scheduleEventView.Columns.Insert(0, "Time", 80, HorizontalAlignment.Left);
             scheduleEventView.Columns.Insert(1, "Description", 220, HorizontalAlignment.Left);
             scheduleEventView.Columns.Insert(2, "Venue", 80, HorizontalAlignment.Left);
+        }
+
+        public void initBudgetList()
+        {
+            budgetListListView.Columns.Insert(0, "Item", 180, HorizontalAlignment.Left);
+            budgetListListView.Columns.Insert(1, "Cost ($)", 80, HorizontalAlignment.Left);
+            budgetListListView.Columns.Insert(2, "ItemID", 0, HorizontalAlignment.Right);
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -211,6 +219,69 @@ namespace _2103Project
             else
             {
                 MessageBox.Show("Please select your time, description and venue. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void deleteScheduleButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < scheduleEventView.Items.Count; i++)
+            {
+                if (scheduleEventView.Items[i].Selected)
+                    scheduleEventView.Items[i].Remove();
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < budgetListListView.Items.Count; i++)
+            {
+                if (budgetListListView.Items[i].Selected)
+                    budgetListListView.Items[i].Remove();
+            }
+        }
+
+        private void addBudgetItem_Click(object sender, EventArgs e)
+        {
+            float totalPrice = float.Parse(totalPriceTextBox.Text);
+            ListViewItem newItem = new ListViewItem(budgetItemTextBox.Text);
+            float price = float.Parse(costTextBox.Text);
+            newItem.SubItems.Add(price.ToString("C"));
+            newItem.SubItems.Add((budgetListListView.Items.Count + 1).ToString());
+            budgetListListView.Items.Add(newItem);
+            totalPriceTextBox.Text = (totalPrice + price).ToString("C");
+        }
+
+        private void costTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            // Determine whether the keystroke is a number from the top of the keyboard.
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                // Determine whether the keystroke is a number from the keypad.
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    // Determine whether the keystroke is a backspace.
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        // A non-numerical keystroke was pressed.
+                        // Set the flag to true and evaluate in KeyPress event.
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void costTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {         // Stop the character from being entered into the control since it is non-numerical.
+                e.Handled = true;
             }
         }
     }

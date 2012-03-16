@@ -47,20 +47,22 @@
             this.label9 = new System.Windows.Forms.Label();
             this.addScheduleButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.deleteSchedule = new System.Windows.Forms.Button();
+            this.scheduleEventView = new System.Windows.Forms.ListView();
+            this.deleteScheduleButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.budgetListListView = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.addBudgetItem = new System.Windows.Forms.Button();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.budgetItemTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.scheduleEventView = new System.Windows.Forms.ListView();
-            this.budgetListListView = new System.Windows.Forms.ListView();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.totalPriceTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -283,7 +285,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.scheduleEventView);
-            this.groupBox1.Controls.Add(this.deleteSchedule);
+            this.groupBox1.Controls.Add(this.deleteScheduleButton);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.addScheduleButton);
@@ -293,15 +295,29 @@
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
             // 
-            // deleteSchedule
+            // scheduleEventView
             // 
-            this.deleteSchedule.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteSchedule.Location = new System.Drawing.Point(290, 345);
-            this.deleteSchedule.Name = "deleteSchedule";
-            this.deleteSchedule.Size = new System.Drawing.Size(200, 35);
-            this.deleteSchedule.TabIndex = 30;
-            this.deleteSchedule.Text = "DeleteSchedule";
-            this.deleteSchedule.UseVisualStyleBackColor = true;
+            this.scheduleEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scheduleEventView.FullRowSelect = true;
+            this.scheduleEventView.GridLines = true;
+            this.scheduleEventView.Location = new System.Drawing.Point(7, 101);
+            this.scheduleEventView.Name = "scheduleEventView";
+            this.scheduleEventView.Size = new System.Drawing.Size(482, 239);
+            this.scheduleEventView.TabIndex = 39;
+            this.scheduleEventView.UseCompatibleStateImageBehavior = false;
+            this.scheduleEventView.View = System.Windows.Forms.View.Details;
+            // 
+            // deleteScheduleButton
+            // 
+            this.deleteScheduleButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteScheduleButton.Location = new System.Drawing.Point(290, 345);
+            this.deleteScheduleButton.Name = "deleteScheduleButton";
+            this.deleteScheduleButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.deleteScheduleButton.Size = new System.Drawing.Size(200, 35);
+            this.deleteScheduleButton.TabIndex = 30;
+            this.deleteScheduleButton.Text = "Delete Schedule";
+            this.deleteScheduleButton.UseVisualStyleBackColor = true;
+            this.deleteScheduleButton.Click += new System.EventHandler(this.deleteScheduleButton_Click);
             // 
             // dateTimePicker1
             // 
@@ -312,14 +328,39 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.totalPriceTextBox);
+            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.deleteButton);
             this.groupBox2.Controls.Add(this.budgetListListView);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Location = new System.Drawing.Point(12, 236);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(283, 275);
+            this.groupBox2.Size = new System.Drawing.Size(283, 301);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.Location = new System.Drawing.Point(7, 261);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(123, 29);
+            this.deleteButton.TabIndex = 39;
+            this.deleteButton.Text = "Delete Item";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
+            // budgetListListView
+            // 
+            this.budgetListListView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.budgetListListView.FullRowSelect = true;
+            this.budgetListListView.GridLines = true;
+            this.budgetListListView.Location = new System.Drawing.Point(7, 27);
+            this.budgetListListView.Name = "budgetListListView";
+            this.budgetListListView.Size = new System.Drawing.Size(270, 207);
+            this.budgetListListView.TabIndex = 40;
+            this.budgetListListView.UseCompatibleStateImageBehavior = false;
+            this.budgetListListView.View = System.Windows.Forms.View.Details;
             // 
             // label8
             // 
@@ -345,6 +386,16 @@
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(210, -3);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 21);
+            this.label12.TabIndex = 41;
+            this.label12.Text = "Budget:";
+            // 
             // addBudgetItem
             // 
             this.addBudgetItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -354,6 +405,7 @@
             this.addBudgetItem.TabIndex = 36;
             this.addBudgetItem.Text = "Add Item";
             this.addBudgetItem.UseVisualStyleBackColor = true;
+            this.addBudgetItem.Click += new System.EventHandler(this.addBudgetItem_Click);
             // 
             // costTextBox
             // 
@@ -362,6 +414,8 @@
             this.costTextBox.Name = "costTextBox";
             this.costTextBox.Size = new System.Drawing.Size(279, 29);
             this.costTextBox.TabIndex = 38;
+            this.costTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.costTextBox_KeyDown);
+            this.costTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costTextBox_KeyPress);
             // 
             // budgetItemTextBox
             // 
@@ -377,9 +431,9 @@
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(6, 60);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 21);
+            this.label11.Size = new System.Drawing.Size(67, 21);
             this.label11.TabIndex = 37;
-            this.label11.Text = "Cost:";
+            this.label11.Text = "Cost ($):";
             // 
             // label10
             // 
@@ -391,49 +445,24 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Budget Item:";
             // 
-            // scheduleEventView
+            // label13
             // 
-            this.scheduleEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scheduleEventView.FullRowSelect = true;
-            this.scheduleEventView.GridLines = true;
-            this.scheduleEventView.Location = new System.Drawing.Point(7, 101);
-            this.scheduleEventView.Name = "scheduleEventView";
-            this.scheduleEventView.Size = new System.Drawing.Size(482, 239);
-            this.scheduleEventView.TabIndex = 39;
-            this.scheduleEventView.UseCompatibleStateImageBehavior = false;
-            this.scheduleEventView.View = System.Windows.Forms.View.Details;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(132, 237);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(105, 21);
+            this.label13.TabIndex = 42;
+            this.label13.Text = "Total Cost ($):";
             // 
-            // budgetListListView
+            // totalPriceTextBox
             // 
-            this.budgetListListView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.budgetListListView.FullRowSelect = true;
-            this.budgetListListView.GridLines = true;
-            this.budgetListListView.Location = new System.Drawing.Point(7, 27);
-            this.budgetListListView.Name = "budgetListListView";
-            this.budgetListListView.Size = new System.Drawing.Size(270, 207);
-            this.budgetListListView.TabIndex = 40;
-            this.budgetListListView.UseCompatibleStateImageBehavior = false;
-            this.budgetListListView.View = System.Windows.Forms.View.Details;
-            // 
-            // deleteButton
-            // 
-            this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteButton.Location = new System.Drawing.Point(7, 240);
-            this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(123, 29);
-            this.deleteButton.TabIndex = 39;
-            this.deleteButton.Text = "Delete Item";
-            this.deleteButton.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(210, -3);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 21);
-            this.label12.TabIndex = 41;
-            this.label12.Text = "Budget:";
+            this.totalPriceTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPriceTextBox.Location = new System.Drawing.Point(136, 261);
+            this.totalPriceTextBox.Name = "totalPriceTextBox";
+            this.totalPriceTextBox.Size = new System.Drawing.Size(137, 29);
+            this.totalPriceTextBox.TabIndex = 42;
+            this.totalPriceTextBox.Text = "0.00";
             // 
             // createEventForm
             // 
@@ -497,7 +526,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button addScheduleButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button deleteSchedule;
+        private System.Windows.Forms.Button deleteScheduleButton;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
@@ -511,6 +540,8 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.ListView budgetListListView;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox totalPriceTextBox;
+        private System.Windows.Forms.Label label13;
        
     }
 }

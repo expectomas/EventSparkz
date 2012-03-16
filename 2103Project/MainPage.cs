@@ -499,6 +499,14 @@ namespace _2103Project
                 displayMainEventList();
             }
         }
+
+        private void listMainEventView_DoubleClick(object sender, EventArgs e)
+        {
+            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+            eventInfoPage.Show();
+        }
     }
 }
 
