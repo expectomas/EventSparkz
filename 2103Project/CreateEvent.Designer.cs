@@ -51,6 +51,8 @@
             this.deleteScheduleButton = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.totalPriceTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             this.budgetListListView = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,8 +63,8 @@
             this.budgetItemTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.totalPriceTextBox = new System.Windows.Forms.TextBox();
+            this.dpTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -339,6 +341,25 @@
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             // 
+            // totalPriceTextBox
+            // 
+            this.totalPriceTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPriceTextBox.Location = new System.Drawing.Point(136, 261);
+            this.totalPriceTextBox.Name = "totalPriceTextBox";
+            this.totalPriceTextBox.Size = new System.Drawing.Size(137, 29);
+            this.totalPriceTextBox.TabIndex = 42;
+            this.totalPriceTextBox.Text = "0.00";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(132, 237);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(105, 21);
+            this.label13.TabIndex = 42;
+            this.label13.Text = "Total Cost ($):";
+            // 
             // deleteButton
             // 
             this.deleteButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -374,6 +395,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.dpTextBox);
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.addBudgetItem);
             this.groupBox3.Controls.Add(this.costTextBox);
@@ -411,9 +434,12 @@
             // 
             this.costTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.costTextBox.Location = new System.Drawing.Point(109, 57);
+            this.costTextBox.MaxLength = 5;
             this.costTextBox.Name = "costTextBox";
-            this.costTextBox.Size = new System.Drawing.Size(279, 29);
+            this.costTextBox.Size = new System.Drawing.Size(61, 29);
             this.costTextBox.TabIndex = 38;
+            this.costTextBox.Text = "100";
+            this.costTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.costTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.costTextBox_KeyDown);
             this.costTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.costTextBox_KeyPress);
             // 
@@ -445,24 +471,28 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Budget Item:";
             // 
-            // label13
+            // dpTextBox
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(132, 237);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(105, 21);
-            this.label13.TabIndex = 42;
-            this.label13.Text = "Total Cost ($):";
+            this.dpTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpTextBox.Location = new System.Drawing.Point(191, 57);
+            this.dpTextBox.MaxLength = 2;
+            this.dpTextBox.Name = "dpTextBox";
+            this.dpTextBox.Size = new System.Drawing.Size(31, 29);
+            this.dpTextBox.TabIndex = 42;
+            this.dpTextBox.Text = "00";
+            this.dpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dpTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpTextBox_KeyDown);
+            this.dpTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dpTextBox_KeyPress);
             // 
-            // totalPriceTextBox
+            // label14
             // 
-            this.totalPriceTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPriceTextBox.Location = new System.Drawing.Point(136, 261);
-            this.totalPriceTextBox.Name = "totalPriceTextBox";
-            this.totalPriceTextBox.Size = new System.Drawing.Size(137, 29);
-            this.totalPriceTextBox.TabIndex = 42;
-            this.totalPriceTextBox.Text = "0.00";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(174, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 17);
+            this.label14.TabIndex = 43;
+            this.label14.Text = ".";
             // 
             // createEventForm
             // 
@@ -542,6 +572,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox totalPriceTextBox;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox dpTextBox;
        
     }
 }

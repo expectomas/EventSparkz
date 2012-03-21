@@ -207,14 +207,113 @@ namespace _2103Project
 
         }
 
+        private bool compareTime(string time1, string time2)
+        {
+            DateTime value1 = DateTime.Today;
+            DateTime value2 = DateTime.Today;
+            int hour1 = 0; int min1 = 0; int hour2 = 0; int min2 = 0;
+            switch (time1)
+            {
+                case "8:00 AM": hour1 = 8; min1 = 0; break;
+                case "8:30 AM": hour1 = 8; min1 = 30; break;
+                case "9:00 AM": hour1 = 9; min1 = 0; break;
+                case "9:30 AM": hour1 = 9; min1 = 30;break;
+                case "10:00 AM": hour1 = 10; min1 = 0; break;
+                case "10:30 AM": hour1 = 10; min1 = 30; break;
+                case "11:00 AM": hour1 = 11; min1 = 0; break;
+                case "11:30 AM": hour1 = 11; min1 = 30; break;
+                case "12:00 PM": hour1 = 12; min1 = 0; break;
+                case "12:30 PM": hour1 = 12; min1 = 30; break;
+                case "1:00 PM": hour1 = 13; min1 = 0; break;
+                case "1:30 PM": hour1 = 13; min1 = 30; break;
+                case "2:00 PM": hour1 = 14; min1 = 0; break;
+                case "2:30 PM": hour1 = 14; min1 = 30; break;
+                case "3:00 PM": hour1 = 15; min1 = 0; break;
+                case "3:30 PM": hour1 = 15; min1 = 30; break;
+                case "4:00 PM": hour1 = 16; min1 = 0; break;
+                case "4:30 PM": hour1 = 16; min1 = 30; break;
+                case "5:00 PM": hour1 = 17; min1 = 0; break;
+                case "5:30 PM": hour1 = 17; min1 = 30; break;
+                case "6:00 PM": hour1 = 18; min1 = 0; break;
+                case "6:30 PM": hour1 = 18; min1 = 30; break;
+                case "7:00 PM": hour1 = 19; min1 = 0; break;
+                case "7:30 PM": hour1 = 19; min1 = 30; break;
+                case "8:00 PM": hour1 = 20; min1 = 0; break;
+                case "8:30 PM": hour1 = 20; min1 = 30; break;
+                case "9:00 PM": hour1 = 21; min1 = 0; break;
+                case "9:30 PM": hour1 = 21; min1 = 30; break;
+                case "10:00 PM": hour1 = 22; min1 = 0; break;
+                case "10:30 PM": hour1 = 22; min1 = 30; break;
+                case "11:00 PM": hour1 = 23; min1 = 0; break;
+                case "11:30 PM": hour1 = 23; min1 = 30; break;
+            }
+
+            switch (time2)
+            {
+                case "8:00 AM": hour2 = 8; min2 = 0; break;
+                case "8:30 AM": hour2 = 8; min2 = 30; break;
+                case "9:00 AM": hour2 = 9; min2 = 0; break;
+                case "9:30 AM": hour2 = 9; min2 = 30;break;
+                case "10:00 AM": hour2 = 10; min2 = 0; break;
+                case "10:30 AM": hour2 = 10; min2 = 30; break;
+                case "11:00 AM": hour2 = 11; min2 = 0; break;
+                case "11:30 AM": hour2 = 11; min2 = 30; break;
+                case "12:00 PM": hour2 = 12; min2 = 0; break;
+                case "12:30 PM": hour2 = 12; min2 = 30; break;
+                case "1:00 PM": hour2 = 13; min2 = 0; break;
+                case "1:30 PM": hour2 = 13; min2 = 30; break;
+                case "2:00 PM": hour2 = 14; min2 = 0; break;
+                case "2:30 PM": hour2 = 14; min2 = 30; break;
+                case "3:00 PM": hour2 = 15; min2 = 0; break;
+                case "3:30 PM": hour2 = 15; min2 = 30; break;
+                case "4:00 PM": hour2 = 16; min2 = 0; break;
+                case "4:30 PM": hour2 = 16; min2 = 30; break;
+                case "5:00 PM": hour2 = 17; min2 = 0; break;
+                case "5:30 PM": hour2 = 17; min2 = 30; break;
+                case "6:00 PM": hour2 = 18; min2 = 0; break;
+                case "6:30 PM": hour2 = 18; min2 = 30; break;
+                case "7:00 PM": hour2 = 19; min2 = 0; break;
+                case "7:30 PM": hour2 = 19; min2 = 30; break;
+                case "8:00 PM": hour2 = 20; min2 = 0; break;
+                case "8:30 PM": hour2 = 20; min2 = 30; break;
+                case "9:00 PM": hour2 = 21; min2 = 0; break;
+                case "9:30 PM": hour2 = 21; min2 = 30; break;
+                case "10:00 PM": hour2 = 22; min2 = 0; break;
+                case "10:30 PM": hour2 = 22; min2 = 30; break;
+                case "11:00 PM": hour2 = 23; min2 = 0; break;
+                case "11:30 PM": hour2 = 23; min2 = 30; break;
+            }
+            value1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour1, min1, 0);
+            value2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour2, min2, 0);
+            if (value1 <= value2)
+                return false;
+            return true;
+        }
+
         private void addScheduleButton_Click(object sender, EventArgs e)
         {
             if (!(timeComboBox.SelectedItem == null || descriptionTextBox.Text == "" || venueComboBox.SelectedItem == null))
             {
-                ListViewItem newevent = new ListViewItem(timeComboBox.SelectedItem.ToString());
-                newevent.SubItems.Add(descriptionTextBox.Text);
-                newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
-                scheduleEventView.Items.Add(newevent);
+                if (scheduleEventView.Items.Count != 0)
+                {
+                    string time = scheduleEventView.Items[scheduleEventView.Items.Count - 1].SubItems[0].Text;
+                    if (compareTime(timeComboBox.SelectedItem.ToString(), time))
+                    {
+                        ListViewItem newevent = new ListViewItem(timeComboBox.SelectedItem.ToString());
+                        newevent.SubItems.Add(descriptionTextBox.Text);
+                        newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
+                        scheduleEventView.Items.Add(newevent);
+                    }
+                    else
+                        MessageBox.Show("You are not allowed to add a schedule which is earlier than the previous activity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    ListViewItem newevent = new ListViewItem(timeComboBox.SelectedItem.ToString());
+                    newevent.SubItems.Add(descriptionTextBox.Text);
+                    newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
+                    scheduleEventView.Items.Add(newevent);
+                }
             }
             else
             {
@@ -238,17 +337,30 @@ namespace _2103Project
                 if (budgetListListView.Items[i].Selected)
                     budgetListListView.Items[i].Remove();
             }
+            float totalPrice = 0;
+            for (int i = 0; i < budgetListListView.Items.Count; i++)
+            {
+                totalPrice += float.Parse(budgetListListView.Items[i].SubItems[1].Text);
+            }
+            totalPriceTextBox.Text = totalPrice.ToString("N2");
         }
 
         private void addBudgetItem_Click(object sender, EventArgs e)
         {
-            float totalPrice = float.Parse(totalPriceTextBox.Text);
-            ListViewItem newItem = new ListViewItem(budgetItemTextBox.Text);
-            float price = float.Parse(costTextBox.Text);
-            newItem.SubItems.Add(price.ToString("C"));
-            newItem.SubItems.Add((budgetListListView.Items.Count + 1).ToString());
-            budgetListListView.Items.Add(newItem);
-            totalPriceTextBox.Text = (totalPrice + price).ToString("C");
+            if (costTextBox.Text.Equals(String.Empty) || budgetItemTextBox.Text.Equals(String.Empty) || dpTextBox.Text.Equals(String.Empty))
+            {
+                MessageBox.Show("The item or price is empty. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                float totalPrice = float.Parse(totalPriceTextBox.Text);
+                ListViewItem newItem = new ListViewItem(budgetItemTextBox.Text);
+                float price = float.Parse(costTextBox.Text) + float.Parse(dpTextBox.Text) / 100.0f;
+                newItem.SubItems.Add(price.ToString("N2"));
+                newItem.SubItems.Add((budgetListListView.Items.Count + 1).ToString());
+                budgetListListView.Items.Add(newItem);
+                totalPriceTextBox.Text = (totalPrice + price).ToString("N2");
+            }
         }
 
         private void costTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -282,6 +394,40 @@ namespace _2103Project
             if (nonNumberEntered == true)
             {         // Stop the character from being entered into the control since it is non-numerical.
                 e.Handled = true;
+            }
+        }
+
+        private void dpTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {         // Stop the character from being entered into the control since it is non-numerical.
+                e.Handled = true;
+            }
+        }
+
+        private void dpTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            // Determine whether the keystroke is a number from the top of the keyboard.
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                // Determine whether the keystroke is a number from the keypad.
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    // Determine whether the keystroke is a backspace.
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        // A non-numerical keystroke was pressed.
+                        // Set the flag to true and evaluate in KeyPress event.
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
             }
         }
     }
