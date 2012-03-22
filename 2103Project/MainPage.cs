@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using _2103Project.Entities;
 using _2103Project.Action;
+using System.Timers;
 
 /*
  * Authors for this section
@@ -25,6 +26,14 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
         private int currentEventID;
+       
+        //Timer Event 
+
+        private static void pollingTimeReached(object sender, EventArgs e)
+        {
+            _2103Project.Action.Message msg = _2103Project.Action.Message.StartLinkage();
+        }
+
 
         //Initiatisation
 
@@ -33,6 +42,13 @@ namespace _2103Project
             InitializeComponent();
 
             currentUser = incomingUser;
+
+            //initialise Timer 
+            System.Timers.Timer pollingTimer = new System.Timers.Timer(6000);
+            pollingTimer.Enabled = true;
+            pollingTimer.Elapsed += new ElapsedEventHandler(pollingTimeReached);
+            pollingTimer.AutoReset = true;
+            pollingTimer.Start();
 
             //Initialised Dynamic Controls
             initMainEventList();
