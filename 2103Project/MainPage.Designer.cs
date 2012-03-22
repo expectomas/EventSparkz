@@ -45,13 +45,14 @@
             this.organiserEditButton = new System.Windows.Forms.Button();
             this.organiserCancel = new System.Windows.Forms.Button();
             this.leaveBtn = new System.Windows.Forms.Button();
+            this.announcementList1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(14, 42);
+            this.titleLabel.Location = new System.Drawing.Point(11, 149);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(68, 16);
             this.titleLabel.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(11, 3);
+            this.label2.Location = new System.Drawing.Point(14, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(183, 31);
             this.label2.TabIndex = 2;
@@ -73,7 +74,7 @@
             this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listSideEventView.FullRowSelect = true;
             this.listSideEventView.GridLines = true;
-            this.listSideEventView.Location = new System.Drawing.Point(536, 127);
+            this.listSideEventView.Location = new System.Drawing.Point(533, 234);
             this.listSideEventView.Name = "listSideEventView";
             this.listSideEventView.Size = new System.Drawing.Size(221, 318);
             this.listSideEventView.TabIndex = 3;
@@ -84,7 +85,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(531, 63);
+            this.label3.Location = new System.Drawing.Point(528, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 24);
             this.label3.TabIndex = 4;
@@ -93,7 +94,7 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.registerEvent.Location = new System.Drawing.Point(82, 450);
+            this.registerEvent.Location = new System.Drawing.Point(79, 557);
             this.registerEvent.Name = "registerEvent";
             this.registerEvent.Size = new System.Drawing.Size(120, 30);
             this.registerEvent.TabIndex = 7;
@@ -103,10 +104,10 @@
             // 
             // logoutButton
             // 
-            this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutButton.Location = new System.Drawing.Point(682, 9);
+            this.logoutButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.logoutButton.Location = new System.Drawing.Point(682, 12);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(80, 30);
+            this.logoutButton.Size = new System.Drawing.Size(75, 28);
             this.logoutButton.TabIndex = 8;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -117,7 +118,7 @@
             this.listMainEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listMainEventView.FullRowSelect = true;
             this.listMainEventView.GridLines = true;
-            this.listMainEventView.Location = new System.Drawing.Point(17, 127);
+            this.listMainEventView.Location = new System.Drawing.Point(14, 234);
             this.listMainEventView.Name = "listMainEventView";
             this.listMainEventView.Size = new System.Drawing.Size(484, 318);
             this.listMainEventView.TabIndex = 9;
@@ -128,7 +129,7 @@
             // getEventInfoButton
             // 
             this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getEventInfoButton.Location = new System.Drawing.Point(310, 450);
+            this.getEventInfoButton.Location = new System.Drawing.Point(307, 557);
             this.getEventInfoButton.Name = "getEventInfoButton";
             this.getEventInfoButton.Size = new System.Drawing.Size(120, 30);
             this.getEventInfoButton.TabIndex = 6;
@@ -141,7 +142,7 @@
             this.eventCatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.eventCatComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eventCatComboBox.FormattingEnabled = true;
-            this.eventCatComboBox.Location = new System.Drawing.Point(536, 92);
+            this.eventCatComboBox.Location = new System.Drawing.Point(533, 199);
             this.eventCatComboBox.Name = "eventCatComboBox";
             this.eventCatComboBox.Size = new System.Drawing.Size(221, 29);
             this.eventCatComboBox.TabIndex = 10;
@@ -150,7 +151,7 @@
             // cancelEditButton
             // 
             this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.cancelEditButton.Location = new System.Drawing.Point(562, 451);
+            this.cancelEditButton.Location = new System.Drawing.Point(559, 558);
             this.cancelEditButton.Name = "cancelEditButton";
             this.cancelEditButton.Size = new System.Drawing.Size(168, 30);
             this.cancelEditButton.TabIndex = 11;
@@ -160,7 +161,7 @@
             // 
             // searchEventDateTimePicker
             // 
-            this.searchEventDateTimePicker.Location = new System.Drawing.Point(17, 63);
+            this.searchEventDateTimePicker.Location = new System.Drawing.Point(14, 170);
             this.searchEventDateTimePicker.Name = "searchEventDateTimePicker";
             this.searchEventDateTimePicker.Size = new System.Drawing.Size(208, 22);
             this.searchEventDateTimePicker.TabIndex = 12;
@@ -170,7 +171,7 @@
             // 
             this.searchEventTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchEventTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.searchEventTextBox.Location = new System.Drawing.Point(17, 92);
+            this.searchEventTextBox.Location = new System.Drawing.Point(14, 199);
             this.searchEventTextBox.Name = "searchEventTextBox";
             this.searchEventTextBox.Size = new System.Drawing.Size(361, 29);
             this.searchEventTextBox.TabIndex = 13;
@@ -181,7 +182,7 @@
             // searchEventButton
             // 
             this.searchEventButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEventButton.Location = new System.Drawing.Point(404, 90);
+            this.searchEventButton.Location = new System.Drawing.Point(401, 197);
             this.searchEventButton.Name = "searchEventButton";
             this.searchEventButton.Size = new System.Drawing.Size(97, 30);
             this.searchEventButton.TabIndex = 14;
@@ -191,7 +192,7 @@
             // 
             // organiserEditButton
             // 
-            this.organiserEditButton.Location = new System.Drawing.Point(535, 450);
+            this.organiserEditButton.Location = new System.Drawing.Point(532, 557);
             this.organiserEditButton.Name = "organiserEditButton";
             this.organiserEditButton.Size = new System.Drawing.Size(90, 30);
             this.organiserEditButton.TabIndex = 15;
@@ -202,7 +203,7 @@
             // 
             // organiserCancel
             // 
-            this.organiserCancel.Location = new System.Drawing.Point(668, 450);
+            this.organiserCancel.Location = new System.Drawing.Point(665, 557);
             this.organiserCancel.Name = "organiserCancel";
             this.organiserCancel.Size = new System.Drawing.Size(90, 30);
             this.organiserCancel.TabIndex = 16;
@@ -213,7 +214,7 @@
             // 
             // leaveBtn
             // 
-            this.leaveBtn.Location = new System.Drawing.Point(593, 450);
+            this.leaveBtn.Location = new System.Drawing.Point(590, 557);
             this.leaveBtn.Name = "leaveBtn";
             this.leaveBtn.Size = new System.Drawing.Size(90, 30);
             this.leaveBtn.TabIndex = 17;
@@ -222,12 +223,23 @@
             this.leaveBtn.Visible = false;
             this.leaveBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.leaveBtn_MouseClick);
             // 
+            // announcementList1
+            // 
+            this.announcementList1.GridLines = true;
+            this.announcementList1.Location = new System.Drawing.Point(13, 50);
+            this.announcementList1.Name = "announcementList1";
+            this.announcementList1.Size = new System.Drawing.Size(742, 97);
+            this.announcementList1.TabIndex = 18;
+            this.announcementList1.UseCompatibleStateImageBehavior = false;
+            this.announcementList1.View = System.Windows.Forms.View.Details;
+            // 
             // mainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(769, 490);
+            this.ClientSize = new System.Drawing.Size(769, 598);
+            this.Controls.Add(this.announcementList1);
             this.Controls.Add(this.leaveBtn);
             this.Controls.Add(this.organiserCancel);
             this.Controls.Add(this.organiserEditButton);
@@ -274,6 +286,7 @@
         private System.Windows.Forms.Button organiserEditButton;
         private System.Windows.Forms.Button organiserCancel;
         private System.Windows.Forms.Button leaveBtn;
+        private System.Windows.Forms.ListView announcementList1;
 
     }
 }

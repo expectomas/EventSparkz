@@ -27,21 +27,24 @@ namespace _2103Project
         private bool LogoutPressed = false;
         private int currentEventID;
         static System.Timers.Timer pollingTimer;
+        private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 6000;
         
         //Timer Event 
 
-        private static void pollingTimeReached(object sender, EventArgs e)
+        private void pollingTimeReached(object sender, EventArgs e)
         {
             pollingTimer.Stop();
 
-            _2103Project.Action.Message msg = _2103Project.Action.Message.StartLinkage();
+            _2103Project.Action.Message msg = new Action.Message(_2103Project.Action.Message.TypeOfMsg.Announcement);
+            List<_2103Project.Entities.Advertisement> listOfAdv = msg.checkMessages();
 
+            populateAdvertisement(listOfAdv);
+           
             pollingTimer.Start();
         }
-
 
         //Initiatisation
 
@@ -59,9 +62,26 @@ namespace _2103Project
             pollingTimer.Start();
 
             //Initialised Dynamic Controls
+            initAnnouncementList();
             initMainEventList();
             initSideDDL();
             initSideEventBar();
+        }
+
+        public void initAnnouncementList()
+        {
+            this.announcementList1.Hide();
+
+            //Clear ListBox Col and Items
+            this.announcementList1.Columns.Clear();
+            this.announcementList1.Items.Clear();
+
+            this.announcementList1.Columns.Insert(0, "No", 50, HorizontalAlignment.Left);
+            this.announcementList1.Columns.Insert(1, "Id", 0, HorizontalAlignment.Left);
+            this.announcementList1.Columns.Insert(2, "Image", 120, HorizontalAlignment.Left);
+            this.announcementList1.Columns.Insert(3, "Description", 300, HorizontalAlignment.Left);
+
+            announcementList1.Show();
         }
 
         public void initMainEventList()
@@ -180,6 +200,36 @@ namespace _2103Project
                 
 
             }
+        }
+
+        public void populateAdvertisement(List<Advertisement> listOfAdv)
+        {
+            this.Invoke(new MethodInvoker(delegate
+                {
+                    announcementList1.Hide();
+                    announcementList1.Items.Clear();
+
+                    if(listOfAdv.Count==0)
+                        listOfAdv = existingAdv;
+
+                    int i = 1;
+
+                    foreach (Advertisement ad in listOfAdv)
+                    {
+                        ListViewItem newAd = new ListViewItem(i.ToString());
+                        newAd.SubItems.Add(ad.advertisementID.ToString());
+                        newAd.SubItems.Add(ad.imageDirectory);
+                        newAd.SubItems.Add(ad.description);
+
+                        announcementList1.Items.Add(newAd);
+
+                        i++;
+                    }
+
+                    existingAdv = listOfAdv;
+
+                    announcementList1.Show();
+                }));
         }
 
         //Main Page Dialog Boxes
