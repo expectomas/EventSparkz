@@ -41,19 +41,15 @@
             this.registerEventBtn = new System.Windows.Forms.Button();
             this.noOfParticipantLabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.timeListBox = new System.Windows.Forms.ListBox();
-            this.descriptionListBox = new System.Windows.Forms.ListBox();
-            this.venueListBox = new System.Windows.Forms.ListBox();
-            this.Time = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.viewParticipantListBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.statusLabel = new System.Windows.Forms.Label();
             this.viewFacilitatorListBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.scheduleEventView = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -178,60 +174,6 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "No. of Participant:";
             // 
-            // timeListBox
-            // 
-            this.timeListBox.FormattingEnabled = true;
-            this.timeListBox.Location = new System.Drawing.Point(19, 176);
-            this.timeListBox.Name = "timeListBox";
-            this.timeListBox.Size = new System.Drawing.Size(120, 121);
-            this.timeListBox.TabIndex = 25;
-            // 
-            // descriptionListBox
-            // 
-            this.descriptionListBox.FormattingEnabled = true;
-            this.descriptionListBox.Location = new System.Drawing.Point(145, 176);
-            this.descriptionListBox.Name = "descriptionListBox";
-            this.descriptionListBox.Size = new System.Drawing.Size(202, 121);
-            this.descriptionListBox.TabIndex = 26;
-            // 
-            // venueListBox
-            // 
-            this.venueListBox.FormattingEnabled = true;
-            this.venueListBox.Location = new System.Drawing.Point(353, 176);
-            this.venueListBox.Name = "venueListBox";
-            this.venueListBox.Size = new System.Drawing.Size(120, 121);
-            this.venueListBox.TabIndex = 27;
-            // 
-            // Time
-            // 
-            this.Time.AutoSize = true;
-            this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Location = new System.Drawing.Point(15, 152);
-            this.Time.Name = "Time";
-            this.Time.Size = new System.Drawing.Size(47, 20);
-            this.Time.TabIndex = 28;
-            this.Time.Text = "Time:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(141, 152);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Description";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(349, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Venue:";
-            // 
             // viewParticipantListBtn
             // 
             this.viewParticipantListBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F);
@@ -289,11 +231,24 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.scheduleEventView);
             this.groupBox1.Location = new System.Drawing.Point(10, 131);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(472, 172);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
+            // 
+            // scheduleEventView
+            // 
+            this.scheduleEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.scheduleEventView.FullRowSelect = true;
+            this.scheduleEventView.GridLines = true;
+            this.scheduleEventView.Location = new System.Drawing.Point(9, 24);
+            this.scheduleEventView.Name = "scheduleEventView";
+            this.scheduleEventView.Size = new System.Drawing.Size(454, 141);
+            this.scheduleEventView.TabIndex = 80;
+            this.scheduleEventView.UseCompatibleStateImageBehavior = false;
+            this.scheduleEventView.View = System.Windows.Forms.View.Details;
             // 
             // eventInfoForm
             // 
@@ -303,12 +258,6 @@
             this.ClientSize = new System.Drawing.Size(496, 397);
             this.Controls.Add(this.returnBtn);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Time);
-            this.Controls.Add(this.venueListBox);
-            this.Controls.Add(this.descriptionListBox);
-            this.Controls.Add(this.timeListBox);
             this.Controls.Add(this.noOfParticipantLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.organiserLabel);
@@ -327,6 +276,7 @@
             this.Load += new System.EventHandler(this.eventInfoForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,18 +296,13 @@
         private System.Windows.Forms.Button registerEventBtn;
         private System.Windows.Forms.Label noOfParticipantLabel;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox timeListBox;
-        private System.Windows.Forms.ListBox descriptionListBox;
-        private System.Windows.Forms.ListBox venueListBox;
-        private System.Windows.Forms.Label Time;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button viewParticipantListBtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button viewFacilitatorListBtn;
         private System.Windows.Forms.Button returnBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.ListView scheduleEventView;
 
     }
 }

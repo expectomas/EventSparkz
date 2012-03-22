@@ -426,12 +426,15 @@ namespace _2103Project.Entities
             List<Activity> lisotOfActDB = db.getListOfActivities();
             foreach(Activity actDB in lisotOfActDB)
             {
-                if(actDB.getActivityId() == queueActivity.Peek().getActivityId())
+                if (queueActivity.Count != 0)
                 {
-                    actDB.setDateTime(queueActivity.Peek().getDate());
-                    actDB.setDescription(queueActivity.Peek().getDescription());
-                    actDB.setVenue(queueActivity.Peek().getVenue());
-                    queueActivity.Dequeue();
+                    if (actDB.getActivityId() == queueActivity.Peek().getActivityId())
+                    {
+                        actDB.setDateTime(queueActivity.Peek().getDate());
+                        actDB.setDescription(queueActivity.Peek().getDescription());
+                        actDB.setVenue(queueActivity.Peek().getVenue());
+                        queueActivity.Dequeue();
+                    }
                 }
             }
             db.saveListOfActivities(lisotOfActDB);
@@ -459,6 +462,19 @@ namespace _2103Project.Entities
         public List<int> getListOfFacilitator()
         {
             return facilitatorList;
+        }
+
+        public DateTime getStartTimeFromEventID(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            EventEntity eve = new EventEntity();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                    eve = events;
+            }
+            return eve.startTime;
         }
     }
 }

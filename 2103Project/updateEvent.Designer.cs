@@ -38,12 +38,6 @@
             this.participantTextbox = new System.Windows.Forms.TextBox();
             this.organiserTextBox = new System.Windows.Forms.TextBox();
             this.dateTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Time = new System.Windows.Forms.Label();
-            this.venueListBox = new System.Windows.Forms.ListBox();
-            this.descriptionListBox = new System.Windows.Forms.ListBox();
-            this.timeListBox = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.scheduleLabel = new System.Windows.Forms.Label();
             this.labelb = new System.Windows.Forms.Label();
@@ -54,6 +48,9 @@
             this.deleteItem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.timeListBox = new System.Windows.Forms.ListBox();
+            this.descriptionListBox = new System.Windows.Forms.ListBox();
+            this.venueListBox = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -84,7 +81,7 @@
             this.editItemButton.Name = "editItemButton";
             this.editItemButton.Size = new System.Drawing.Size(90, 37);
             this.editItemButton.TabIndex = 79;
-            this.editItemButton.Text = "Edit Item";
+            this.editItemButton.Text = "Edit Schedule";
             this.editItemButton.UseVisualStyleBackColor = true;
             this.editItemButton.Click += new System.EventHandler(this.editItemButton_Click);
             // 
@@ -184,60 +181,6 @@
             this.dateTextBox.Size = new System.Drawing.Size(279, 25);
             this.dateTextBox.TabIndex = 73;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(344, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 20);
-            this.label2.TabIndex = 72;
-            this.label2.Text = "Venue:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(136, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 20);
-            this.label1.TabIndex = 71;
-            this.label1.Text = "Description:";
-            // 
-            // Time
-            // 
-            this.Time.AutoSize = true;
-            this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Location = new System.Drawing.Point(7, 22);
-            this.Time.Name = "Time";
-            this.Time.Size = new System.Drawing.Size(47, 20);
-            this.Time.TabIndex = 70;
-            this.Time.Text = "Time:";
-            // 
-            // venueListBox
-            // 
-            this.venueListBox.FormattingEnabled = true;
-            this.venueListBox.Location = new System.Drawing.Point(348, 46);
-            this.venueListBox.Name = "venueListBox";
-            this.venueListBox.Size = new System.Drawing.Size(120, 121);
-            this.venueListBox.TabIndex = 69;
-            // 
-            // descriptionListBox
-            // 
-            this.descriptionListBox.FormattingEnabled = true;
-            this.descriptionListBox.Location = new System.Drawing.Point(140, 46);
-            this.descriptionListBox.Name = "descriptionListBox";
-            this.descriptionListBox.Size = new System.Drawing.Size(202, 121);
-            this.descriptionListBox.TabIndex = 68;
-            // 
-            // timeListBox
-            // 
-            this.timeListBox.FormattingEnabled = true;
-            this.timeListBox.Location = new System.Drawing.Point(11, 46);
-            this.timeListBox.Name = "timeListBox";
-            this.timeListBox.Size = new System.Drawing.Size(120, 121);
-            this.timeListBox.TabIndex = 67;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -305,7 +248,7 @@
             this.addItemButton.Name = "addItemButton";
             this.addItemButton.Size = new System.Drawing.Size(90, 37);
             this.addItemButton.TabIndex = 82;
-            this.addItemButton.Text = "Add Item";
+            this.addItemButton.Text = "Add Schedule";
             this.addItemButton.UseVisualStyleBackColor = true;
             this.addItemButton.Click += new System.EventHandler(this.addItemButton_Click);
             // 
@@ -316,23 +259,20 @@
             this.deleteItem.Name = "deleteItem";
             this.deleteItem.Size = new System.Drawing.Size(100, 37);
             this.deleteItem.TabIndex = 83;
-            this.deleteItem.Text = "Delete Item";
+            this.deleteItem.Text = "Delete Schedule";
             this.deleteItem.UseVisualStyleBackColor = true;
             this.deleteItem.Click += new System.EventHandler(this.deleteItem_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.descriptionListBox);
-            this.groupBox1.Controls.Add(this.scheduleLabel);
-            this.groupBox1.Controls.Add(this.timeListBox);
             this.groupBox1.Controls.Add(this.venueListBox);
-            this.groupBox1.Controls.Add(this.Time);
+            this.groupBox1.Controls.Add(this.descriptionListBox);
+            this.groupBox1.Controls.Add(this.timeListBox);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.scheduleLabel);
             this.groupBox1.Controls.Add(this.venComboBox);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.descriptionTextBox);
             this.groupBox1.Controls.Add(this.timeComboBox);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(5, 150);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(472, 218);
@@ -348,6 +288,30 @@
             this.label3.Size = new System.Drawing.Size(80, 21);
             this.label3.TabIndex = 73;
             this.label3.Text = "Schedule";
+            // 
+            // timeListBox
+            // 
+            this.timeListBox.FormattingEnabled = true;
+            this.timeListBox.Location = new System.Drawing.Point(11, 20);
+            this.timeListBox.Name = "timeListBox";
+            this.timeListBox.Size = new System.Drawing.Size(120, 147);
+            this.timeListBox.TabIndex = 79;
+            // 
+            // descriptionListBox
+            // 
+            this.descriptionListBox.FormattingEnabled = true;
+            this.descriptionListBox.Location = new System.Drawing.Point(137, 21);
+            this.descriptionListBox.Name = "descriptionListBox";
+            this.descriptionListBox.Size = new System.Drawing.Size(202, 147);
+            this.descriptionListBox.TabIndex = 80;
+            // 
+            // venueListBox
+            // 
+            this.venueListBox.FormattingEnabled = true;
+            this.venueListBox.Location = new System.Drawing.Point(345, 21);
+            this.venueListBox.Name = "venueListBox";
+            this.venueListBox.Size = new System.Drawing.Size(120, 147);
+            this.venueListBox.TabIndex = 81;
             // 
             // updateForm
             // 
@@ -391,12 +355,6 @@
         private System.Windows.Forms.TextBox participantTextbox;
         private System.Windows.Forms.TextBox organiserTextBox;
         private System.Windows.Forms.TextBox dateTextBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label Time;
-        private System.Windows.Forms.ListBox venueListBox;
-        private System.Windows.Forms.ListBox descriptionListBox;
-        private System.Windows.Forms.ListBox timeListBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label scheduleLabel;
         private System.Windows.Forms.Label labelb;
@@ -407,5 +365,8 @@
         private System.Windows.Forms.Button deleteItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox venueListBox;
+        private System.Windows.Forms.ListBox descriptionListBox;
+        private System.Windows.Forms.ListBox timeListBox;
     }
 }

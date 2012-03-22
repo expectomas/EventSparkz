@@ -123,6 +123,7 @@
             this.listMainEventView.TabIndex = 9;
             this.listMainEventView.UseCompatibleStateImageBehavior = false;
             this.listMainEventView.View = System.Windows.Forms.View.Details;
+            this.listMainEventView.DoubleClick += new System.EventHandler(this.listMainEventView_DoubleClick);
             // 
             // getEventInfoButton
             // 

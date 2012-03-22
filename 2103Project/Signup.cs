@@ -68,47 +68,45 @@ namespace _2103Project
         {
         }
 
-        private void homeTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            nonNumberEntered = false;
-
-            // Determine whether the keystroke is a number from the top of the keyboard.
-            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
-            {
-                // Determine whether the keystroke is a number from the keypad.
-                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
-                {
-                    // Determine whether the keystroke is a backspace.
-                    if (e.KeyCode != Keys.Back)
-                    {
-                        // A non-numerical keystroke was pressed.
-                        // Set the flag to true and evaluate in KeyPress event.
-                        nonNumberEntered = true;
-                    }
-                }
-            }
-            //If shift key was pressed, it's not a number.
-            if (Control.ModifierKeys == Keys.Shift)
-            {
-                nonNumberEntered = true;
-            }
-        }
-
-        private void homeTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (nonNumberEntered == true)
-            {         // Stop the character from being entered into the control since it is non-numerical.
-                e.Handled = true;
-            }
-        }
-
         private void signupButton_Click_1(object sender, EventArgs e)
         {
             string emailFmt = @"^(?("")(""[^""]+?""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9]{2,17}))$";
             Regex emailFormat = new Regex(emailFmt);
-            if (usernameTextBox.Text == "" || passwordTextBox.Text == "" || cfmPasswordTextBox.Text == "" || ageComboBox.SelectedItem == null || nameTextBox.Text == "" || matricNoTextBox.Text == "" || phoneNumberTextBox.Text == "" || emailTextBox.Text == "")
+            if (usernameTextBox.Text == "" && passwordTextBox.Text == "" && cfmPasswordTextBox.Text == "" && ageComboBox.SelectedItem == null && nameTextBox.Text == "" && matricNoTextBox.Text == "" && phoneNumberTextBox.Text == "" && emailTextBox.Text == "" && homeTextBox.Text == "")
             {
                 MessageBox.Show("Please complete all your details. Thank You.", "Detail Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (usernameTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your username.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (passwordTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (cfmPasswordTextBox.Text == "")
+            {
+                MessageBox.Show("Please confirm your password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (ageComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select your age.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (matricNoTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your matric no.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (phoneNumberTextBox.Text == "" || homeTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter a contact number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (emailTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your email.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (nameTextBox.Text == "")
+            {
+                MessageBox.Show("Please enter your name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (!passwordTextBox.Text.Equals(cfmPasswordTextBox.Text))
             {
@@ -229,6 +227,40 @@ namespace _2103Project
                         }
                     }
                 }
+            }
+        }
+
+        private void homeTextBox_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            // Determine whether the keystroke is a number from the top of the keyboard.
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                // Determine whether the keystroke is a number from the keypad.
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    // Determine whether the keystroke is a backspace.
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        // A non-numerical keystroke was pressed.
+                        // Set the flag to true and evaluate in KeyPress event.
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void homeTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {         // Stop the character from being entered into the control since it is non-numerical.
+                e.Handled = true;
             }
         }
     }
