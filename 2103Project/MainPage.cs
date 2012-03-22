@@ -26,12 +26,20 @@ namespace _2103Project
         private User currentUser;
         private bool LogoutPressed = false;
         private int currentEventID;
-       
+        static System.Timers.Timer pollingTimer;
+
+        //The periodic interval to start polling 
+        const double AmazonWebServicePollInterval = 6000;
+        
         //Timer Event 
 
         private static void pollingTimeReached(object sender, EventArgs e)
         {
+            pollingTimer.Stop();
+
             _2103Project.Action.Message msg = _2103Project.Action.Message.StartLinkage();
+
+            pollingTimer.Start();
         }
 
 
@@ -40,11 +48,11 @@ namespace _2103Project
         public mainPage(User incomingUser)
         {
             InitializeComponent();
-
+            
             currentUser = incomingUser;
 
             //initialise Timer 
-            System.Timers.Timer pollingTimer = new System.Timers.Timer(6000);
+            pollingTimer = new System.Timers.Timer(AmazonWebServicePollInterval);
             pollingTimer.Enabled = true;
             pollingTimer.Elapsed += new ElapsedEventHandler(pollingTimeReached);
             pollingTimer.AutoReset = true;
