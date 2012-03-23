@@ -19,7 +19,7 @@ namespace _2103Project.Action
 
         AmazonSQSClient objClient;
 
-        private Advertisement CreateAdvertisement(string obtainedMsg)
+        private Advertisement createAdvertisement(string obtainedMsg)
         {
             string [] full = new string [3];
 
@@ -116,7 +116,7 @@ namespace _2103Project.Action
                     fullMessage += objMessage.Body;
                     receiptHandle = objMessage.ReceiptHandle;
 
-                    newAd = CreateAdvertisement(fullMessage);
+                    newAd = createAdvertisement(fullMessage);
 
                     if(!AdvertisementList.Contains(newAd))
                         AdvertisementList.Add(newAd);
