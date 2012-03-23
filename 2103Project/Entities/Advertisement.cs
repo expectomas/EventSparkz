@@ -5,11 +5,11 @@ using System.Text;
 
 namespace _2103Project.Entities
 {
-    class Advertisement
+    public class Advertisement
     {
-        int advertisementID;
-        string imageDirectory;
-        string description;
+        public int advertisementID;
+        public string imageDirectory;
+        public string description;
 
         public Advertisement(int newAdvertisementId, string newImageDirectory, string newDescription)
         {
