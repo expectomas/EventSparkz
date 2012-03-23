@@ -57,14 +57,15 @@
             this.budgetListListView = new System.Windows.Forms.ListView();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dpTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.addBudgetItem = new System.Windows.Forms.Button();
             this.costTextBox = new System.Windows.Forms.TextBox();
             this.budgetItemTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dpTextBox = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.advertiseBtn1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -409,6 +410,29 @@
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(174, 70);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(11, 17);
+            this.label14.TabIndex = 43;
+            this.label14.Text = ".";
+            // 
+            // dpTextBox
+            // 
+            this.dpTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dpTextBox.Location = new System.Drawing.Point(191, 57);
+            this.dpTextBox.MaxLength = 2;
+            this.dpTextBox.Name = "dpTextBox";
+            this.dpTextBox.Size = new System.Drawing.Size(31, 29);
+            this.dpTextBox.TabIndex = 42;
+            this.dpTextBox.Text = "00";
+            this.dpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.dpTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpTextBox_KeyDown);
+            this.dpTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dpTextBox_KeyPress);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -471,28 +495,16 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Budget Item:";
             // 
-            // dpTextBox
+            // advertiseBtn1
             // 
-            this.dpTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dpTextBox.Location = new System.Drawing.Point(191, 57);
-            this.dpTextBox.MaxLength = 2;
-            this.dpTextBox.Name = "dpTextBox";
-            this.dpTextBox.Size = new System.Drawing.Size(31, 29);
-            this.dpTextBox.TabIndex = 42;
-            this.dpTextBox.Text = "00";
-            this.dpTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dpTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dpTextBox_KeyDown);
-            this.dpTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dpTextBox_KeyPress);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(174, 70);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(11, 17);
-            this.label14.TabIndex = 43;
-            this.label14.Text = ".";
+            this.advertiseBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.advertiseBtn1.Location = new System.Drawing.Point(307, 524);
+            this.advertiseBtn1.Name = "advertiseBtn1";
+            this.advertiseBtn1.Size = new System.Drawing.Size(143, 35);
+            this.advertiseBtn1.TabIndex = 36;
+            this.advertiseBtn1.Text = "Advertise";
+            this.advertiseBtn1.UseVisualStyleBackColor = true;
+            this.advertiseBtn1.Click += new System.EventHandler(this.advertiseBtn1_Click);
             // 
             // createEventForm
             // 
@@ -501,6 +513,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(814, 571);
+            this.Controls.Add(this.advertiseBtn1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label7);
@@ -574,6 +587,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox dpTextBox;
+        private System.Windows.Forms.Button advertiseBtn1;
        
     }
 }

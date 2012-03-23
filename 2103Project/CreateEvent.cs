@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using _2103Project.Entities;
+using _2103Project.Action;
+using EventSparkz;
 
 /*
  * Authors for this section
@@ -428,6 +430,17 @@ namespace _2103Project
             if (Control.ModifierKeys == Keys.Shift)
             {
                 nonNumberEntered = true;
+            }
+        }
+
+        private void advertiseBtn1_Click(object sender, EventArgs e)
+        {
+            if (this.eventNameTextBox.Text.Equals(""))
+                MessageBox.Show("Please enter the name of your Event to Advertise");
+            else
+            {
+                Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
+                newAdvForm.Show();
             }
         }
     }
