@@ -30,7 +30,7 @@ namespace _2103Project
         private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
 
         //The periodic interval to start polling 
-        const double AmazonWebServicePollInterval = 6000;
+        const double AmazonWebServicePollInterval = 3000;
         
         //Timer Event 
 
@@ -38,9 +38,14 @@ namespace _2103Project
         {
             pollingTimer.Stop();
 
-            _2103Project.Action.Message msg = new Action.Message(_2103Project.Action.Message.TypeOfMsg.Announcement);
-            List<_2103Project.Entities.Advertisement> listOfAdv = msg.checkMessages();
+            //Factory Method
 
+            ConnectionFactory factory = new CloudConnectionFactory();
+
+            Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
+
+            List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();    
+            
             populateAdvertisement(listOfAdv);
            
             pollingTimer.Start();
@@ -78,7 +83,7 @@ namespace _2103Project
 
             this.announcementList1.Columns.Insert(0, "No", 50, HorizontalAlignment.Left);
             this.announcementList1.Columns.Insert(1, "Id", 0, HorizontalAlignment.Left);
-            this.announcementList1.Columns.Insert(2, "Image", 120, HorizontalAlignment.Left);
+            this.announcementList1.Columns.Insert(2, "Image", 0, HorizontalAlignment.Left);
             this.announcementList1.Columns.Insert(3, "Description", 300, HorizontalAlignment.Left);
 
             announcementList1.Show();
@@ -212,12 +217,25 @@ namespace _2103Project
                     if(listOfAdv.Count==0)
                         listOfAdv = existingAdv;
 
-                    int i = 1;
+                    //Sort List
+                    listOfAdv.Sort(CompareAdId_SortPar);
 
+                    //Add Images First
+                    ImageList imgList = new ImageList();
+
+                    foreach (Advertisement ad in listOfAdv)
+                    {
+                        string path = ad.imageDirectory.Remove(0,5);
+
+                        imgList.Images.Add(Bitmap.FromFile( System.IO.Directory.GetCurrentDirectory() + path.ToString()+ ".jpg"));
+                    }
+
+                    int i = 1;
                     foreach (Advertisement ad in listOfAdv)
                     {
                         ListViewItem newAd = new ListViewItem(i.ToString());
                         newAd.SubItems.Add(ad.advertisementID.ToString());
+                        newAd.ImageIndex = i;
                         newAd.SubItems.Add(ad.imageDirectory);
                         newAd.SubItems.Add(ad.description);
 
@@ -226,10 +244,20 @@ namespace _2103Project
                         i++;
                     }
 
+                    announcementList1.SmallImageList = imgList;
+
                     existingAdv = listOfAdv;
 
                     announcementList1.Show();
                 }));
+        }
+
+        public static int CompareAdId_SortPar(Advertisement a, Advertisement b)
+        {
+            if (a.advertisementID >= b.advertisementID)
+                return 1;
+            else
+                return 0;
         }
 
         //Main Page Dialog Boxes
