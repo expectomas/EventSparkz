@@ -12,8 +12,9 @@ namespace _2103Project.Action
     {
         private const string AccessKeyId = "AKIAI7C3Q46RRQZJZIAA";
         private const string SecretAccessKey = "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";
-        private const string MessageURLString = "https://queue.amazonaws.com/450425235326/EventSparkz";
-        private const int numberOfMsgToFetch = 3;
+        private const string QueueURLString = "https://queue.amazonaws.com/450425235326/EventSparkz";
+        private const int numberOfMsgToFetch = 10;
+        private const string EventSparkzQueueName = "EventSparkz";
 
         TypeOfMsg pollingMsg;
 
@@ -52,7 +53,7 @@ namespace _2103Project.Action
 
             foreach (string queueURL in allQueues.QueueUrl)
             {
-                if (queueURL.Equals(MessageURLString))
+                if (queueURL.Equals(QueueURLString))
                 {
                     eventSparkzQueueListExists = true;
                 }
@@ -63,7 +64,7 @@ namespace _2103Project.Action
                 queueResponse = objClient.CreateQueue(new CreateQueueRequest()
                 {
                     QueueName
-                        = "EventSparkz"
+                        = EventSparkzQueueName
                 });
             }
         }
@@ -85,12 +86,14 @@ namespace _2103Project.Action
 
             Advertisement newAd = new Advertisement(0,"0","0");
 
+            int currentFetchCounter = 0;
+
             do
             {
                 string fullMessage = string.Empty;
                 string receiptHandle;
 
-                string selectedQueue = MessageURLString;
+                string selectedQueue = QueueURLString;
 
                 ReceiveMessageResponse queueReceiveMessageResponse = new ReceiveMessageResponse();
 
@@ -122,9 +125,37 @@ namespace _2103Project.Action
                         AdvertisementList.Add(newAd);
                 }
 
-            } while (AdvertisementList.Count<numberOfMsgToFetch);
+                currentFetchCounter++;
+
+            } while (currentFetchCounter<numberOfMsgToFetch);
 
             return AdvertisementList;
+        }
+
+        public override void sendMessage(Advertisement adv)
+        {
+            StringBuilder stBuilder = new StringBuilder();
+
+            stBuilder.Append(adv.advertisementID);
+            stBuilder.Append("\n");
+            stBuilder.Append(adv.imageDirectory);
+            stBuilder.Append("\n");
+            stBuilder.Append(adv.description);
+
+            string sendingString = stBuilder.ToString();
+
+            try
+            {
+                objClient.SendMessage(new SendMessageRequest()
+                {
+                    MessageBody = sendingString,
+                    QueueUrl = QueueURLString
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new AmazonSQSException("Sending Message to Queue Fail");
+            }
         }
     }
 }

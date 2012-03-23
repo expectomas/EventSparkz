@@ -20,5 +20,10 @@ namespace _2103Project.Action
 
             return newAdList;
         }
+
+        public override void sendMessage(Advertisement adv)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace _2103Project.Action
         public enum TypeOfMsg { Announcement, Alerts, SystemMsg };
 
         public abstract List<Advertisement> checkMessages();
+
+        public abstract void sendMessage(Advertisement adv);
     }
 }
