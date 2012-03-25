@@ -40,13 +40,13 @@ namespace _2103Project
 
             //Factory Method
 
-            ConnectionFactory factory = new CloudConnectionFactory();
+  //          ConnectionFactory factory = new CloudConnectionFactory();
 
-            Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
+  //          Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
 
-            List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();    
+ //           List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();    
             
-            populateAdvertisement(listOfAdv);
+ //           populateAdvertisement(listOfAdv);
            
             pollingTimer.Start();
         }

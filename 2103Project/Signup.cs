@@ -26,6 +26,7 @@ namespace _2103Project
         public signupForm()
         {
             InitializeComponent();
+            usernameTextBox.Focus();
         }
 
         bool nonNumberEntered;

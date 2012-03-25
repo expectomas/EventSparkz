@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using _2103Project.Entities;
 using _2103Project.Action;
-using EventSparkz;
+//using EventSparkz;
 
 /*
  * Authors for this section
@@ -33,8 +33,12 @@ namespace _2103Project
             InitializeComponent();
             initMainEventList();
             initBudgetList();
+
+            previousScheudleDate = startTimePicker.Value;
         }
 
+        List<Activity> listOfActivity = new List<Activity>();
+        DateTime previousScheudleDate;
         public void initMainEventList()
         {
             //Clear ListBox Column and Items
@@ -95,9 +99,9 @@ namespace _2103Project
                 List<Activity> listOfActivity = new List<Activity>();
                 for (int i = 0; i < scheduleEventView.Items.Count; i++)
                 {
-                    time = returnTime(scheduleEventView.Items[i].SubItems[0].ToString(), startTimePicker.Value);
+                    time = returnTime(scheduleEventView.Items[i].SubItems[0].ToString(), Convert.ToDateTime(dateCombobox.Text));
                     int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].ToString());
-                    ven = new Venue(newVenueID,scheduleEventView.Items[i].SubItems[2].ToString());
+                    ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].ToString());
                     int newActivityID = org.getNewActivityId();
                     newAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].ToString(), ven);
                     listOfActivity.Add(newAct);
@@ -116,12 +120,14 @@ namespace _2103Project
 
         private void createEventForm_Load(object sender, EventArgs e)
         {
-            DateTime dateValue = DateTime.Now;
+            DateTime dateValue = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
             dateValue = dateValue.AddDays(3);
             startTimePicker.Value = dateValue;
             startTimePicker.MinDate = dateValue;
             endTimePicker.Value = dateValue;
             endTimePicker.MinDate = dateValue;
+
+            setScheduleDay();
         }
 
         private void sizeTextBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -171,7 +177,7 @@ namespace _2103Project
                 case "8:00 AM": hour = 8; min = 0; break;
                 case "8:30 AM": hour = 8; min = 30; break;
                 case "9:00 AM": hour = 9; min = 0; break;
-                case "9:30 AM": hour = 9; min = 30;break;
+                case "9:30 AM": hour = 9; min = 30; break;
                 case "10:00 AM": hour = 10; min = 0; break;
                 case "10:30 AM": hour = 10; min = 30; break;
                 case "11:00 AM": hour = 11; min = 0; break;
@@ -219,7 +225,7 @@ namespace _2103Project
                 case "8:00 AM": hour1 = 8; min1 = 0; break;
                 case "8:30 AM": hour1 = 8; min1 = 30; break;
                 case "9:00 AM": hour1 = 9; min1 = 0; break;
-                case "9:30 AM": hour1 = 9; min1 = 30;break;
+                case "9:30 AM": hour1 = 9; min1 = 30; break;
                 case "10:00 AM": hour1 = 10; min1 = 0; break;
                 case "10:30 AM": hour1 = 10; min1 = 30; break;
                 case "11:00 AM": hour1 = 11; min1 = 0; break;
@@ -255,7 +261,7 @@ namespace _2103Project
                 case "8:00 AM": hour2 = 8; min2 = 0; break;
                 case "8:30 AM": hour2 = 8; min2 = 30; break;
                 case "9:00 AM": hour2 = 9; min2 = 0; break;
-                case "9:30 AM": hour2 = 9; min2 = 30;break;
+                case "9:30 AM": hour2 = 9; min2 = 30; break;
                 case "10:00 AM": hour2 = 10; min2 = 0; break;
                 case "10:30 AM": hour2 = 10; min2 = 30; break;
                 case "11:00 AM": hour2 = 11; min2 = 0; break;
@@ -294,6 +300,7 @@ namespace _2103Project
 
         private void addScheduleButton_Click(object sender, EventArgs e)
         {
+            DateTime selectedScheduleTime = Convert.ToDateTime(dateCombobox.Text);
             if (!(timeComboBox.SelectedItem == null || descriptionTextBox.Text == "" || venueComboBox.SelectedItem == null))
             {
                 if (scheduleEventView.Items.Count != 0)
@@ -301,20 +308,40 @@ namespace _2103Project
                     string time = scheduleEventView.Items[scheduleEventView.Items.Count - 1].SubItems[0].Text;
                     if (compareTime(timeComboBox.SelectedItem.ToString(), time))
                     {
-                        ListViewItem newevent = new ListViewItem(timeComboBox.SelectedItem.ToString());
-                        newevent.SubItems.Add(descriptionTextBox.Text);
-                        newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
-                        scheduleEventView.Items.Add(newevent);
+                        DateTime endTime = endTimePicker.Value;
+                        DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
+                        if(addSchTime < endTime)
+                        {
+                            time = timeComboBox.SelectedItem.ToString();
+                            ListViewItem newevent = new ListViewItem(time);
+                            newevent.SubItems.Add(descriptionTextBox.Text);
+                            newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
+                            scheduleEventView.Items.Add(newevent);
+                        }
+                        else
+                        {
+                            MessageBox.Show("You are not allowed to book a time that exceed your end of booking time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                         MessageBox.Show("You are not allowed to add a schedule which is earlier than the previous activity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    ListViewItem newevent = new ListViewItem(timeComboBox.SelectedItem.ToString());
-                    newevent.SubItems.Add(descriptionTextBox.Text);
-                    newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
-                    scheduleEventView.Items.Add(newevent);
+                     DateTime endTime = endTimePicker.Value;
+                     DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
+                     if (addSchTime < endTime)
+                     {
+                         string time = timeComboBox.SelectedItem.ToString();
+                         ListViewItem newevent = new ListViewItem(time);
+                         newevent.SubItems.Add(descriptionTextBox.Text);
+                         newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
+                         scheduleEventView.Items.Add(newevent);
+                     }
+                     else
+                     {
+                         MessageBox.Show("You are not allowed to book a time that exceed your end of booking time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     }
                 }
             }
             else
@@ -442,6 +469,96 @@ namespace _2103Project
                 Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
                 newAdvForm.Show();
             }
+        }
+
+        private void setScheduleDay()
+        {
+            dateCombobox.Items.Clear();
+            DateTime startDate = startTimePicker.Value;
+            DateTime endDate = endTimePicker.Value;
+            TimeSpan diffDate = endDate.Subtract(startDate);
+            DateTime currentDate = startDate;
+            for (int i = 0; i <= diffDate.Days; i++)
+            {
+                dateCombobox.Items.Add(currentDate.ToLongDateString());
+                currentDate = currentDate.AddDays(1);
+            }
+        }
+
+        private void endTimePicker_Leave(object sender, EventArgs e)
+        {
+            setScheduleDay();
+        }
+
+        private int getNewActIDFromActList(List<Activity> listOfActivity)
+        {
+            int lastID = 0;
+            foreach (Activity currAct in listOfActivity)
+            {
+                lastID = currAct.getActivityId();
+            }
+            lastID++;
+            return lastID;
+        }
+
+        int newActivityID = 0;
+
+        private void dateCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Activity currentActivity;
+            for (int i = 0; i < listOfActivity.Count ; i++)
+            {
+                currentActivity = listOfActivity[i];
+                if (Convert.ToDateTime(dateCombobox.Text).Year == previousScheudleDate.Year && Convert.ToDateTime(dateCombobox.Text).Month == previousScheudleDate.Month && Convert.ToDateTime(dateCombobox.Text).Day == previousScheudleDate.Day)
+                    previousScheudleDate = Convert.ToDateTime(dateCombobox.Text);
+                if (currentActivity.getDate().Year == previousScheudleDate.Year && currentActivity.getDate().Month == previousScheudleDate.Month && currentActivity.getDate().Day == previousScheudleDate.Day)
+                {
+                    listOfActivity.Remove(currentActivity);
+                    i--;
+                }
+            }
+
+            DateTime time;
+            Activity newAct;
+            Organiser org = new Organiser(currentUser);
+            Venue ven;
+
+            for (int i = 0; i < scheduleEventView.Items.Count; i++)
+            {
+                time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
+                int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
+                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
+
+                if (listOfActivity.Count == 0)
+                    newActivityID = org.getNewActivityId();
+                else
+                    newActivityID = getNewActIDFromActList(listOfActivity);
+                newAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].Text, ven);
+                listOfActivity.Add(newAct);
+            }
+            scheduleEventView.Clear();
+            initMainEventList();
+
+            foreach (Activity currAct in listOfActivity)
+            {
+                DateTime currTime = currAct.getDate();
+                if (currAct.getDate().Year == Convert.ToDateTime(dateCombobox.SelectedItem.ToString()).Year && currAct.getDate().Month == Convert.ToDateTime(dateCombobox.SelectedItem.ToString()).Month && currAct.getDate().Day == Convert.ToDateTime(dateCombobox.SelectedItem.ToString()).Day)
+                {
+                    if (listOfActivity.Count != 0)
+                    {
+                        ListViewItem newevent = new ListViewItem(String.Format("{0:t}", currAct.getDate()));
+                        newevent.SubItems.Add(currAct.getDescription().ToString());
+                        newevent.SubItems.Add(currAct.getVenue().getlocation());
+                        scheduleEventView.Items.Add(newevent);
+                    }
+                }
+            }
+        }
+
+        private void dateCombobox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dateCombobox.Text != "")
+                previousScheudleDate = Convert.ToDateTime(dateCombobox.Text);
         }
     }
 }

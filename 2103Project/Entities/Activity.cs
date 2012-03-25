@@ -84,6 +84,7 @@ namespace _2103Project.Entities
             return newVen;
         }
 
+
         public bool requestActivityDetails(ref int o_activityId,ref DateTime sending_datetime,ref string sending_description,ref Venue sending_hostingVenue, string purpose)
         {
             if (purpose.Equals("databaseRequest"))

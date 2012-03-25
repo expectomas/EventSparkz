@@ -24,9 +24,9 @@ namespace _2103Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConnectionFactory confac = new CloudConnectionFactory();
+  //          ConnectionFactory confac = new CloudConnectionFactory();
 
-            Connection conn = confac.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
+  //          Connection conn = confac.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
 
             if (descriptionBox.TextLength.Equals(0))
                 MessageBox.Show("Please enter the description for your event");
@@ -34,7 +34,7 @@ namespace _2103Project
             {
                 Advertisement newAd = new Advertisement(Organiser.getNewEventId(), imgFileLocation.Text, descriptionBox.Text);
 
-                conn.sendMessage(newAd);
+ //               conn.sendMessage(newAd);
             }
         }
 

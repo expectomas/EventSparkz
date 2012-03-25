@@ -34,8 +34,8 @@ namespace _2103Project
         public loginForm(User incomingUser)
         {
             InitializeComponent();
-
             currentUser = incomingUser;
+            userNameTextBox.Focus();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
