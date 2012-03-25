@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,26 +28,50 @@ namespace _2103Project
         private int currentEventID;
         static System.Timers.Timer pollingTimer;
         private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
+        bool connectedToInternet = false;
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 3000;
-        
+
+        private void checkInternetConnection()
+        {
+            statuslabel1.Hide();
+
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                statuslabel1.Text = "Connected to Internet";
+
+                statuslabel1.Show();
+
+                connectedToInternet = true;
+            }
+            else
+            {
+                statuslabel1.Text = "System not connected to Internet. Unable to fetch Announcements.";
+
+                statuslabel1.Show();
+            }
+        }
+
         //Timer Event 
 
         private void pollingTimeReached(object sender, EventArgs e)
         {
             pollingTimer.Stop();
 
-            //Factory Method
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                //Factory Method
 
-  //          ConnectionFactory factory = new CloudConnectionFactory();
+  //              ConnectionFactory factory = new CloudConnectionFactory();
 
-  //          Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
+  //              Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
 
- //           List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();    
-            
- //           populateAdvertisement(listOfAdv);
-           
+  //              List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();
+
+   //             populateAdvertisement(listOfAdv);
+            }
+
             pollingTimer.Start();
         }
 
@@ -56,7 +80,7 @@ namespace _2103Project
         public mainPage(User incomingUser)
         {
             InitializeComponent();
-            
+
             currentUser = incomingUser;
 
             //initialise Timer 
@@ -71,6 +95,9 @@ namespace _2103Project
             initMainEventList();
             initSideDDL();
             initSideEventBar();
+
+            //Check Internet Connection
+            checkInternetConnection();
         }
 
         public void initAnnouncementList()
@@ -113,7 +140,7 @@ namespace _2103Project
             {
                 EventEntity outputEvent = mainEventListing[i];
 
-                ListViewItem newEvent = new ListViewItem((i+1).ToString());
+                ListViewItem newEvent = new ListViewItem((i + 1).ToString());
                 newEvent.SubItems.Add(outputEvent.getEventId().ToString());
                 newEvent.SubItems.Add(outputEvent.getEventName());
                 newEvent.SubItems.Add(outputEvent.getEventDate().ToString("dd/MM/yy"));
@@ -160,7 +187,7 @@ namespace _2103Project
             //Get the value of the DDL selected value
             switch (eventCatComboBox.SelectedIndex)
             {
-                case 0: 
+                case 0:
                     //Participant Action
                     Participant currentParticipant = new Participant(currentUser);
                     sideBarEventListing = currentParticipant.getRegisteredEvents();
@@ -173,7 +200,7 @@ namespace _2103Project
                     Facilitator currentFacilitator = new Facilitator(currentUser);
                     sideBarEventListing = currentFacilitator.getFacilitatedEvents();
                     break;
-                default: 
+                default:
                     sideBarEventListing = new List<EventEntity>(0);
                     break;
             }
@@ -202,7 +229,7 @@ namespace _2103Project
         {
             if (currentUser != null)
             {
-                
+
 
             }
         }
@@ -210,46 +237,46 @@ namespace _2103Project
         public void populateAdvertisement(List<Advertisement> listOfAdv)
         {
             this.Invoke(new MethodInvoker(delegate
+            {
+                announcementList1.Hide();
+                announcementList1.Items.Clear();
+
+                if (listOfAdv.Count == 0)
+                    listOfAdv = existingAdv;
+
+                //Sort List
+                listOfAdv.Sort(CompareAdId_SortPar);
+
+                //Add Images First
+                ImageList imgList = new ImageList();
+
+                foreach (Advertisement ad in listOfAdv)
                 {
-                    announcementList1.Hide();
-                    announcementList1.Items.Clear();
+                    string path = ad.imageDirectory.Remove(0, 5);
 
-                    if(listOfAdv.Count==0)
-                        listOfAdv = existingAdv;
+                    imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + path.ToString() + ".jpg"));
+                }
 
-                    //Sort List
-                    listOfAdv.Sort(CompareAdId_SortPar);
+                int i = 1;
+                foreach (Advertisement ad in listOfAdv)
+                {
+                    ListViewItem newAd = new ListViewItem(i.ToString());
+                    newAd.SubItems.Add(ad.advertisementID.ToString());
+                    newAd.ImageIndex = i;
+                    newAd.SubItems.Add(ad.imageDirectory);
+                    newAd.SubItems.Add(ad.description);
 
-                    //Add Images First
-                    ImageList imgList = new ImageList();
+                    announcementList1.Items.Add(newAd);
 
-                    foreach (Advertisement ad in listOfAdv)
-                    {
-                        string path = ad.imageDirectory.Remove(0,5);
+                    i++;
+                }
 
-                        imgList.Images.Add(Bitmap.FromFile( System.IO.Directory.GetCurrentDirectory() + path.ToString()+ ".jpg"));
-                    }
+                announcementList1.SmallImageList = imgList;
 
-                    int i = 1;
-                    foreach (Advertisement ad in listOfAdv)
-                    {
-                        ListViewItem newAd = new ListViewItem(i.ToString());
-                        newAd.SubItems.Add(ad.advertisementID.ToString());
-                        newAd.ImageIndex = i;
-                        newAd.SubItems.Add(ad.imageDirectory);
-                        newAd.SubItems.Add(ad.description);
+                existingAdv = listOfAdv;
 
-                        announcementList1.Items.Add(newAd);
-
-                        i++;
-                    }
-
-                    announcementList1.SmallImageList = imgList;
-
-                    existingAdv = listOfAdv;
-
-                    announcementList1.Show();
-                }));
+                announcementList1.Show();
+            }));
         }
 
         public static int CompareAdId_SortPar(Advertisement a, Advertisement b)
@@ -311,7 +338,7 @@ namespace _2103Project
 
         private void mainPage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(!LogoutPressed)
+            if (!LogoutPressed)
                 Exit_Dialog();
         }
 
@@ -322,7 +349,7 @@ namespace _2103Project
 
         private void searchEventTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 searchEvent();
             }
@@ -337,8 +364,8 @@ namespace _2103Project
             this.listMainEventView.Items.Clear();
 
 
-            this.listMainEventView.Columns.Insert(0, "Id",50 , HorizontalAlignment.Left);
-            this.listMainEventView.Columns.Insert(1, "Event", 250 , HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(0, "Id", 50, HorizontalAlignment.Left);
+            this.listMainEventView.Columns.Insert(1, "Event", 250, HorizontalAlignment.Left);
             this.listMainEventView.Columns.Insert(2, "Date", 80, HorizontalAlignment.Center);
             this.listMainEventView.Columns.Insert(3, "Time", 80, HorizontalAlignment.Center);
         }
@@ -428,7 +455,7 @@ namespace _2103Project
 
         private void organiserCancel_Click(object sender, EventArgs e)
         {
-            int organiserCancellingEventId=-1;
+            int organiserCancellingEventId = -1;
 
             try
             {
@@ -611,4 +638,3 @@ namespace _2103Project
         }
     }
 }
-
