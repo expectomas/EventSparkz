@@ -28,6 +28,7 @@ namespace _2103Project
         private int currentEventID;
         static System.Timers.Timer pollingTimer;
         private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
+        bool connectedToInternet = false;
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 3000;
@@ -37,6 +38,8 @@ namespace _2103Project
         private void pollingTimeReached(object sender, EventArgs e)
         {
             pollingTimer.Stop();
+
+            //TODO: check if computer is connected to internet before engaging
 
             //Factory Method
 
