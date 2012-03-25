@@ -32,25 +32,45 @@ namespace _2103Project
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 3000;
-        
+
+        private void checkInternetConnection()
+        {
+            statuslabel1.Hide();
+
+            if(System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+               statuslabel1.Text = "Connected to Internet";
+
+               statuslabel1.Show();
+
+               connectedToInternet = true;
+            }
+            else{
+                statuslabel1.Text = "System not connected to Internet. Unable to fetch Announcements.";
+
+               statuslabel1.Show();
+            }
+        }
+
         //Timer Event 
 
         private void pollingTimeReached(object sender, EventArgs e)
         {
             pollingTimer.Stop();
 
-            //TODO: check if computer is connected to internet before engaging
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                //Factory Method
 
-            //Factory Method
+                ConnectionFactory factory = new CloudConnectionFactory();
 
-            ConnectionFactory factory = new CloudConnectionFactory();
+                Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
 
-            Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
+                List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();
 
-            List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();    
-            
-            populateAdvertisement(listOfAdv);
-           
+                populateAdvertisement(listOfAdv);
+            }
+
             pollingTimer.Start();
         }
 
@@ -74,6 +94,9 @@ namespace _2103Project
             initMainEventList();
             initSideDDL();
             initSideEventBar();
+
+            //Check Internet Connection
+            checkInternetConnection();
         }
 
         public void initAnnouncementList()

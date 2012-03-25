@@ -46,6 +46,7 @@
             this.organiserCancel = new System.Windows.Forms.Button();
             this.leaveBtn = new System.Windows.Forms.Button();
             this.announcementList1 = new System.Windows.Forms.ListView();
+            this.statuslabel1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -233,12 +234,22 @@
             this.announcementList1.UseCompatibleStateImageBehavior = false;
             this.announcementList1.View = System.Windows.Forms.View.Details;
             // 
+            // statuslabel1
+            // 
+            this.statuslabel1.AutoSize = true;
+            this.statuslabel1.Location = new System.Drawing.Point(267, 12);
+            this.statuslabel1.Name = "statuslabel1";
+            this.statuslabel1.Size = new System.Drawing.Size(38, 13);
+            this.statuslabel1.TabIndex = 19;
+            this.statuslabel1.Text = "label1";
+            // 
             // mainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(769, 598);
+            this.Controls.Add(this.statuslabel1);
             this.Controls.Add(this.announcementList1);
             this.Controls.Add(this.leaveBtn);
             this.Controls.Add(this.organiserCancel);
@@ -287,6 +298,7 @@
         private System.Windows.Forms.Button organiserCancel;
         private System.Windows.Forms.Button leaveBtn;
         private System.Windows.Forms.ListView announcementList1;
+        private System.Windows.Forms.Label statuslabel1;
 
     }
 }
