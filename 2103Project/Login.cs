@@ -34,7 +34,6 @@ namespace _2103Project
         public loginForm(User incomingUser)
         {
             InitializeComponent();
-
             currentUser = incomingUser;
 
 

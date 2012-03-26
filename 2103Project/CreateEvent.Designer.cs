@@ -47,9 +47,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.addScheduleButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateCombobox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.scheduleEventView = new System.Windows.Forms.ListView();
             this.deleteScheduleButton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.totalPriceTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -135,6 +136,7 @@
             this.endTimePicker.Size = new System.Drawing.Size(279, 29);
             this.endTimePicker.TabIndex = 15;
             this.endTimePicker.Value = new System.DateTime(2012, 2, 12, 21, 26, 45, 0);
+            this.endTimePicker.Leave += new System.EventHandler(this.endTimePicker_Leave);
             // 
             // label6
             // 
@@ -287,16 +289,39 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateCombobox);
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.scheduleEventView);
             this.groupBox1.Controls.Add(this.deleteScheduleButton);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.addScheduleButton);
-            this.groupBox1.Location = new System.Drawing.Point(306, 12);
+            this.groupBox1.Location = new System.Drawing.Point(306, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(496, 392);
+            this.groupBox1.Size = new System.Drawing.Size(496, 395);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
+            // 
+            // dateCombobox
+            // 
+            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCombobox.FormattingEnabled = true;
+            this.dateCombobox.Location = new System.Drawing.Point(147, 19);
+            this.dateCombobox.Name = "dateCombobox";
+            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
+            this.dateCombobox.TabIndex = 37;
+            this.dateCombobox.SelectedIndexChanged += new System.EventHandler(this.dateCombobox_SelectedIndexChanged);
+            this.dateCombobox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dateCombobox_MouseClick);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(99, 19);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 21);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "Date:";
             // 
             // scheduleEventView
             // 
@@ -322,13 +347,6 @@
             this.deleteScheduleButton.UseVisualStyleBackColor = true;
             this.deleteScheduleButton.Click += new System.EventHandler(this.deleteScheduleButton_Click);
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(142, 24);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.totalPriceTextBox);
@@ -344,6 +362,7 @@
             // 
             // totalPriceTextBox
             // 
+            this.totalPriceTextBox.Enabled = false;
             this.totalPriceTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalPriceTextBox.Location = new System.Drawing.Point(136, 261);
             this.totalPriceTextBox.Name = "totalPriceTextBox";
@@ -570,7 +589,6 @@
         private System.Windows.Forms.Button addScheduleButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button deleteScheduleButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -588,6 +606,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox dpTextBox;
         private System.Windows.Forms.Button advertiseBtn1;
+        private System.Windows.Forms.ComboBox dateCombobox;
+        private System.Windows.Forms.Label label15;
        
     }
 }
