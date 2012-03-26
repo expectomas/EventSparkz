@@ -151,6 +151,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EventSparkz";
             this.Load += new System.EventHandler(this.loginForm_Load);
+            this.Shown += new System.EventHandler(this.loginForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.SplashScreen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUserName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();

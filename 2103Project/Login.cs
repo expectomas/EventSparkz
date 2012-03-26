@@ -36,6 +36,8 @@ namespace _2103Project
             InitializeComponent();
 
             currentUser = incomingUser;
+
+
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -110,12 +112,17 @@ namespace _2103Project
 
         private void loginForm_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void loginForm_Shown(object sender, EventArgs e)
+        {
+            this.userNameTextBox.Focus();
         }
     }
 }
