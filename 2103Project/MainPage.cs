@@ -253,7 +253,15 @@ namespace _2103Project
                     {
                         string path = ad.imageDirectory.Remove(0,5);
 
-                        imgList.Images.Add(Bitmap.FromFile( System.IO.Directory.GetCurrentDirectory() + path.ToString()+ ".jpg"));
+                        try
+                        {
+                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + path.ToString() + ".jpg"));
+                        }
+                        catch (System.IO.FileNotFoundException)
+                        {
+                            //Insert a blank poster if no file found
+                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "blankposter.jpg"));
+                        }
                     }
 
                     int i = 1;
