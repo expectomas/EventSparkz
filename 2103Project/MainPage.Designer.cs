@@ -47,13 +47,14 @@
             this.leaveBtn = new System.Windows.Forms.Button();
             this.announcementList1 = new System.Windows.Forms.ListView();
             this.statuslabel1 = new System.Windows.Forms.Label();
+            this.announcementStatic = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(11, 149);
+            this.titleLabel.Location = new System.Drawing.Point(11, 209);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(68, 16);
             this.titleLabel.TabIndex = 1;
@@ -75,7 +76,7 @@
             this.listSideEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listSideEventView.FullRowSelect = true;
             this.listSideEventView.GridLines = true;
-            this.listSideEventView.Location = new System.Drawing.Point(533, 234);
+            this.listSideEventView.Location = new System.Drawing.Point(533, 294);
             this.listSideEventView.Name = "listSideEventView";
             this.listSideEventView.Size = new System.Drawing.Size(221, 318);
             this.listSideEventView.TabIndex = 3;
@@ -86,7 +87,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(528, 170);
+            this.label3.Location = new System.Drawing.Point(528, 230);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 24);
             this.label3.TabIndex = 4;
@@ -95,7 +96,7 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.registerEvent.Location = new System.Drawing.Point(79, 557);
+            this.registerEvent.Location = new System.Drawing.Point(79, 617);
             this.registerEvent.Name = "registerEvent";
             this.registerEvent.Size = new System.Drawing.Size(120, 30);
             this.registerEvent.TabIndex = 7;
@@ -119,7 +120,7 @@
             this.listMainEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listMainEventView.FullRowSelect = true;
             this.listMainEventView.GridLines = true;
-            this.listMainEventView.Location = new System.Drawing.Point(14, 234);
+            this.listMainEventView.Location = new System.Drawing.Point(14, 294);
             this.listMainEventView.Name = "listMainEventView";
             this.listMainEventView.Size = new System.Drawing.Size(484, 318);
             this.listMainEventView.TabIndex = 9;
@@ -130,7 +131,7 @@
             // getEventInfoButton
             // 
             this.getEventInfoButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getEventInfoButton.Location = new System.Drawing.Point(307, 557);
+            this.getEventInfoButton.Location = new System.Drawing.Point(307, 617);
             this.getEventInfoButton.Name = "getEventInfoButton";
             this.getEventInfoButton.Size = new System.Drawing.Size(120, 30);
             this.getEventInfoButton.TabIndex = 6;
@@ -143,7 +144,7 @@
             this.eventCatComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.eventCatComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eventCatComboBox.FormattingEnabled = true;
-            this.eventCatComboBox.Location = new System.Drawing.Point(533, 199);
+            this.eventCatComboBox.Location = new System.Drawing.Point(533, 259);
             this.eventCatComboBox.Name = "eventCatComboBox";
             this.eventCatComboBox.Size = new System.Drawing.Size(221, 29);
             this.eventCatComboBox.TabIndex = 10;
@@ -152,7 +153,7 @@
             // cancelEditButton
             // 
             this.cancelEditButton.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.cancelEditButton.Location = new System.Drawing.Point(559, 558);
+            this.cancelEditButton.Location = new System.Drawing.Point(559, 618);
             this.cancelEditButton.Name = "cancelEditButton";
             this.cancelEditButton.Size = new System.Drawing.Size(168, 30);
             this.cancelEditButton.TabIndex = 11;
@@ -162,7 +163,7 @@
             // 
             // searchEventDateTimePicker
             // 
-            this.searchEventDateTimePicker.Location = new System.Drawing.Point(14, 170);
+            this.searchEventDateTimePicker.Location = new System.Drawing.Point(14, 230);
             this.searchEventDateTimePicker.Name = "searchEventDateTimePicker";
             this.searchEventDateTimePicker.Size = new System.Drawing.Size(208, 22);
             this.searchEventDateTimePicker.TabIndex = 12;
@@ -172,7 +173,7 @@
             // 
             this.searchEventTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchEventTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.searchEventTextBox.Location = new System.Drawing.Point(14, 199);
+            this.searchEventTextBox.Location = new System.Drawing.Point(14, 259);
             this.searchEventTextBox.Name = "searchEventTextBox";
             this.searchEventTextBox.Size = new System.Drawing.Size(361, 29);
             this.searchEventTextBox.TabIndex = 13;
@@ -183,7 +184,7 @@
             // searchEventButton
             // 
             this.searchEventButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchEventButton.Location = new System.Drawing.Point(401, 197);
+            this.searchEventButton.Location = new System.Drawing.Point(401, 257);
             this.searchEventButton.Name = "searchEventButton";
             this.searchEventButton.Size = new System.Drawing.Size(97, 30);
             this.searchEventButton.TabIndex = 14;
@@ -193,7 +194,7 @@
             // 
             // organiserEditButton
             // 
-            this.organiserEditButton.Location = new System.Drawing.Point(532, 557);
+            this.organiserEditButton.Location = new System.Drawing.Point(532, 617);
             this.organiserEditButton.Name = "organiserEditButton";
             this.organiserEditButton.Size = new System.Drawing.Size(90, 30);
             this.organiserEditButton.TabIndex = 15;
@@ -204,7 +205,7 @@
             // 
             // organiserCancel
             // 
-            this.organiserCancel.Location = new System.Drawing.Point(665, 557);
+            this.organiserCancel.Location = new System.Drawing.Point(665, 617);
             this.organiserCancel.Name = "organiserCancel";
             this.organiserCancel.Size = new System.Drawing.Size(90, 30);
             this.organiserCancel.TabIndex = 16;
@@ -215,7 +216,7 @@
             // 
             // leaveBtn
             // 
-            this.leaveBtn.Location = new System.Drawing.Point(590, 557);
+            this.leaveBtn.Location = new System.Drawing.Point(590, 617);
             this.leaveBtn.Name = "leaveBtn";
             this.leaveBtn.Size = new System.Drawing.Size(90, 30);
             this.leaveBtn.TabIndex = 17;
@@ -226,10 +227,11 @@
             // 
             // announcementList1
             // 
+            this.announcementList1.AllowColumnReorder = true;
             this.announcementList1.GridLines = true;
-            this.announcementList1.Location = new System.Drawing.Point(13, 50);
+            this.announcementList1.Location = new System.Drawing.Point(13, 68);
             this.announcementList1.Name = "announcementList1";
-            this.announcementList1.Size = new System.Drawing.Size(742, 97);
+            this.announcementList1.Size = new System.Drawing.Size(742, 139);
             this.announcementList1.TabIndex = 18;
             this.announcementList1.UseCompatibleStateImageBehavior = false;
             this.announcementList1.View = System.Windows.Forms.View.Details;
@@ -237,18 +239,30 @@
             // statuslabel1
             // 
             this.statuslabel1.AutoSize = true;
-            this.statuslabel1.Location = new System.Drawing.Point(556, 12);
+            this.statuslabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.statuslabel1.Location = new System.Drawing.Point(516, 12);
             this.statuslabel1.Name = "statuslabel1";
-            this.statuslabel1.Size = new System.Drawing.Size(38, 13);
+            this.statuslabel1.Size = new System.Drawing.Size(40, 15);
             this.statuslabel1.TabIndex = 19;
             this.statuslabel1.Text = "label1";
+            // 
+            // announcementStatic
+            // 
+            this.announcementStatic.AutoSize = true;
+            this.announcementStatic.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.announcementStatic.Location = new System.Drawing.Point(236, 41);
+            this.announcementStatic.Name = "announcementStatic";
+            this.announcementStatic.Size = new System.Drawing.Size(272, 24);
+            this.announcementStatic.TabIndex = 20;
+            this.announcementStatic.Text = "Real-Time Announcement";
             // 
             // mainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(769, 598);
+            this.ClientSize = new System.Drawing.Size(769, 662);
+            this.Controls.Add(this.announcementStatic);
             this.Controls.Add(this.statuslabel1);
             this.Controls.Add(this.announcementList1);
             this.Controls.Add(this.leaveBtn);
@@ -299,6 +313,7 @@
         private System.Windows.Forms.Button leaveBtn;
         private System.Windows.Forms.ListView announcementList1;
         private System.Windows.Forms.Label statuslabel1;
+        private System.Windows.Forms.Label announcementStatic;
 
     }
 }

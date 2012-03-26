@@ -39,6 +39,9 @@ namespace _2103Project
 
             if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
             {
+                statuslabel1.BackColor = Color.Green;
+                statuslabel1.ForeColor = Color.White;
+
                 statuslabel1.Text = "Connected to Internet";
 
                 statuslabel1.Show();
@@ -47,6 +50,9 @@ namespace _2103Project
             }
             else
             {
+                statuslabel1.BackColor = Color.Red;
+                statuslabel1.ForeColor = Color.White;
+
                 statuslabel1.Text = "System not connected to Internet. Unable to fetch Announcements.";
 
                 statuslabel1.Show();
@@ -63,13 +69,13 @@ namespace _2103Project
             {
                 //Factory Method
 
-  //              ConnectionFactory factory = new CloudConnectionFactory();
+                ConnectionFactory factory = new CloudConnectionFactory();
 
-  //              Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
+                Connection neededCon = factory.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
 
-  //              List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();
+                List<_2103Project.Entities.Advertisement> listOfAdv = neededCon.checkMessages();
 
-   //             populateAdvertisement(listOfAdv);
+                populateAdvertisement(listOfAdv);
             }
 
             pollingTimer.Start();
@@ -261,7 +267,7 @@ namespace _2103Project
                         catch (System.IO.FileNotFoundException)
                         {
                             //Insert a blank poster if no file found
-                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "blankposter.jpg"));
+                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "\\blankposter.jpg"));
                         }
                     }
 
@@ -644,5 +650,6 @@ namespace _2103Project
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
+
     }
 }
