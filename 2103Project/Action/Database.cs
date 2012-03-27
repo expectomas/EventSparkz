@@ -843,5 +843,35 @@ namespace _2103Project.Action
            return savingSuccessFlag;
         }
 
+        public List<Budget> getListOfBudget()
+        {
+            List<Budget> listToPop = new List<Budget>();
+
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+
+            using (XmlReader scanner = XmlReader.Create("budgets.xml", settings))
+            {
+                scanner.ReadToDescendant("itemId");
+
+                int i_itemId = scanner.ReadElementContentAsInt();
+
+                double i_itemPrice = scanner.ReadElementContentAsDouble();
+
+                string i_itemName = scanner.ReadElementContentAsString();
+
+
+            }
+
+            return listToPop;
+        }
+
+        public bool saveListOfBudgets(List<Budget> budgetListToSave)
+        {
+            bool savingSuccessFlag = false;
+
+
+            return savingSuccessFlag;
+        }
     }
 }
