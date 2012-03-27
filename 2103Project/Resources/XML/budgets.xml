@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BudgetPool>
+	<Budget>
+		<itemId>1</itemId>
+		<itemPrice>34.00</itemPrice>
+		<itemName>Western Package Rice</itemName>
+	</Budget>
+	<Budget>
+		<itemId>2</itemId>
+		<itemPrice>80.00</itemPrice>
+		<itemName>Workshop Materials</itemName>
+	</Budget>
+</BudgetPool>
