@@ -843,6 +843,7 @@ namespace _2103Project.Action
            return savingSuccessFlag;
         }
 
+        //Budget Database Interaction Implementation
         public List<Budget> getListOfBudget()
         {
             List<Budget> listToPop = new List<Budget>();
@@ -852,23 +853,74 @@ namespace _2103Project.Action
 
             using (XmlReader scanner = XmlReader.Create("budgets.xml", settings))
             {
-                scanner.ReadToDescendant("itemId");
+                do
+                {
 
-                int i_itemId = scanner.ReadElementContentAsInt();
+                    scanner.ReadToDescendant("itemId");
 
-                double i_itemPrice = scanner.ReadElementContentAsDouble();
+                    int i_itemId = scanner.ReadElementContentAsInt();
 
-                string i_itemName = scanner.ReadElementContentAsString();
+                    double i_itemPrice = scanner.ReadElementContentAsDouble();
 
+                    string i_itemName = scanner.ReadElementContentAsString();
 
+                    Budget newBudget = new Budget(i_itemId, i_itemPrice, i_itemName);
+
+                    listToPop.Add(newBudget);
+
+                } while (scanner.ReadToNextSibling("Budget"));
             }
 
             return listToPop;
         }
-
         public bool saveListOfBudgets(List<Budget> budgetListToSave)
         {
             bool savingSuccessFlag = false;
+
+            int sizeOfList = budgetListToSave.Count;
+
+            XmlWriterSettings writerSettings = new XmlWriterSettings();
+            writerSettings.Indent = true;
+
+            Budget holdingElement;
+
+            try
+            {
+                using (XmlWriter writer = XmlTextWriter.Create("budgets.xml", writerSettings))
+                {
+                    writer.WriteStartDocument();
+
+                    writer.WriteStartElement("BudgetPool");
+
+                    for (int i = 0; i < sizeOfList; i++)
+                    {
+                        writer.WriteStartElement("Budget");
+
+                        holdingElement = budgetListToSave[i];
+
+                        int itemId = 0;
+
+                        double itemPrice = 0;
+
+                        string itemName = string.Empty;
+
+                        holdingElement.requestBudgetDetails(ref itemId,ref itemPrice,ref itemName);
+
+                        //Write Element Contents
+                        writer.WriteElementString("itemId", itemId.ToString());
+
+                        writer.WriteElementString("itemPrice", itemPrice.ToString());
+
+                        writer.WriteElementString("itemName", itemName);
+
+                        writer.WriteEndElement();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                savingSuccessFlag = false;
+            }
 
 
             return savingSuccessFlag;
