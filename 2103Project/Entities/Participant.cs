@@ -105,7 +105,7 @@ namespace _2103Project.Entities
             db.saveListOfEvents(currentEvents);
 
             return eventRegistered;
-        }
+        }               //Unit Test
 
         public bool cancelEventRegistration(int unInterestedEventId)
         {

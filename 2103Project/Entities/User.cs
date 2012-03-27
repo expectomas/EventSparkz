@@ -188,7 +188,7 @@ namespace _2103Project.Entities
               //  returningUser = returningUser;
                 return false;
             }
-        }
+        }   //Unit Test
 
         public bool logout()
         {
@@ -210,7 +210,7 @@ namespace _2103Project.Entities
                 db.saveListOfUsers(obtainedUserList);
 
                 return loggedOutSuccess;
-        }
+        }                           //Unit Test
 
         public bool createNewUser()
         {
@@ -236,7 +236,7 @@ namespace _2103Project.Entities
                     userCreated = false;
                 }
             return userCreated;
-        }
+        }           //Unit Test
 
         public int getUserId()
         {

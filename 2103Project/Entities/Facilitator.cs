@@ -91,7 +91,7 @@ namespace _2103Project.Entities
                 }
             }
             return returnEve;
-        }
+        }       
 
         public List<Participant> viewParticipantList(EventEntity thisEvent)
         {
@@ -147,7 +147,7 @@ namespace _2103Project.Entities
             db.saveListOfEvents(obtainedAllEvents);
 
             return succeededJoiningEvent;
-        }
+        }           //Unit Test
 
         public bool cancelJoinEvent(int eventId)
         {

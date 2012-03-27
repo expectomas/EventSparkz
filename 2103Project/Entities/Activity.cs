@@ -71,6 +71,7 @@ namespace _2103Project.Entities
         {
             description = desc;
         }
+
         public static Venue getVenueFromActivityID(int incomingActivityID)
         {
             Database db = Database.CreateDatabase(DatabaseToken);

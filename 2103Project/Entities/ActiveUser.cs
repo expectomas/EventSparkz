@@ -126,7 +126,7 @@ namespace _2103Project.Entities
             //
 
             return temp;
-        }   
+        }           //Unit Test
 
         public List<EventEntity> viewEventListingByEventName(string word)
         {
@@ -219,6 +219,6 @@ namespace _2103Project.Entities
             //
 
             return list;
-        }   
+        }                       //Unit Test
     }
 }

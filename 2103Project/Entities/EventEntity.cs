@@ -117,6 +117,7 @@ namespace _2103Project.Entities
         {
             participantSize = partNum;
         }
+
         public bool addParticipantToEvent(Participant newParticipant)
         {
             bool successAdded = false;
@@ -131,7 +132,7 @@ namespace _2103Project.Entities
             }
 
             return successAdded;
-        }
+        }                                   //Unit Test
 
         public bool removeParticipantFromEvent(Participant unInterestedParticipant)
         {
@@ -167,7 +168,7 @@ namespace _2103Project.Entities
                 return false;
             }
             return true;
-        }
+        }                                 //Unit Test
 
         public bool removeFacilitatorFromEvent(int removingFacilitatorId)
         {
@@ -457,7 +458,7 @@ namespace _2103Project.Entities
                 return EventInfoStates.organiser;
             }
             return EventInfoStates.unregisteredActiveUser;
-        }
+        }           //Unit Test
 
         public List<int> getListOfFacilitator()
         {

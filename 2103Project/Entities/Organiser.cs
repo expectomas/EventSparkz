@@ -79,7 +79,7 @@ namespace _2103Project.Entities
             createdEvents.Add(events);
 
             return true;
-        }
+        }   //Unit Test
 
         public int getCheckVenueId(string location)
         {
@@ -177,7 +177,7 @@ namespace _2103Project.Entities
             }
 
             return !eventCancelled;
-        }
+        }   
 
         public bool updateEvent()
         {
@@ -185,7 +185,7 @@ namespace _2103Project.Entities
 
 
             return eventUpdated;
-        }
+        }                       //Unit Test
 
         public List<EventEntity> getOrganisedEvents()
         {
