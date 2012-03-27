@@ -41,6 +41,10 @@ namespace _2103Project
         //Event Handlers
         private void loginButton_Click(object sender, EventArgs e)
         {
+            //Fire your test class
+            
+            //End test here
+
             this.Close();
 
             Thread t = new Thread(new ThreadStart(LoginFormThreadProc));
