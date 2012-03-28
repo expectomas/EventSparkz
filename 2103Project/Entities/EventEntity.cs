@@ -30,8 +30,12 @@ namespace _2103Project.Entities
         private int eventScheduleId;
         private int participantSize;
         private List<Participant> participantList;
-        private int eventOrganiserId;
         private List<int> facilitatorList;
+        private int eventOrganiserId;
+
+        //Version 2
+        private double totalBudget;
+        private List<int> budgetList;
 
         //Database Access Authetication
         private const string DatabaseToken = "431fW13x";
@@ -42,7 +46,7 @@ namespace _2103Project.Entities
 
         }
 
-        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId)
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, double i_budget, List<int> i_itemList)
         {
             eventId = i_eventId;
             name = i_name;
@@ -53,6 +57,8 @@ namespace _2103Project.Entities
             participantList = new List<Participant>(i_participantList);
             facilitatorList = new List<int>(i_facilitatorIdList);
             eventOrganiserId = i_eventOrganiserId;
+            totalBudget = i_budget;
+            budgetList = new List<int>(i_itemList);
         }
 
         //Methods
@@ -363,7 +369,7 @@ namespace _2103Project.Entities
             return false;
         }
 
-        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, string purpose)
+        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, ref double o_budget, ref List<int> o_itemList, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
             {
@@ -376,6 +382,8 @@ namespace _2103Project.Entities
                 o_participantList = new List<Participant>(participantList);
                 o_facilitatorList = new List<int>(facilitatorList);
                 o_organiserId = eventOrganiserId;
+                o_budget = totalBudget;
+                o_itemList = new List<int>(budgetList);
 
                 return true;
             }
