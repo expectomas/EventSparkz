@@ -51,7 +51,6 @@ namespace _2103Project
         {
             budgetListListView.Columns.Insert(0, "Item", 180, HorizontalAlignment.Left);
             budgetListListView.Columns.Insert(1, "Cost ($)", 80, HorizontalAlignment.Left);
-            budgetListListView.Columns.Insert(2, "ItemID", 0, HorizontalAlignment.Right);
         }
 
         private void createButton_Click(object sender, EventArgs e)
@@ -94,21 +93,21 @@ namespace _2103Project
                 List<int> facilitatorList = new List<int>();
                 EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId());
                 Organiser org = new Organiser(currentUser);
-                Activity newAct; Venue ven;
-                DateTime time;
-                List<Activity> listOfActivity = new List<Activity>();
-                for (int i = 0; i < scheduleEventView.Items.Count; i++)
+                foreach(Activity newAct in listOfActivity)
                 {
-                    time = returnTime(scheduleEventView.Items[i].SubItems[0].ToString(), Convert.ToDateTime(dateCombobox.Text));
-                    int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].ToString());
-                    ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].ToString());
-                    int newActivityID = org.getNewActivityId();
-                    newAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].ToString(), ven);
-                    listOfActivity.Add(newAct);
                     org.addNewActivity(newAct);
                 }
                 List<string> listOfItems = new List<string>();
+                Budget currBudget;
                 Schedule newSchedule = new Schedule(newscheduleId, listOfItems, listOfActivity);
+                int newItemID = 0;
+                List<Budget> listOfBudget = new List<Budget>();
+                for (int i = 0; i < budgetListListView.Items.Count; i++)
+                {
+                    newItemID = org.getNewItemID();
+                    currBudget = new Budget(newItemID, double.Parse(budgetListListView.Items[i].SubItems[0].Text), budgetListListView.Items[i].SubItems[1].Text);
+                    listOfBudget.Add(currBudget);
+                }
                 org.addSchedule(newSchedule);
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -386,7 +385,6 @@ namespace _2103Project
                 ListViewItem newItem = new ListViewItem(budgetItemTextBox.Text);
                 float price = float.Parse(costTextBox.Text) + float.Parse(dpTextBox.Text) / 100.0f;
                 newItem.SubItems.Add(price.ToString("N2"));
-                newItem.SubItems.Add((budgetListListView.Items.Count + 1).ToString());
                 budgetListListView.Items.Add(newItem);
                 totalPriceTextBox.Text = (totalPrice + price).ToString("N2");
             }
@@ -528,7 +526,6 @@ namespace _2103Project
                 time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
                 int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
                 ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
-
                 if (listOfActivity.Count == 0)
                     newActivityID = org.getNewActivityId();
                 else

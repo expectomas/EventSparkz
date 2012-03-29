@@ -32,7 +32,8 @@ namespace _2103Project.Entities
         private List<Participant> participantList;
         private int eventOrganiserId;
         private List<int> facilitatorList;
-
+        private List<Budget> itemList;
+        private double budget;
         //Database Access Authetication
         private const string DatabaseToken = "431fW13x";
 
@@ -42,7 +43,7 @@ namespace _2103Project.Entities
 
         }
 
-        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId)
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, List<Budget> i_itemList, double i_budget)
         {
             eventId = i_eventId;
             name = i_name;
@@ -53,6 +54,8 @@ namespace _2103Project.Entities
             participantList = new List<Participant>(i_participantList);
             facilitatorList = new List<int>(i_facilitatorIdList);
             eventOrganiserId = i_eventOrganiserId;
+            itemList = i_itemList;
+            budget = i_budget;
         }
 
         //Methods

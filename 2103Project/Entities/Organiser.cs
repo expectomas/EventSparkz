@@ -105,6 +105,16 @@ namespace _2103Project.Entities
             return newActivityId;
         }
 
+        public int getNewItemID()
+        {
+            int newItemID = 1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Budget> listOfBudget = db.getListOfBudget();
+            foreach (Budget currBud in listOfBudget)
+                newItemID = currBud.getItemID();
+            newItemID++;
+            return newItemID;
+        }
         public bool addNewActivity(Activity newAct)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
