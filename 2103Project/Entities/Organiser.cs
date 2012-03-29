@@ -133,6 +133,7 @@ namespace _2103Project.Entities
             db.saveListOfBudgets(budgetList);
             return true;
         }
+
         public static int getNewEventId()
         {
             int newEventID = 0;
