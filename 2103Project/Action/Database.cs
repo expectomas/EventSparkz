@@ -85,7 +85,8 @@ namespace _2103Project.Action
         {
             List<EventEntity> listToPop = new List<EventEntity>();
             List<Participant> participantList = new List<Participant>();
-
+            
+            List<int> budgetList = new List<int>();
             List<int> facilitatorList = new List<int>();
 
             XmlReaderSettings settings = new XmlReaderSettings();
@@ -115,9 +116,10 @@ namespace _2103Project.Action
 
                     int organiserId = scanner.ReadElementContentAsInt();
 
+                    double totalBudget = scanner.ReadElementContentAsDouble();
+
                     if (scanner.ReadToDescendant("User"))
                     {
-
                         do
                         {
 
@@ -168,10 +170,26 @@ namespace _2103Project.Action
 
                     scanner.Skip();
 
-                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId);
+                    if (scanner.ReadToDescendant("Budget"))
+                    {
+                        do
+                        {
+                            scanner.ReadToDescendant("itemId");
+
+                            int budgetId = scanner.ReadElementContentAsInt();
+
+                            budgetList.Add(budgetId);
+                        
+                        }while(scanner.ReadToNextSibling("Budget"));
+                    }
+
+                    scanner.Skip();
+
+                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId,totalBudget,budgetList);
 
                     participantList.Clear();
                     facilitatorList.Clear();
+                    budgetList.Clear();
 
                     listToPop.Add(newEvent);
 
@@ -207,6 +225,10 @@ namespace _2103Project.Action
             double o_contactHome = 0;
             double o_hPContact = 0;
 
+            //Budget Attributes
+            double o_totalBudget = 0;
+            List<int> o_budgetList = new List<int>();
+
             int sizeOfList = eventListToSave.Count();
 
             XmlWriterSettings writerSettings = new XmlWriterSettings();
@@ -216,6 +238,7 @@ namespace _2103Project.Action
             Participant holdingParticipant;
             int participantCounter = 0;
             int facilitatorCounter = 0;
+            int budgetCounter = 0;
 
             try
             {
@@ -228,7 +251,7 @@ namespace _2103Project.Action
                     for (int i = 0; i < sizeOfList; i++)
                     {
                         holdingElement = eventListToSave[i];
-                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, requestString);
+                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, ref o_totalBudget,ref o_budgetList, requestString);
 
                         writer.WriteStartElement("EventEntity");
 
@@ -245,6 +268,8 @@ namespace _2103Project.Action
                         writer.WriteElementString("participantSize", o_participantSize.ToString());
 
                         writer.WriteElementString("organiserId", o_organiserId.ToString());
+
+                        writer.WriteElementString("totalBudget", o_totalBudget.ToString());
 
                         //List of Participants
                         writer.WriteStartElement("participantList");
@@ -295,6 +320,25 @@ namespace _2103Project.Action
                         facilitatorCounter = 0;
 
                         //End Tag Faciltator List
+
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement("budgetList");
+
+                        while (budgetCounter < o_budgetList.Count)
+                        {
+                            writer.WriteStartElement("Budget");
+
+                            writer.WriteElementString("itemId", o_budgetList[budgetCounter].ToString());
+
+                            writer.WriteEndElement();
+
+                            ++budgetCounter;
+                        }
+
+                        budgetCounter = 0;
+
+                        //End Tag Budget List
 
                         writer.WriteEndElement();
 

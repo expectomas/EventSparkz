@@ -8,19 +8,20 @@
     <eventScheduleId>1</eventScheduleId>
     <participantSize>20</participantSize>
     <organiserId>1</organiserId>
+    <totalBudget>321</totalBudget>
     <participantList>
-	  <User>
-		<userId>6</userId>
-		<userName>zhihao</userName>
-		<name>Lim Zhi Hao</name>
-		<matricNo>A0067252H</matricNo>
-		<password>123456</password>
-		<email>zhihao@nus.edu.sg</email>
-		<age>17</age>
-		<loggedIn>false</loggedIn>
-		<contactHome>63231231</contactHome>
-		<contactHP>98213123</contactHP>
-	  </User>
+      <User>
+        <userId>6</userId>
+        <userName>zhihao</userName>
+        <name>Lim Zhi Hao</name>
+        <matricNo>A0067252H</matricNo>
+        <password>123456</password>
+        <email>zhihao@nus.edu.sg</email>
+        <age>17</age>
+        <loggedIn>false</loggedIn>
+        <contactHome>63231231</contactHome>
+        <contactHP>98213123</contactHP>
+      </User>
     </participantList>
     <facilitatorList>
       <User>
@@ -30,6 +31,14 @@
         <userId>7</userId>
       </User>
     </facilitatorList>
+    <budgetList>
+      <Budget>
+        <itemId>1</itemId>
+      </Budget>
+      <Budget>
+        <itemId>2</itemId>
+      </Budget>
+    </budgetList>
   </EventEntity>
   <EventEntity>
     <eventId>2</eventId>
@@ -39,31 +48,32 @@
     <eventScheduleId>1</eventScheduleId>
     <participantSize>60</participantSize>
     <organiserId>2</organiserId>
+    <totalBudget>3123</totalBudget>
     <participantList>
-	  <User>
-		<userId>3</userId>
-		<userName>desmond</userName>
-		<name>Desmond Wee</name>
-		<matricNo>A0083838M</matricNo>
-		<password>12345678</password>
-		<email>will@sjk.com</email>
-		<age>17</age>
-		<loggedIn>false</loggedIn>
-		<contactHome>12312312</contactHome>
-		<contactHP>12312312</contactHP>
-	  </User>
-	  <User>
-		<userId>4</userId>
-		<userName>malcolm</userName>
-		<name>Malcolm Thng</name>
-		<matricNo>A0083838M</matricNo>
-		<password>12345678</password>
-		<email>will@sjk.com</email>
-		<age>17</age>
-		<loggedIn>false</loggedIn>
-		<contactHome>12312312</contactHome>
-		<contactHP>12312312</contactHP>
-	  </User>
+      <User>
+        <userId>3</userId>
+        <userName>desmond</userName>
+        <name>Desmond Wee</name>
+        <matricNo>A0083838M</matricNo>
+        <password>12345678</password>
+        <email>will@sjk.com</email>
+        <age>17</age>
+        <loggedIn>false</loggedIn>
+        <contactHome>12312312</contactHome>
+        <contactHP>12312312</contactHP>
+      </User>
+      <User>
+        <userId>4</userId>
+        <userName>malcolm</userName>
+        <name>Malcolm Thng</name>
+        <matricNo>A0083838M</matricNo>
+        <password>12345678</password>
+        <email>will@sjk.com</email>
+        <age>17</age>
+        <loggedIn>false</loggedIn>
+        <contactHome>12312312</contactHome>
+        <contactHP>12312312</contactHP>
+      </User>
     </participantList>
     <facilitatorList>
       <User>
@@ -73,6 +83,11 @@
         <userId>1</userId>
       </User>
     </facilitatorList>
+    <budgetList>
+      <Budget>
+        <itemId>1</itemId>
+      </Budget>
+    </budgetList>
   </EventEntity>
   <EventEntity>
     <eventId>3</eventId>
@@ -82,20 +97,26 @@
     <eventScheduleId>2</eventScheduleId>
     <participantSize>43</participantSize>
     <organiserId>2</organiserId>
+    <totalBudget>542</totalBudget>
     <participantList>
-	  <User>
-		<userId>1</userId>
-		<userName>tiow11</userName>
-		<name>TIO WEE LEONG</name>
-		<matricNo>A9328372N</matricNo>
-		<password>123456</password>
-		<email>wil@hotmail.com</email>
-		<age>23</age>
-		<loggedIn>false</loggedIn>
-		<contactHome>23120381</contactHome>
-		<contactHP>91732123</contactHP>
-	</User>
-	</participantList>
+      <User>
+        <userId>1</userId>
+        <userName>tiow11</userName>
+        <name>TIO WEE LEONG</name>
+        <matricNo>A9328372N</matricNo>
+        <password>123456</password>
+        <email>wil@hotmail.com</email>
+        <age>23</age>
+        <loggedIn>false</loggedIn>
+        <contactHome>23120381</contactHome>
+        <contactHP>91732123</contactHP>
+      </User>
+    </participantList>
     <facilitatorList />
+    <budgetList>
+      <Budget>
+        <itemId>2</itemId>
+      </Budget>
+    </budgetList>
   </EventEntity>
 </EventPool>
