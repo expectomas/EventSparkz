@@ -39,6 +39,7 @@ namespace _2103Project
 
         List<Activity> listOfActivity = new List<Activity>();
         DateTime previousScheudleDate;
+
         public void initMainEventList()
         {
             //Clear ListBox Column and Items
@@ -79,6 +80,10 @@ namespace _2103Project
             {
                 MessageBox.Show("You cannot create an event with 0 participant size.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (listOfActivity.Count == 0 && scheduleEventView.Items.Count == 0)
+            {
+                MessageBox.Show("Please add your schedule. Thank you.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 string path = "events.xml";
@@ -91,24 +96,46 @@ namespace _2103Project
                 }
                 List<Participant> participantList = new List<Participant>();
                 List<int> facilitatorList = new List<int>();
-                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId());
                 Organiser org = new Organiser(currentUser);
-                foreach(Activity newAct in listOfActivity)
+                if (listOfActivity.Count == 0)
+                {
+                    Activity currAct; Venue ven; DateTime time;
+                    for (int i = 0; i < scheduleEventView.Items.Count; i++)
+                    {
+                        time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
+                        int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
+                        ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getCapacityFromVenueID(newVenueID));
+                        if (listOfActivity.Count == 0)
+                            newActivityID = org.getNewActivityId();
+                        else
+                            newActivityID = getNewActIDFromActList(listOfActivity);
+                        currAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].Text, ven);
+                        listOfActivity.Add(currAct);
+                    }
+                }
+                foreach (Activity newAct in listOfActivity)
                 {
                     org.addNewActivity(newAct);
                 }
                 List<string> listOfItems = new List<string>();
-                Budget currBudget;
                 Schedule newSchedule = new Schedule(newscheduleId, listOfItems, listOfActivity);
                 int newItemID = 0;
+                List<int> listOfBudgetID = new List<int>();
                 List<Budget> listOfBudget = new List<Budget>();
+                Budget currBudget;
                 for (int i = 0; i < budgetListListView.Items.Count; i++)
                 {
-                    newItemID = org.getNewItemID();
-                    currBudget = new Budget(newItemID, double.Parse(budgetListListView.Items[i].SubItems[0].Text), budgetListListView.Items[i].SubItems[1].Text);
+                    if (i == 0)
+                        newItemID = org.getNewItemID();
+                    else
+                        newItemID++;
+                    listOfBudgetID.Add(newItemID);
+                    currBudget = new Budget(newItemID, double.Parse(budgetListListView.Items[i].SubItems[1].Text), budgetListListView.Items[i].SubItems[0].Text);
                     listOfBudget.Add(currBudget);
                 }
                 org.addSchedule(newSchedule);
+                org.addBudget(listOfBudget);
+                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), double.Parse(totalPriceTextBox.Text), listOfBudgetID);
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();
@@ -309,7 +336,7 @@ namespace _2103Project
                     {
                         DateTime endTime = endTimePicker.Value;
                         DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
-                        if(addSchTime < endTime)
+                        if (addSchTime < endTime)
                         {
                             time = timeComboBox.SelectedItem.ToString();
                             ListViewItem newevent = new ListViewItem(time);
@@ -327,20 +354,20 @@ namespace _2103Project
                 }
                 else
                 {
-                     DateTime endTime = endTimePicker.Value;
-                     DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
-                     if (addSchTime < endTime)
-                     {
-                         string time = timeComboBox.SelectedItem.ToString();
-                         ListViewItem newevent = new ListViewItem(time);
-                         newevent.SubItems.Add(descriptionTextBox.Text);
-                         newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
-                         scheduleEventView.Items.Add(newevent);
-                     }
-                     else
-                     {
-                         MessageBox.Show("You are not allowed to book a time that exceed your end of booking time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                     }
+                    DateTime endTime = endTimePicker.Value;
+                    DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
+                    if (addSchTime < endTime)
+                    {
+                        string time = timeComboBox.SelectedItem.ToString();
+                        ListViewItem newevent = new ListViewItem(time);
+                        newevent.SubItems.Add(descriptionTextBox.Text);
+                        newevent.SubItems.Add(venueComboBox.SelectedItem.ToString());
+                        scheduleEventView.Items.Add(newevent);
+                    }
+                    else
+                    {
+                        MessageBox.Show("You are not allowed to book a time that exceed your end of booking time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -504,7 +531,7 @@ namespace _2103Project
         private void dateCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Activity currentActivity;
-            for (int i = 0; i < listOfActivity.Count ; i++)
+            for (int i = 0; i < listOfActivity.Count; i++)
             {
                 currentActivity = listOfActivity[i];
                 if (Convert.ToDateTime(dateCombobox.Text).Year == previousScheudleDate.Year && Convert.ToDateTime(dateCombobox.Text).Month == previousScheudleDate.Month && Convert.ToDateTime(dateCombobox.Text).Day == previousScheudleDate.Day)
@@ -525,7 +552,7 @@ namespace _2103Project
             {
                 time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
                 int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
-                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
+                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getCapacityFromVenueID(newVenueID));
                 if (listOfActivity.Count == 0)
                     newActivityID = org.getNewActivityId();
                 else

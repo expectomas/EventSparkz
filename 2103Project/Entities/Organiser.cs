@@ -124,6 +124,15 @@ namespace _2103Project.Entities
             return true;
         }
 
+        public bool addBudget(List<Budget> listOfBudget)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Budget> budgetList = db.getListOfBudget();
+            foreach (Budget currBudget in listOfBudget)
+                budgetList.Add(currBudget);
+            db.saveListOfBudgets(budgetList);
+            return true;
+        }
         public static int getNewEventId()
         {
             int newEventID = 0;

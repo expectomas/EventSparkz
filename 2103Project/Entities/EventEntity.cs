@@ -81,6 +81,11 @@ namespace _2103Project.Entities
             return name;
         }
 
+        public DateTime getEventEndTime()
+        {
+            return endTime;
+        }
+
         public int getEventId()
         {
             return eventId;
@@ -223,6 +228,19 @@ namespace _2103Project.Entities
                     startTime = eve.getEventDate();
             }
             return startTime;
+        }
+
+        public static DateTime getEndTime(int eventID)
+        {
+            DateTime endTime = DateTime.Now;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach(EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    endTime = eve.getEventEndTime();
+            }
+            return endTime;
         }
 
         public static string getStartVenueFromEventID(int eventID)
