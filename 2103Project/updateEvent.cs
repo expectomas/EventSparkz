@@ -112,7 +112,7 @@ namespace _2103Project
                     listOfDateTime.Add(returnTime(timeListBox.Items[i].ToString(), dtValue));
                     listOfdescription.Add(descriptionListBox.Items[i].ToString());
                     int venueID = Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString());
-                    newVen = new Venue(venueID, venueListBox.Items[i].ToString(), Venue.getCapacityFromVenueID(venueID));
+                    newVen = new Venue(venueID, venueListBox.Items[i].ToString());
                     listOfVenue.Add(newVen);
                 }
                 EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);

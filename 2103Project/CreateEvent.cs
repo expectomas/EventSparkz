@@ -104,7 +104,7 @@ namespace _2103Project
                     {
                         time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
                         int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
-                        ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getCapacityFromVenueID(newVenueID));
+                        ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
                         if (listOfActivity.Count == 0)
                             newActivityID = org.getNewActivityId();
                         else
@@ -552,7 +552,7 @@ namespace _2103Project
             {
                 time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
                 int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
-                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getCapacityFromVenueID(newVenueID));
+                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
                 if (listOfActivity.Count == 0)
                     newActivityID = org.getNewActivityId();
                 else

@@ -405,7 +405,7 @@ namespace _2103Project.Action
                         int activityId = scanner.ReadElementContentAsInt();
 
                         DateTime time = scanner.ReadElementContentAsDateTime();
-
+                        
                         string activityDescription = scanner.ReadElementContentAsString("description", "");
 
                         scanner.ReadToFollowing("venueId");
@@ -414,9 +414,9 @@ namespace _2103Project.Action
 
                         string i_location = scanner.ReadElementContentAsString("location", "");
 
-                        int i_capacity = scanner.ReadElementContentAsInt();
+                     //   int i_capacity = scanner.ReadElementContentAsInt();
 
-                        Venue newVenue = new Venue(i_venueId, i_location, i_capacity);
+                        Venue newVenue = new Venue(i_venueId, i_location);
 
                         Activity newActivity = new Activity(activityId, time, activityDescription, newVenue);
 
@@ -594,9 +594,7 @@ namespace _2103Project.Action
 
                     string i_location = scanner.ReadElementContentAsString("location", "");
 
-                    int i_capacity = scanner.ReadElementContentAsInt();
-
-                    Venue newVenue = new Venue(i_venueId, i_location, i_capacity);
+                    Venue newVenue = new Venue(i_venueId, i_location);
 
                     Activity newActivity = new Activity(activityId, time, activityDescription, newVenue);
 
@@ -827,9 +825,7 @@ namespace _2103Project.Action
 
                     string i_location = scanner.ReadElementContentAsString("location","");
 
-                    int i_capacity = scanner.ReadElementContentAsInt();
-
-                    Venue newVenue = new Venue(i_venueId, i_location, i_capacity);
+                    Venue newVenue = new Venue(i_venueId, i_location);
 
                     listToPop.Add(newVenue);
 

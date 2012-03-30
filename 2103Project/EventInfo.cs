@@ -125,13 +125,16 @@ namespace _2103Project
             dateCombobox.Text = dateValue.ToLongDateString();
             while(!(listOfDateTime.Count == 0))
             {
-          //      string currDateTime = String.Format("{0:t}", listOfDateTime.);
-                //if()
-                //else
-                //{
-                //    listOfDateTime
-                //    listOfVenue.Dequeue();
-                //}
+                DateTime currDateTimeValue = listOfDateTime.Dequeue();
+                string currDescription = listofDescription.Dequeue();
+                string currVenue = listOfVenue.Dequeue();
+                if (currDateTimeValue == dateValue)
+                {
+                    ListViewItem newevent = new ListViewItem(String.Format("{0:t}", currDateTimeValue));
+                    newevent.SubItems.Add(currDescription);
+                    newevent.SubItems.Add(currVenue);
+                    scheduleEventView.Items.Add(newevent);
+                }
             }
                 //display the appropriate btn based on the states
             state = determineState(currentEventID);
