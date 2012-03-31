@@ -494,6 +494,10 @@ namespace _2103Project
                 AdviseUserToMakeASelection();
             }
 
+            // Set Event Delete Flag
+            EventEntity eve = new EventEntity();
+            eve.setEventDeletedFlag(currentEventID);
+
             //Refresh the Side Bar
             initSideEventBar();
         }
