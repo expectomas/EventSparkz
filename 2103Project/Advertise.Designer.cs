@@ -35,6 +35,7 @@
             this.imgFileLocation = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.statusLbl1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // eventLabel1
@@ -62,7 +63,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(111, 395);
+            this.button1.Location = new System.Drawing.Point(109, 414);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -95,11 +96,23 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Description";
             // 
+            // statusLbl1
+            // 
+            this.statusLbl1.AutoSize = true;
+            this.statusLbl1.BackColor = System.Drawing.SystemColors.Control;
+            this.statusLbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLbl1.Location = new System.Drawing.Point(84, 388);
+            this.statusLbl1.Name = "statusLbl1";
+            this.statusLbl1.Size = new System.Drawing.Size(149, 13);
+            this.statusLbl1.TabIndex = 6;
+            this.statusLbl1.Text = "Sending Advertisement...";
+            // 
             // Advertise
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(310, 458);
+            this.Controls.Add(this.statusLbl1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.imgFileLocation);
@@ -123,5 +136,6 @@
         private System.Windows.Forms.TextBox imgFileLocation;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label statusLbl1;
     }
 }
