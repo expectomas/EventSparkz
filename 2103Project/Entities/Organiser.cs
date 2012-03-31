@@ -233,7 +233,7 @@ namespace _2103Project.Entities
         
         public EventEntity getMostRegisteredEvent()
         {
-            EventEntity mostRegisteredEvent = new EventEntity();
+            EventEntity mostRegisteredEvent = null;
             int participantCount = 0;
 
             foreach (EventEntity eventCreated in createdEvents)
