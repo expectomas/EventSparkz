@@ -332,6 +332,7 @@ namespace _2103Project
 
         private void organiserCancel_Click(object sender, EventArgs e)
         {
+            EventEntity eve = new EventEntity();
             int organiserCancellingEventId = -1;
 
             try
@@ -354,6 +355,9 @@ namespace _2103Project
             {
                 AdviseUserToMakeASelection();
             }
+
+            // Set Event Deleted Flag
+            eve.setEventDeletedFlag(currentEventID);
 
             //Refresh the Side Bar
             initSideEventBar();

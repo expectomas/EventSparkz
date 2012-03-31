@@ -115,6 +115,7 @@ namespace _2103Project.Entities
             newItemID++;
             return newItemID;
         }
+
         public bool addNewActivity(Activity newAct)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
