@@ -230,5 +230,23 @@ namespace _2103Project.Entities
 
             return outputFacilitatorList;
         }
+        
+        public EventEntity getMostRegisteredEvent()
+        {
+            EventEntity mostRegisteredEvent = new EventEntity();
+            int participantCount = 0;
+
+            foreach (EventEntity eventCreated in createdEvents)
+            {
+                if(eventCreated.getParticipatSize()>participantCount)
+                {
+                    participantCount = eventCreated.getParticipatSize();
+
+                    mostRegisteredEvent = eventCreated;
+                }
+            }
+
+            return mostRegisteredEvent;
+        }
     }
 }
