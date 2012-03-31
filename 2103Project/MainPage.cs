@@ -653,5 +653,12 @@ namespace _2103Project
             eventInfoPage.Show();
         }
 
+        private void analyticsBtn_Click(object sender, EventArgs e)
+        {
+            Analytic AnalyticsPage = new Analytic(currentUser);
+
+            AnalyticsPage.Show();
+        }
+
     }
 }
