@@ -18,6 +18,7 @@ using _2103Project.Entities;
 
 namespace _2103Project
 {
+    
 
     public partial class eventInfoForm : Form
     {
@@ -97,6 +98,7 @@ namespace _2103Project
             int organiserID = newEve.getOrganiserID();
             organiserLabel.Text = User.getNamefromID(organiserID);
             noOfParticipantLabel.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
+            
 
 
             // Version 1
@@ -121,8 +123,10 @@ namespace _2103Project
             Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
             Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
             Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
+
             // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
             setScheduleDay(dateValue, enddateValue);
+
             dateCombobox.Text = dateValue.ToLongDateString();
             int venueFlag = 0;
             while (!(listOfDateTime.Count == 0))
@@ -130,6 +134,7 @@ namespace _2103Project
                 DateTime currDateTimeValue = listOfDateTime.Dequeue();
                 string currDescription = listofDescription.Dequeue();
                 string currVenue = listOfVenue.Dequeue();
+
                 if (currDateTimeValue.Year == dateValue.Year && currDateTimeValue.Month == dateValue.Month && currDateTimeValue.Day == dateValue.Day)
                 {
                     ListViewItem newevent = new ListViewItem(String.Format("{0:t}", currDateTimeValue));

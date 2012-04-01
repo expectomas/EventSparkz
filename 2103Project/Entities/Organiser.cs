@@ -115,6 +115,7 @@ namespace _2103Project.Entities
             newItemID++;
             return newItemID;
         }
+
         public bool addNewActivity(Activity newAct)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
@@ -267,6 +268,40 @@ namespace _2103Project.Entities
                 listID.RemoveAt(0); listPrice.RemoveAt(0); listItem.RemoveAt(0);
             }
             db.saveListOfBudgets(listOfDBBudget);
+        }
+
+        private List<Venue> checkVenueCapacity(int participantSize)
+        {
+            List<Venue> venueList = new List<Venue>();
+
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Venue> listOfvenues = db.getListOfVenues();
+
+            for (int i = 0; i < listOfvenues.Count; i++)
+            {
+                if(listOfvenues[i].getCapacity() > participantSize)
+                    venueList.Add(new Venue(listOfvenues[i]));
+            }
+
+            return venueList;
+        }
+        
+        public EventEntity getMostRegisteredEvent()
+        {
+            EventEntity mostRegisteredEvent = null;
+            int participantCount = 0;
+
+            foreach (EventEntity eventCreated in createdEvents)
+            {
+                if(EventEntity.getParticipantNumber(eventCreated.getEventId())>participantCount)
+                {
+                    participantCount = eventCreated.getParticipantSize();
+
+                    mostRegisteredEvent = eventCreated;
+                }
+            }
+
+            return mostRegisteredEvent;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -258,18 +258,20 @@ namespace _2103Project
 
                 foreach (Advertisement ad in listOfAdv)
                 {
-                    string path = ad.imageDirectory.Remove(0, 5);
+                    string file = ad.imageDirectory;
 
-                        try
-                        {
-                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + path.ToString() + ".jpg"));
-                        }
-                        catch (System.IO.FileNotFoundException)
-                        {
-                            //Insert a blank poster if no file found
-                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "\\blankposter.jpg"));
-                        }
+                    string relativePath = System.IO.Directory.GetCurrentDirectory() + "\\poster" + file + ".jpg";
+
+                    try
+                    {
+                        imgList.Images.Add(Bitmap.FromFile(relativePath));
                     }
+                    catch (System.IO.FileNotFoundException)
+                    {
+                        //Insert a blank poster if no file found
+                        imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "\\blankposter.jpg"));
+                    }
+                }
 
                 int i = 1;
                 foreach (Advertisement ad in listOfAdv)
@@ -492,6 +494,10 @@ namespace _2103Project
                 AdviseUserToMakeASelection();
             }
 
+            // Set Event Delete Flag
+            EventEntity eve = new EventEntity();
+            eve.setEventDeletedFlag(currentEventID);
+
             //Refresh the Side Bar
             initSideEventBar();
         }
@@ -651,5 +657,30 @@ namespace _2103Project
             eventInfoPage.Show();
         }
 
+        private void analyticsBtn_Click(object sender, EventArgs e)
+        {
+            Analytic AnalyticsPage = new Analytic(currentUser);
+
+            AnalyticsPage.Show();
+        }
+
+        private void viewAlertsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlertForm alertNew = new AlertForm(currentUser);
+            alertNew.Show();
+        }
+
+        public void displayAlert()
+        {
+            ActiveUser au = new ActiveUser(currentUser);
+            int num = au.scoutAlert();
+
+            if (num > 0)   // If there is at least ONE alert
+            {
+                notifyIcon.Icon = SystemIcons.Application;
+                notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
+                notifyIcon.ShowBalloonTip(1500);
+            }
+        }
     }
 }

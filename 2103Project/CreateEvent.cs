@@ -16,7 +16,7 @@ using _2103Project.Action;
  * 
  *   Tan Siong Wee, Edmund  A0076627W
  *   Tio Wee Leong          A0073702M
- * 
+ *   Lim Zhi Hao            A0067252H
  */
 
 //TODO:
@@ -138,7 +138,7 @@ namespace _2103Project
                 }
                 org.addSchedule(newSchedule);
                 org.addBudget(listOfBudget);
-                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), double.Parse(totalPriceTextBox.Text), listOfBudgetID);
+                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), false,false,false,false, listOfBudgetID, double.Parse(totalPriceTextBox.Text));
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();

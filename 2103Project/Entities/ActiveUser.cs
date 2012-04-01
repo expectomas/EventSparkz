@@ -22,6 +22,8 @@ namespace _2103Project.Entities
 
         Database db = Database.CreateDatabase(DatabaseToken);
 
+        static List<Alert> userAlerts = new List<Alert>();
+
         public ActiveUser()
         {
 
@@ -42,6 +44,7 @@ namespace _2103Project.Entities
 
         }
 
+        // Event Display
         public EventEntity viewEventInfo(int index)
         {
             List<EventEntity> temp = new List<EventEntity>();
@@ -64,7 +67,6 @@ namespace _2103Project.Entities
 
             return temp[selectedEventIndex];
         } 
-
         public List<EventEntity> viewEventListing()
         {
             List<EventEntity> eventListing = db.getListOfEvents();
@@ -90,7 +92,6 @@ namespace _2103Project.Entities
 
             return eventListing;
         }   
-
         public List<EventEntity> viewEventListingByDate(DateTime selectedDateTime)
         {
             List<EventEntity> eventListing = db.getListOfEvents();
@@ -126,8 +127,7 @@ namespace _2103Project.Entities
             //
 
             return temp;
-        }           //Unit Test
-
+        }   
         public List<EventEntity> viewEventListingByEventName(string word)
         {
             string temp;
@@ -219,6 +219,110 @@ namespace _2103Project.Entities
             //
 
             return list;
-        }                       //Unit Test
+        }   
+
+        // Alert Search
+        public int scoutAlert()
+        {
+            int numOfAlerts = 0;
+            Participant p = new Participant(this);
+            Facilitator f = new Facilitator(this);
+            Organiser o = new Organiser(this);
+            List<EventEntity> listOfRegisteredEvents = new List<EventEntity>();
+            List<EventEntity> listOfFacilitatingEvents = new List<EventEntity>();
+            List<EventEntity> listOfOrganizingEvents = new List<EventEntity>();
+            EventEntity eve = new EventEntity();
+            listOfFacilitatingEvents = f.getFacilitatedEvents();
+            listOfOrganizingEvents = o.getOrganisedEvents();
+            listOfRegisteredEvents = p.getRegisteredEvents();
+
+            // Alert if User is PARTICIPANT of this updated event
+            foreach (EventEntity e in listOfRegisteredEvents)
+            {
+                if (e.getEventUpdatedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 1));
+                    numOfAlerts++;
+                }
+            }
+
+            // Alert if User if FACILITATOR of this updated event
+            foreach (EventEntity e in listOfFacilitatingEvents)
+            {
+                if (e.getEventUpdatedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 1));
+                    numOfAlerts++;
+                }
+            }
+            
+            // Alert if User is PARTICIPANT of this deleted event
+            foreach (EventEntity e in listOfRegisteredEvents)
+            {
+                if (e.getEventDeletedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 2));
+                    numOfAlerts++;
+                }
+            }
+
+            // Alert if User is FACILITATOR of this deleted event
+            foreach (EventEntity e in listOfFacilitatingEvents)
+            {
+                if (e.getEventDeletedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 2));
+                    numOfAlerts++;
+                }
+            }
+
+            // Alert if User is PARTICIPANT of this starting event
+            foreach (EventEntity e in listOfRegisteredEvents)
+            {
+                if (e.getEventDeletedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 3));
+                    numOfAlerts++;
+                }
+            }
+
+            // Alert if User is FACILITATOR of this starting event
+            foreach (EventEntity e in listOfFacilitatingEvents)
+            {
+                if (e.getEventDeletedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 3));
+                    numOfAlerts++;
+                }
+            }
+
+            // Alert if User is ORGANIZER of this starting event
+            foreach (EventEntity e in listOfOrganizingEvents)
+            {
+                if (e.getEventDeletedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 3));
+                    numOfAlerts++;
+                }
+            }
+
+            // Alert if User is ORGANIZER of this full event
+            foreach (EventEntity e in listOfOrganizingEvents)
+            {
+                if (e.getEventDeletedFlag(this.userId) == true)
+                {
+                    userAlerts.Add(eve.createAlert(e.getEventId(), 4));
+                    numOfAlerts++;
+                }
+            }
+
+            return numOfAlerts;
+        }
+
+        // Get List of Alerts For This Current User
+        public List<Alert> getListOfAlerts()
+        {
+            return userAlerts;
+        }
     }
 }

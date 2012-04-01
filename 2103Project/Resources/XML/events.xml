@@ -9,6 +9,10 @@
     <participantSize>20</participantSize>
     <organiserId>1</organiserId>
     <totalBudget>321</totalBudget>
+	<eventUpdatedFlag>false</eventUpdatedFlag>
+	<eventDeletedFlag>false</eventDeletedFlag>
+	<eventStarting>false</eventStarting>
+	<eventFull>false</eventFull>
     <participantList>
       <User>
         <userId>6</userId>
@@ -49,6 +53,10 @@
     <participantSize>60</participantSize>
     <organiserId>2</organiserId>
     <totalBudget>3123</totalBudget>
+	<eventUpdatedFlag>false</eventUpdatedFlag>
+	<eventDeletedFlag>false</eventDeletedFlag>
+	<eventStarting>false</eventStarting>
+	<eventFull>false</eventFull>
     <participantList>
       <User>
         <userId>3</userId>
@@ -98,6 +106,10 @@
     <participantSize>43</participantSize>
     <organiserId>2</organiserId>
     <totalBudget>542</totalBudget>
+	<eventUpdatedFlag>false</eventUpdatedFlag>
+	<eventDeletedFlag>false</eventDeletedFlag>
+	<eventStarting>false</eventStarting>
+	<eventFull>false</eventFull>
     <participantList>
       <User>
         <userId>1</userId>
