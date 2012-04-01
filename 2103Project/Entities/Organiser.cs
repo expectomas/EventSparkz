@@ -230,6 +230,24 @@ namespace _2103Project.Entities
 
             return outputFacilitatorList;
         }
+<<<<<<< HEAD
+
+        /*private List<Venue> checkVenueCapacity(int participantSize)
+        {
+            List<Venue> venueList = new List<Venue>();
+
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Venue> listOfvenues = db.getListOfVenues();
+
+            for (int i = 0; i < listOfvenues.Count; i++)
+            {
+                if(Venue.getCapacity() > participantSize)
+                    venueList.Add(new Venue(listOfvenues[i]));
+            }
+
+            return venueList;
+        }*/
+=======
         
         public EventEntity getMostRegisteredEvent()
         {
@@ -248,5 +266,6 @@ namespace _2103Project.Entities
 
             return mostRegisteredEvent;
         }
+>>>>>>> 49116ab8f44ea8b239eaa256e7897810fe812a12
     }
 }

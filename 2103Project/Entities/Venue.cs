@@ -84,6 +84,8 @@ namespace _2103Project.Entities
             }
             return capacity;
         }
+<<<<<<< HEAD
+=======
 */
         public static string getVenueLocationfromID(int venueIdentity)
         {
@@ -97,6 +99,7 @@ namespace _2103Project.Entities
             }
             return venueLocation;
         }
+>>>>>>> 49116ab8f44ea8b239eaa256e7897810fe812a12
 
         public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
         {
