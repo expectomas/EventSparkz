@@ -370,7 +370,7 @@ namespace _2103Project.Entities
             return false;
         }
 
-        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, string purpose)
+        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, ref bool o_eventUpdatedFlag, ref bool o_eventDeletedFlag, ref bool o_eventStartingFlag, ref bool o_eventFullFlag, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
             {
