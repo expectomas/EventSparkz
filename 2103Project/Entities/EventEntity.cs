@@ -127,7 +127,7 @@ namespace _2103Project.Entities
             return participantList;
         }
 
-        public int getParticipatSize()
+        public int getParticipantSize()
         {
             return participantSize;
         }
@@ -221,7 +221,7 @@ namespace _2103Project.Entities
             foreach (EventEntity eve in listOfEvents)
             {
                 if (eve.getEventId() == eventID)
-                    totalParticipateNumber = eve.getParticipatSize();
+                    totalParticipateNumber = eve.getParticipantSize();
             }
             return totalParticipateNumber;
         }

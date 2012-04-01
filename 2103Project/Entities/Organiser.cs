@@ -256,7 +256,7 @@ namespace _2103Project.Entities
             {
                 if(EventEntity.getParticipantNumber(eventCreated.getEventId())>participantCount))
                 {
-                    participantCount = eventCreated.getParticipatSize();
+                    participantCount = eventCreated.getParticipantSize();
 
                     mostRegisteredEvent = eventCreated;
                 }
