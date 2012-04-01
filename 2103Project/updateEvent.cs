@@ -111,11 +111,15 @@ namespace _2103Project
                     string timeTest = timeListBox.Items[i].ToString();
                     listOfDateTime.Add(returnTime(timeListBox.Items[i].ToString(), dtValue));
                     listOfdescription.Add(descriptionListBox.Items[i].ToString());
-                    int venueID = Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString());
-                    newVen = new Venue(venueID, venueListBox.Items[i].ToString());
+                    newVen = new Venue(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString()), venueListBox.Items[i].ToString());
                     listOfVenue.Add(newVen);
                 }
                 EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
+
+                //Set Alert Flag
+                EventEntity eve = new EventEntity();
+                eve.setEventUpdatedFlag(currentEventID);
+                //
 
                 MessageBox.Show("Save successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();

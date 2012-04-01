@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainPage));
             this.titleLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,7 +49,11 @@
             this.announcementList1 = new System.Windows.Forms.ListView();
             this.statuslabel1 = new System.Windows.Forms.Label();
             this.announcementStatic = new System.Windows.Forms.Label();
-            this.analyticsBtn = new System.Windows.Forms.Button();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewAlertsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -97,7 +102,7 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.registerEvent.Location = new System.Drawing.Point(15, 617);
+            this.registerEvent.Location = new System.Drawing.Point(79, 617);
             this.registerEvent.Name = "registerEvent";
             this.registerEvent.Size = new System.Drawing.Size(120, 30);
             this.registerEvent.TabIndex = 7;
@@ -250,22 +255,39 @@
             // announcementStatic
             // 
             this.announcementStatic.AutoSize = true;
-            this.announcementStatic.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.announcementStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.announcementStatic.Location = new System.Drawing.Point(236, 41);
             this.announcementStatic.Name = "announcementStatic";
-            this.announcementStatic.Size = new System.Drawing.Size(272, 24);
+            this.announcementStatic.Size = new System.Drawing.Size(260, 25);
             this.announcementStatic.TabIndex = 20;
             this.announcementStatic.Text = "Real-Time Announcement";
             // 
-            // analyticsBtn
+            // notifyIcon
             // 
-            this.analyticsBtn.Location = new System.Drawing.Point(146, 617);
-            this.analyticsBtn.Name = "analyticsBtn";
-            this.analyticsBtn.Size = new System.Drawing.Size(120, 30);
-            this.analyticsBtn.TabIndex = 21;
-            this.analyticsBtn.Text = "Analytics";
-            this.analyticsBtn.UseVisualStyleBackColor = true;
-            this.analyticsBtn.Click += new System.EventHandler(this.analyticsBtn_Click);
+            this.notifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon.BalloonTipTitle = "EventSparkZ Alert";
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Visible = true;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewAlertsToolStripMenuItem,
+            this.toolStripMenuItem1});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(153, 70);
+            // 
+            // viewAlertsToolStripMenuItem
+            // 
+            this.viewAlertsToolStripMenuItem.Name = "viewAlertsToolStripMenuItem";
+            this.viewAlertsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewAlertsToolStripMenuItem.Text = "View Alerts";
+            this.viewAlertsToolStripMenuItem.Click += new System.EventHandler(this.viewAlertsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             // 
             // mainPage
             // 
@@ -273,7 +295,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(769, 662);
-            this.Controls.Add(this.analyticsBtn);
             this.Controls.Add(this.announcementStatic);
             this.Controls.Add(this.statuslabel1);
             this.Controls.Add(this.announcementList1);
@@ -300,6 +321,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Page";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainPage_FormClosed);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,7 +348,10 @@
         private System.Windows.Forms.ListView announcementList1;
         private System.Windows.Forms.Label statuslabel1;
         private System.Windows.Forms.Label announcementStatic;
-        private System.Windows.Forms.Button analyticsBtn;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem viewAlertsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
 
     }
 }
