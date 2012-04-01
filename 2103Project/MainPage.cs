@@ -659,5 +659,24 @@ namespace _2103Project
 
             AnalyticsPage.Show();
         }
+
+        private void viewAlertsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlertForm alertNew = new AlertForm(currentUser);
+            alertNew.Show();
+        }
+
+        public void displayAlert()
+        {
+            ActiveUser au = new ActiveUser(currentUser);
+            int num = au.scoutAlert();
+
+            if (num > 0)   // If there is at least ONE alert
+            {
+                notifyIcon.Icon = SystemIcons.Application;
+                notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
+                notifyIcon.ShowBalloonTip(1500);
+            }
+        }
     }
 }
