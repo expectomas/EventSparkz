@@ -258,11 +258,13 @@ namespace _2103Project
 
                 foreach (Advertisement ad in listOfAdv)
                 {
-                    string path = ad.imageDirectory.Remove(0, 5);
+                    string file = ad.imageDirectory;
 
+                    string relativePath = System.IO.Directory.GetCurrentDirectory() + "\\poster" + file + ".jpg";
+                        
                         try
                         {
-                            imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + path.ToString() + ".jpg"));
+                            imgList.Images.Add(Bitmap.FromFile(relativePath));
                         }
                         catch (System.IO.FileNotFoundException)
                         {
@@ -649,6 +651,13 @@ namespace _2103Project
             currentEventID = int.Parse(listItem.SubItems[1].Text);
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
+        }
+
+        private void analyticsBtn_Click(object sender, EventArgs e)
+        {
+            Analytic AnalyticsPage = new Analytic(currentUser);
+
+            AnalyticsPage.Show();
         }
 
     }

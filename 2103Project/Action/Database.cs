@@ -118,6 +118,14 @@ namespace _2103Project.Action
 
                     double totalBudget = scanner.ReadElementContentAsDouble();
 
+                    bool eventUpdatedFlag = scanner.ReadElementContentAsBoolean();
+                        
+                    bool eventDeletedFlag = scanner.ReadElementContentAsBoolean();
+                       
+                    bool eventStartingFlag = scanner.ReadElementContentAsBoolean();
+
+                    bool eventFullFlag = scanner.ReadElementContentAsBoolean();
+
                     if (scanner.ReadToDescendant("User"))
                     {
                         do
@@ -185,7 +193,7 @@ namespace _2103Project.Action
 
                     scanner.Skip();
 
-                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId,totalBudget,budgetList);
+                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId,totalBudget,budgetList, eventUpdatedFlag,eventDeletedFlag,eventStartingFlag,eventFullFlag);
 
                     participantList.Clear();
                     facilitatorList.Clear();
@@ -212,6 +220,10 @@ namespace _2103Project.Action
             int o_organiserId = 0;
             List<Participant> o_participantList = new List<Participant>();
             List<int> o_facilitatorList = new List<int>();
+            bool o_eventUpdatedFlag = false;
+            bool o_eventDeletedFlag = false;
+            bool o_eventStartingFlag = false;
+            bool o_eventFullFlag = false;
 
             //Participant Attributes
              int o_userId =0 ;
@@ -251,7 +263,7 @@ namespace _2103Project.Action
                     for (int i = 0; i < sizeOfList; i++)
                     {
                         holdingElement = eventListToSave[i];
-                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, ref o_totalBudget,ref o_budgetList, requestString);
+                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, ref o_totalBudget,ref o_budgetList, ref o_eventUpdatedFlag, ref o_eventDeletedFlag, ref o_eventStartingFlag, ref o_eventFullFlag, requestString);
 
                         writer.WriteStartElement("EventEntity");
 
@@ -270,6 +282,14 @@ namespace _2103Project.Action
                         writer.WriteElementString("organiserId", o_organiserId.ToString());
 
                         writer.WriteElementString("totalBudget", o_totalBudget.ToString());
+
+                        writer.WriteElementString("eventUpdatedFlag",o_eventUpdatedFlag.ToString());
+                        
+                        writer.WriteElementString("eventDeletedFlag",o_eventDeletedFlag.ToString());
+                        
+                        writer.WriteElementString("eventStarting",o_eventStartingFlag.ToString());
+
+                        writer.WriteElementString("eventFull", o_eventFullFlag.ToString());
 
                         //List of Participants
                         writer.WriteStartElement("participantList");
@@ -405,7 +425,7 @@ namespace _2103Project.Action
                         int activityId = scanner.ReadElementContentAsInt();
 
                         DateTime time = scanner.ReadElementContentAsDateTime();
-
+                        
                         string activityDescription = scanner.ReadElementContentAsString("description", "");
 
                         scanner.ReadToFollowing("venueId");
@@ -413,6 +433,8 @@ namespace _2103Project.Action
                         int i_venueId = scanner.ReadElementContentAsInt();
 
                         string i_location = scanner.ReadElementContentAsString("location", "");
+
+                     //   int i_capacity = scanner.ReadElementContentAsInt();
 
                         Venue newVenue = new Venue(i_venueId, i_location);
 

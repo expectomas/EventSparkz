@@ -76,16 +76,15 @@
             this.imgFileLocation.Name = "imgFileLocation";
             this.imgFileLocation.Size = new System.Drawing.Size(255, 20);
             this.imgFileLocation.TabIndex = 3;
-            this.imgFileLocation.Text = "debug\\";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.Size = new System.Drawing.Size(131, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Image Location :";
+            this.label2.Text = "Image File Name (eg. 7v) :";
             // 
             // label3
             // 

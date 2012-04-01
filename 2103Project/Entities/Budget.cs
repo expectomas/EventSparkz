@@ -18,6 +18,21 @@ namespace _2103Project.Entities
             itemName = i_itemName;
         }
 
+        public int getItemID()
+        {
+            return itemId;
+        }
+
+        public double getItemPrice()
+        {
+            return itemPrice;
+        }
+
+        public string getItemName()
+        {
+            return itemName;
+        }
+
         public void requestBudgetDetails(ref int o_itemId, ref double o_itemPrice, ref string o_itemName)
         {
             o_itemId = itemId;

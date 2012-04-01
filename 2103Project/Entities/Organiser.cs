@@ -105,12 +105,32 @@ namespace _2103Project.Entities
             return newActivityId;
         }
 
+        public int getNewItemID()
+        {
+            int newItemID = 1;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Budget> listOfBudget = db.getListOfBudget();
+            foreach (Budget currBud in listOfBudget)
+                newItemID = currBud.getItemID();
+            newItemID++;
+            return newItemID;
+        }
         public bool addNewActivity(Activity newAct)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             List<Activity> activityList = db.getListOfActivities();
             activityList.Add(newAct);
             db.saveListOfActivities(activityList);
+            return true;
+        }
+
+        public bool addBudget(List<Budget> listOfBudget)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Budget> budgetList = db.getListOfBudget();
+            foreach (Budget currBudget in listOfBudget)
+                budgetList.Add(currBudget);
+            db.saveListOfBudgets(budgetList);
             return true;
         }
 
@@ -210,6 +230,7 @@ namespace _2103Project.Entities
 
             return outputFacilitatorList;
         }
+<<<<<<< HEAD
 
         /*private List<Venue> checkVenueCapacity(int participantSize)
         {
@@ -226,5 +247,25 @@ namespace _2103Project.Entities
 
             return venueList;
         }*/
+=======
+        
+        public EventEntity getMostRegisteredEvent()
+        {
+            EventEntity mostRegisteredEvent = null;
+            int participantCount = 0;
+
+            foreach (EventEntity eventCreated in createdEvents)
+            {
+                if(eventCreated.getParticipatSize()>participantCount)
+                {
+                    participantCount = eventCreated.getParticipatSize();
+
+                    mostRegisteredEvent = eventCreated;
+                }
+            }
+
+            return mostRegisteredEvent;
+        }
+>>>>>>> 49116ab8f44ea8b239eaa256e7897810fe812a12
     }
 }

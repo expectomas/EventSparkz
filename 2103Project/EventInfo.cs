@@ -98,6 +98,9 @@ namespace _2103Project
             noOfParticipantLabel.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
             DateTime dateValue = EventEntity.getStartTime(currentEventID);
             dateLabel.Text = String.Format("{0:f}", dateValue);
+            
+            // Version 1
+            /*
             venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
             Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
             Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
@@ -110,13 +113,45 @@ namespace _2103Project
                 newevent.SubItems.Add(listOfVenue.Dequeue());
                 scheduleEventView.Items.Add(newevent);
             }
+            */
+            // Version 2
+            DateTime enddateValue = EventEntity.getEndTime(currentEventID);
+            Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
+            Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
+            Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
+           // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
 
-
-            //display the appropriate btn based on the states
+            setScheduleDay(dateValue, enddateValue);
+            dateCombobox.Text = dateValue.ToLongDateString();
+            while(!(listOfDateTime.Count == 0))
+            {
+                DateTime currDateTimeValue = listOfDateTime.Dequeue();
+                string currDescription = listofDescription.Dequeue();
+                string currVenue = listOfVenue.Dequeue();
+                if (currDateTimeValue == dateValue)
+                {
+                    ListViewItem newevent = new ListViewItem(String.Format("{0:t}", currDateTimeValue));
+                    newevent.SubItems.Add(currDescription);
+                    newevent.SubItems.Add(currVenue);
+                    scheduleEventView.Items.Add(newevent);
+                }
+            }
+                //display the appropriate btn based on the states
             state = determineState(currentEventID);
             displayAppropriateBtn(state);
         }
 
+        private void setScheduleDay(DateTime startDate, DateTime endDate)
+        {
+            dateCombobox.Items.Clear();
+            TimeSpan diffDate = endDate.Subtract(startDate);
+            DateTime currentDate = startDate;
+            for (int i = 0; i <= diffDate.Days; i++)
+            {
+                dateCombobox.Items.Add(currentDate.ToLongDateString());
+                currentDate = currentDate.AddDays(1);
+            }
+        }
         private void displayStatusLabel(string displayString)
         {
             statusLabel.Hide();

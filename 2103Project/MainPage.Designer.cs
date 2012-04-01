@@ -48,6 +48,7 @@
             this.announcementList1 = new System.Windows.Forms.ListView();
             this.statuslabel1 = new System.Windows.Forms.Label();
             this.announcementStatic = new System.Windows.Forms.Label();
+            this.analyticsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -96,7 +97,7 @@
             // registerEvent
             // 
             this.registerEvent.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.registerEvent.Location = new System.Drawing.Point(79, 617);
+            this.registerEvent.Location = new System.Drawing.Point(15, 617);
             this.registerEvent.Name = "registerEvent";
             this.registerEvent.Size = new System.Drawing.Size(120, 30);
             this.registerEvent.TabIndex = 7;
@@ -256,12 +257,23 @@
             this.announcementStatic.TabIndex = 20;
             this.announcementStatic.Text = "Real-Time Announcement";
             // 
+            // analyticsBtn
+            // 
+            this.analyticsBtn.Location = new System.Drawing.Point(146, 617);
+            this.analyticsBtn.Name = "analyticsBtn";
+            this.analyticsBtn.Size = new System.Drawing.Size(120, 30);
+            this.analyticsBtn.TabIndex = 21;
+            this.analyticsBtn.Text = "Analytics";
+            this.analyticsBtn.UseVisualStyleBackColor = true;
+            this.analyticsBtn.Click += new System.EventHandler(this.analyticsBtn_Click);
+            // 
             // mainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(769, 662);
+            this.Controls.Add(this.analyticsBtn);
             this.Controls.Add(this.announcementStatic);
             this.Controls.Add(this.statuslabel1);
             this.Controls.Add(this.announcementList1);
@@ -314,6 +326,7 @@
         private System.Windows.Forms.ListView announcementList1;
         private System.Windows.Forms.Label statuslabel1;
         private System.Windows.Forms.Label announcementStatic;
+        private System.Windows.Forms.Button analyticsBtn;
 
     }
 }

@@ -48,6 +48,8 @@
             this.returnBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.scheduleEventView = new System.Windows.Forms.ListView();
+            this.dateCombobox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -96,7 +98,7 @@
             // 
             this.scheduleLabel.AutoSize = true;
             this.scheduleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scheduleLabel.Location = new System.Drawing.Point(201, 131);
+            this.scheduleLabel.Location = new System.Drawing.Point(6, 0);
             this.scheduleLabel.Name = "scheduleLabel";
             this.scheduleLabel.Size = new System.Drawing.Size(80, 21);
             this.scheduleLabel.TabIndex = 9;
@@ -231,7 +233,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateCombobox);
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.scheduleEventView);
+            this.groupBox1.Controls.Add(this.scheduleLabel);
             this.groupBox1.Location = new System.Drawing.Point(10, 131);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(472, 172);
@@ -243,12 +248,32 @@
             this.scheduleEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scheduleEventView.FullRowSelect = true;
             this.scheduleEventView.GridLines = true;
-            this.scheduleEventView.Location = new System.Drawing.Point(9, 24);
+            this.scheduleEventView.Location = new System.Drawing.Point(9, 49);
             this.scheduleEventView.Name = "scheduleEventView";
-            this.scheduleEventView.Size = new System.Drawing.Size(454, 141);
+            this.scheduleEventView.Size = new System.Drawing.Size(454, 116);
             this.scheduleEventView.TabIndex = 80;
             this.scheduleEventView.UseCompatibleStateImageBehavior = false;
             this.scheduleEventView.View = System.Windows.Forms.View.Details;
+            // 
+            // dateCombobox
+            // 
+            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCombobox.FormattingEnabled = true;
+            this.dateCombobox.Location = new System.Drawing.Point(140, 16);
+            this.dateCombobox.Name = "dateCombobox";
+            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
+            this.dateCombobox.TabIndex = 82;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(92, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 21);
+            this.label15.TabIndex = 81;
+            this.label15.Text = "Date:";
             // 
             // eventInfoForm
             // 
@@ -263,7 +288,6 @@
             this.Controls.Add(this.organiserLabel);
             this.Controls.Add(this.venueLabel);
             this.Controls.Add(this.dateLabel);
-            this.Controls.Add(this.scheduleLabel);
             this.Controls.Add(this.labelb);
             this.Controls.Add(this.labela);
             this.Controls.Add(this.labelc);
@@ -277,6 +301,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,6 +328,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.ListView scheduleEventView;
+        private System.Windows.Forms.ComboBox dateCombobox;
+        private System.Windows.Forms.Label label15;
 
     }
 }
