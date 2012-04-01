@@ -241,7 +241,7 @@
             // 
             this.statuslabel1.AutoSize = true;
             this.statuslabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.statuslabel1.Location = new System.Drawing.Point(516, 12);
+            this.statuslabel1.Location = new System.Drawing.Point(459, 12);
             this.statuslabel1.Name = "statuslabel1";
             this.statuslabel1.Size = new System.Drawing.Size(40, 15);
             this.statuslabel1.TabIndex = 19;
