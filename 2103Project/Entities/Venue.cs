@@ -84,19 +84,6 @@ namespace _2103Project.Entities
             return venueLocation;
         }
 
-        public static int getVenueCapacity(int venuecap)
-        {
-            int venueCapacity = venuecap;
-            Database db = Database.CreateDatabase(DatabaseToken);
-            List<Venue> listOfvenue = db.getListOfVenues();
-            foreach (Venue ven in listOfvenue)
-            {
-                if (venueCapacity == ven.getCapacity())
-                    venueCapacity = ven.getCapacity();
-            }
-            return venueCapacity;
-        }
-
         public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
         {
             bool releasedDetails = false;
