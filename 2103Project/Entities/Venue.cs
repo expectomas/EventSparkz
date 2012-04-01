@@ -18,7 +18,7 @@ namespace _2103Project.Entities
     {
         private int venueId;
         private string location;
-    //    private int capacity;
+        private int capacity;
 
         //Database Access Authetication
         private const string DatabaseToken = "nhgdkc#1";
@@ -53,12 +53,12 @@ namespace _2103Project.Entities
         {
             return location;
         }
-/*
+
         public int getCapacity()
         {
             return capacity;
         }
-*/
+ 
         public static int getVenueIdfromLocation(string venue)
         {
             int venueID = 1;
@@ -72,7 +72,7 @@ namespace _2103Project.Entities
             return venueID;
         }
 
- /*       public static int getCapacityFromVenueID(int venueID)
+        public static int getCapacityFromVenueID(int venueID)
         {
             int capacity = 0;
             Database db = Database.CreateDatabase(DatabaseToken);
@@ -84,9 +84,7 @@ namespace _2103Project.Entities
             }
             return capacity;
         }
-<<<<<<< HEAD
-=======
-*/
+
         public static string getVenueLocationfromID(int venueIdentity)
         {
             string venueLocation = "MPSH1";
@@ -99,7 +97,6 @@ namespace _2103Project.Entities
             }
             return venueLocation;
         }
->>>>>>> 49116ab8f44ea8b239eaa256e7897810fe812a12
 
         public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
         {
