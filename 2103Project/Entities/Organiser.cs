@@ -254,7 +254,7 @@ namespace _2103Project.Entities
 
             foreach (EventEntity eventCreated in createdEvents)
             {
-                if(EventEntity.getParticipantNumber(eventCreated.getEventId())>participantCount))
+                if(EventEntity.getParticipantNumber(eventCreated.getEventId())>participantCount)
                 {
                     participantCount = eventCreated.getParticipantSize();
 
