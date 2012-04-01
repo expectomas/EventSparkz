@@ -135,7 +135,7 @@ namespace _2103Project
                 }
                 org.addSchedule(newSchedule);
                 org.addBudget(listOfBudget);
-                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), double.Parse(totalPriceTextBox.Text), listOfBudgetID);
+                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), double.Parse(totalPriceTextBox.Text), listOfBudgetID, false,false,false,false);
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();

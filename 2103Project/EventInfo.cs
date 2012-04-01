@@ -115,13 +115,13 @@ namespace _2103Project
             }
             */
             // Version 2
-            DateTime enddateValue = EventEntity.getEndTime(currentEventID);
+//            DateTime enddateValue = EventEntity.getEndTime(currentEventID);
             Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
             Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
             Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
            // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
 
-            setScheduleDay(dateValue, enddateValue);
+//            setScheduleDay(dateValue, enddateValue);
             dateCombobox.Text = dateValue.ToLongDateString();
             while(!(listOfDateTime.Count == 0))
             {
