@@ -132,7 +132,7 @@ namespace _2103Project.Entities
             return participantSize;
         }
 
-        public void setPartipantSize(int partNum)
+        public void setParticipantSize(int partNum)
         {
             participantSize = partNum;
         }
@@ -428,7 +428,7 @@ namespace _2103Project.Entities
             foreach (EventEntity events in listOfEvent)
             {
                 if (events.getEventId() == currentEventID)
-                    events.setPartipantSize(participantSize);
+                    events.setParticipantSize(participantSize);
             }
             db.saveListOfEvents(listOfEvent);
             return true;
