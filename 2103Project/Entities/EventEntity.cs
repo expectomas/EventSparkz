@@ -32,6 +32,11 @@ namespace _2103Project.Entities
         private List<Participant> participantList;
         private List<int> facilitatorList;
         private int eventOrganiserId;
+        private bool eventUpdatedFlag;
+        private bool eventDeletedFlag;
+        private bool eventStartingFlag;
+        private bool eventFullFlag;
+
         //Version 2
         private double totalBudget;
         private List<int> budgetList;
@@ -45,7 +50,7 @@ namespace _2103Project.Entities
 
         }
 
-        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, double i_budget, List<int> i_itemList)
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, double i_budget, List<int> i_itemList, bool i_eventUpdatedFlag, bool i_eventDeletedFlag, bool i_eventStartingFlag, bool i_eventFullFlag)
         {
             eventId = i_eventId;
             name = i_name;
@@ -58,6 +63,10 @@ namespace _2103Project.Entities
             eventOrganiserId = i_eventOrganiserId;
             totalBudget = i_budget;
             budgetList = new List<int>(i_itemList);
+            eventUpdatedFlag = i_eventUpdatedFlag;
+            eventDeletedFlag = i_eventDeletedFlag;
+            eventStartingFlag = i_eventStartingFlag;
+            eventFullFlag = i_eventFullFlag;
         }
 
         //Methods
@@ -386,7 +395,7 @@ namespace _2103Project.Entities
             return false;
         }
 
-        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, ref double o_budget, ref List<int> o_itemList, string purpose)
+        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, ref double o_budget, ref List<int> o_itemList, ref bool o_eventUpdatedFlag, ref bool o_eventDeletedFlag, ref bool o_eventStartingFlag, ref bool o_eventFullFlag, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
             {
@@ -401,6 +410,10 @@ namespace _2103Project.Entities
                 o_organiserId = eventOrganiserId;
                 o_budget = totalBudget;
                 o_itemList = new List<int>(budgetList);
+                o_eventUpdatedFlag = eventUpdatedFlag;
+                o_eventDeletedFlag = eventDeletedFlag;
+                o_eventStartingFlag = eventStartingFlag;
+                o_eventFullFlag  = eventFullFlag;
 
                 return true;
             }
