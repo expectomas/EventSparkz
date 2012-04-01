@@ -230,5 +230,43 @@ namespace _2103Project.Entities
 
             return outputFacilitatorList;
         }
+
+        public void saveBudget(List<string> listItem, List<double> listPrice, List<int> listID, double totalPrice, int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfDBEvent = db.getListOfEvents();
+            
+            foreach (EventEntity events in listOfDBEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                {
+                    events.setListOfBudgetItem(listID);
+                    events.setTotalPrice(totalPrice);
+                }
+            }
+            db.saveListOfEvents(listOfDBEvent);
+            Budget currBudget;
+            List<Budget> listOfDBBudget = db.getListOfBudget();
+            bool addflag = true;
+            while (listID.Count != 0)
+            {
+                for (int i = 0; i < listOfDBBudget.Count; i++)
+                {
+                    if (listID[0] == listOfDBBudget[i].getItemID())
+                        addflag = false;
+                }
+                if(addflag == true)
+                {
+                    currBudget = new Budget(listID[0], listPrice[0], listItem[0]);
+                    listOfDBBudget.Add(currBudget);
+                }
+                else
+                {
+                    addflag = true;
+                }
+                listID.RemoveAt(0); listPrice.RemoveAt(0); listItem.RemoveAt(0);
+            }
+            db.saveListOfBudgets(listOfDBBudget);
+        }
     }
 }

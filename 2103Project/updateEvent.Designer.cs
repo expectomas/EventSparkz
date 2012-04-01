@@ -47,10 +47,13 @@
             this.addItemButton = new System.Windows.Forms.Button();
             this.deleteItem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.timeListBox = new System.Windows.Forms.ListBox();
-            this.descriptionListBox = new System.Windows.Forms.ListBox();
             this.venueListBox = new System.Windows.Forms.ListBox();
+            this.descriptionListBox = new System.Windows.Forms.ListBox();
+            this.timeListBox = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.editBudgetButton = new System.Windows.Forms.Button();
+            this.dateCombobox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,6 +268,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateCombobox);
+            this.groupBox1.Controls.Add(this.label15);
             this.groupBox1.Controls.Add(this.venueListBox);
             this.groupBox1.Controls.Add(this.descriptionListBox);
             this.groupBox1.Controls.Add(this.timeListBox);
@@ -279,39 +284,71 @@
             this.groupBox1.TabIndex = 84;
             this.groupBox1.TabStop = false;
             // 
+            // venueListBox
+            // 
+            this.venueListBox.FormattingEnabled = true;
+            this.venueListBox.Location = new System.Drawing.Point(345, 47);
+            this.venueListBox.Name = "venueListBox";
+            this.venueListBox.Size = new System.Drawing.Size(120, 121);
+            this.venueListBox.TabIndex = 81;
+            // 
+            // descriptionListBox
+            // 
+            this.descriptionListBox.FormattingEnabled = true;
+            this.descriptionListBox.Location = new System.Drawing.Point(137, 47);
+            this.descriptionListBox.Name = "descriptionListBox";
+            this.descriptionListBox.Size = new System.Drawing.Size(202, 121);
+            this.descriptionListBox.TabIndex = 80;
+            // 
+            // timeListBox
+            // 
+            this.timeListBox.FormattingEnabled = true;
+            this.timeListBox.Location = new System.Drawing.Point(11, 46);
+            this.timeListBox.Name = "timeListBox";
+            this.timeListBox.Size = new System.Drawing.Size(120, 121);
+            this.timeListBox.TabIndex = 79;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(192, -3);
+            this.label3.Location = new System.Drawing.Point(7, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 21);
             this.label3.TabIndex = 73;
             this.label3.Text = "Schedule";
             // 
-            // timeListBox
+            // editBudgetButton
             // 
-            this.timeListBox.FormattingEnabled = true;
-            this.timeListBox.Location = new System.Drawing.Point(11, 20);
-            this.timeListBox.Name = "timeListBox";
-            this.timeListBox.Size = new System.Drawing.Size(120, 147);
-            this.timeListBox.TabIndex = 79;
+            this.editBudgetButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editBudgetButton.Location = new System.Drawing.Point(369, 10);
+            this.editBudgetButton.Name = "editBudgetButton";
+            this.editBudgetButton.Size = new System.Drawing.Size(108, 24);
+            this.editBudgetButton.TabIndex = 85;
+            this.editBudgetButton.Text = "Edit Budget";
+            this.editBudgetButton.UseVisualStyleBackColor = true;
+            this.editBudgetButton.Click += new System.EventHandler(this.editBudgetButton_Click);
             // 
-            // descriptionListBox
+            // dateCombobox
             // 
-            this.descriptionListBox.FormattingEnabled = true;
-            this.descriptionListBox.Location = new System.Drawing.Point(137, 21);
-            this.descriptionListBox.Name = "descriptionListBox";
-            this.descriptionListBox.Size = new System.Drawing.Size(202, 147);
-            this.descriptionListBox.TabIndex = 80;
+            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCombobox.FormattingEnabled = true;
+            this.dateCombobox.Location = new System.Drawing.Point(123, 16);
+            this.dateCombobox.Name = "dateCombobox";
+            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
+            this.dateCombobox.TabIndex = 84;
+            this.dateCombobox.SelectedIndexChanged += new System.EventHandler(this.dateCombobox_SelectedIndexChanged);
             // 
-            // venueListBox
+            // label15
             // 
-            this.venueListBox.FormattingEnabled = true;
-            this.venueListBox.Location = new System.Drawing.Point(345, 21);
-            this.venueListBox.Name = "venueListBox";
-            this.venueListBox.Size = new System.Drawing.Size(120, 147);
-            this.venueListBox.TabIndex = 81;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(72, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 21);
+            this.label15.TabIndex = 83;
+            this.label15.Text = "Date:";
             // 
             // updateForm
             // 
@@ -319,6 +356,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(489, 435);
+            this.Controls.Add(this.editBudgetButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.deleteItem);
             this.Controls.Add(this.addItemButton);
@@ -368,5 +406,8 @@
         private System.Windows.Forms.ListBox venueListBox;
         private System.Windows.Forms.ListBox descriptionListBox;
         private System.Windows.Forms.ListBox timeListBox;
+        private System.Windows.Forms.Button editBudgetButton;
+        private System.Windows.Forms.ComboBox dateCombobox;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -47,9 +47,9 @@
             this.viewFacilitatorListBtn = new System.Windows.Forms.Button();
             this.returnBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.scheduleEventView = new System.Windows.Forms.ListView();
             this.dateCombobox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.scheduleEventView = new System.Windows.Forms.ListView();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -243,6 +243,27 @@
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             // 
+            // dateCombobox
+            // 
+            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCombobox.FormattingEnabled = true;
+            this.dateCombobox.Location = new System.Drawing.Point(140, 16);
+            this.dateCombobox.Name = "dateCombobox";
+            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
+            this.dateCombobox.TabIndex = 82;
+            this.dateCombobox.SelectedIndexChanged += new System.EventHandler(this.dateCombobox_SelectedIndexChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(92, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 21);
+            this.label15.TabIndex = 81;
+            this.label15.Text = "Date:";
+            // 
             // scheduleEventView
             // 
             this.scheduleEventView.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -254,26 +275,6 @@
             this.scheduleEventView.TabIndex = 80;
             this.scheduleEventView.UseCompatibleStateImageBehavior = false;
             this.scheduleEventView.View = System.Windows.Forms.View.Details;
-            // 
-            // dateCombobox
-            // 
-            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateCombobox.FormattingEnabled = true;
-            this.dateCombobox.Location = new System.Drawing.Point(140, 16);
-            this.dateCombobox.Name = "dateCombobox";
-            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
-            this.dateCombobox.TabIndex = 82;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(92, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 21);
-            this.label15.TabIndex = 81;
-            this.label15.Text = "Date:";
             // 
             // eventInfoForm
             // 

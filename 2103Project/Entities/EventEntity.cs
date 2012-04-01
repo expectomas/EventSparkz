@@ -81,6 +81,16 @@ namespace _2103Project.Entities
             return name;
         }
 
+        public List<int> getListOfBudgetItem()
+        {
+            return budgetList;
+        }
+
+        public double getTotalBudget()
+        {
+            return totalBudget;
+        }
+
         public DateTime getEventEndTime()
         {
             return endTime;
@@ -126,6 +136,16 @@ namespace _2103Project.Entities
         public void setPartipantSize(int partNum)
         {
             participantSize = partNum;
+        }
+
+        public void setListOfBudgetItem(List<int> setBudgetItemList)
+        {
+            budgetList = setBudgetItemList;
+        }
+
+        public void setTotalPrice(double newTotalPrice)
+        {
+            totalBudget = newTotalPrice;
         }
 
         public bool addParticipantToEvent(Participant newParticipant)
@@ -501,6 +521,92 @@ namespace _2103Project.Entities
                     eve = events;
             }
             return eve.startTime;
+        }
+
+        public static double getTotalPriceFromEventID(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            double totalPrice = 0;
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                {
+                    totalPrice = events.getTotalBudget();
+                }
+            }
+            return totalPrice;
+        }
+
+        public static List<int> getListOfItemIDFromEventID(int currentEventID)
+        {
+            List<int> listId = new List<int>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfevent = db.getListOfEvents();
+            foreach (EventEntity events in listOfevent)
+            {
+                if (events.getEventId() == currentEventID)
+                {
+                    listId = events.getListOfBudgetItem();
+                }
+            }
+            return listId;
+        }
+
+        public static Queue<string> getListOfBudgetItemFromEventID(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            List<int> listOfItem = new List<int>();
+            Queue<string> queueItem = new Queue<string>();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                {
+                    listOfItem = events.getListOfBudgetItem();
+                }
+            }
+            List<Budget> listOfBudget = db.getListOfBudget();
+            foreach (Budget currBudget in listOfBudget)
+            {
+                if (listOfItem.Count != 0)
+                {
+                    if (currBudget.getItemID() == listOfItem[0])
+                    {
+                        queueItem.Enqueue(currBudget.getItemName());
+                        listOfItem.RemoveAt(0);
+                    }
+                }
+            }
+            return queueItem;
+        }
+
+        public static Queue<double> getListOfBudgetCostFromEventID(int currentEventID)
+        {
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvent = db.getListOfEvents();
+            List<int> listOfItem = new List<int>();
+            Queue<double> queueCost = new Queue<double>();
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                {
+                    listOfItem = events.getListOfBudgetItem();
+                }
+            }
+            List<Budget> listOfBudget = db.getListOfBudget();
+            foreach (Budget currBudget in listOfBudget)
+            {
+                if (listOfItem.Count != 0)
+                {
+                    if (currBudget.getItemID() == listOfItem[0])
+                    {
+                        queueCost.Enqueue(currBudget.getItemPrice());
+                        listOfItem.RemoveAt(0);
+                    }
+                }
+            }
+            return queueCost;
         }
     }
 }

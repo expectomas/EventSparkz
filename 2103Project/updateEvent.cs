@@ -16,6 +16,12 @@ using _2103Project.Entities;
  * 
  */
 
+/*
+ * Update Event
+ * Show list of Activity and ediatable
+ */
+
+
 namespace _2103Project
 {
     public partial class updateForm : Form
@@ -39,7 +45,7 @@ namespace _2103Project
             participantTextbox.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
             DateTime dateValue = EventEntity.getStartTime(currentEventID);
             dateTextBox.Text = String.Format("{0:f}", dateValue);
-            venueTextBox.Text = EventEntity.getStartVenueFromEventID(currentEventID);
+            /*venueTextBox.Text = EventEntity.getStartVenueFromEventID(currentEventID);
             Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
             Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
             Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
@@ -50,8 +56,45 @@ namespace _2103Project
                 descriptionListBox.Items.Add(listofDescription.Dequeue());
                 venueListBox.Items.Add(listOfVenue.Dequeue());
             }
+            */
+            DateTime enddateValue = EventEntity.getEndTime(currentEventID);
+            Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
+            Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
+            Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
+            // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
+            setScheduleDay(dateValue, enddateValue);
+            dateCombobox.Text = dateValue.ToLongDateString();
+            int venueFlag = 0;
+            while (!(listOfDateTime.Count == 0))
+            {
+                DateTime currDateTimeValue = listOfDateTime.Dequeue();
+                string currDescription = listofDescription.Dequeue();
+                string currVenue = listOfVenue.Dequeue();
+                if (currDateTimeValue.Year == dateValue.Year && currDateTimeValue.Month == dateValue.Month && currDateTimeValue.Day == dateValue.Day)
+                {
+                    timeListBox.Items.Add(String.Format("{0:t}", currDateTimeValue));
+                    descriptionListBox.Items.Add(currDescription);
+                    venueListBox.Items.Add(currVenue);
+                }
+                if (venueFlag == 0)
+                {
+                    venueTextBox.Text = currVenue;
+                    venueFlag++;
+                }
+            }
         }
 
+        private void setScheduleDay(DateTime startDate, DateTime endDate)
+        {
+            dateCombobox.Items.Clear();
+            TimeSpan diffDate = endDate.Subtract(startDate);
+            DateTime currentDate = startDate;
+            for (int i = 0; i <= diffDate.Days; i++)
+            {
+                dateCombobox.Items.Add(currentDate.ToLongDateString());
+                currentDate = currentDate.AddDays(1);
+            }
+        }
         private void editItemButton_Click(object sender, EventArgs e)
         {
             if (timeListBox.SelectedItem == null || timeComboBox.SelectedItem == null || descriptionListBox.SelectedItem == null || venueListBox.SelectedItem == null || venComboBox.SelectedItem == null || descriptionTextBox.Text == "" )
@@ -225,6 +268,22 @@ namespace _2103Project
             {         // Stop the character from being entered into the control since it is non-numerical.
                 e.Handled = true;
             }
+        }
+
+        private void editBudgetButton_Click(object sender, EventArgs e)
+        {
+            editBudgetForm newEditBudgetOpen = new editBudgetForm(currentUser, currentEventID);
+            newEditBudgetOpen.Show();
+        }
+
+        int startflag = 1;
+        private void dateCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (startflag == 0)
+            {
+                
+            }
+            startflag = 0;
         }
     }
 }

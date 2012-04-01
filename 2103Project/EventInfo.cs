@@ -18,12 +18,13 @@ using _2103Project.Entities;
 
 namespace _2103Project
 {
-    
+
     public partial class eventInfoForm : Form
     {
         private User currentUser;
         private int currentEventID;
         EventEntity.EventInfoStates state;
+        int startflag = 1;
 
         private EventEntity.EventInfoStates determineState(int eventId)
         {
@@ -96,9 +97,8 @@ namespace _2103Project
             int organiserID = newEve.getOrganiserID();
             organiserLabel.Text = User.getNamefromID(organiserID);
             noOfParticipantLabel.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
-            DateTime dateValue = EventEntity.getStartTime(currentEventID);
-            dateLabel.Text = String.Format("{0:f}", dateValue);
-            
+
+
             // Version 1
             /*
             venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
@@ -115,28 +115,35 @@ namespace _2103Project
             }
             */
             // Version 2
+            DateTime dateValue = EventEntity.getStartTime(currentEventID);
+            dateLabel.Text = String.Format("{0:f}", dateValue);
             DateTime enddateValue = EventEntity.getEndTime(currentEventID);
             Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
             Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
             Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
-           // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
-
+            // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
             setScheduleDay(dateValue, enddateValue);
             dateCombobox.Text = dateValue.ToLongDateString();
-            while(!(listOfDateTime.Count == 0))
+            int venueFlag = 0;
+            while (!(listOfDateTime.Count == 0))
             {
                 DateTime currDateTimeValue = listOfDateTime.Dequeue();
                 string currDescription = listofDescription.Dequeue();
                 string currVenue = listOfVenue.Dequeue();
-                if (currDateTimeValue == dateValue)
+                if (currDateTimeValue.Year == dateValue.Year && currDateTimeValue.Month == dateValue.Month && currDateTimeValue.Day == dateValue.Day)
                 {
                     ListViewItem newevent = new ListViewItem(String.Format("{0:t}", currDateTimeValue));
                     newevent.SubItems.Add(currDescription);
                     newevent.SubItems.Add(currVenue);
                     scheduleEventView.Items.Add(newevent);
                 }
+                if (venueFlag == 0)
+                {
+                    venueLabel.Text = currVenue;
+                    venueFlag++;
+                }
             }
-                //display the appropriate btn based on the states
+            //display the appropriate btn based on the states
             state = determineState(currentEventID);
             displayAppropriateBtn(state);
         }
@@ -186,7 +193,7 @@ namespace _2103Project
 
             EventEntity registeringEvent = EventEntity.getEventFromEventId(currentEventID);
 
-            if(Participant_Register_Dialog(registeringEvent.getEventName()))
+            if (Participant_Register_Dialog(registeringEvent.getEventName()))
             {
                 registeringParticipant.registerEvent(registeringEvent);
                 MessageBox.Show("You have successfully registered this event. Thank you.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -224,6 +231,44 @@ namespace _2103Project
         {
             attendanceForm att = new attendanceForm(currentUser, currentEventID, attendanceForm.attendanceListState.participantList);
             att.Show();
+        }
+
+        private void dateCombobox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (startflag == 0)
+            {
+                scheduleEventView.Items.Clear();
+                DateTime dateValue = EventEntity.getStartTime(currentEventID);
+                DateTime enddateValue = EventEntity.getEndTime(currentEventID);
+                Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
+                Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
+                Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
+                // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
+                DateTime currSelectedDate = Convert.ToDateTime(dateCombobox.Text);
+                Queue<DateTime> restoreListDT = new Queue<DateTime>();
+                Queue<string> restoreListDesc = new Queue<string>();
+                Queue<string> restoreListVen = new Queue<string>();
+                while (!(listOfDateTime.Count == 0))
+                {
+                    DateTime currDateTimeValue = listOfDateTime.Dequeue();
+                    string currDescription = listofDescription.Dequeue();
+                    string currVenue = listOfVenue.Dequeue();
+                    if (currDateTimeValue.Year == currSelectedDate.Year && currDateTimeValue.Month == currSelectedDate.Month && currDateTimeValue.Day == currSelectedDate.Day)
+                    {
+                        ListViewItem newevent = new ListViewItem(String.Format("{0:t}", currDateTimeValue));
+                        newevent.SubItems.Add(currDescription);
+                        newevent.SubItems.Add(currVenue);
+                        scheduleEventView.Items.Add(newevent);
+                    }
+                    restoreListDT.Enqueue(currDateTimeValue);
+                    restoreListDesc.Enqueue(currDescription);
+                    restoreListVen.Enqueue(currVenue);
+                }
+                listOfDateTime = restoreListDT;
+                listofDescription = restoreListDesc;
+                listOfVenue = restoreListVen;
+            }
+            startflag = 0;
         }
     }
 }
