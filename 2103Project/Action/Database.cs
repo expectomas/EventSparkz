@@ -193,13 +193,13 @@ namespace _2103Project.Action
 
                     scanner.Skip();
 
-                    //EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId,totalBudget,budgetList, eventUpdatedFlag,eventDeletedFlag,eventStartingFlag,eventFullFlag);
+                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId, eventUpdatedFlag,eventDeletedFlag,eventStartingFlag,eventFullFlag);
 
                     participantList.Clear();
                     facilitatorList.Clear();
                     budgetList.Clear();
 
-//                    listToPop.Add(newEvent);
+                    listToPop.Add(newEvent);
 
                 } while (scanner.ReadToNextSibling("EventEntity"));
 
@@ -263,7 +263,8 @@ namespace _2103Project.Action
                     for (int i = 0; i < sizeOfList; i++)
                     {
                         holdingElement = eventListToSave[i];
-      //                  holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, ref o_totalBudget,ref o_budgetList, ref o_eventUpdatedFlag, ref o_eventDeletedFlag, ref o_eventStartingFlag, ref o_eventFullFlag, requestString);
+     
+                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, ref o_eventUpdatedFlag, ref o_eventDeletedFlag, ref o_eventStartingFlag, ref o_eventFullFlag, requestString);
 
                         writer.WriteStartElement("EventEntity");
 
