@@ -115,7 +115,7 @@ namespace _2103Project
                         listOfActivity.Add(currAct);
                     }
                 }
-  //              sortActivityList(listOfActivity);
+                //              sortActivityList(listOfActivity);
                 foreach (Activity newAct in listOfActivity)
                 {
                     org.addNewActivity(newAct);
@@ -138,7 +138,7 @@ namespace _2103Project
                 }
                 org.addSchedule(newSchedule);
                 org.addBudget(listOfBudget);
-                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), false,false,false,false, listOfBudgetID, double.Parse(totalPriceTextBox.Text));
+                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), false, false, false, false, listOfBudgetID, double.Parse(totalPriceTextBox.Text));
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();
