@@ -106,6 +106,7 @@
             this.statusLbl1.Size = new System.Drawing.Size(149, 13);
             this.statusLbl1.TabIndex = 6;
             this.statusLbl1.Text = "Sending Advertisement...";
+            this.statusLbl1.Visible = false;
             // 
             // Advertise
             // 

@@ -29,6 +29,8 @@ namespace _2103Project
 
             Connection conn = confac.createConnection("AmazonWebServices", Connection.TypeOfMsg.Announcement);
 
+            Random rand = new Random();
+
             if (descriptionBox.TextLength.Equals(0))
                 MessageBox.Show("Please enter the description for your event");
             else if (imgFileLocation.TextLength > 2)
@@ -36,13 +38,13 @@ namespace _2103Project
             else
             {
 
-                Advertisement newAd = new Advertisement(Organiser.getNewEventId(), imgFileLocation.Text, descriptionBox.Text);
+                Advertisement newAd = new Advertisement(rand.Next(10,1000), imgFileLocation.Text, descriptionBox.Text);
 
                 statusLbl1.Text = "Sending Advertisement...";
 
                 statusLbl1.Show();
 
-                Thread.Sleep(2000);
+                Thread.Sleep(1000);
 
                 statusLbl1.Hide();
 
@@ -51,7 +53,6 @@ namespace _2103Project
                 statusLbl1.Show();
 
                 conn.sendMessage(newAd);
-
             }
         }
 
