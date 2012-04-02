@@ -27,7 +27,7 @@ namespace _2103Project.Action
             full = obtainedMsg.Split('\n');
 
             string adId = full[0].ToString();
-            string imageDirectory = full[1].Substring(12,2).ToString();
+            string imageDirectory = full[1];
             string description = full[2].ToString();
 
             Advertisement newCreated = new Advertisement(Convert.ToInt32(adId), imageDirectory, description);
