@@ -193,7 +193,7 @@ namespace _2103Project.Action
 
                     scanner.Skip();
 
-                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,organiserId, eventUpdatedFlag,eventDeletedFlag,eventStartingFlag,eventFullFlag, budgetList, totalBudget);
+                    EventEntity newEvent = new EventEntity(eventId, eventDescription, startTime, endTime, eventScheduleId, participantSize, participantList,facilitatorList,budgetList, totalBudget,organiserId, eventUpdatedFlag,eventDeletedFlag,eventStartingFlag,eventFullFlag);
 
                     participantList.Clear();
                     facilitatorList.Clear();
@@ -264,7 +264,7 @@ namespace _2103Project.Action
                     {
                         holdingElement = eventListToSave[i];
      
-                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_organiserId, ref o_eventUpdatedFlag, ref o_eventDeletedFlag, ref o_eventStartingFlag, ref o_eventFullFlag, requestString);
+                        holdingElement.requestEventEntitiyDetails(ref o_eventId, ref o_name, ref o_startTime, ref o_endTime, ref o_eventScheduleId, ref o_participantSize, ref o_participantList, ref o_facilitatorList, ref o_budgetList, ref o_organiserId, ref o_totalBudget, ref o_eventUpdatedFlag, ref o_eventDeletedFlag, ref o_eventStartingFlag, ref o_eventFullFlag, requestString);
 
                         writer.WriteStartElement("EventEntity");
 
@@ -284,13 +284,13 @@ namespace _2103Project.Action
 
                         writer.WriteElementString("totalBudget", o_totalBudget.ToString());
 
-                        writer.WriteElementString("eventUpdatedFlag",o_eventUpdatedFlag.ToString());
+                        writer.WriteElementString("eventUpdatedFlag", o_eventUpdatedFlag.ToString().ToLower());
                         
-                        writer.WriteElementString("eventDeletedFlag",o_eventDeletedFlag.ToString());
+                        writer.WriteElementString("eventDeletedFlag",o_eventDeletedFlag.ToString().ToLower());
                         
-                        writer.WriteElementString("eventStarting",o_eventStartingFlag.ToString());
+                        writer.WriteElementString("eventStarting",o_eventStartingFlag.ToString().ToLower());
 
-                        writer.WriteElementString("eventFull", o_eventFullFlag.ToString());
+                        writer.WriteElementString("eventFull", o_eventFullFlag.ToString().ToLower());
 
                         //List of Participants
                         writer.WriteStartElement("participantList");
