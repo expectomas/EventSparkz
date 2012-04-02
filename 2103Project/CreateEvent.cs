@@ -29,6 +29,8 @@ namespace _2103Project
 
         private User currentUser;
 
+        int newActivityID = 0;
+
         public createEventForm(User incomingUser)
         {
             currentUser = incomingUser;
@@ -138,7 +140,7 @@ namespace _2103Project
                 }
                 org.addSchedule(newSchedule);
                 org.addBudget(listOfBudget);
-                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, currentUser.getUserId(), false, false, false, false, listOfBudgetID, double.Parse(totalPriceTextBox.Text));
+                EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, listOfBudgetID, double.Parse(totalPriceTextBox.Text), currentUser.getUserId(), false, false, false, false);
                 org.createEvent(events);
                 MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 eventNameTextBox.Clear();
@@ -566,7 +568,6 @@ namespace _2103Project
             return lastID;
         }
 
-        int newActivityID = 0;
 
         private void dateCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
