@@ -527,17 +527,6 @@ namespace _2103Project
             }
         }
 
-        private void advertiseBtn1_Click(object sender, EventArgs e)
-        {
-            if (this.eventNameTextBox.Text.Equals(""))
-                MessageBox.Show("Please enter the name of your Event to Advertise");
-            else
-            {
-                Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
-                newAdvForm.Show();
-            }
-        }
-
         private void setScheduleDay()
         {
             dateCombobox.Items.Clear();
@@ -624,6 +613,17 @@ namespace _2103Project
         {
             if (dateCombobox.Text != "")
                 previousScheudleDate = Convert.ToDateTime(dateCombobox.Text);
+        }
+
+        private void advertiseBtn1_Click(object sender, EventArgs e)
+        {
+            if (this.eventNameTextBox.Text.Equals(""))
+                MessageBox.Show("Please enter the name of your Event to Advertise");
+            else
+            {
+                Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
+                newAdvForm.Show();
+            }
         }
     }
 }

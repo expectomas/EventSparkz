@@ -523,6 +523,7 @@
             this.advertiseBtn1.TabIndex = 36;
             this.advertiseBtn1.Text = "Advertise";
             this.advertiseBtn1.UseVisualStyleBackColor = true;
+            this.advertiseBtn1.Click += new System.EventHandler(this.advertiseBtn1_Click);
             // 
             // createEventForm
             // 
