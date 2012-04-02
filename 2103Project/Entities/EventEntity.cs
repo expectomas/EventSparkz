@@ -29,15 +29,15 @@ namespace _2103Project.Entities
         private DateTime endTime;
         private int eventScheduleId;
         private int participantSize;
-        private List<Participant> participantList;
         private int eventOrganiserId;
-        private List<int> facilitatorList;
+        private double totalBudget;
         private bool eventUpdatedFlag;
         private bool eventDeletedFlag;
         private bool eventStartingFlag;
         private bool eventFullFlag;
+        private List<Participant> participantList;
+        private List<int> facilitatorList;
         private List<int> budgetList;
-        private double totalBudget;
 
         //Database Access Authetication
         private const string DatabaseToken = "431fW13x";
@@ -47,7 +47,7 @@ namespace _2103Project.Entities
         {
         }
 
-        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, int i_eventOrganiserId, bool i_eventUpdatedFlag, bool i_eventDeletedFlag, bool i_eventStartingFlag, bool i_eventFullFlag, List<int> i_budgetList, double i_totalBudget)
+        public EventEntity(int i_eventId, string i_name, DateTime i_startTime, DateTime i_endTime, int i_eventScheduleId, int i_participantSize, List<Participant> i_participantList, List<int> i_facilitatorIdList, List<int> i_budgetList, double i_totalBudget, int i_eventOrganiserId, bool i_eventUpdatedFlag, bool i_eventDeletedFlag, bool i_eventStartingFlag, bool i_eventFullFlag)
         {
             eventId = i_eventId;
             name = i_name;
@@ -55,15 +55,15 @@ namespace _2103Project.Entities
             endTime = i_endTime;
             eventScheduleId = i_eventScheduleId;
             participantSize = i_participantSize;
-            participantList = new List<Participant>(i_participantList);
-            facilitatorList = new List<int>(i_facilitatorIdList);
             eventOrganiserId = i_eventOrganiserId;
+            totalBudget = i_totalBudget;
             eventUpdatedFlag = i_eventUpdatedFlag;
             eventDeletedFlag = i_eventDeletedFlag;
             eventStartingFlag = i_eventStartingFlag;
             eventFullFlag = i_eventFullFlag;
-            budgetList = i_budgetList;
-            totalBudget = i_totalBudget;
+            participantList = new List<Participant>(i_participantList);
+            facilitatorList = new List<int>(i_facilitatorIdList);
+            budgetList = new List<int>(i_budgetList);
         }
 
         //Methods
@@ -412,7 +412,7 @@ namespace _2103Project.Entities
             return false;
         }
 
-        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref int o_organiserId, ref bool o_eventUpdatedFlag, ref bool o_eventDeletedFlag, ref bool o_eventStartingFlag, ref bool o_eventFullFlag, string purpose)
+        public bool requestEventEntitiyDetails(ref int o_eventId, ref string o_name, ref DateTime o_startTime, ref DateTime o_endTime, ref int o_eventScheduleId, ref int o_participantSize, ref List<Participant> o_participantList, ref List<int> o_facilitatorList, ref List<int> o_budgetList, ref int o_organiserId, ref double o_totalBudget, ref bool o_eventUpdatedFlag, ref bool o_eventDeletedFlag, ref bool o_eventStartingFlag, ref bool o_eventFullFlag, string purpose)
         {
             if (purpose.Equals("databaseRequest"))
             {
@@ -422,10 +422,15 @@ namespace _2103Project.Entities
                 o_endTime = endTime;
                 o_eventScheduleId = eventScheduleId;
                 o_participantSize = participantSize;
+                o_organiserId = eventOrganiserId;
+                o_totalBudget = totalBudget;
+                o_eventUpdatedFlag = eventUpdatedFlag;
+                o_eventStartingFlag = eventStartingFlag;
+                o_eventDeletedFlag = eventDeletedFlag;
+                o_eventFullFlag = eventFullFlag;
+                o_budgetList  = new List<int>(budgetList);
                 o_participantList = new List<Participant>(participantList);
                 o_facilitatorList = new List<int>(facilitatorList);
-                o_organiserId = eventOrganiserId;
-
                 return true;
             }
             else
