@@ -45,11 +45,6 @@ namespace _2103Project
         {
             //Fire your test class
 
-            bool testResult;
-            Test_ActiveUser au = new Test_ActiveUser();
-
-            testResult = au.viewEventListingByEventNameTest();
-
             //End test here
 
             this.Close();
