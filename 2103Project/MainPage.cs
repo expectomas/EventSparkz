@@ -733,5 +733,10 @@ namespace _2103Project
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }
+
+        private void searchEventTextBox_TextChanged(object sender, EventArgs e)
+        {
+            searchEvent();
+        }
     }
 }

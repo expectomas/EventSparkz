@@ -185,6 +185,7 @@
             this.searchEventTextBox.Size = new System.Drawing.Size(361, 29);
             this.searchEventTextBox.TabIndex = 13;
             this.searchEventTextBox.Text = "Search Your Event Here";
+            this.searchEventTextBox.TextChanged += new System.EventHandler(this.searchEventTextBox_TextChanged);
             this.searchEventTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchEventTextBox_KeyDown);
             this.searchEventTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.searchEventTextBox_Clicked);
             // 

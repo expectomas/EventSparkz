@@ -38,7 +38,7 @@ namespace _2103Project
             initMainEventList();
             initBudgetList();
 
-           
+
         }
 
         List<Activity> listOfActivity = new List<Activity>();
@@ -101,23 +101,34 @@ namespace _2103Project
                 List<Participant> participantList = new List<Participant>();
                 List<int> facilitatorList = new List<int>();
                 Organiser org = new Organiser(currentUser);
-                if (listOfActivity.Count == 0)
+
+                // Delete event
+                Activity currentActivity;
+                for (int i = 0; i < listOfActivity.Count; i++)
                 {
-                    Activity currAct; Venue ven; DateTime time;
-                    for (int i = 0; i < scheduleEventView.Items.Count; i++)
+                    currentActivity = listOfActivity[i];
+                    if (currentActivity.getDate().Year == Convert.ToDateTime(dateCombobox.Text).Year && currentActivity.getDate().Month == Convert.ToDateTime(dateCombobox.Text).Month && currentActivity.getDate().Day == Convert.ToDateTime(dateCombobox.Text).Day)
                     {
-                        time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, Convert.ToDateTime(dateCombobox.Text));
-                        int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
-                        ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getVenueCapacityfromID(newVenueID));
-                        if (listOfActivity.Count == 0)
-                            newActivityID = org.getNewActivityId();
-                        else
-                            newActivityID = getNewActIDFromActList(listOfActivity);
-                        currAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].Text, ven);
-                        listOfActivity.Add(currAct);
+                        listOfActivity.Remove(currentActivity);
+                        i--;
                     }
                 }
-                //              sortActivityList(listOfActivity);
+
+                //Readd the current date event
+                Activity currAct; Venue ven; DateTime time;
+                for (int i = 0; i < scheduleEventView.Items.Count; i++)
+                {
+                    time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, Convert.ToDateTime(dateCombobox.Text));
+                    int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
+                    ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getVenueCapacityfromID(newVenueID));
+                    if (listOfActivity.Count == 0)
+                        newActivityID = org.getNewActivityId();
+                    else
+                        newActivityID = getNewActIDFromActList(listOfActivity);
+                    currAct = new Activity(newActivityID, time, scheduleEventView.Items[i].SubItems[1].Text, ven);
+                    listOfActivity.Add(currAct);
+                }
+                listOfActivity = sortActivityList(listOfActivity);
                 foreach (Activity newAct in listOfActivity)
                 {
                     org.addNewActivity(newAct);
@@ -142,7 +153,7 @@ namespace _2103Project
                 org.addBudget(listOfBudget);
                 EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, listOfBudgetID, double.Parse(totalPriceTextBox.Text), currentUser.getUserId(), false, false, false, false);
                 org.createEvent(events);
-                if(MessageBox.Show(events.getEventName() + " has been created. Do you want to advertise?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show(events.getEventName() + " has been created. Do you want to advertise?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
                     newAdvForm.Show();
@@ -151,35 +162,33 @@ namespace _2103Project
             }
         }
 
-        void sortActivityList(List<Activity> listOfActivity)
+        List<Activity> sortActivityList(List<Activity> listOfActivity)
         {
-            DateTime earliestTime = DateTime.Now;
+            DateTime earliestTime;
             int earliestIndex = 0;
+            Activity earliestAct = listOfActivity[0];
+            int currentIndex = 0;
             List<Activity> sortedList = new List<Activity>();
             int value = listOfActivity.Count;
-            Activity[] actArr = new Activity[value];
-            for (int i = 0; i < value; i++)
+            while (listOfActivity.Count != 0)
             {
-                for (int j = 0; j < listOfActivity.Count; j++)
+                earliestTime = listOfActivity[0].getDate();
+                earliestAct = listOfActivity[0];
+                foreach (Activity currAct in listOfActivity)
                 {
-                    if(j == 0)
-                        earliestTime = listOfActivity[j].getDate();
-                    else
+                    if (currAct.getDate() < earliestTime)
                     {
-                        if (listOfActivity[j].getDate() < earliestTime)
-                        {
-                            earliestTime = listOfActivity[j].getDate();
-                            earliestIndex = j;
-                        }
+                        earliestIndex = currentIndex;
+                        earliestAct = currAct;
                     }
+                    currentIndex++;
                 }
-                actArr[i] = listOfActivity[earliestIndex];
+                sortedList.Add(earliestAct);
                 listOfActivity.RemoveAt(earliestIndex);
+                currentIndex = 0;
+                earliestIndex = 0;
             }
-            for (int k = 0; k < value; k++)
-            {
-                listOfActivity.Add(actArr[k]);
-            }
+            return sortedList;
         }
         private void createEventForm_Load(object sender, EventArgs e)
         {
