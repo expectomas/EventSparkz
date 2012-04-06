@@ -642,7 +642,9 @@ namespace _2103Project.Entities
             {
                 if ((eve.getStartTimeFromEventID(currentEventID).Subtract(System.DateTime.Now)) <= difference)
                     return true;
-            }  
+            }
+
+            return false;
         }
 
         public bool compareParticipantNum(int currentEventID)
