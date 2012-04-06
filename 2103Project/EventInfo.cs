@@ -195,13 +195,6 @@ namespace _2103Project
 
         private void registerEventBtn_Click(object sender, EventArgs e)
         {
-            EventEntity eve = new EventEntity();
-            if (eve.compareParticipantNum(currentEventID) == true)
-            {
-                eve.setEventFullFlag(currentEventID);
-                this.Close();
-            }
-
             Participant registeringParticipant = new Participant(currentUser);
 
             EventEntity registeringEvent = EventEntity.getEventFromEventId(currentEventID);
