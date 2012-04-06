@@ -42,6 +42,7 @@ namespace _2103Project.Entities
         {
             venueId = oldVenue.venueId;
             location = oldVenue.location;
+            capacity = oldVenue.capacity;
         }
 
         public int getVenueId()
