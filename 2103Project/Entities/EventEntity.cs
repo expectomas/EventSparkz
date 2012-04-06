@@ -631,7 +631,7 @@ namespace _2103Project.Entities
             return eve.getEventId();
         }
 
-        public void checkEventclock(int currentEventID)
+        public bool checkEventclock(int currentEventID)
         {
             Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
@@ -641,13 +641,8 @@ namespace _2103Project.Entities
             foreach (EventEntity events in listOfEvent)
             {
                 if ((eve.getStartTimeFromEventID(currentEventID).Subtract(System.DateTime.Now)) <= difference)
-                {
-                    EventEntity e = new EventEntity();
-                    e.setEventStartFlag(currentEventID);
-                }
-            }
-            
-            
+                    return true;
+            }  
         }
 
         public bool compareParticipantNum(int currentEventID)
