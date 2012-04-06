@@ -6,7 +6,7 @@
     <startTime>2012-05-15T08:00:00</startTime>
     <endTime>2012-05-15T20:00:00</endTime>
     <eventScheduleId>1</eventScheduleId>
-    <participantSize>27</participantSize>
+    <participantSize>20</participantSize>
     <organiserId>1</organiserId>
     <totalBudget>321</totalBudget>
     <eventUpdatedFlag>false</eventUpdatedFlag>
@@ -25,18 +25,6 @@
         <loggedIn>false</loggedIn>
         <contactHome>63231231</contactHome>
         <contactHP>98213123</contactHP>
-      </User>
-      <User>
-        <userId>8</userId>
-        <userName>inneart</userName>
-        <name>Edmund</name>
-        <matricNo>A0076627W</matricNo>
-        <password>123456</password>
-        <email>edmundtan@nus.edu.sg</email>
-        <age>24</age>
-        <loggedIn>true</loggedIn>
-        <contactHome>67786094</contactHome>
-        <contactHP>90060658</contactHP>
       </User>
     </participantList>
     <facilitatorList>
@@ -102,9 +90,6 @@
       <User>
         <userId>1</userId>
       </User>
-      <User>
-        <userId>8</userId>
-      </User>
     </facilitatorList>
     <budgetList>
       <Budget>
@@ -145,210 +130,5 @@
         <itemId>2</itemId>
       </Budget>
     </budgetList>
-  </EventEntity>
-  <EventEntity>
-    <eventId>5</eventId>
-    <name>astar</name>
-    <startTime>2012-04-05T08:00:00</startTime>
-    <endTime>2012-04-08T08:00:00</endTime>
-    <eventScheduleId>4</eventScheduleId>
-    <participantSize>31</participantSize>
-    <organiserId>9</organiserId>
-    <totalBudget>200</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList>
-      <User>
-        <userId>8</userId>
-        <userName>inneart</userName>
-        <name>Edmund</name>
-        <matricNo>A0076627W</matricNo>
-        <password>123456</password>
-        <email>edmundtan@nus.edu.sg</email>
-        <age>24</age>
-        <loggedIn>true</loggedIn>
-        <contactHome>67786094</contactHome>
-        <contactHP>90060658</contactHP>
-      </User>
-      <User>
-        <userId>1</userId>
-        <userName>tiow11</userName>
-        <name>TIO WEE LEONG</name>
-        <matricNo>A9328372N</matricNo>
-        <password>123456</password>
-        <email>wil@hotmail.com</email>
-        <age>23</age>
-        <loggedIn>true</loggedIn>
-        <contactHome>23120381</contactHome>
-        <contactHP>91732123</contactHP>
-      </User>
-    </participantList>
-    <facilitatorList />
-    <budgetList>
-      <Budget>
-        <itemId>3</itemId>
-      </Budget>
-      <Budget>
-        <itemId>4</itemId>
-      </Budget>
-    </budgetList>
-  </EventEntity>
-  <EventEntity>
-    <eventId>7</eventId>
-    <name>interview</name>
-    <startTime>2012-04-05T08:00:00</startTime>
-    <endTime>2012-04-10T08:00:00</endTime>
-    <eventScheduleId>6</eventScheduleId>
-    <participantSize>23</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>1100.5</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList>
-      <User>
-        <userId>9</userId>
-        <userName>testing</userName>
-        <name>aaa</name>
-        <matricNo>A0076627W</matricNo>
-        <password>123456</password>
-        <email>edmundtan@nus.edu.sg</email>
-        <age>18</age>
-        <loggedIn>true</loggedIn>
-        <contactHome>12345678</contactHome>
-        <contactHP>12345678</contactHP>
-      </User>
-    </participantList>
-    <facilitatorList />
-    <budgetList>
-      <Budget>
-        <itemId>13</itemId>
-      </Budget>
-      <Budget>
-        <itemId>14</itemId>
-      </Budget>
-    </budgetList>
-  </EventEntity>
-  <EventEntity>
-    <eventId>8</eventId>
-    <name>abcdefghijklmnopqrstuvwxyz</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-10T08:00:00</endTime>
-    <eventScheduleId>7</eventScheduleId>
-    <participantSize>2</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
-  </EventEntity>
-  <EventEntity>
-    <eventId>9</eventId>
-    <name>ABCDEFGHIJKLMNOPQRSTUVWXYZ</name>
-    <startTime>2012-04-10T08:00:00</startTime>
-    <endTime>2012-04-11T08:00:00</endTime>
-    <eventScheduleId>8</eventScheduleId>
-    <participantSize>2</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
-  </EventEntity>
-  <EventEntity>
-    <eventId>10</eventId>
-    <name>NUS Rag and Flag</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-10T08:00:00</endTime>
-    <eventScheduleId>9</eventScheduleId>
-    <participantSize>5</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
-  </EventEntity>
-  <EventEntity>
-    <eventId>11</eventId>
-    <name>RunNUS</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-10T08:00:00</endTime>
-    <eventScheduleId>10</eventScheduleId>
-    <participantSize>1</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
-  </EventEntity>
-  <EventEntity>
-    <eventId>12</eventId>
-    <name>Flag Day 2012</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-09T20:00:00</endTime>
-    <eventScheduleId>11</eventScheduleId>
-    <participantSize>22</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
-  </EventEntity>
-  <EventEntity>
-    <eventId>13</eventId>
-    <name>Walkathon</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-09T20:00:00</endTime>
-    <eventScheduleId>12</eventScheduleId>
-    <participantSize>123</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
-  </EventEntity>
-  <EventEntity>
-    <eventId>14</eventId>
-    <name>WalkADog</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-09T20:00:00</endTime>
-    <eventScheduleId>13</eventScheduleId>
-    <participantSize>123</participantSize>
-    <organiserId>8</organiserId>
-    <totalBudget>0</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList />
-    <facilitatorList />
-    <budgetList />
   </EventEntity>
 </EventPool>
