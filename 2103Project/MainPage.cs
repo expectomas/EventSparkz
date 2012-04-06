@@ -123,6 +123,13 @@ namespace _2103Project
             //Check Internet Connection
             checkInternetConnection();
 
+            EventEntity eve=new EventEntity();
+            if(eve.checkEventclock(currentEventID)==true)
+            {
+                e.setEventStartFlag(currentEventID);
+            }
+            
+
             // Start Alert Check/Display
             displayAlert();
         }
