@@ -166,6 +166,7 @@ namespace _2103Project
                 currentDate = currentDate.AddDays(1);
             }
         }
+
         private void displayStatusLabel(string displayString)
         {
             statusLabel.Hide();
