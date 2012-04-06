@@ -131,4 +131,42 @@
       </Budget>
     </budgetList>
   </EventEntity>
+  <EventEntity>
+    <eventId>4</eventId>
+    <name>fdfds</name>
+    <startTime>2012-04-09T08:00:00</startTime>
+    <endTime>2012-04-10T00:00:00</endTime>
+    <eventScheduleId>3</eventScheduleId>
+    <participantSize>300</participantSize>
+    <organiserId>1</organiserId>
+    <totalBudget>0</totalBudget>
+    <eventUpdatedFlag>false</eventUpdatedFlag>
+    <eventDeletedFlag>false</eventDeletedFlag>
+    <eventStarting>false</eventStarting>
+    <eventFull>false</eventFull>
+    <participantList />
+    <facilitatorList />
+    <budgetList />
+  </EventEntity>
+  <EventEntity>
+    <eventId>5</eventId>
+    <name>HelloWorld</name>
+    <startTime>2012-04-11T08:00:00</startTime>
+    <endTime>2012-04-13T00:00:00</endTime>
+    <eventScheduleId>4</eventScheduleId>
+    <participantSize>30</participantSize>
+    <organiserId>1</organiserId>
+    <totalBudget>100</totalBudget>
+    <eventUpdatedFlag>false</eventUpdatedFlag>
+    <eventDeletedFlag>false</eventDeletedFlag>
+    <eventStarting>false</eventStarting>
+    <eventFull>false</eventFull>
+    <participantList />
+    <facilitatorList />
+    <budgetList>
+      <Budget>
+        <itemId>3</itemId>
+      </Budget>
+    </budgetList>
+  </EventEntity>
 </EventPool>

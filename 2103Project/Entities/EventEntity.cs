@@ -97,6 +97,11 @@ namespace _2103Project.Entities
             return totalBudget;
         }
 
+        public DateTime getEventStartTime()
+        {
+            return startTime;
+        }
+
         public DateTime getEventEndTime()
         {
             return endTime;
@@ -629,37 +634,6 @@ namespace _2103Project.Entities
                     eve = events;
             }
             return eve.getEventId();
-        }
-
-        public bool checkEventclock(int currentEventID)
-        {
-            Database db = Database.CreateDatabase(DatabaseToken);
-            List<EventEntity> listOfEvent = db.getListOfEvents();
-            EventEntity eve = new EventEntity();
-            TimeSpan difference = new TimeSpan(1, 0, 0, 0);
-            
-            foreach (EventEntity events in listOfEvent)
-            {
-                if ((eve.getStartTimeFromEventID(currentEventID).Subtract(System.DateTime.Now)) <= difference)
-                    return true;
-            }
-            return false;
-        }
-
-        public bool compareParticipantNum(int currentEventID)
-        {
-            Database db = Database.CreateDatabase(DatabaseToken);
-            List<EventEntity> listOfEvent = db.getListOfEvents();
-            EventEntity eve = new EventEntity();
-
-            foreach (EventEntity events in listOfEvent)
-            {
-                if (eve.participantSize == EventEntity.getParticipantNumber(eve.getEventId()))
-                    return true;
-            }
-
-            return false;
-
         }
 
         // Flag for Alerts

@@ -165,6 +165,7 @@ namespace _2103Project
                 currentDate = currentDate.AddDays(1);
             }
         }
+
         private void displayStatusLabel(string displayString)
         {
             statusLabel.Hide();
@@ -195,20 +196,9 @@ namespace _2103Project
 
         private void registerEventBtn_Click(object sender, EventArgs e)
         {
-            EventEntity eve = new EventEntity();
-            if (eve.compareParticipantNum(currentEventID) == true)
-            {
-                eve.setEventFullFlag(currentEventID);
-                this.Close();
-            }
-
             Participant registeringParticipant = new Participant(currentUser);
 
             EventEntity registeringEvent = EventEntity.getEventFromEventId(currentEventID);
-
-            //Test_Participant testCall = new Test_Participant();
-
-            //bool testSuccess = testCall.Test_registerEvent();
 
             if (Participant_Register_Dialog(registeringEvent.getEventName()))
             {
@@ -219,11 +209,6 @@ namespace _2103Project
             //Highlight change in state
             state = determineState(currentEventID);
             displayAppropriateBtn(state);
-
-            /*if (testSuccess == true)
-                MessageBox.Show("Success", "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            else
-                MessageBox.Show("Fail", "Test", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
 
             this.Close();
         }

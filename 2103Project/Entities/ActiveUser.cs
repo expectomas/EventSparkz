@@ -221,6 +221,37 @@ namespace _2103Project.Entities
             return list;
         }   
 
+        // Check For Starting Events For This Curent User
+        public void checkForStartingEvent()
+        {
+            Organiser o = new Organiser(this);
+            Participant p = new Participant(this);
+            Facilitator f = new Facilitator(this);
+            List<EventEntity> listOfOrganizedEvents = o.getOrganisedEvents();
+            List<EventEntity> listOfRegisteredEvents = p.getRegisteredEvents();
+            List<EventEntity> listOfFacilitatingEvents = f.getFacilitatedEvents();
+            EventEntity eve = new EventEntity();
+            TimeSpan difference = new TimeSpan(1, 0, 0, 0);
+
+            foreach (EventEntity events in listOfOrganizedEvents)
+            {
+                if ((events.getEventStartTime().Subtract(System.DateTime.Now)) <= difference)
+                    events.setEventStartFlag(events.getEventId());
+            }
+
+            foreach (EventEntity events in listOfRegisteredEvents)
+            {
+                if ((events.getEventStartTime().Subtract(System.DateTime.Now)) <= difference)
+                    events.setEventStartFlag(events.getEventId());
+            }
+
+            foreach (EventEntity events in listOfFacilitatingEvents)
+            {
+                if ((events.getEventStartTime().Subtract(System.DateTime.Now)) <= difference)
+                    events.setEventStartFlag(events.getEventId());
+            }
+        }
+
         // Alert Search
         public int scoutAlert()
         {
@@ -256,31 +287,11 @@ namespace _2103Project.Entities
                     numOfAlerts++;
                 }
             }
-            
-            // Alert if User is PARTICIPANT of this deleted event
-            foreach (EventEntity e in listOfRegisteredEvents)
-            {
-                if (e.getEventDeletedFlag(e.getEventId()) == true)
-                {
-                    userAlerts.Add(eve.createAlert(e.getEventId(), 2));
-                    numOfAlerts++;
-                }
-            }
-
-            // Alert if User is FACILITATOR of this deleted event
-            foreach (EventEntity e in listOfFacilitatingEvents)
-            {
-                if (e.getEventDeletedFlag(e.getEventId()) == true)
-                {
-                    userAlerts.Add(eve.createAlert(e.getEventId(), 2));
-                    numOfAlerts++;
-                }
-            }
 
             // Alert if User is PARTICIPANT of this starting event
             foreach (EventEntity e in listOfRegisteredEvents)
             {
-                if (e.getEventDeletedFlag(e.getEventId()) == true)
+                if (e.getEventStartFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 3));
                     numOfAlerts++;
@@ -290,7 +301,7 @@ namespace _2103Project.Entities
             // Alert if User is FACILITATOR of this starting event
             foreach (EventEntity e in listOfFacilitatingEvents)
             {
-                if (e.getEventDeletedFlag(e.getEventId()) == true)
+                if (e.getEventStartFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 3));
                     numOfAlerts++;
@@ -300,19 +311,9 @@ namespace _2103Project.Entities
             // Alert if User is ORGANIZER of this starting event
             foreach (EventEntity e in listOfOrganizingEvents)
             {
-                if (e.getEventDeletedFlag(e.getEventId()) == true)
+                if (e.getEventStartFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 3));
-                    numOfAlerts++;
-                }
-            }
-
-            // Alert if User is ORGANIZER of this full event
-            foreach (EventEntity e in listOfOrganizingEvents)
-            {
-                if (e.getEventDeletedFlag(e.getEventId()) == true)
-                {
-                    userAlerts.Add(eve.createAlert(e.getEventId(), 4));
                     numOfAlerts++;
                 }
             }

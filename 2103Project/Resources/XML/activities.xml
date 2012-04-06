@@ -1,28 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ActivityPool>
-<Activity>
-<activityId>1</activityId>
-<time>2002-05-30T09:00:00</time>
-<description>Hide and Seek</description>
-<hostingVenue>
-<Venue>
-<venueId>1</venueId>
-<location>MPSH1</location>
-<capacity>50</capacity>
-</Venue>
-</hostingVenue>
-</Activity>
-<Activity>
-<activityId>2</activityId>
-<time>2002-12-05T09:00:00</time>
-<description>Workshop</description>
-<hostingVenue>
-<Venue>
-<venueId>1</venueId>
-<location>MPSH1</location>
-<capacity>50</capacity>
-</Venue>
-</hostingVenue>
-</Activity>
+  <Activity>
+    <activityId>1</activityId>
+    <time>2002-05-30T09:00:00</time>
+    <description>Hide and Seek</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>1</venueId>
+        <location>MPSH1</location>
+        <capacity>50</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
+  <Activity>
+    <activityId>2</activityId>
+    <time>2002-12-05T09:00:00</time>
+    <description>Workshop</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>1</venueId>
+        <location>MPSH1</location>
+        <capacity>50</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
+  <Activity>
+    <activityId>3</activityId>
+    <time>2012-04-09T14:30:00</time>
+    <description>1321</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>6</venueId>
+        <location>MPSH6</location>
+        <capacity>450</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
+  <Activity>
+    <activityId>4</activityId>
+    <time>2012-04-09T17:30:00</time>
+    <description>u suck</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>6</venueId>
+        <location>MPSH6</location>
+        <capacity>450</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
+  <Activity>
+    <activityId>7</activityId>
+    <time>2012-04-11T13:00:00</time>
+    <description>Event Starts</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>1</venueId>
+        <location>MPSH1</location>
+        <capacity>50</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
+  <Activity>
+    <activityId>8</activityId>
+    <time>2012-04-11T17:00:00</time>
+    <description>Event Pause</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>2</venueId>
+        <location>MPSH2</location>
+        <capacity>50</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
+  <Activity>
+    <activityId>9</activityId>
+    <time>2012-04-12T17:00:00</time>
+    <description>Event Ends</description>
+    <hostingVenue>
+      <Venue>
+        <venueId>2</venueId>
+        <location>MPSH2</location>
+        <capacity>50</capacity>
+      </Venue>
+    </hostingVenue>
+  </Activity>
 </ActivityPool>
