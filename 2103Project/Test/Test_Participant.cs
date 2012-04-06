@@ -17,6 +17,7 @@ namespace _2103test._2103Project.Test
             bool expected = true;
             bool actual;
             actual = target.registerEvent(interestedEvent);
+            //assert
             if (expected == actual)
                 testSuccess = true;
 
