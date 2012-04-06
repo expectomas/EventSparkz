@@ -33,7 +33,7 @@ namespace _2103Project
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 3000;
-        const int alertInterval = 3000;
+        const int alertInterval = 5000;
 
         private void checkInternetConnection()
         {
