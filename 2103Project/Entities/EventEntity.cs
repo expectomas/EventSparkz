@@ -632,9 +632,10 @@ namespace _2103Project.Entities
         }
 
         // Flag for Alerts
+        Database db = Database.CreateDatabase(DatabaseToken);
+        
         public void setEventUpdatedFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -642,10 +643,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventUpdatedFlag = true;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public void clearEventUpdatedFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -653,10 +654,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventUpdatedFlag = false;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public bool getEventUpdatedFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
             EventEntity eve = new EventEntity();
 
@@ -669,7 +670,6 @@ namespace _2103Project.Entities
         }
         public void setEventDeletedFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -677,10 +677,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventDeletedFlag = true;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public bool getEventDeletedFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
             EventEntity eve = new EventEntity();
 
@@ -693,7 +693,6 @@ namespace _2103Project.Entities
         }
         public void setEventStartFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -701,10 +700,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventStartingFlag = true;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public void clearEventStartFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -712,10 +711,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventStartingFlag = false;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public bool getEventStartFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
             EventEntity eve = new EventEntity();
 
@@ -728,7 +727,6 @@ namespace _2103Project.Entities
         }
         public void setEventFullFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -736,10 +734,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventFullFlag = true;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public void clearEventFullFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
 
             foreach (EventEntity events in listOfEvent)
@@ -747,10 +745,10 @@ namespace _2103Project.Entities
                 if (events.eventId == currentEventID)
                     events.eventFullFlag = false;
             }
+            db.saveListOfEvents(listOfEvent);
         }
         public bool getEventFullFlag(int currentEventID)
         {
-            Database db = Database.CreateDatabase(DatabaseToken);
             List<EventEntity> listOfEvent = db.getListOfEvents();
             EventEntity eve = new EventEntity();
 
