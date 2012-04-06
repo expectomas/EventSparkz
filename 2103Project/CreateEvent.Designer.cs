@@ -165,12 +165,15 @@
             this.sizeTextBox.Name = "sizeTextBox";
             this.sizeTextBox.Size = new System.Drawing.Size(279, 29);
             this.sizeTextBox.TabIndex = 17;
+            this.sizeTextBox.TextChanged += new System.EventHandler(this.sizeTextBox_TextChanged);
             this.sizeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sizeTextBox_KeyDown);
             this.sizeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sizeTextBox_KeyPress);
+            this.sizeTextBox.Leave += new System.EventHandler(this.sizeTextBox_Leave);
             // 
             // timeComboBox
             // 
             this.timeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.timeComboBox.Enabled = false;
             this.timeComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeComboBox.FormattingEnabled = true;
             this.timeComboBox.Items.AddRange(new object[] {
@@ -213,6 +216,7 @@
             // 
             // descriptionTextBox
             // 
+            this.descriptionTextBox.Enabled = false;
             this.descriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionTextBox.Location = new System.Drawing.Point(419, 78);
             this.descriptionTextBox.Name = "descriptionTextBox";
@@ -222,6 +226,7 @@
             // venueComboBox
             // 
             this.venueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.venueComboBox.Enabled = false;
             this.venueComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.venueComboBox.FormattingEnabled = true;
             this.venueComboBox.Items.AddRange(new object[] {
@@ -278,6 +283,7 @@
             // 
             // addScheduleButton
             // 
+            this.addScheduleButton.Enabled = false;
             this.addScheduleButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addScheduleButton.Location = new System.Drawing.Point(7, 346);
             this.addScheduleButton.Name = "addScheduleButton";
@@ -337,6 +343,7 @@
             // 
             // deleteScheduleButton
             // 
+            this.deleteScheduleButton.Enabled = false;
             this.deleteScheduleButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteScheduleButton.Location = new System.Drawing.Point(290, 345);
             this.deleteScheduleButton.Name = "deleteScheduleButton";
