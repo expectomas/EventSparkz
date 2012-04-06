@@ -66,7 +66,6 @@
             this.budgetItemTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.advertiseBtn1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -165,12 +164,15 @@
             this.sizeTextBox.Name = "sizeTextBox";
             this.sizeTextBox.Size = new System.Drawing.Size(279, 29);
             this.sizeTextBox.TabIndex = 17;
+            this.sizeTextBox.TextChanged += new System.EventHandler(this.sizeTextBox_TextChanged);
             this.sizeTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sizeTextBox_KeyDown);
             this.sizeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sizeTextBox_KeyPress);
+            this.sizeTextBox.Leave += new System.EventHandler(this.sizeTextBox_Leave);
             // 
             // timeComboBox
             // 
             this.timeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.timeComboBox.Enabled = false;
             this.timeComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeComboBox.FormattingEnabled = true;
             this.timeComboBox.Items.AddRange(new object[] {
@@ -213,6 +215,7 @@
             // 
             // descriptionTextBox
             // 
+            this.descriptionTextBox.Enabled = false;
             this.descriptionTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionTextBox.Location = new System.Drawing.Point(419, 78);
             this.descriptionTextBox.Name = "descriptionTextBox";
@@ -222,6 +225,7 @@
             // venueComboBox
             // 
             this.venueComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.venueComboBox.Enabled = false;
             this.venueComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.venueComboBox.FormattingEnabled = true;
             this.venueComboBox.Items.AddRange(new object[] {
@@ -278,6 +282,7 @@
             // 
             // addScheduleButton
             // 
+            this.addScheduleButton.Enabled = false;
             this.addScheduleButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addScheduleButton.Location = new System.Drawing.Point(7, 346);
             this.addScheduleButton.Name = "addScheduleButton";
@@ -337,6 +342,7 @@
             // 
             // deleteScheduleButton
             // 
+            this.deleteScheduleButton.Enabled = false;
             this.deleteScheduleButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteScheduleButton.Location = new System.Drawing.Point(290, 345);
             this.deleteScheduleButton.Name = "deleteScheduleButton";
@@ -514,17 +520,6 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Budget Item:";
             // 
-            // advertiseBtn1
-            // 
-            this.advertiseBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.advertiseBtn1.Location = new System.Drawing.Point(307, 524);
-            this.advertiseBtn1.Name = "advertiseBtn1";
-            this.advertiseBtn1.Size = new System.Drawing.Size(143, 35);
-            this.advertiseBtn1.TabIndex = 36;
-            this.advertiseBtn1.Text = "Advertise";
-            this.advertiseBtn1.UseVisualStyleBackColor = true;
-            this.advertiseBtn1.Click += new System.EventHandler(this.advertiseBtn1_Click);
-            // 
             // createEventForm
             // 
             this.AcceptButton = this.createButton;
@@ -532,7 +527,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(814, 571);
-            this.Controls.Add(this.advertiseBtn1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label7);
@@ -605,7 +599,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox dpTextBox;
-        private System.Windows.Forms.Button advertiseBtn1;
         private System.Windows.Forms.ComboBox dateCombobox;
         private System.Windows.Forms.Label label15;
        

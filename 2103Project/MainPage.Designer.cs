@@ -88,6 +88,7 @@
             this.listSideEventView.TabIndex = 3;
             this.listSideEventView.UseCompatibleStateImageBehavior = false;
             this.listSideEventView.View = System.Windows.Forms.View.Details;
+            this.listSideEventView.DoubleClick += new System.EventHandler(this.listSideEventView_DoubleClick);
             // 
             // label3
             // 
@@ -274,6 +275,8 @@
             // 
             // notifyIcon
             // 
+            this.notifyIcon.BalloonTipTitle = "EventSparkZ Alert";
+            this.notifyIcon.ContextMenuStrip = this.viewAlertsToolStripMenu;
             this.notifyIcon.Text = "notifyIcon1";
             this.notifyIcon.Visible = true;
             // 
@@ -282,12 +285,12 @@
             this.viewAlertsToolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewAlertsToolStripMenuItem});
             this.viewAlertsToolStripMenu.Name = "viewAlertsToolStripMenu";
-            this.viewAlertsToolStripMenu.Size = new System.Drawing.Size(153, 48);
+            this.viewAlertsToolStripMenu.Size = new System.Drawing.Size(133, 26);
             // 
             // viewAlertsToolStripMenuItem
             // 
             this.viewAlertsToolStripMenuItem.Name = "viewAlertsToolStripMenuItem";
-            this.viewAlertsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewAlertsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.viewAlertsToolStripMenuItem.Text = "View Alerts";
             this.viewAlertsToolStripMenuItem.Click += new System.EventHandler(this.viewAlertsToolStripMenuItem_Click);
             // 

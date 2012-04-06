@@ -29,11 +29,11 @@ namespace _2103Project.Entities
         {
         }
 
-        public Venue(int i_venueId, string i_location)
+        public Venue(int i_venueId, string i_location, int i_capacity)
         {
             venueId = i_venueId;
             location = i_location;
-         //   capacity = i_capacity;
+            capacity = i_capacity;
         }
 
         //Copy Constructor
@@ -72,6 +72,34 @@ namespace _2103Project.Entities
             return venueID;
         }
 
+        public static int getVenueCapacityfromID(int venueIdentity)
+        {
+            int venueCap = 0;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Venue> listOfvenue = db.getListOfVenues();
+            foreach (Venue ven in listOfvenue)
+            {
+                if (venueIdentity == ven.getVenueId())
+                    venueCap = ven.getCapacity();
+            }
+            return venueCap;
+        }
+
+        public static List<string> getListofVenueFromCapacity(int participantSize)
+        {
+            List<string> listOfVenue = new List<string>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<Venue> listofDbVenue = db.getListOfVenues();
+            foreach(Venue ven in listofDbVenue)
+            {
+                if(ven.getCapacity() >= participantSize)
+                {
+                    listOfVenue.Add(ven.getlocation());
+                }
+            }
+            return listOfVenue;
+        }
+
         public static string getVenueLocationfromID(int venueIdentity)
         {
             string venueLocation = "MPSH1";
@@ -85,7 +113,7 @@ namespace _2103Project.Entities
             return venueLocation;
         }
 
-        public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, string purpose)
+        public bool requestVenueDetails(ref int realisedId, ref string realisedLocation, ref int realisedCapacity, string purpose)
         {
             bool releasedDetails = false;
 
@@ -94,6 +122,8 @@ namespace _2103Project.Entities
                realisedId = venueId;
 
                realisedLocation = location;
+
+                realisedCapacity = capacity;
 
                releasedDetails = true;
             }

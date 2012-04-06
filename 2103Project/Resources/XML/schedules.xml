@@ -17,6 +17,7 @@
 <Venue>
 <venueId>1</venueId>
 <location>MPSH1</location>
+<capacity>50</capacity>
 </Venue>
 </hostingVenue>
 </Activity>
@@ -28,6 +29,7 @@
 <Venue>
 <venueId>1</venueId>
 <location>MPSH1</location>
+<capacity>50</capacity>
 </Venue>
 </hostingVenue>
 </Activity>
@@ -49,6 +51,7 @@
 <Venue>
 <venueId>1</venueId>
 <location>MPSH1</location>
+<capacity>50</capacity>
 </Venue>
 </hostingVenue>
 </Activity>
@@ -60,6 +63,7 @@
 <Venue>
 <venueId>1</venueId>
 <location>MPSH1</location>
+<capacity>50</capacity>
 </Venue>
 </hostingVenue>
 </Activity>

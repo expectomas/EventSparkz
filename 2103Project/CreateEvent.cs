@@ -108,7 +108,7 @@ namespace _2103Project
                     {
                         time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
                         int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
-                        ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
+                        ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getVenueCapacityfromID(newVenueID));
                         if (listOfActivity.Count == 0)
                             newActivityID = org.getNewActivityId();
                         else
@@ -142,9 +142,11 @@ namespace _2103Project
                 org.addBudget(listOfBudget);
                 EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, listOfBudgetID, double.Parse(totalPriceTextBox.Text), currentUser.getUserId(), false, false, false, false);
                 org.createEvent(events);
-                MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                eventNameTextBox.Clear();
-                sizeTextBox.Clear();
+                if(MessageBox.Show(events.getEventName() + " has been created. Do you want to advertise?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
+                    newAdvForm.Show();
+                }
                 this.Close();
             }
         }
@@ -185,8 +187,10 @@ namespace _2103Project
             dateValue = dateValue.AddDays(3);
             startTimePicker.Value = dateValue;
             startTimePicker.MinDate = dateValue;
-            endTimePicker.Value = dateValue;
-            endTimePicker.MinDate = dateValue;
+            dateValue = dateValue.AddDays(1);
+            DateTime endValue = new DateTime(dateValue.Year, dateValue.Month, dateValue.Day, 0, 0, 0);
+            endTimePicker.Value = endValue;
+            endTimePicker.MinDate = endValue;
 
             setScheduleDay();
         }
@@ -420,26 +424,40 @@ namespace _2103Project
 
         private void deleteScheduleButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < scheduleEventView.Items.Count; i++)
+            if (scheduleEventView.SelectedItems.Count == 0)
             {
-                if (scheduleEventView.Items[i].Selected)
-                    scheduleEventView.Items[i].Remove();
+                MessageBox.Show("You have not select any schedule yet. Please select a schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                for (int i = 0; i < scheduleEventView.Items.Count; i++)
+                {
+                    if (scheduleEventView.Items[i].Selected)
+                        scheduleEventView.Items[i].Remove();
+                }
             }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < budgetListListView.Items.Count; i++)
+            if (budgetListListView.SelectedItems.Count == 0)
             {
-                if (budgetListListView.Items[i].Selected)
-                    budgetListListView.Items[i].Remove();
+                MessageBox.Show("You have not select any item yet. Please select an item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            float totalPrice = 0;
-            for (int i = 0; i < budgetListListView.Items.Count; i++)
+            else
             {
-                totalPrice += float.Parse(budgetListListView.Items[i].SubItems[1].Text);
+                for (int i = 0; i < budgetListListView.Items.Count; i++)
+                {
+                    if (budgetListListView.Items[i].Selected)
+                        budgetListListView.Items[i].Remove();
+                }
+                float totalPrice = 0;
+                for (int i = 0; i < budgetListListView.Items.Count; i++)
+                {
+                    totalPrice += float.Parse(budgetListListView.Items[i].SubItems[1].Text);
+                }
+                totalPriceTextBox.Text = totalPrice.ToString("N2");
             }
-            totalPriceTextBox.Text = totalPrice.ToString("N2");
         }
 
         private void addBudgetItem_Click(object sender, EventArgs e)
@@ -582,7 +600,7 @@ namespace _2103Project
             {
                 time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
                 int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
-                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text);
+                ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getVenueCapacityfromID(newVenueID));
                 if (listOfActivity.Count == 0)
                     newActivityID = org.getNewActivityId();
                 else
@@ -617,12 +635,34 @@ namespace _2103Project
 
         private void advertiseBtn1_Click(object sender, EventArgs e)
         {
-            if (this.eventNameTextBox.Text.Equals(""))
-                MessageBox.Show("Please enter the name of your Event to Advertise");
-            else
+            //if (this.eventNameTextBox.Text.Equals(""))
+            //    MessageBox.Show("Please enter the name of your event to advertise", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //else
+            //{
+            //    Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
+            //    newAdvForm.Show();
+            //}
+        }
+
+        private void sizeTextBox_Leave(object sender, EventArgs e)
+        {
+            venueComboBox.Items.Clear();
+            List<string> listOfVenue = Venue.getListofVenueFromCapacity(int.Parse(sizeTextBox.Text));
+            foreach (string strLocation in listOfVenue)
             {
-                Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
-                newAdvForm.Show();
+                venueComboBox.Items.Add(strLocation);
+            }
+        }
+
+        private void sizeTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (eventNameTextBox.Text != "")
+            {
+                addScheduleButton.Enabled = true;
+                deleteButton.Enabled = true;
+                timeComboBox.Enabled = true;
+                descriptionTextBox.Enabled = true;
+                venueComboBox.Enabled = true;
             }
         }
     }

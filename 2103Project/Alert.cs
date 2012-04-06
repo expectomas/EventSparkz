@@ -61,7 +61,7 @@ namespace _2103Project
                     newAlert.SubItems.Add(alerts[i].getAlert()); // Alert String
                     alertListView.Items.Add(newAlert);
 
-                    // Clear Alert Flag after Displaying
+                    // Clear Alert Flag 
                     currentEventID = eve.getEventIDFromEventName(alerts[i].getAlertedEventName()); 
                     eve.clearEventUpdatedFlag(currentEventID);
                     eve.clearEventFullFlag(currentEventID);

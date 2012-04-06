@@ -435,9 +435,11 @@ namespace _2103Project.Action
 
                         string i_location = scanner.ReadElementContentAsString("location", "");
 
+                        int i_capacity = scanner.ReadElementContentAsInt();
+
                      //   int i_capacity = scanner.ReadElementContentAsInt();
 
-                        Venue newVenue = new Venue(i_venueId, i_location);
+                        Venue newVenue = new Venue(i_venueId, i_location, i_capacity);
 
                         Activity newActivity = new Activity(activityId, time, activityDescription, newVenue);
 
@@ -488,6 +490,7 @@ namespace _2103Project.Action
             //Venue Attributes
             int o_venueId = 0;
             string o_venueDescription = "";
+            int o_capacity = 0;
 
             int sizeOfList = scheduleListToSave.Count();
 
@@ -546,11 +549,12 @@ namespace _2103Project.Action
 
                             writer.WriteStartElement("hostingVenue");
 
-                            o_venue.requestVenueDetails(ref o_venueId, ref o_venueDescription, requestString);
+                            o_venue.requestVenueDetails(ref o_venueId, ref o_venueDescription, ref o_capacity, requestString);
 
                             writer.WriteStartElement("Venue");
                             writer.WriteElementString("venueId", o_venueId.ToString());
                             writer.WriteElementString("location", o_venueDescription);
+                            writer.WriteElementString("capacity", o_capacity.ToString());
                             writer.WriteEndElement();
 
                             //EndTag hosting Venue
@@ -615,7 +619,9 @@ namespace _2103Project.Action
 
                     string i_location = scanner.ReadElementContentAsString("location", "");
 
-                    Venue newVenue = new Venue(i_venueId, i_location);
+                    int i_capacity = scanner.ReadElementContentAsInt();
+
+                    Venue newVenue = new Venue(i_venueId, i_location, i_capacity);
 
                     Activity newActivity = new Activity(activityId, time, activityDescription, newVenue);
 
@@ -643,6 +649,7 @@ namespace _2103Project.Action
             //Venue Attributes
             int o_venueId = 0;
             string o_venueDescription = "";
+            int o_capacity = 0;
 
             int sizeOfList = activityListToSave.Count;
 
@@ -676,11 +683,12 @@ namespace _2103Project.Action
 
                         writer.WriteStartElement("hostingVenue");
 
-                        o_venue.requestVenueDetails(ref o_venueId, ref o_venueDescription, requestString);
+                        o_venue.requestVenueDetails(ref o_venueId, ref o_venueDescription, ref o_capacity, requestString);
 
                         writer.WriteStartElement("Venue");
                         writer.WriteElementString("venueId", o_venueId.ToString());
                         writer.WriteElementString("location", o_venueDescription);
+                        writer.WriteElementString("capacity",o_capacity.ToString());
                         writer.WriteEndElement();
 
                         //EndTag hosting Venue
@@ -846,7 +854,9 @@ namespace _2103Project.Action
 
                     string i_location = scanner.ReadElementContentAsString("location","");
 
-                    Venue newVenue = new Venue(i_venueId, i_location);
+                    int i_capacity = scanner.ReadElementContentAsInt();
+
+                    Venue newVenue = new Venue(i_venueId, i_location, i_capacity);
 
                     listToPop.Add(newVenue);
 
@@ -883,14 +893,17 @@ namespace _2103Project.Action
 
                         int venueId = 0;
                         string venueLo = "";
+                        int capacity = 0;
 
                         //Passing venueId and venueLo as Referene
-                        holdingElement.requestVenueDetails(ref venueId,ref venueLo,requestString);
+                        holdingElement.requestVenueDetails(ref venueId,ref venueLo, ref capacity, requestString);
 
                         //Write Element Contents
                         writer.WriteElementString("venueId",venueId.ToString());
 
                         writer.WriteElementString("location", venueLo);
+
+                        writer.WriteElementString("capacity",capacity.ToString());
 
                         writer.WriteEndElement();
                     }

@@ -27,11 +27,13 @@ namespace _2103Project
         private bool LogoutPressed = false;
         private int currentEventID;
         static System.Timers.Timer pollingTimer;
+        static System.Timers.Timer alertTimer;
         private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
         bool connectedToInternet = false;
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 3000;
+        const int alertInterval = 3000;
 
         private void checkInternetConnection()
         {
@@ -81,6 +83,15 @@ namespace _2103Project
             pollingTimer.Start();
         }
 
+        private void alertTimeReached(object sender, EventArgs e)
+        {
+            alertTimer.Stop();
+
+            displayAlert();
+
+            alertTimer.Start();
+        }
+
         //Initiatisation
 
         public mainPage(User incomingUser)
@@ -89,12 +100,19 @@ namespace _2103Project
 
             currentUser = incomingUser;
 
-            //initialise Timer 
+            //initialise Timer for AmazonWebService
             pollingTimer = new System.Timers.Timer(AmazonWebServicePollInterval);
             pollingTimer.Enabled = true;
             pollingTimer.Elapsed += new ElapsedEventHandler(pollingTimeReached);
             pollingTimer.AutoReset = true;
             pollingTimer.Start();
+
+            //initialise Timer for Alerts
+            alertTimer = new System.Timers.Timer(alertInterval);
+            alertTimer.Enabled = true;
+            alertTimer.Elapsed += new ElapsedEventHandler(alertTimeReached);
+            alertTimer.AutoReset = true;
+            alertTimer.Start();
 
             //Initialised Dynamic Controls
             initAnnouncementList();
@@ -104,6 +122,9 @@ namespace _2103Project
 
             //Check Internet Connection
             checkInternetConnection();
+
+            // Start Alert Check/Display
+            displayAlert();
         }
 
         public void initAnnouncementList()
@@ -242,58 +263,66 @@ namespace _2103Project
 
         public void populateAdvertisement(List<Advertisement> listOfAdv)
         {
-            this.Invoke(new MethodInvoker(delegate
+            if (this.IsHandleCreated)
             {
-                announcementList1.Hide();
-                announcementList1.Items.Clear();
+                this.Invoke(new MethodInvoker(delegate
+                                                  {
+                                                      announcementList1.Hide();
+                                                      announcementList1.Items.Clear();
 
-                if (listOfAdv.Count == 0)
-                    listOfAdv = existingAdv;
+                                                      if (listOfAdv.Count == 0)
+                                                          listOfAdv = existingAdv;
 
-                //Sort List
-                listOfAdv.Sort(CompareAdId_SortPar);
+                                                      //Sort List
+                                                      listOfAdv.Sort(CompareAdId_SortPar);
 
-                //Add Images First
-                ImageList imgList = new ImageList();
+                                                      //Add Images First
+                                                      ImageList imgList = new ImageList();
 
-                foreach (Advertisement ad in listOfAdv)
-                {
-                    string file = ad.imageDirectory;
+                                                      foreach (Advertisement ad in listOfAdv)
+                                                      {
+                                                          string file = ad.imageDirectory;
 
-                    string relativePath = System.IO.Directory.GetCurrentDirectory() + "\\poster" + file + ".jpg";
+                                                          string relativePath =
+                                                              System.IO.Directory.GetCurrentDirectory() + "\\poster" +
+                                                              file + ".jpg";
 
-                    try
-                    {
-                        imgList.Images.Add(Bitmap.FromFile(relativePath));
-                    }
-                    catch (System.IO.FileNotFoundException)
-                    {
-                        //Insert a blank poster if no file found
-                        imgList.Images.Add(Bitmap.FromFile(System.IO.Directory.GetCurrentDirectory() + "\\blankposter.jpg"));
-                    }
-                }
+                                                          try
+                                                          {
+                                                              imgList.Images.Add(Bitmap.FromFile(relativePath));
+                                                          }
+                                                          catch (System.IO.FileNotFoundException)
+                                                          {
+                                                              //Insert a blank poster if no file found
+                                                              imgList.Images.Add(
+                                                                  Bitmap.FromFile(
+                                                                      System.IO.Directory.GetCurrentDirectory() +
+                                                                      "\\blankposter.jpg"));
+                                                          }
+                                                      }
 
-                int i = 1;
-                foreach (Advertisement ad in listOfAdv)
-                {
-                    ListViewItem newAd = new ListViewItem(i.ToString());
-                    newAd.SubItems.Add(ad.advertisementID.ToString());
-                    newAd.ImageIndex = i;
-                    newAd.SubItems.Add(ad.imageDirectory);
-                    newAd.SubItems.Add(ad.description);
+                                                      int i = 1;
+                                                      foreach (Advertisement ad in listOfAdv)
+                                                      {
+                                                          ListViewItem newAd = new ListViewItem(i.ToString());
+                                                          newAd.SubItems.Add(ad.advertisementID.ToString());
+                                                          newAd.ImageIndex = i;
+                                                          newAd.SubItems.Add(ad.imageDirectory);
+                                                          newAd.SubItems.Add(ad.description);
 
-                    announcementList1.Items.Add(newAd);
+                                                          announcementList1.Items.Add(newAd);
 
-                    i++;
-                }
+                                                          i++;
+                                                      }
 
-                announcementList1.SmallImageList = imgList;
+                                                      announcementList1.SmallImageList = imgList;
 
-                existingAdv = listOfAdv;
+                                                      existingAdv = listOfAdv;
 
-                announcementList1.Show();
-            }));
-        }
+                                                      announcementList1.Show();
+                                                  }));
+            }
+    }
 
         public static int CompareAdId_SortPar(Advertisement a, Advertisement b)
         {
@@ -681,6 +710,14 @@ namespace _2103Project
                 notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
                 notifyIcon.ShowBalloonTip(1500);
             }
+        }
+
+        private void listSideEventView_DoubleClick(object sender, EventArgs e)
+        {
+            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+            eventInfoPage.Show();
         }
     }
 }

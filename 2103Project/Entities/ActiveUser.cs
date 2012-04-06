@@ -225,6 +225,7 @@ namespace _2103Project.Entities
         public int scoutAlert()
         {
             int numOfAlerts = 0;
+            userAlerts.Clear();
             Participant p = new Participant(this);
             Facilitator f = new Facilitator(this);
             Organiser o = new Organiser(this);
@@ -239,7 +240,7 @@ namespace _2103Project.Entities
             // Alert if User is PARTICIPANT of this updated event
             foreach (EventEntity e in listOfRegisteredEvents)
             {
-                if (e.getEventUpdatedFlag(this.userId) == true)
+                if (e.getEventUpdatedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 1));
                     numOfAlerts++;
@@ -249,7 +250,7 @@ namespace _2103Project.Entities
             // Alert if User if FACILITATOR of this updated event
             foreach (EventEntity e in listOfFacilitatingEvents)
             {
-                if (e.getEventUpdatedFlag(this.userId) == true)
+                if (e.getEventUpdatedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 1));
                     numOfAlerts++;
@@ -259,7 +260,7 @@ namespace _2103Project.Entities
             // Alert if User is PARTICIPANT of this deleted event
             foreach (EventEntity e in listOfRegisteredEvents)
             {
-                if (e.getEventDeletedFlag(this.userId) == true)
+                if (e.getEventDeletedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 2));
                     numOfAlerts++;
@@ -269,7 +270,7 @@ namespace _2103Project.Entities
             // Alert if User is FACILITATOR of this deleted event
             foreach (EventEntity e in listOfFacilitatingEvents)
             {
-                if (e.getEventDeletedFlag(this.userId) == true)
+                if (e.getEventDeletedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 2));
                     numOfAlerts++;
@@ -279,7 +280,7 @@ namespace _2103Project.Entities
             // Alert if User is PARTICIPANT of this starting event
             foreach (EventEntity e in listOfRegisteredEvents)
             {
-                if (e.getEventDeletedFlag(this.userId) == true)
+                if (e.getEventDeletedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 3));
                     numOfAlerts++;
@@ -289,7 +290,7 @@ namespace _2103Project.Entities
             // Alert if User is FACILITATOR of this starting event
             foreach (EventEntity e in listOfFacilitatingEvents)
             {
-                if (e.getEventDeletedFlag(this.userId) == true)
+                if (e.getEventDeletedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 3));
                     numOfAlerts++;
@@ -299,7 +300,7 @@ namespace _2103Project.Entities
             // Alert if User is ORGANIZER of this starting event
             foreach (EventEntity e in listOfOrganizingEvents)
             {
-                if (e.getEventDeletedFlag(this.userId) == true)
+                if (e.getEventDeletedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 3));
                     numOfAlerts++;
@@ -309,7 +310,7 @@ namespace _2103Project.Entities
             // Alert if User is ORGANIZER of this full event
             foreach (EventEntity e in listOfOrganizingEvents)
             {
-                if (e.getEventDeletedFlag(this.userId) == true)
+                if (e.getEventDeletedFlag(e.getEventId()) == true)
                 {
                     userAlerts.Add(eve.createAlert(e.getEventId(), 4));
                     numOfAlerts++;
