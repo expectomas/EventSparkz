@@ -154,7 +154,7 @@ namespace _2103Project
                     string timeTest = timeListBox.Items[i].ToString();
                     listOfDateTime.Add(returnTime(timeListBox.Items[i].ToString(), dtValue));
                     listOfdescription.Add(descriptionListBox.Items[i].ToString());
-                    newVen = new Venue(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString()), venueListBox.Items[i].ToString());
+                    newVen = new Venue(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString()), venueListBox.Items[i].ToString(), Venue.getVenueCapacityfromID(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString())));
                     listOfVenue.Add(newVen);
                 }
                 EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
