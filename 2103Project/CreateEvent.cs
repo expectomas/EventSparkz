@@ -142,9 +142,11 @@ namespace _2103Project
                 org.addBudget(listOfBudget);
                 EventEntity events = new EventEntity(neweventId, eventNameTextBox.Text, startTimePicker.Value, endTimePicker.Value, newscheduleId, int.Parse(sizeTextBox.Text), participantList, facilitatorList, listOfBudgetID, double.Parse(totalPriceTextBox.Text), currentUser.getUserId(), false, false, false, false);
                 org.createEvent(events);
-                MessageBox.Show("Your event has been created. Thank you.", "Event Create", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                eventNameTextBox.Clear();
-                sizeTextBox.Clear();
+                if(MessageBox.Show(events.getEventName() + " has been created. Do you want to advertise?", "Registration", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
+                    newAdvForm.Show();
+                }
                 this.Close();
             }
         }
@@ -633,13 +635,13 @@ namespace _2103Project
 
         private void advertiseBtn1_Click(object sender, EventArgs e)
         {
-            if (this.eventNameTextBox.Text.Equals(""))
-                MessageBox.Show("Please enter the name of your event to advertise", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            {
-                Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
-                newAdvForm.Show();
-            }
+            //if (this.eventNameTextBox.Text.Equals(""))
+            //    MessageBox.Show("Please enter the name of your event to advertise", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //else
+            //{
+            //    Advertise newAdvForm = new Advertise(this.eventNameTextBox.Text.ToString());
+            //    newAdvForm.Show();
+            //}
         }
 
         private void sizeTextBox_Leave(object sender, EventArgs e)

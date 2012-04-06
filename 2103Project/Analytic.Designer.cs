@@ -37,7 +37,6 @@
             this.participantSizeOutput = new System.Windows.Forms.Label();
             this.eventDateOutput = new System.Windows.Forms.Label();
             this.eventNameOutput = new System.Windows.Forms.Label();
-            this.ageGroup = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.mostRegisteredEvent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -49,7 +48,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.mostRegisteredEvent);
-            this.tabControl1.Controls.Add(this.ageGroup);
             this.tabControl1.Location = new System.Drawing.Point(24, 21);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -142,16 +140,6 @@
             this.eventNameOutput.TabIndex = 0;
             this.eventNameOutput.Text = "eventNameOutput";
             // 
-            // ageGroup
-            // 
-            this.ageGroup.Location = new System.Drawing.Point(4, 22);
-            this.ageGroup.Name = "ageGroup";
-            this.ageGroup.Padding = new System.Windows.Forms.Padding(3);
-            this.ageGroup.Size = new System.Drawing.Size(374, 224);
-            this.ageGroup.TabIndex = 1;
-            this.ageGroup.Text = "Age Group";
-            this.ageGroup.UseVisualStyleBackColor = true;
-            // 
             // Analytic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,7 +165,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage mostRegisteredEvent;
-        private System.Windows.Forms.TabPage ageGroup;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
