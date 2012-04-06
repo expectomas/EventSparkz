@@ -703,5 +703,13 @@ namespace _2103Project
                 notifyIcon.ShowBalloonTip(1500);
             }
         }
+
+        private void listSideEventView_DoubleClick(object sender, EventArgs e)
+        {
+            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[1].Text);
+            eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+            eventInfoPage.Show();
+        }
     }
 }

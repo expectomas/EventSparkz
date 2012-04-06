@@ -88,6 +88,7 @@
             this.listSideEventView.TabIndex = 3;
             this.listSideEventView.UseCompatibleStateImageBehavior = false;
             this.listSideEventView.View = System.Windows.Forms.View.Details;
+            this.listSideEventView.DoubleClick += new System.EventHandler(this.listSideEventView_DoubleClick);
             // 
             // label3
             // 
