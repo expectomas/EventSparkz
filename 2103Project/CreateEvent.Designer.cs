@@ -66,7 +66,6 @@
             this.budgetItemTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.advertiseBtn1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -521,17 +520,6 @@
             this.label10.TabIndex = 36;
             this.label10.Text = "Budget Item:";
             // 
-            // advertiseBtn1
-            // 
-            this.advertiseBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.advertiseBtn1.Location = new System.Drawing.Point(307, 524);
-            this.advertiseBtn1.Name = "advertiseBtn1";
-            this.advertiseBtn1.Size = new System.Drawing.Size(143, 35);
-            this.advertiseBtn1.TabIndex = 36;
-            this.advertiseBtn1.Text = "Advertise";
-            this.advertiseBtn1.UseVisualStyleBackColor = true;
-            this.advertiseBtn1.Click += new System.EventHandler(this.advertiseBtn1_Click);
-            // 
             // createEventForm
             // 
             this.AcceptButton = this.createButton;
@@ -539,7 +527,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(814, 571);
-            this.Controls.Add(this.advertiseBtn1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label7);
@@ -612,7 +599,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox dpTextBox;
-        private System.Windows.Forms.Button advertiseBtn1;
         private System.Windows.Forms.ComboBox dateCombobox;
         private System.Windows.Forms.Label label15;
        

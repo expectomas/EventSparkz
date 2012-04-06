@@ -148,7 +148,6 @@ namespace _2103Project
                     newAdvForm.Show();
                 }
                 this.Close();
-   
             }
         }
 
