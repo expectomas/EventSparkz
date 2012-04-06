@@ -196,7 +196,13 @@ namespace _2103Project
 
         private void registerEventBtn_Click(object sender, EventArgs e)
         {
-            
+            EventEntity eve = new EventEntity();
+            if (eve.compareParticipantNum(currentEventID) == true)
+            {
+                eve.setEventFullFlag(currentEventID);
+                this.Close();
+            }
+
             Participant registeringParticipant = new Participant(currentUser);
 
             EventEntity registeringEvent = EventEntity.getEventFromEventId(currentEventID);
@@ -219,9 +225,6 @@ namespace _2103Project
                 MessageBox.Show("Success", "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show("Fail", "Test", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
-
-            EventEntity eve = new EventEntity();
-            eve.setEventFullFlag(currentEventID);
 
             this.Close();
         }
