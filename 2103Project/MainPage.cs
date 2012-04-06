@@ -126,7 +126,7 @@ namespace _2103Project
             EventEntity eve=new EventEntity();
             if(eve.checkEventclock(currentEventID)==true)
             {
-                e.setEventStartFlag(currentEventID);
+                eve.setEventStartFlag(currentEventID);
             }
             
 
@@ -462,10 +462,20 @@ namespace _2103Project
         {
             try
             {
-                ListViewItem listItem = this.listMainEventView.SelectedItems[0];
-                currentEventID = int.Parse(listItem.SubItems[1].Text);
-                eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
-                eventInfoPage.Show();
+                if (listMainEventView.SelectedItems.Count > 0)
+                {
+                    ListViewItem listItem = this.listMainEventView.SelectedItems[0];
+                    currentEventID = int.Parse(listItem.SubItems[1].Text);
+                    eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+                    eventInfoPage.Show();
+                }
+                else if (listSideEventView.SelectedItems.Count > 0)
+                {
+                    ListViewItem listItem = this.listSideEventView.SelectedItems[0];
+                    currentEventID = int.Parse(listItem.SubItems[0].Text);
+                    eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
+                    eventInfoPage.Show();
+                }     
             }
             catch
             {
@@ -721,8 +731,8 @@ namespace _2103Project
 
         private void listSideEventView_DoubleClick(object sender, EventArgs e)
         {
-            ListViewItem listItem = this.listMainEventView.SelectedItems[0];
-            currentEventID = int.Parse(listItem.SubItems[1].Text);
+            ListViewItem listItem = this.listSideEventView.SelectedItems[0];
+            currentEventID = int.Parse(listItem.SubItems[0].Text);
             eventInfoForm eventInfoPage = new eventInfoForm(currentUser, currentEventID);
             eventInfoPage.Show();
         }

@@ -38,7 +38,7 @@ namespace _2103Project
             initMainEventList();
             initBudgetList();
 
-            previousScheudleDate = startTimePicker.Value;
+           
         }
 
         List<Activity> listOfActivity = new List<Activity>();
@@ -106,7 +106,7 @@ namespace _2103Project
                     Activity currAct; Venue ven; DateTime time;
                     for (int i = 0; i < scheduleEventView.Items.Count; i++)
                     {
-                        time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, previousScheudleDate);
+                        time = returnTime(scheduleEventView.Items[i].SubItems[0].Text, Convert.ToDateTime(dateCombobox.Text));
                         int newVenueID = org.getCheckVenueId(scheduleEventView.Items[i].SubItems[2].Text);
                         ven = new Venue(newVenueID, scheduleEventView.Items[i].SubItems[2].Text, Venue.getVenueCapacityfromID(newVenueID));
                         if (listOfActivity.Count == 0)
@@ -191,7 +191,7 @@ namespace _2103Project
             DateTime endValue = new DateTime(dateValue.Year, dateValue.Month, dateValue.Day, 0, 0, 0);
             endTimePicker.Value = endValue;
             endTimePicker.MinDate = endValue;
-
+            previousScheudleDate = startTimePicker.Value;
             setScheduleDay();
         }
 
@@ -646,11 +646,14 @@ namespace _2103Project
 
         private void sizeTextBox_Leave(object sender, EventArgs e)
         {
-            venueComboBox.Items.Clear();
-            List<string> listOfVenue = Venue.getListofVenueFromCapacity(int.Parse(sizeTextBox.Text));
-            foreach (string strLocation in listOfVenue)
+            if (sizeTextBox.Text != "")
             {
-                venueComboBox.Items.Add(strLocation);
+                venueComboBox.Items.Clear();
+                List<string> listOfVenue = Venue.getListofVenueFromCapacity(int.Parse(sizeTextBox.Text));
+                foreach (string strLocation in listOfVenue)
+                {
+                    venueComboBox.Items.Add(strLocation);
+                }
             }
         }
 
@@ -659,7 +662,7 @@ namespace _2103Project
             if (eventNameTextBox.Text != "")
             {
                 addScheduleButton.Enabled = true;
-                deleteButton.Enabled = true;
+                deleteScheduleButton.Enabled = true;
                 timeComboBox.Enabled = true;
                 descriptionTextBox.Enabled = true;
                 venueComboBox.Enabled = true;
