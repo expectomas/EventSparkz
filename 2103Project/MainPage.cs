@@ -27,11 +27,13 @@ namespace _2103Project
         private bool LogoutPressed = false;
         private int currentEventID;
         static System.Timers.Timer pollingTimer;
+        static System.Timers.Timer alertTimer;
         private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
         bool connectedToInternet = false;
 
         //The periodic interval to start polling 
         const double AmazonWebServicePollInterval = 3000;
+        const int alertInterval = 3000;
 
         private void checkInternetConnection()
         {
@@ -81,6 +83,15 @@ namespace _2103Project
             pollingTimer.Start();
         }
 
+        private void alertTimeReached(object sender, EventArgs e)
+        {
+            alertTimer.Stop();
+
+            displayAlert();
+
+            alertTimer.Start();
+        }
+
         //Initiatisation
 
         public mainPage(User incomingUser)
@@ -89,12 +100,19 @@ namespace _2103Project
 
             currentUser = incomingUser;
 
-            //initialise Timer 
+            //initialise Timer for AmazonWebService
             pollingTimer = new System.Timers.Timer(AmazonWebServicePollInterval);
             pollingTimer.Enabled = true;
             pollingTimer.Elapsed += new ElapsedEventHandler(pollingTimeReached);
             pollingTimer.AutoReset = true;
             pollingTimer.Start();
+
+            //initialise Timer for Alerts
+            alertTimer = new System.Timers.Timer(alertInterval);
+            alertTimer.Enabled = true;
+            alertTimer.Elapsed += new ElapsedEventHandler(alertTimeReached);
+            alertTimer.AutoReset = true;
+            alertTimer.Start();
 
             //Initialised Dynamic Controls
             initAnnouncementList();
@@ -104,6 +122,9 @@ namespace _2103Project
 
             //Check Internet Connection
             checkInternetConnection();
+
+            // Start Alert Check/Display
+            displayAlert();
         }
 
         public void initAnnouncementList()

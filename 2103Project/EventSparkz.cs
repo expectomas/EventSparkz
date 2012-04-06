@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Threading;
 using _2103Project.Entities;
 using _2103Project.Action;
+using _2103Project.Test;
 
 /*
  * Authors for this section
@@ -43,6 +44,11 @@ namespace _2103Project
         private void loginButton_Click(object sender, EventArgs e)
         {
             //Fire your test class
+
+            bool testResult;
+            Test_ActiveUser au = new Test_ActiveUser();
+
+            testResult = au.viewEventListingByEventNameTest();
 
             //End test here
 
