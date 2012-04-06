@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using _2103Project.Entities;
+using _2103test._2103Project.Test;
+using _2103Project.Test;
 
 /*
  * Authors for this section
@@ -194,9 +196,14 @@ namespace _2103Project
 
         private void registerEventBtn_Click(object sender, EventArgs e)
         {
+            
             Participant registeringParticipant = new Participant(currentUser);
 
             EventEntity registeringEvent = EventEntity.getEventFromEventId(currentEventID);
+
+            //Test_Participant testCall = new Test_Participant();
+
+            //bool testSuccess = testCall.Test_registerEvent();
 
             if (Participant_Register_Dialog(registeringEvent.getEventName()))
             {
@@ -207,6 +214,15 @@ namespace _2103Project
             //Highlight change in state
             state = determineState(currentEventID);
             displayAppropriateBtn(state);
+
+            /*if (testSuccess == true)
+                MessageBox.Show("Success", "Test", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("Fail", "Test", MessageBoxButtons.OK, MessageBoxIcon.Error);*/
+
+            EventEntity eve = new EventEntity();
+            eve.setEventFullFlag(currentEventID);
+
             this.Close();
         }
 

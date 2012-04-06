@@ -367,7 +367,7 @@ namespace _2103Project
         {
             if (dateCombobox.Text == "")
             {
-                MessageBox.Show("Please select your day.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a day.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -426,7 +426,7 @@ namespace _2103Project
         {
             if (scheduleEventView.SelectedItems.Count == 0)
             {
-                MessageBox.Show("You have not select any schedule yet. Please select a schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select a schedule.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -442,7 +442,7 @@ namespace _2103Project
         {
             if (budgetListListView.SelectedItems.Count == 0)
             {
-                MessageBox.Show("You have not select any item yet. Please select an item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please select an item.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
