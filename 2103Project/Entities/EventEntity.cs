@@ -256,7 +256,7 @@ namespace _2103Project.Entities
             foreach (EventEntity eve in listOfEvents)
             {
                 if (eve.getEventId() == eventID)
-                    totalParticipateNumber = eve.getParticipantSize();
+                    totalParticipateNumber = eve.getParticipantList().Count;
             }
             return totalParticipateNumber;
         }
