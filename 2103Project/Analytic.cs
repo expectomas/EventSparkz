@@ -46,7 +46,7 @@ namespace _2103Project
             {
                 eventNameOutput.Text = showCaseEvent.getEventName();
                 eventDateOutput.Text = showCaseEvent.getEventDate().ToString("dd/MM/yy");
-                participantSizeOutput.Text = EventEntity.getParticipantNumber(showCaseEvent.getEventId()).ToString();
+                participantSizeOutput.Text = EventEntity.getParticipantNumber(showCaseEvent.getParticipantList().Count).ToString();
             }
 
             eventNameOutput.Show();
