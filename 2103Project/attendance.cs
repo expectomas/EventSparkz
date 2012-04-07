@@ -82,6 +82,10 @@ namespace _2103Project
 
                     newParticipant.SubItems.Add(listofParticipant[i].getName().ToString());
 
+                    newParticipant.SubItems.Add(listofParticipant[i].getEmail().ToString());
+
+                    newParticipant.SubItems.Add(listofParticipant[i].getContactHP().ToString());
+
                     attendanceListView.Items.Add(newParticipant);
                 }
             }

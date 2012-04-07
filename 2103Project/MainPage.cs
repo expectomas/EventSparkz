@@ -31,9 +31,9 @@ namespace _2103Project
         private List<_2103Project.Entities.Advertisement> existingAdv = new List<Advertisement>();
         bool connectedToInternet = false;
 
-        //The periodic interval to start polling 
-        const double AmazonWebServicePollInterval = 3000;
-        const int alertInterval = 5000;
+        //The periodic interval to start polling (ms) 
+        const double AmazonWebServicePollInterval = 3000;       // 3 seconds
+        const int alertInterval = 900000;                       // 15 minutes
 
         private void checkInternetConnection()
         {
@@ -726,11 +726,18 @@ namespace _2103Project
             ActiveUser au = new ActiveUser(currentUser);
             int num = au.scoutAlert();
 
-            if (num > 0)   // If there is at least ONE alert
+            try
             {
-                notifyIcon.Icon = SystemIcons.Application;
-                notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
-                notifyIcon.ShowBalloonTip(1500);
+                if (num > 0 && notifyIcon.Icon != null)   // If there is at least ONE alert
+                {
+                    notifyIcon.Icon = SystemIcons.Application;
+                    notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
+                    notifyIcon.ShowBalloonTip(1500);
+                }
+            }
+            catch (Exception)
+            {
+               
             }
         }
 
