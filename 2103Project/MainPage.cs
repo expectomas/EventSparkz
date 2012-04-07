@@ -728,7 +728,7 @@ namespace _2103Project
 
             try
             {
-                if (num > 0 && notifyIcon.Icon != null)   // If there is at least ONE alert
+                if (num > 0)   // If there is at least ONE alert
                 {
                     notifyIcon.Icon = SystemIcons.Application;
                     notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";

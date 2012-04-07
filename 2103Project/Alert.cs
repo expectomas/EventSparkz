@@ -69,12 +69,13 @@ namespace _2103Project
                 }
             }
 
+            alerts.Clear(); // Erase off OLD alerts
             alertListView.Show();
         }
 
         private void okBtn_Click(object sender, EventArgs e)
         {
-            this.alertListView.Items.Clear();
+            this.alertListView.Items.Clear();  // Erase off OLD alerts 
             this.Close();
         }
     }
