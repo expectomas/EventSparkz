@@ -15,4 +15,19 @@
     <itemPrice>100</itemPrice>
     <itemName>Food</itemName>
   </Budget>
+  <Budget>
+    <itemId>4</itemId>
+    <itemPrice>3100</itemPrice>
+    <itemName>Catering </itemName>
+  </Budget>
+  <Budget>
+    <itemId>5</itemId>
+    <itemPrice>3100</itemPrice>
+    <itemName>Services</itemName>
+  </Budget>
+  <Budget>
+    <itemId>6</itemId>
+    <itemPrice>100</itemPrice>
+    <itemName>Food</itemName>
+  </Budget>
 </BudgetPool>
