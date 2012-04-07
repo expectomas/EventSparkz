@@ -27,14 +27,23 @@ namespace _2103Project
     public partial class updateForm : Form
     {
         int currentEventID = 1;
+        int newActivityID = 0;
         private User currentUser;
+        Queue<int> listOfActID;
+        Queue<DateTime> listOfDateTime;
+        Queue<string> listofDescription;
+        Queue<string> listOfVenue;
+        DateTime endTime;
+        DateTime previousScheudleDate;
+        List<Activity> listOfActivity = new List<Activity>();
 
         public updateForm(User incomingUser, int incomingEventID)
         {
             currentUser = incomingUser;
             currentEventID = incomingEventID;
             InitializeComponent();
-        }
+            endTime = EventEntity.getEndTime(currentEventID);
+        }        
 
         private void updateForm_Load(object sender, EventArgs e)
         {
@@ -45,43 +54,25 @@ namespace _2103Project
             participantTextbox.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
             DateTime dateValue = EventEntity.getStartTime(currentEventID);
             dateTextBox.Text = String.Format("{0:f}", dateValue);
-            /*venueTextBox.Text = EventEntity.getStartVenueFromEventID(currentEventID);
-            Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
-            Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
-            Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
-            DateTime dateTimeValue = DateTime.Now;
-            while (!(listOfDateTime.Count == 0))
+            listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
+            listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
+            listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
+            venueTextBox.Text = listOfVenue.Peek();
+            Activity currentAct; Venue ven;
+            Organiser pub = new Organiser(currentUser);
+            int newActID = pub.getNewActivityId();
+            newActID++;
+            while (listOfDateTime.Count != 0)
             {
-                timeListBox.Items.Add(String.Format("{0:t}", listOfDateTime.Dequeue()));
-                descriptionListBox.Items.Add(listofDescription.Dequeue());
-                venueListBox.Items.Add(listOfVenue.Dequeue());
+
+                string curlocation = listOfVenue.Dequeue();
+                ven = new Venue(Venue.getVenueIdfromLocation(curlocation), curlocation, Venue.getVenueCapacityfromID(Venue.getVenueIdfromLocation(curlocation)));
+                currentAct = new Activity(newActID, listOfDateTime.Dequeue(), listofDescription.Dequeue(), ven);
+                listOfActivity.Add(currentAct);
+                newActID++;
             }
-            */
-            DateTime enddateValue = EventEntity.getEndTime(currentEventID);
-            Queue<DateTime> listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
-            Queue<string> listofDescription = EventEntity.getListOfDescriptionFromEventID(currentEventID);
-            Queue<string> listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
-            // venueLabel.Text = EventEntity.getStartVenueFromEventID(currentEventID);
-            setScheduleDay(dateValue, enddateValue);
+            setScheduleDay(dateValue, endTime);
             dateCombobox.Text = dateValue.ToLongDateString();
-            int venueFlag = 0;
-            while (!(listOfDateTime.Count == 0))
-            {
-                DateTime currDateTimeValue = listOfDateTime.Dequeue();
-                string currDescription = listofDescription.Dequeue();
-                string currVenue = listOfVenue.Dequeue();
-                if (currDateTimeValue.Year == dateValue.Year && currDateTimeValue.Month == dateValue.Month && currDateTimeValue.Day == dateValue.Day)
-                {
-                    timeListBox.Items.Add(String.Format("{0:t}", currDateTimeValue));
-                    descriptionListBox.Items.Add(currDescription);
-                    venueListBox.Items.Add(currVenue);
-                }
-                if (venueFlag == 0)
-                {
-                    venueTextBox.Text = currVenue;
-                    venueFlag++;
-                }
-            }
         }
 
         private void setScheduleDay(DateTime startDate, DateTime endDate)
@@ -143,22 +134,40 @@ namespace _2103Project
             else
             {
                 EventEntity.setParticipantNumFromEventID(currentEventID, numParticipant);
+
+                // delete schedule
+                Activity currentActivity;
+                for (int i = 0; i < listOfActivity.Count; i++)
+                {
+                    currentActivity = listOfActivity[i];
+                    if (currentActivity.getDate().Year == Convert.ToDateTime(dateCombobox.Text).Year && currentActivity.getDate().Month == Convert.ToDateTime(dateCombobox.Text).Month && currentActivity.getDate().Day == Convert.ToDateTime(dateCombobox.Text).Day)
+                    {
+                        listOfActivity.Remove(currentActivity);
+                        i--;
+                    }
+                }
+
                 //set schedule
-                List<DateTime> listOfDateTime = new List<DateTime>();
-                List<string> listOfdescription = new List<string>();
-                List<Venue> listOfVenue = new List<Venue>();
-                Venue newVen;
+                Organiser org = new Organiser(currentUser);
+                Activity currAct; Venue ven; DateTime time;
                 for (int i = 0; i < timeListBox.Items.Count; i++)
                 {
-                    DateTime dtValue = Convert.ToDateTime(dateTextBox.Text);
-                    string timeTest = timeListBox.Items[i].ToString();
-                    listOfDateTime.Add(returnTime(timeListBox.Items[i].ToString(), dtValue));
-                    listOfdescription.Add(descriptionListBox.Items[i].ToString());
-                    newVen = new Venue(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString()), venueListBox.Items[i].ToString(), Venue.getVenueCapacityfromID(Venue.getVenueIdfromLocation(venueListBox.Items[i].ToString())));
-                    listOfVenue.Add(newVen);
+                    time = returnTime(timeListBox.Items[i].ToString(), Convert.ToDateTime(dateCombobox.Text));
+                    int newVenueID = org.getCheckVenueId(venueListBox.Items[i].ToString());
+                    ven = new Venue(newVenueID, venueListBox.Items[i].ToString(), Venue.getVenueCapacityfromID(newVenueID));
+                    
+                    newActivityID = getNewActIDFromActList(listOfActivity);
+                    currAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString(), ven);
+                    listOfActivity.Add(currAct);
                 }
-                EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
+                listOfActivity = sortActivityListByID(listOfActivity);
+               
+                foreach(Activity act in listOfActivity)
+                    org.addNewActivity(act);
+                listOfActivity = sortActivityListByTime(listOfActivity);
 
+            //    EventEntity.setSchedule(currentEventID, listOfDateTime, listOfdescription, listOfVenue);
+                EventEntity.replaceSchedule(currentEventID, listOfActivity);
                 //Set Alert Flag
                 EventEntity eve = new EventEntity();
                 eve.setEventUpdatedFlag(currentEventID);
@@ -167,6 +176,65 @@ namespace _2103Project
                 MessageBox.Show("Save successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
+        }
+
+        List<Activity> sortActivityListByID(List<Activity> listOfActivity)
+        {
+            int earliestID;
+            int earliestIndex = 0;
+            Activity earliestAct = listOfActivity[0];
+            int currentIndex = 0;
+            List<Activity> sortedList = new List<Activity>();
+            int value = listOfActivity.Count;
+            while (listOfActivity.Count != 0)
+            {
+                earliestID = listOfActivity[0].getActivityId();
+                earliestAct = listOfActivity[0];
+                foreach (Activity currAct in listOfActivity)
+                {
+                    if (currAct.getActivityId() < earliestID)
+                    {
+                        earliestIndex = currentIndex;
+                        earliestAct = currAct;
+                    }
+                    currentIndex++;
+                }
+                sortedList.Add(earliestAct);
+                listOfActivity.RemoveAt(earliestIndex);
+                currentIndex = 0;
+                earliestIndex = 0;
+            }
+            return sortedList;
+        }
+
+        List<Activity> sortActivityListByTime(List<Activity> listOfActivity)
+        {
+            DateTime earliestTime;
+            int earliestIndex = 0;
+            Activity earliestAct = listOfActivity[0];
+            int currentIndex = 0;
+            List<Activity> sortedList = new List<Activity>();
+            int value = listOfActivity.Count;
+            while (listOfActivity.Count != 0)
+            {
+                earliestTime = listOfActivity[0].getDate();
+                earliestAct = listOfActivity[0];
+                foreach (Activity currAct in listOfActivity)
+                {
+                    if (currAct.getDate() < earliestTime)
+                    {
+                        earliestIndex = currentIndex;
+                        earliestAct = currAct;
+                        earliestTime = currAct.getDate();
+                    }
+                    currentIndex++;
+                }
+                sortedList.Add(earliestAct);
+                listOfActivity.RemoveAt(earliestIndex);
+                currentIndex = 0;
+                earliestIndex = 0;
+            }
+            return sortedList;
         }
 
         private DateTime returnTime(string time, DateTime startTime)
@@ -214,16 +282,138 @@ namespace _2103Project
 
         private void addItemButton_Click(object sender, EventArgs e)
         {
-            
-                if(timeComboBox.SelectedItem == null || descriptionTextBox.Text == "" || venComboBox.SelectedItem == null)
+            if (dateCombobox.Text == "")
+            {
+                MessageBox.Show("Please select a day.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (timeComboBox.SelectedItem == null || descriptionTextBox.Text == "" || venComboBox.SelectedItem == null)
                     MessageBox.Show("Please add your schedule properly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    timeListBox.Items.Add(timeComboBox.SelectedItem.ToString());
-                    descriptionListBox.Items.Add(descriptionTextBox.Text);
-                    venueListBox.Items.Add(venComboBox.SelectedItem.ToString());
+                    DateTime selectedScheduleTime = Convert.ToDateTime(dateCombobox.Text);
+                    if (timeListBox.Items.Count != 0)
+                    {
+                        string time = timeListBox.Items[timeListBox.Items.Count - 1].ToString();
+                        if (compareTime(timeComboBox.SelectedItem.ToString(), time))
+                        {
+                            DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
+                            if (addSchTime < endTime)
+                            {
+                                time = timeComboBox.SelectedItem.ToString();
+                                timeListBox.Items.Add(time);
+                                descriptionListBox.Items.Add(descriptionTextBox.Text);
+                                venueListBox.Items.Add(venComboBox.Text);
+                            }
+                            else
+                            {
+                                MessageBox.Show("You are not allowed to book a time that exceed your end of booking time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                            MessageBox.Show("You are not allowed to add a schedule which is earlier than the previous activity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        DateTime addSchTime = new DateTime(selectedScheduleTime.Year, selectedScheduleTime.Month, selectedScheduleTime.Day, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Hour, returnTime(timeComboBox.SelectedItem.ToString(), selectedScheduleTime).Minute, 0);
+                        if (addSchTime < endTime)
+                        {
+                            string time = timeComboBox.SelectedItem.ToString();
+                            timeListBox.Items.Add(time);
+                            descriptionListBox.Items.Add(descriptionTextBox.Text);
+                            venueListBox.Items.Add(venComboBox.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("You are not allowed to book a time that exceed your end of booking time.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
+            }
+        }
 
+        private bool compareTime(string time1, string time2)
+        {
+            DateTime value1 = DateTime.Today;
+            DateTime value2 = DateTime.Today;
+            int hour1 = 0; int min1 = 0; int hour2 = 0; int min2 = 0;
+            switch (time1)
+            {
+                case "8:00 AM": hour1 = 8; min1 = 0; break;
+                case "8:30 AM": hour1 = 8; min1 = 30; break;
+                case "9:00 AM": hour1 = 9; min1 = 0; break;
+                case "9:30 AM": hour1 = 9; min1 = 30; break;
+                case "10:00 AM": hour1 = 10; min1 = 0; break;
+                case "10:30 AM": hour1 = 10; min1 = 30; break;
+                case "11:00 AM": hour1 = 11; min1 = 0; break;
+                case "11:30 AM": hour1 = 11; min1 = 30; break;
+                case "12:00 PM": hour1 = 12; min1 = 0; break;
+                case "12:30 PM": hour1 = 12; min1 = 30; break;
+                case "1:00 PM": hour1 = 13; min1 = 0; break;
+                case "1:30 PM": hour1 = 13; min1 = 30; break;
+                case "2:00 PM": hour1 = 14; min1 = 0; break;
+                case "2:30 PM": hour1 = 14; min1 = 30; break;
+                case "3:00 PM": hour1 = 15; min1 = 0; break;
+                case "3:30 PM": hour1 = 15; min1 = 30; break;
+                case "4:00 PM": hour1 = 16; min1 = 0; break;
+                case "4:30 PM": hour1 = 16; min1 = 30; break;
+                case "5:00 PM": hour1 = 17; min1 = 0; break;
+                case "5:30 PM": hour1 = 17; min1 = 30; break;
+                case "6:00 PM": hour1 = 18; min1 = 0; break;
+                case "6:30 PM": hour1 = 18; min1 = 30; break;
+                case "7:00 PM": hour1 = 19; min1 = 0; break;
+                case "7:30 PM": hour1 = 19; min1 = 30; break;
+                case "8:00 PM": hour1 = 20; min1 = 0; break;
+                case "8:30 PM": hour1 = 20; min1 = 30; break;
+                case "9:00 PM": hour1 = 21; min1 = 0; break;
+                case "9:30 PM": hour1 = 21; min1 = 30; break;
+                case "10:00 PM": hour1 = 22; min1 = 0; break;
+                case "10:30 PM": hour1 = 22; min1 = 30; break;
+                case "11:00 PM": hour1 = 23; min1 = 0; break;
+                case "11:30 PM": hour1 = 23; min1 = 30; break;
+            }
+
+            switch (time2)
+            {
+                case "8:00 AM": hour2 = 8; min2 = 0; break;
+                case "8:30 AM": hour2 = 8; min2 = 30; break;
+                case "9:00 AM": hour2 = 9; min2 = 0; break;
+                case "9:30 AM": hour2 = 9; min2 = 30; break;
+                case "10:00 AM": hour2 = 10; min2 = 0; break;
+                case "10:30 AM": hour2 = 10; min2 = 30; break;
+                case "11:00 AM": hour2 = 11; min2 = 0; break;
+                case "11:30 AM": hour2 = 11; min2 = 30; break;
+                case "12:00 PM": hour2 = 12; min2 = 0; break;
+                case "12:30 PM": hour2 = 12; min2 = 30; break;
+                case "1:00 PM": hour2 = 13; min2 = 0; break;
+                case "1:30 PM": hour2 = 13; min2 = 30; break;
+                case "2:00 PM": hour2 = 14; min2 = 0; break;
+                case "2:30 PM": hour2 = 14; min2 = 30; break;
+                case "3:00 PM": hour2 = 15; min2 = 0; break;
+                case "3:30 PM": hour2 = 15; min2 = 30; break;
+                case "4:00 PM": hour2 = 16; min2 = 0; break;
+                case "4:30 PM": hour2 = 16; min2 = 30; break;
+                case "5:00 PM": hour2 = 17; min2 = 0; break;
+                case "5:30 PM": hour2 = 17; min2 = 30; break;
+                case "6:00 PM": hour2 = 18; min2 = 0; break;
+                case "6:30 PM": hour2 = 18; min2 = 30; break;
+                case "7:00 PM": hour2 = 19; min2 = 0; break;
+                case "7:30 PM": hour2 = 19; min2 = 30; break;
+                case "8:00 PM": hour2 = 20; min2 = 0; break;
+                case "8:30 PM": hour2 = 20; min2 = 30; break;
+                case "9:00 PM": hour2 = 21; min2 = 0; break;
+                case "9:30 PM": hour2 = 21; min2 = 30; break;
+                case "10:00 PM": hour2 = 22; min2 = 0; break;
+                case "10:30 PM": hour2 = 22; min2 = 30; break;
+                case "11:00 PM": hour2 = 23; min2 = 0; break;
+                case "11:30 PM": hour2 = 23; min2 = 30; break;
+            }
+            value1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour1, min1, 0);
+            value2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hour2, min2, 0);
+            if (value1 <= value2)
+                return false;
+            return true;
         }
 
         private void deleteItem_Click(object sender, EventArgs e)
@@ -280,14 +470,84 @@ namespace _2103Project
             newEditBudgetOpen.Show();
         }
 
-        int startflag = 1;
         private void dateCombobox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (startflag == 0)
+            Activity currentActivity;
+            for (int i = 0; i < listOfActivity.Count; i++)
             {
-                
+                currentActivity = listOfActivity[i];
+                if (Convert.ToDateTime(dateCombobox.Text).Year == previousScheudleDate.Year && Convert.ToDateTime(dateCombobox.Text).Month == previousScheudleDate.Month && Convert.ToDateTime(dateCombobox.Text).Day == previousScheudleDate.Day)
+                    previousScheudleDate = Convert.ToDateTime(dateCombobox.Text);
+                if (currentActivity.getDate().Year == previousScheudleDate.Year && currentActivity.getDate().Month == previousScheudleDate.Month && currentActivity.getDate().Day == previousScheudleDate.Day)
+                {
+                    listOfActivity.Remove(currentActivity);
+                    i--;
+                }
             }
-            startflag = 0;
+
+            
+            DateTime time;
+            Activity newAct;
+            Organiser org = new Organiser(currentUser);
+            Venue ven;
+
+            for (int i = 0; i < timeListBox.Items.Count; i++)
+            {
+                time = returnTime(timeListBox.Items[i].ToString(), previousScheudleDate);
+                int newVenueID = org.getCheckVenueId(venueListBox.Items[i].ToString());
+                ven = new Venue(newVenueID, venueListBox.Items[i].ToString(), Venue.getVenueCapacityfromID(newVenueID));
+                newActivityID = getNewActIDFromActList(listOfActivity);
+                newAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString(), ven);
+                listOfActivity.Add(newAct);
+            }
+
+            timeListBox.Items.Clear(); descriptionListBox.Items.Clear(); venueListBox.Items.Clear();
+
+            foreach (Activity currAct in listOfActivity)
+            {
+                DateTime currTime = currAct.getDate();
+                if (currAct.getDate().Year == Convert.ToDateTime(dateCombobox.SelectedItem.ToString()).Year && currAct.getDate().Month == Convert.ToDateTime(dateCombobox.SelectedItem.ToString()).Month && currAct.getDate().Day == Convert.ToDateTime(dateCombobox.SelectedItem.ToString()).Day)
+                {
+                    if (listOfActivity.Count != 0)
+                    {
+                        timeListBox.Items.Add(String.Format("{0:t}", currAct.getDate()));
+                        descriptionListBox.Items.Add(currAct.getDescription());
+                        venueListBox.Items.Add(currAct.getVenue().getlocation());
+                    }
+                }
+            }
+        }
+
+        private int getNewActIDFromActList(List<Activity> listOfActivity)
+        {
+            int lastID = 0;
+            lastID = listOfActivity[0].getActivityId();
+            foreach (Activity currAct in listOfActivity)
+            {
+                if(currAct.getActivityId() > lastID)
+                    lastID = currAct.getActivityId();
+            }
+            lastID++;
+            return lastID;
+        }
+
+        private void participantTextbox_Leave(object sender, EventArgs e)
+        {
+            if (participantTextbox.Text != "")
+            {
+                venComboBox.Items.Clear();
+                List<string> listOfVenue = Venue.getListofVenueFromCapacity(int.Parse(participantTextbox.Text));
+                foreach (string strLocation in listOfVenue)
+                {
+                    venComboBox.Items.Add(strLocation);
+                }
+            }
+        }
+
+        private void dateCombobox_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (dateCombobox.Text != "")
+                previousScheudleDate = Convert.ToDateTime(dateCombobox.Text);
         }
     }
 }

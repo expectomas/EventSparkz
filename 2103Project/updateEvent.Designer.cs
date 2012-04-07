@@ -47,13 +47,13 @@
             this.addItemButton = new System.Windows.Forms.Button();
             this.deleteItem = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateCombobox = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.venueListBox = new System.Windows.Forms.ListBox();
             this.descriptionListBox = new System.Windows.Forms.ListBox();
             this.timeListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.editBudgetButton = new System.Windows.Forms.Button();
-            this.dateCombobox = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,6 +165,7 @@
             this.participantTextbox.TabIndex = 75;
             this.participantTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.participantTextbox_KeyDown);
             this.participantTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.participantTextbox_KeyPress);
+            this.participantTextbox.Leave += new System.EventHandler(this.participantTextbox_Leave);
             // 
             // organiserTextBox
             // 
@@ -284,6 +285,28 @@
             this.groupBox1.TabIndex = 84;
             this.groupBox1.TabStop = false;
             // 
+            // dateCombobox
+            // 
+            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateCombobox.FormattingEnabled = true;
+            this.dateCombobox.Location = new System.Drawing.Point(123, 16);
+            this.dateCombobox.Name = "dateCombobox";
+            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
+            this.dateCombobox.TabIndex = 84;
+            this.dateCombobox.SelectedIndexChanged += new System.EventHandler(this.dateCombobox_SelectedIndexChanged);
+            this.dateCombobox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dateCombobox_MouseClick);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(72, 16);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 21);
+            this.label15.TabIndex = 83;
+            this.label15.Text = "Date:";
+            // 
             // venueListBox
             // 
             this.venueListBox.FormattingEnabled = true;
@@ -328,27 +351,6 @@
             this.editBudgetButton.Text = "Edit Budget";
             this.editBudgetButton.UseVisualStyleBackColor = true;
             this.editBudgetButton.Click += new System.EventHandler(this.editBudgetButton_Click);
-            // 
-            // dateCombobox
-            // 
-            this.dateCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dateCombobox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateCombobox.FormattingEnabled = true;
-            this.dateCombobox.Location = new System.Drawing.Point(123, 16);
-            this.dateCombobox.Name = "dateCombobox";
-            this.dateCombobox.Size = new System.Drawing.Size(238, 25);
-            this.dateCombobox.TabIndex = 84;
-            this.dateCombobox.SelectedIndexChanged += new System.EventHandler(this.dateCombobox_SelectedIndexChanged);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(72, 16);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 21);
-            this.label15.TabIndex = 83;
-            this.label15.Text = "Date:";
             // 
             // updateForm
             // 

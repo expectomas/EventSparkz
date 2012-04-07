@@ -159,6 +159,11 @@ namespace _2103Project.Entities
             totalBudget = newTotalPrice;
         }
 
+        public void setScheduleID(int newScheduleID)
+        {
+            eventScheduleId = newScheduleID;
+        }
+
         public static DateTime getEndTime(int eventID)
         {
             DateTime endTime = DateTime.Now;
@@ -312,10 +317,18 @@ namespace _2103Project.Entities
             }
             List<Activity> listOfActivity = Schedule.retrieveListOfActivityfromScheduleID(scheduleId);
             Queue<int> listOfActivityID = new Queue<int>();
+            
             foreach (Activity act in listOfActivity)
             {
                 listOfActivityID.Enqueue(act.getActivityId());
             }
+            List<int> tempListID = new List<int>();
+            while (listOfActivityID.Count != 0)
+                tempListID.Add(listOfActivityID.Dequeue());
+            tempListID = sortActivityIDListByID(tempListID);
+            foreach (int listID in tempListID)
+                listOfActivityID.Enqueue(listID);
+            
             List<Activity> listOfActDb = db.getListOfActivities();
             Queue<Venue> listOfVenue = new Queue<Venue>();
             foreach (Activity act in listOfActDb)
@@ -342,6 +355,52 @@ namespace _2103Project.Entities
                 }
             }
             return queueStrVenue;
+        }
+
+        private static List<int> sortActivityIDListByID(List<int> listOfActID)
+        {
+            int earliestID;
+            int earliestIndex = 0;
+            int currentIndex = 0;
+            List<int> sortedIDList = new List<int>();
+            int value = listOfActID.Count;
+            while (listOfActID.Count != 0)
+            {
+                earliestID = listOfActID[0];
+                foreach (int currID in listOfActID)
+                {
+                    if (currID < earliestID)
+                    {
+                        earliestIndex = currentIndex;
+                        earliestID = currID;
+                    }
+                    currentIndex++;
+                }
+                sortedIDList.Add(earliestID);
+                listOfActID.RemoveAt(earliestIndex);
+                currentIndex = 0;
+                earliestIndex = 0;
+            }
+            return sortedIDList;
+        }
+
+        public static Queue<int> getListOfActIDFromEventID(int eventID)
+        {
+            int scheduleId = 1;
+            Queue<int> listOfID = new Queue<int>();
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    scheduleId = eve.getScheduleID();
+            }
+            List<Activity> listOfActivity = Schedule.retrieveListOfActivityfromScheduleID(scheduleId);
+            foreach (Activity act in listOfActivity)
+            {
+                listOfID.Enqueue(act.getActivityId());
+            }
+            return listOfID;
         }
 
         public static Queue<string> getListOfDescriptionFromEventID(int eventID)
@@ -454,8 +513,8 @@ namespace _2103Project.Entities
             db.saveListOfEvents(listOfEvent);
             return true;
         }
-
-        public static bool setSchedule(int currentEventID, List<DateTime> listOfDateTime, List<string> listOfdescription, List<Venue> listOfVenue)
+      
+        public static bool replaceSchedule(int currentEventID, List<Activity> listOfActivity)
         {
             int scheduleId = 1;
             Database db = Database.CreateDatabase(DatabaseToken);
@@ -466,41 +525,28 @@ namespace _2103Project.Entities
                     scheduleId = events.getScheduleID();
             }
             List<Schedule> listOfSchedule = db.getListOfSchedule();
-            List<Activity> listOfActivity = new List<Activity>();
             foreach (Schedule sch in listOfSchedule)
             {
                 if (scheduleId == sch.getScheduleID())
-                    listOfActivity = sch.getlistOfActivity();
-            }
-            Queue<Activity> queueActivity = new Queue<Activity>();
-            Activity act;
-            for (int i = 0; i < listOfActivity.Count; i++)
-            {
-                act = listOfActivity[i];
-                queueActivity.Enqueue(act);
-                act.setDateTime(listOfDateTime[i]);
-                act.setDescription(listOfdescription[i]);
-                act.setVenue(listOfVenue[i]);
-            }
-            db.saveListOfSchedule(listOfSchedule);
-            List<Activity> lisotOfActDB = db.getListOfActivities();
-            foreach (Activity actDB in lisotOfActDB)
-            {
-                if (queueActivity.Count != 0)
                 {
-                    if (actDB.getActivityId() == queueActivity.Peek().getActivityId())
-                    {
-                        actDB.setDateTime(queueActivity.Peek().getDate());
-                        actDB.setDescription(queueActivity.Peek().getDescription());
-                        actDB.setVenue(queueActivity.Peek().getVenue());
-                        queueActivity.Dequeue();
-                    }
+                    listOfSchedule.Remove(sch);
+                    break;
                 }
             }
-            db.saveListOfActivities(lisotOfActDB);
-
+            List<string> listOfitem = new List<string>();
+            int newScheduleID = Organiser.getNewScheduleId();
+            Schedule newSchedule = new Schedule(newScheduleID, listOfitem, listOfActivity);
+            listOfSchedule.Add(newSchedule);
+            db.saveListOfSchedule(listOfSchedule);
+            foreach (EventEntity events in listOfEvent)
+            {
+                if (events.getEventId() == currentEventID)
+                    events.setScheduleID(newScheduleID);
+            }
+            db.saveListOfEvents(listOfEvent);
             return true;
         }
+
 
         public EventInfoStates determineUserState(int i_userId)
         {

@@ -431,28 +431,36 @@ namespace _2103Project
 
         private void organiserEditButton_Click(object sender, EventArgs e)
         {
-            TimeSpan difference = new TimeSpan(3, 0, 0, 0);
-            EventEntity eve = new EventEntity();
-            ListViewItem listItem = this.listSideEventView.SelectedItems[0];
-            currentEventID = int.Parse(listItem.SubItems[0].Text);
-
-            if ((eve.getStartTimeFromEventID(currentEventID).Subtract(System.DateTime.Now)) <= difference)
+            try
             {
-                MessageBox.Show("You cannot edit an event that starts 3 days from now.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                TimeSpan difference = new TimeSpan(3, 0, 0, 0);
+                EventEntity eve = new EventEntity();
+                ListViewItem listItem = this.listSideEventView.SelectedItems[0];
+                currentEventID = int.Parse(listItem.SubItems[0].Text);
 
-            else
-            {
-                try
+                if ((eve.getStartTimeFromEventID(currentEventID).Subtract(System.DateTime.Now)) <= difference)
                 {
-                    updateForm updateNew = new updateForm(currentUser, currentEventID);
-                    updateNew.Show();
+                    MessageBox.Show("You cannot edit an event that starts 3 days from now.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                catch
+
+                else
                 {
-                    AdviseUserToMakeASelection();
+                    try
+                    {
+                        updateForm updateNew = new updateForm(currentUser, currentEventID);
+                        updateNew.Show();
+                    }
+                    catch
+                    {
+                        AdviseUserToMakeASelection();
+                    }
                 }
             }
+            catch
+            {
+                AdviseUserToMakeASelection();
+            }
+            
         }
 
         private void getEventInfoButton_Click(object sender, EventArgs e)

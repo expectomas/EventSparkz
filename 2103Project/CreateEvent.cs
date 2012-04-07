@@ -190,6 +190,7 @@ namespace _2103Project
             }
             return sortedList;
         }
+
         private void createEventForm_Load(object sender, EventArgs e)
         {
             DateTime dateValue = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, 8, 0, 0);
