@@ -253,6 +253,19 @@ namespace _2103Project.Entities
             return successRemoved;
         }
 
+        public static int getParticipantSize(int eventID)
+        {
+            int totalParticipantSize = 0;
+            Database db = Database.CreateDatabase(DatabaseToken);
+            List<EventEntity> listOfEvents = db.getListOfEvents();
+            foreach (EventEntity eve in listOfEvents)
+            {
+                if (eve.getEventId() == eventID)
+                    totalParticipantSize = eve.getParticipantSize();
+            }
+            return totalParticipantSize;
+        }
+
         public static int getParticipantNumber(int eventID)
         {
             int totalParticipateNumber = 0;

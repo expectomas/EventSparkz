@@ -51,7 +51,7 @@ namespace _2103Project
             titleLabel.Text = newEve.getEventName();
             int organiserID = newEve.getOrganiserID();
             organiserTextBox.Text = User.getNamefromID(organiserID);
-            participantTextbox.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
+            participantTextbox.Text = EventEntity.getParticipantSize(currentEventID).ToString();
             DateTime dateValue = EventEntity.getStartTime(currentEventID);
             dateTextBox.Text = String.Format("{0:f}", dateValue);
             listOfDateTime = EventEntity.getListOfTimeFromEventID(currentEventID);
@@ -123,7 +123,7 @@ namespace _2103Project
         {
             int numParticipant = int.Parse(participantTextbox.Text);
             
-            if (numParticipant < EventEntity.getParticipantNumber(currentEventID))  // Prohibit decrease in participant size
+            if (numParticipant < EventEntity.getParticipantSize(currentEventID))  // Prohibit decrease in participant size
             {
                 MessageBox.Show("You are not allowed to decrease the participant size", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

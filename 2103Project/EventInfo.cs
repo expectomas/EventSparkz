@@ -98,7 +98,7 @@ namespace _2103Project
             titleLabel.Text = newEve.getEventName();
             int organiserID = newEve.getOrganiserID();
             organiserLabel.Text = User.getNamefromID(organiserID);
-            noOfParticipantLabel.Text = EventEntity.getParticipantNumber(currentEventID).ToString();
+            noOfParticipantLabel.Text = EventEntity.getParticipantSize(currentEventID).ToString();
             
 
 
