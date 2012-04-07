@@ -718,7 +718,7 @@ namespace _2103Project
             ActiveUser au = new ActiveUser(currentUser);
             int num = au.scoutAlert();
 
-            if (num > 0)   // If there is at least ONE alert
+            if (num > 0 && notifyIcon !=null)   // If there is at least ONE alert
             {
                 notifyIcon.Icon = SystemIcons.Application;
                 notifyIcon.BalloonTipText = "You have " + num.ToString() + " new alerts!";
