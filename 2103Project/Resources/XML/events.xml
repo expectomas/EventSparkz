@@ -1,50 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventPool>
   <EventEntity>
-    <eventId>1</eventId>
-    <name>HappyTreeFriendsDay</name>
-    <startTime>2012-05-15T08:00:00</startTime>
-    <endTime>2012-05-15T20:00:00</endTime>
-    <eventScheduleId>1</eventScheduleId>
-    <participantSize>20</participantSize>
-    <organiserId>1</organiserId>
-    <totalBudget>321</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList>
-      <User>
-        <userId>6</userId>
-        <userName>zhihao</userName>
-        <name>Lim Zhi Hao</name>
-        <matricNo>A0067252H</matricNo>
-        <password>123456</password>
-        <email>zhihao@nus.edu.sg</email>
-        <age>17</age>
-        <loggedIn>false</loggedIn>
-        <contactHome>63231231</contactHome>
-        <contactHP>98213123</contactHP>
-      </User>
-    </participantList>
-    <facilitatorList>
-      <User>
-        <userId>5</userId>
-      </User>
-      <User>
-        <userId>7</userId>
-      </User>
-    </facilitatorList>
-    <budgetList>
-      <Budget>
-        <itemId>1</itemId>
-      </Budget>
-      <Budget>
-        <itemId>2</itemId>
-      </Budget>
-    </budgetList>
-  </EventEntity>
-  <EventEntity>
     <eventId>2</eventId>
     <name>FlowerAppreciationWorkshop</name>
     <startTime>2012-05-15T08:00:00</startTime>
@@ -99,63 +55,36 @@
   </EventEntity>
   <EventEntity>
     <eventId>3</eventId>
-    <name>testing</name>
-    <startTime>2012-03-14T04:36:30</startTime>
-    <endTime>2012-03-15T04:36:30</endTime>
+    <name>Career Fair 2012</name>
+    <startTime>2012-04-10T08:00:00</startTime>
+    <endTime>2012-04-12T00:00:00</endTime>
     <eventScheduleId>2</eventScheduleId>
-    <participantSize>43</participantSize>
-    <organiserId>2</organiserId>
-    <totalBudget>542</totalBudget>
-    <eventUpdatedFlag>false</eventUpdatedFlag>
-    <eventDeletedFlag>false</eventDeletedFlag>
-    <eventStarting>false</eventStarting>
-    <eventFull>false</eventFull>
-    <participantList>
-      <User>
-        <userId>1</userId>
-        <userName>tiow11</userName>
-        <name>TIO WEE LEONG</name>
-        <matricNo>A9328372N</matricNo>
-        <password>123456</password>
-        <email>wil@hotmail.com</email>
-        <age>23</age>
-        <loggedIn>false</loggedIn>
-        <contactHome>23120381</contactHome>
-        <contactHP>91732123</contactHP>
-      </User>
-    </participantList>
-    <facilitatorList />
-    <budgetList>
-      <Budget>
-        <itemId>2</itemId>
-      </Budget>
-    </budgetList>
-  </EventEntity>
-  <EventEntity>
-    <eventId>4</eventId>
-    <name>fdfds</name>
-    <startTime>2012-04-09T08:00:00</startTime>
-    <endTime>2012-04-10T00:00:00</endTime>
-    <eventScheduleId>3</eventScheduleId>
-    <participantSize>300</participantSize>
-    <organiserId>1</organiserId>
-    <totalBudget>0</totalBudget>
+    <participantSize>400</participantSize>
+    <organiserId>6</organiserId>
+    <totalBudget>6200</totalBudget>
     <eventUpdatedFlag>false</eventUpdatedFlag>
     <eventDeletedFlag>false</eventDeletedFlag>
     <eventStarting>false</eventStarting>
     <eventFull>false</eventFull>
     <participantList />
     <facilitatorList />
-    <budgetList />
+    <budgetList>
+      <Budget>
+        <itemId>4</itemId>
+      </Budget>
+      <Budget>
+        <itemId>5</itemId>
+      </Budget>
+    </budgetList>
   </EventEntity>
   <EventEntity>
-    <eventId>5</eventId>
-    <name>HelloWorld</name>
-    <startTime>2012-04-11T08:00:00</startTime>
-    <endTime>2012-04-13T00:00:00</endTime>
-    <eventScheduleId>4</eventScheduleId>
-    <participantSize>30</participantSize>
-    <organiserId>1</organiserId>
+    <eventId>4</eventId>
+    <name>School Of Computing Orientation Camp</name>
+    <startTime>2012-04-14T08:00:00</startTime>
+    <endTime>2012-04-15T00:00:00</endTime>
+    <eventScheduleId>3</eventScheduleId>
+    <participantSize>200</participantSize>
+    <organiserId>6</organiserId>
     <totalBudget>100</totalBudget>
     <eventUpdatedFlag>false</eventUpdatedFlag>
     <eventDeletedFlag>false</eventDeletedFlag>
@@ -165,7 +94,7 @@
     <facilitatorList />
     <budgetList>
       <Budget>
-        <itemId>3</itemId>
+        <itemId>6</itemId>
       </Budget>
     </budgetList>
   </EventEntity>

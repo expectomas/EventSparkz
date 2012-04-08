@@ -8,7 +8,7 @@
     <password>123456</password>
     <email>wil@hotmail.com</email>
     <age>23</age>
-    <loggedIn>true</loggedIn>
+    <loggedIn>false</loggedIn>
     <contactHome>23120381</contactHome>
     <contactHP>91732123</contactHP>
   </User>
@@ -83,5 +83,29 @@
     <loggedIn>false</loggedIn>
     <contactHome>12313123</contactHome>
     <contactHP>32132132</contactHP>
+  </User>
+  <User>
+    <userId>8</userId>
+    <userName>facilitator</userName>
+    <name>Facilitator</name>
+    <matricNo>A2134324E</matricNo>
+    <password>123456</password>
+    <email>facilitator@nus.edu.sg</email>
+    <age>20</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>65432321</contactHome>
+    <contactHP>98765432</contactHP>
+  </User>
+  <User>
+    <userId>9</userId>
+    <userName>participant</userName>
+    <name>participant</name>
+    <matricNo>A2123876D</matricNo>
+    <password>123456</password>
+    <email>participant@nus.edu.sg</email>
+    <age>19</age>
+    <loggedIn>false</loggedIn>
+    <contactHome>65432342</contactHome>
+    <contactHP>98654234</contactHP>
   </User>
 </UserPool>
