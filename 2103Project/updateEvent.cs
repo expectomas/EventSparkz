@@ -59,6 +59,7 @@ namespace _2103Project
             listOfVenue = EventEntity.getListOfVenueFromEventID(currentEventID);
             venueTextBox.Text = listOfVenue.Peek();
             Activity currentAct; Venue ven;
+
             Organiser pub = new Organiser(currentUser);
             int newActID = pub.getNewActivityId();
             newActID++;
@@ -155,8 +156,10 @@ namespace _2103Project
                     time = returnTime(timeListBox.Items[i].ToString(), Convert.ToDateTime(dateCombobox.Text));
                     int newVenueID = org.getCheckVenueId(venueListBox.Items[i].ToString());
                     ven = new Venue(newVenueID, venueListBox.Items[i].ToString(), Venue.getVenueCapacityfromID(newVenueID));
-                    
-                    newActivityID = getNewActIDFromActList(listOfActivity);
+                    if (listOfActivity.Count == 0)
+                        newActivityID = org.getNewActivityId();
+                    else
+                        newActivityID = getNewActIDFromActList(listOfActivity);
                     currAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString(), ven);
                     listOfActivity.Add(currAct);
                 }
@@ -496,7 +499,10 @@ namespace _2103Project
                 time = returnTime(timeListBox.Items[i].ToString(), previousScheudleDate);
                 int newVenueID = org.getCheckVenueId(venueListBox.Items[i].ToString());
                 ven = new Venue(newVenueID, venueListBox.Items[i].ToString(), Venue.getVenueCapacityfromID(newVenueID));
-                newActivityID = getNewActIDFromActList(listOfActivity);
+                if (listOfActivity.Count == 0)
+                    newActivityID = org.getNewActivityId();
+                else
+                    newActivityID = getNewActIDFromActList(listOfActivity);
                 newAct = new Activity(newActivityID, time, descriptionListBox.Items[i].ToString(), ven);
                 listOfActivity.Add(newAct);
             }
